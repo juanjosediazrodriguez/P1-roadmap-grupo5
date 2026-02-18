@@ -22,7 +22,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ spec.name }}</h5>
                         <p class="card-text text-secondary">{{ spec.description }}</p>
-                        <a href="#" class="text-primary">Explorar ruta &rarr;</a>
+                        <a href="{% url 'specialization_detail' spec.pk %}" class="text-primary">
+                            Explorar ruta
+                        </a>
                     </div>
                 </div>
             </div>
