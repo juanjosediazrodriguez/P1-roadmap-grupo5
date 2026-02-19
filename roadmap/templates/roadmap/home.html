@@ -15,16 +15,16 @@
     <div class="container mt-5">
         <h2 class="mb-4">Especializaciones</h2>
 
-        <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="row row-cols-1 row-cols-md-2 g-4" style="padding-bottom: 50px;">
             {% for spec in specializations %}
             <div class="col">
                 <div class="card h-100 p-3">
                     <div class="card-body">
-                        <h5 class="card-title">{{ spec.name }}</h5>
+                        <h4 class="card-title">{{ spec.name }}</h4>
                         <p class="card-text text-secondary">{{ spec.description }}</p>
-                        <a href="{% url 'specialization_detail' spec.pk %}" class="text-primary">
+                        <button class="btn btn-primary"><a href="{% url 'specialization_detail' spec.pk %}" class="text-white fw-semibold text-decoration-none">
                             Explorar ruta
-                        </a>
+                        </a></button>
                     </div>
                 </div>
             </div>
