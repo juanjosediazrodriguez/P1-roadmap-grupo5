@@ -4,8 +4,7 @@ from django.db import models
 class Specialization(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField()
-    icon = models.CharField(max_length=50, blank=True, null=True)
-    color = models.CharField(max_length=7, blank=True, null=True)  # Hex color
+    
     
     class Meta:
         ordering = ['name']
