@@ -1,0 +1,50 @@
+[
+{
+  "model": "roadmap.specialization",
+  "pk": 1,
+  "fields": {
+    "name": "Desarrollo de software",
+    "description": "La especialización en Desarrollo de Software se enfoca en el diseño, construcción, prueba y mantenimiento de aplicaciones y sistemas informáticos que resuelven problemas reales de usuarios y empresas. Esta área combina lógica, programación y buenas prácticas de ingeniería para crear soluciones eficientes, seguras y escalables."
+  }
+},
+{
+  "model": "roadmap.specialization",
+  "pk": 2,
+  "fields": {
+    "name": "Ciberseguridad",
+    "description": "La especialización en Ciberseguridad se centra en la protección de sistemas informáticos, redes y datos frente a ataques, accesos no autorizados y fallos de seguridad. Su objetivo principal es garantizar la confidencialidad, integridad y disponibilidad de la información en entornos digitales."
+  }
+},
+{
+  "model": "roadmap.specialization",
+  "pk": 3,
+  "fields": {
+    "name": "Data Engineer",
+    "description": "La especialización en Ingeniería de Datos se enfoca en el diseño, construcción y mantenimiento de infraestructuras que permiten recolectar, almacenar, procesar y transformar grandes volúmenes de datos de manera eficiente y segura."
+  }
+},
+{
+  "model": "roadmap.specialization",
+  "pk": 4,
+  "fields": {
+    "name": "Data Science",
+    "description": "La especialización en Ciencia de Datos se enfoca en el análisis y la interpretación de grandes volúmenes de datos para descubrir patrones, tendencias y generar conocimiento útil para la toma de decisiones."
+  }
+},
+{
+  "model": "roadmap.specialization",
+  "pk": 5,
+  "fields": {
+    "name": "Data Analytics",
+    "description": "La especialización en Data Analytics se enfoca en el estudio y análisis de datos para obtener información útil que permita comprender lo que está ocurriendo en una organización y apoyar la toma de decisiones."
+  }
+},
+{
+  "model": "roadmap.specialization",
+  "pk": 6,
+  "fields": {
+    "name": "Machine Learning",
+    "description": "La especialización en Machine Learning se enfoca en el desarrollo de sistemas y modelos capaces de aprender a partir de datos y mejorar su desempeño sin ser programados de forma explícita."
+  }
+}
+]
