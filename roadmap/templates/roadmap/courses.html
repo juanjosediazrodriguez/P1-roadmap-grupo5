@@ -13,7 +13,18 @@
         <h2 class="mt-3">{{ specialization.name }}</h2>
         <p>{{ specialization.description }}</p>
 
+
         <h4 class="mt-4">Cursos</h4>
+        <form method="GET" class="mb-4">
+            <input 
+                type="text" 
+                name="q" 
+                value="{{ course_query }}"
+                placeholder="Buscar curso..." 
+                class="form-control"
+            >
+        </form>
+
         <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
             {% for course in courses %}
             <div class="col">
