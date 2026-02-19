@@ -1,5 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Specialization
+from collections import defaultdict
+from django.db.models import Sum
+from django.db.models.functions import Coalesce
+from django.db.models import IntegerField, Value
 
 def specialization_list(request):
     query = request.GET.get('q', '')
@@ -15,10 +19,20 @@ def specialization_detail(request, pk):
     courses = specialization.courses.all()
     courses_query = request.GET.get('q', '')
     courses = courses.filter(name__icontains=courses_query)
+     # Agrupar y sumar créditos por semestre sugerido
+    semester_credits_qs = (
+        courses.values("semester_suggested")
+        .annotate(total=Coalesce(Sum("credits"), Value(0), output_field=IntegerField()))
+        .order_by("semester_suggested")
+    )
+
+    # Convertir a lista de dicts para el template
+    semester_credits = list(semester_credits_qs)
     return render(request, 'roadmap/courses.html', {
         'specialization': specialization,
         'courses': courses,
         'query': courses_query,
+        'semester_credits': semester_credits,
     })
 
 

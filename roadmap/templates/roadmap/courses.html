@@ -25,6 +25,29 @@
             >
         </form>
 
+        <h5 class="mt-4">Créditos por semestre</h5>
+
+        <div class="d-flex flex-row gap-3 overflow-auto py-2 mb-3">
+        {% for item in semester_credits %}
+            <div class="card shadow-sm border-0 flex-shrink-0" style="min-width: 220px;">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between">
+                <span class="text-white small">Semestre {{ item.semester_suggested }}</span>
+                <span class="badge text-bg-dark">Total</span>
+                </div>
+
+                <div class="mt-2 fs-3 fw-bold">
+                {{ item.total }}
+                <span class="fs-6 fw-normal text-white">créditos</span>
+                </div>
+            </div>
+            </div>
+        {% empty %}
+            <div class="text-white">No hay cursos para sumar créditos.</div>
+        {% endfor %}
+        </div>
+
+
         <div class="row row-cols-1 row-cols-md-2 g-4 mt-2 pb-5">
             {% for course in courses %}
             <!-- Modal -->
@@ -50,6 +73,7 @@
                             <p class="mt-3">{{ course.description }}</p>
                             <p><strong>Semestre sugerido:</strong> {{ course.semester_suggested }}</p>
                             <p>Código: <strong>{{ course.code }}</strong></p>
+                            <p>Créditos: <strong>{{ course.credits }}</strong></p>
 
                         </div>
 
