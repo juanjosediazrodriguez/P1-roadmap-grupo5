@@ -72,10 +72,5 @@ class Course(models.Model):
             prereqs.update(prereq.get_all_prerequisites())
         return prereqs
     
-    def can_enroll(self, completed_courses):
-        """Valida si el estudiante puede inscribir el curso (RF15)"""
-        required = set(self.prerequisites.all())
-        completed = set(completed_courses)
-        return required.issubset(completed)
 
 # Create your models here.
