@@ -15,17 +15,17 @@
     <div class="container mt-5">
         <h2 class="mb-4">Especializaciones</h2>
 
-        <form method="GET" class="mb-4">
-            <input 
-                type="text" 
-                name="q" 
-                value="{{ query }}"
-                placeholder="Buscar especialización..." 
-                class="form-control"
-            >
-        </form>
+        <input 
+            type="text"
+            id="spec-search"
+            name="q" 
+            value="{{ query }}"
+            placeholder="Buscar especialización..." 
+            class="form-control mb-4"
+        >
 
-        <div class="row row-cols-1 row-cols-md-2 g-4 pb-5">
+        <div class="row row-cols-1 row-cols-md-2 g-4 pb-5" id="spec-container">
+
             {% for spec in specializations %}
             <div class="col">
                 <div class="card h-100 p-3">
@@ -45,5 +45,21 @@
             {% endfor %}
         </div>
     </div>
+
+    <script>
+        const specInput = document.getElementById('spec-search');
+        const specContainer = document.getElementById('spec-container');
+
+        specInput.addEventListener('keyup', () => {
+            const query = specInput.value;
+
+            fetch(`{% url 'specialization_search' %}?q=${query}`)
+                .then(res => res.json())
+                .then(data => {
+                    specContainer.innerHTML = data.html;
+                });
+        });
+    </script>
+
 </body>
 </html>
