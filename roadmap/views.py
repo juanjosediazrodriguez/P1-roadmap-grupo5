@@ -5,6 +5,9 @@ from django.db.models import Sum
 from django.db.models.functions import Coalesce
 from django.db.models import IntegerField, Value
 
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+
 def specialization_list(request):
     query = request.GET.get('q', '')
     specializations = Specialization.objects.filter(name__icontains=query)
@@ -35,5 +38,35 @@ def specialization_detail(request, pk):
         'semester_credits': semester_credits,
     })
 
+# Vista para búsqueda de especializaciones vía AJAX
+def specialization_search(request):
+    query = request.GET.get('q', '')
 
-# Create your views here.
+    if query:
+        specializations = Specialization.objects.filter(name__icontains=query)
+    else:
+        specializations = Specialization.objects.all()
+
+    html = render_to_string(
+        'roadmap/partials/specialization_list.html',
+        {'specializations': specializations}
+    )
+
+    return JsonResponse({'html': html})
+
+# Vista para búsqueda de cursos vía AJAX
+def course_search(request, pk):
+    query = request.GET.get('q', '')
+    specialization = get_object_or_404(Specialization, pk=pk)
+
+    if query:
+        courses = specialization.courses.filter(name__icontains=query)
+    else:
+        courses = specialization.courses.all()
+
+    html = render_to_string(
+        'roadmap/partials/course_list.html',
+        {'courses': courses}
+    )
+
+    return JsonResponse({'html': html})
