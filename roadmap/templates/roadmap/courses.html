@@ -15,15 +15,15 @@
 
 
         <h4 class="mt-4 pb-3">Cursos</h4>
-        <form method="GET" class="mb-4">
-            <input 
-                type="text" 
-                name="q" 
-                value="{{ course_query }}"
-                placeholder="Buscar curso..." 
-                class="form-control"
-            >
-        </form>
+
+        <input 
+            type="text"
+            id="course-search" 
+            name="q" 
+            value="{{ course_query }}"
+            placeholder="Buscar curso..." 
+            class="form-control mb-4"
+        >
 
         <h5 class="mt-4">Créditos por semestre</h5>
 
@@ -48,7 +48,8 @@
         </div>
 
 
-        <div class="row row-cols-1 row-cols-md-2 g-4 mt-2 pb-5">
+        <div class="row row-cols-1 row-cols-md-2 g-4 mt-2 pb-5" id="course-container">
+
             {% for course in courses %}
             <!-- Modal -->
             <div class="modal fade" id="courseModal{{ course.id }}" tabindex="-1">
@@ -96,6 +97,22 @@
             {% endfor %}
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const courseInput = document.getElementById('course-search');
+        const courseContainer = document.getElementById('course-container');
+
+        courseInput.addEventListener('keyup', () => {
+            const query = courseInput.value;
+
+            fetch(`{% url 'course_search' specialization.id %}?q=${query}`)
+                .then(res => res.json())
+                .then(data => {
+                    courseContainer.innerHTML = data.html;
+                });
+        });
+    </script>
+
 </body>
 </html>
