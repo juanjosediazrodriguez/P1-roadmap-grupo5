@@ -12,7 +12,7 @@ Aplicación Django para visualizar el roadmap de cursos por especialización.
 ### 1. Clonar el repositorio
 
 ```bash
-git clone <url-del-repo>
+git clone <url del proyecto>
 cd P1-roadmap-grupo5
 ```
 
