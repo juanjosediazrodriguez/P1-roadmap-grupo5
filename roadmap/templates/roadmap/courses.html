@@ -9,7 +9,10 @@
 </head>
 <body>
     <div class="container mt-5">
-        <a href="{% url 'specialization_list' %}" class="text-secondary"> <button class="btn btn-outline-secondary mb-3">← Volver</button></a>
+        <a href="{% url 'specialization_list' %}"> 
+            <button class="btn btn-outline-light mb-3">← Volver</button>
+        </a>
+
         <h2 class="mt-3">{{ specialization.name }}</h2>
         <p>{{ specialization.description }}</p>
 
