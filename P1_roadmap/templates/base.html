@@ -1,0 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CareerMap{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS de la base -->
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+
+    <!-- Google Fonts - Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Header móvil (visible solo en pantallas pequeñas) -->
+    <div class="mobile-header">
+        <div class="mobile-header-content">
+            <div class="logo-area">
+                <a href="#" class="text-decoration-none text-reset">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>CareerMap</span>
+                </a>
+            </div>
+            <button class="hamburger-btn" id="hamburgerBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Menú desplegable móvil (oculto por defecto) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo-area">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>CareerMap</span>
+            </div>
+            <button class="close-btn" id="closeMenuBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-content d-flex flex-column" style="min-height: 86vb;">
+            <div class="university-badge">
+                UNIVERSIDAD EAFIT
+            </div>
+            
+            <ul class="mobile-nav">
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-link {% if request.resolver_match.url_name == 'analytics' %}active{% endif %}" href="#">
+                        <i class="fas fa-chart-line"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-link {% if request.resolver_match.url_name == 'roadmap' %}active{% endif %}" href="#">
+                        <i class="fa-regular fa-map"></i>
+                        Mapa Académico
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-link {% if request.resolver_match.url_name == 'specialization_list' %}active{% endif %}" href="{% url 'specialization_list' %}">
+                        <i class="fa-solid fa-medal"></i>
+                        Especializaciones
+                    </a>
+                </li>
+                
+                <li class="mobile-nav-divider"></li>
+                
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-link {% if request.resolver_match.url_name == 'preferences' %}active{% endif %}" href="#">
+                        <i class="fas fa-cog"></i>
+                        Preferencias
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="#">
+                        <i class="fas fa-user"></i>
+                        Perfil
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Logout al fondo del menú móvil -->
+            <div class="mt-auto pb-4">
+                <a class="mobile-nav-link text-danger" href="#">
+                    <i class="fas fa-sign-out-alt me-3"></i>
+                    Cerrar Sesión
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Overlay para cuando el menú está abierto -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Menú Lateral (solo visible en desktop) -->
+            <nav class="col-md-3 col-lg-2 d-none d-md-block sidebar">
+                <div class="position-fixed d-flex flex-column" style="height: 97vh;">
+                    <div class="sidebar-header">
+                        <h3 class="mb-5 mt-5">
+                            <a href="#" class="text-decoration-none text-reset">
+                                <i class="fa-solid fa-graduation-cap ms-2 me-2"></i>
+                                CareerMap
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div class="ms-2 mb-3">
+                        <span>UNIVERSIDAD EAFIT</span>
+                    </div>
+                    
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'analytics' %}active{% endif %}" href="#">
+                                <i class="fas fa-chart-line me-3"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'roadmap' %}active{% endif %}" href="#">
+                                <i class="fa-regular fa-map me-3"></i>
+                                Mapa Académico
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'specialization_list' %}active{% endif %}" href="{% url 'specialization_list' %}">
+                                <i class="fa-solid fa-medal me-3"></i>
+                                Especializaciones
+                            </a>
+                        </li>
+                        
+                        <hr class="sidebar-divider me-2">
+
+                        <li class="nav-item">
+                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'preferences' %}active{% endif %}" href="#">
+                                <i class="fas fa-cog me-3"></i>
+                                Preferencias
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="#">
+                                <i class="fas fa-user me-3"></i>
+                                Perfil
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="logout-section mt-auto pb-4">
+                        <a class="nav-link me-3 text-danger py-2 ps-3" href="#">
+                            <i class="fas fa-sign-out-alt me-3"></i>
+                            Cerrar Sesión
+                        </a>
+                    </div>
+
+                </div>
+            </nav>
+
+            <!-- Contenido Principal -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                {% block content %}
+                {% endblock %}
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script para el menú móvil -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            const menuOverlay = document.getElementById('menuOverlay');
+
+            function openMenu() {
+                mobileMenu.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevenir scroll
+            }
+
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // Restaurar scroll
+            }
+
+            hamburgerBtn.addEventListener('click', openMenu);
+            closeMenuBtn.addEventListener('click', closeMenu);
+            menuOverlay.addEventListener('click', closeMenu);
+        });
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

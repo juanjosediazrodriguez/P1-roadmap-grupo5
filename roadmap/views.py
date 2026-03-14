@@ -11,7 +11,7 @@ from django.template.loader import render_to_string
 def specialization_list(request):
     query = request.GET.get('q', '')
     specializations = Specialization.objects.filter(name__icontains=query)
-    return render(request, 'roadmap/home.html', {
+    return render(request, 'roadmap/specializations.html', {
         'specializations': specializations,
         'query': query,
     })
