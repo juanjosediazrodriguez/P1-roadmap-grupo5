@@ -72,5 +72,3 @@ class Course(models.Model):
             prereqs.update(prereq.get_all_prerequisites())
         return prereqs
     
-
-# Create your models here.
