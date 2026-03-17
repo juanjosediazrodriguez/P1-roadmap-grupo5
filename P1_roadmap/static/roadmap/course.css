@@ -1,0 +1,204 @@
+@import url(style.css);
+
+/* ESTILOS DEL MODAL */
+.modal-content {
+    background-color: #1a1d27 !important;
+    border: 1px solid #2a2d3a !important;
+}
+
+.modal-body {
+    background-color: #1a1d27 !important;
+    color: #ffffff !important;
+}
+
+.modal-header, .modal-footer {
+    border-color: #2a2d3a !important;
+}
+
+/* Badge Plan de estudios */
+.curriculum-badge {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+    border: 1px solid #444 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    display: inline-block !important;
+    font-size: 0.9rem !important;
+}
+
+/* Título del curso */
+.course-title {
+    color: #ffffff !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+}
+
+/* Código del curso */
+.course-code {
+    color: #adb5bd !important;
+    font-size: 1rem !important;
+}
+
+.course-code strong {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* Descripción */
+.course-description {
+    color: #ced4da !important;
+    line-height: 1.6 !important;
+    font-size: 1rem !important;
+}
+
+/* Metric boxes */
+.course-metrics {
+    display: flex !important;
+    gap: 1.5rem !important;
+}
+
+.metric-box {
+    text-align: center !important;
+    min-width: 100px !important;
+}
+
+.metric-number {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+    border: 1px solid #444 !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    line-height: 1 !important;
+}
+
+.metric-label {
+    color: #adb5bd !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase !important;
+    margin-top: 0.5rem !important;
+    letter-spacing: 0.5px !important;
+    font-weight: 500 !important;
+}
+
+/* Requisite cards */
+.requisite-card {
+    background-color: #2d2d2d !important;
+    border: 1px solid #444 !important;
+    border-radius: 10px !important;
+    padding: 1.5rem !important;
+    max-width: 280px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+}
+
+.requisite-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 1rem !important;
+}
+
+.requisite-tag {
+    background-color: #7a3535 !important;
+    color: #ffffff !important;
+    border: 1px solid #812d2d !important;
+    padding: 0.25rem 1rem !important;
+    border-radius: 8px !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+}
+
+.requisite-tag.coreq {
+    background-color: #1e3a5f !important;
+    border-color: #2b4a7a !important;
+}
+
+.requisite-credits {
+    background-color: #1a1d27 !important;
+    color: #adb5bd !important;
+    border: 1px solid #444 !important;
+    padding: 0.25rem 0.75rem !important;
+    border-radius: 15px !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+}
+
+.requisite-card h5 {
+    color: #ffffff !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.4 !important;
+}
+
+.requisite-code {
+    color: #adb5bd !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* Botón de cerrar */
+.btn-close {
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat !important;
+    background-color: #2d2d2d !important;
+    border: 1px solid #444 !important;
+    border-radius: 35% !important;
+    width: 35px !important;
+    height: 35px !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    z-index: 1000 !important;
+}
+
+.btn-close:hover {
+    background-color: #3d3d3d !important;
+    border-color: #666 !important;
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+
+/* Ajustar el contenido para que se vea mejor en un modal más cuadrado */
+@media (min-width: 768px) {
+    .modal-dialog.modal-xl {
+        max-width: 850px !important;
+    }
+    
+    .d-flex.justify-content-between.align-items-start {
+        flex-direction: row !important;
+    }
+    
+    .course-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .metric-number {
+        font-size: 2.2rem !important;
+        padding: 8px 16px !important;
+    }
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 767px) {
+    .modal-dialog.modal-xl {
+        max-width: 95% !important;
+        margin: 10px auto !important;
+    }
+    
+    .d-flex.justify-content-between.align-items-start {
+        flex-direction: column !important;
+    }
+    
+    .course-metrics {
+        margin-top: 1rem !important;
+        justify-content: flex-start !important;
+    }
+}

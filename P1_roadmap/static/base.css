@@ -1,0 +1,411 @@
+/* Sidebar - con borde visible */
+.sidebar {
+    background-color: #0a0c12; /* Un tono más oscuro para diferenciar del contenido */
+    min-height: 100vh;
+    border-right: 2px solid #2a2d3a; /* Borde visible */
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3); /* Sombra para más profundidad */
+}
+
+.sidebar .position-fixed {
+    width: inherit;
+    max-width: inherit;
+    padding: 0 0.5rem;
+}
+
+/* Header del sidebar */
+.sidebar-header h3 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.sidebar-header h3 i {
+    color: #4a90e2; /* Icono siempre azul */
+    font-size: 1.8rem;
+}
+
+.sidebar-header h3 a {
+    color: #4a90e2 !important; /* CareerMap siempre azul */
+    font-size: 1.8rem;
+    transition: none; /* Sin efecto hover */
+}
+
+.sidebar-header h3 a:hover {
+    color: #4a90e2 !important; /* Mantiene azul en hover */
+}
+
+/* Texto de Universidad */
+.ms-2.mb-3 span {
+    color: #ffffff; /* Gris más claro que las opciones */
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* Navegación */
+.nav {
+    padding: 0 0.5rem;
+}
+
+.nav-item {
+    margin-bottom: 0.3rem;
+}
+
+.nav-link {
+    color: #ffffff !important; /* Texto blanco por defecto */
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.nav-link i {
+    width: 24px;
+    font-size: 1.2rem;
+    color: #8f9bb3; /* Iconos grises por defecto */
+    transition: all 0.2s ease;
+}
+
+/* Hover - solo azul cuando el cursor está encima */
+.nav-link:hover {
+    background-color: #1a1d27;
+    color: #ffffff !important;
+    opacity: 1;
+}
+
+.nav-link:hover i {
+    color: #4a90e2 !important; /* Iconos se vuelven azules en hover */
+}
+
+/* Estado activo - mantener blanco con icono azul */
+.nav-link.active {
+    background-color: #1a1d27 !important;
+    color: #4a90e2 !important;
+    font-weight: 600;
+    opacity: 1;
+}
+
+.nav-link.active i {
+    color: #4a90e2 !important; /* Icono azul para el activo */
+}
+
+/* Divisor */
+.sidebar-divider {
+    border-top: 1px solid #848999;
+    margin: 1.5rem 0;
+    opacity: 0.5;
+}
+
+/* Contenido principal */
+.main-content {
+    background-color: #0f1117;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* Para que el logout se vaya al fondo */
+.sidebar .position-fixed.d-flex {
+    height: 100vh;
+}
+
+.flex-grow-1 {
+    flex-grow: 1 !important;
+}
+
+.mt-auto {
+    margin-top: auto !important;
+}
+
+/* Estilo para el logout */
+.logout-section .nav-link.text-danger {
+    color: #ff6b6b !important;
+}
+
+.logout-section .nav-link.text-danger i {
+    color: #ff6b6b !important;
+}
+
+.logout-section .nav-link.text-danger:hover {
+    background-color: #2a1a1a !important;
+    color: #ff8a8a !important;
+}
+
+.logout-section .nav-link.text-danger:hover i {
+    color: #ff8a8a !important;
+}
+
+/* ========== ESTILOS MÓVILES ========== */
+
+/* Header móvil - visible solo en pantallas pequeñas */
+.mobile-header {
+    display: none;
+    background-color: #0a0c12;
+    padding: 1rem;
+    border-bottom: 2px solid #2a2d3a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.mobile-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mobile-header .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.mobile-header .logo-area i {
+    color: #4a90e2;
+    font-size: 1.8rem;
+}
+
+.mobile-header .logo-area span {
+    color: #4a90e2;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.hamburger-btn:hover {
+    color: #4a90e2;
+}
+
+/* Menú desplegable móvil */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -80%; /* Oculto fuera de la pantalla */
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #0a0c12;
+    border-right: 2px solid #2a2d3a;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    transition: left 0.3s ease-in-out;
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    left: 0; /* Visible cuando tiene la clase active */
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid #2a2d3a;
+}
+
+.mobile-menu-header .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.mobile-menu-header .logo-area i {
+    color: #4a90e2;
+    font-size: 1.8rem;
+}
+
+.mobile-menu-header .logo-area span {
+    color: #4a90e2;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #4a90e2;
+    transform: scale(1.1);
+}
+
+.mobile-menu-content {
+    padding: 1rem;
+}
+
+.university-badge {
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+}
+
+/* Navegación móvil */
+.mobile-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav-item {
+    margin-bottom: 0.3rem;
+}
+
+.mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    color: #ffffff !important;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.mobile-nav-link i {
+    width: 24px;
+    font-size: 1.2rem;
+    color: #8f9bb3;
+    transition: all 0.2s ease;
+}
+
+.mobile-nav-link:hover {
+    background-color: #1a1d27;
+    color: #ffffff !important;
+    opacity: 1;
+}
+
+.mobile-nav-link:hover i {
+    color: #4a90e2 !important;
+}
+
+.mobile-nav-link.active {
+    background-color: #1a1d27 !important;
+    color: #4a90e2 !important;
+    font-weight: 600;
+    opacity: 1;
+}
+
+.mobile-nav-link.active i {
+    color: #4a90e2 !important;
+}
+
+.mobile-nav-divider {
+    border-top: 1px solid #848999;
+    margin: 1.5rem 0;
+    opacity: 0.5;
+}
+
+/* Estilo para el logout */
+.mobile-nav-link.text-danger {
+    color: #ff6b6b !important;
+}
+
+.mobile-nav-link.text-danger i {
+    color: #ff6b6b !important;
+}
+
+.mobile-nav-link.text-danger:hover {
+    background-color: #2a1a1a !important;
+    color: #ff8a8a !important;
+}
+
+.mobile-nav-link.text-danger:hover i {
+    color: #ff8a8a !important;
+}
+
+/* Overlay para cuando el menú está abierto */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1040;
+    backdrop-filter: blur(3px);
+    transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+    display: block;
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media (max-width: 767px) {
+    /* Mostrar header móvil y ocultar sidebar desktop */
+    .mobile-header {
+        display: block;
+    }
+    
+    .sidebar {
+        display: none !important;
+    }
+    
+    /* Ajustar contenido principal */
+    .main-content {
+        padding: 1rem;
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    .container-fluid {
+        padding: 0;
+    }
+    
+    .row {
+        margin: 0;
+    }
+    
+    .col-md-9, .col-lg-10 {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Ajuste para tablets (entre 768px y 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .sidebar {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+    
+    .main-content {
+        flex: 0 0 75% !important;
+        max-width: 75% !important;
+    }
+}
