@@ -27,6 +27,9 @@ python manage.py migrate
 ```bash
 python manage.py loaddata specializations.json
 ```
+```bash
+python manage.py loaddata preferences_data.json
+```
 
 ### 4. Crear superusuario (para el admin)
 
@@ -58,13 +61,18 @@ Cuando alguien agrega o modifica especializaciones o cursos desde el admin, debe
 python manage.py dumpdata roadmap.Specialization --indent 2 > roadmap/fixtures/specializations.json
 ```
 
-**2. Exportar cursos (si también modificaste cursos):**
+**2. Exportar cursos:**
 
 ```bash
 python manage.py dumpdata roadmap.Course --indent 2 > roadmap/fixtures/courses.json
 ```
 
-**3. Subir al repositorio:**
+**3. Exportar datos para preferencias:**
+```bash
+python manage.py dumpdata accounts --indent 2 > accounts/fixtures/preferences_data.json
+```
+
+**4. Subir al repositorio:**
 
 ```bash
 git add roadmap/fixtures/
@@ -84,6 +92,9 @@ git pull origin main
 
 ```bash
 python manage.py loaddata specializations.json
+```
+```bash
+python manage.py loaddata preferences_data.json
 ```
 
 O si también hay cursos:
