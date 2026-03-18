@@ -1,0 +1,168 @@
+/* Estilos base para el contenido de todas las páginas */
+body {
+    background-color: #0f1117;
+    color: #ffffff;
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Títulos de página consistentes */
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.page-subtitle {
+    color: #8f9bb3;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+/* Secciones */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #2a2d3a;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+/* Tarjetas */
+.card {
+    background-color: #1a1d27;
+    border: 1px solid #2a2d3a;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: #4a90e2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    color: #8f9bb3;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Inputs */
+.form-control {
+    background-color: #1a1d27;
+    border: 1px solid #2a2d3a;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    background-color: #1a1d27;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+    color: #fff;
+}
+
+.form-control::placeholder {
+    color: #5a6a8a;
+}
+
+/* Botones */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #2d6bb8 0%, #1e4d8a 100%);
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #1e5aa0 0%, #153d6b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(29, 78, 140, 0.3);
+}
+
+.btn-primary i {
+    transition: transform 0.2s ease;
+}
+
+.btn-primary:hover i {
+    transform: translateX(4px);
+}
+
+.btn-outline-light {
+    border: 1px solid #2a2d3a;
+    color: #fff;
+}
+
+.btn-outline-light:hover {
+    background-color: #1a1d27;
+    border-color: #4a90e2;
+    color: #fff;
+}
+
+/* Badges */
+.badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+/* Grids */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .content-container {
+        padding: 1rem;
+    }
+}

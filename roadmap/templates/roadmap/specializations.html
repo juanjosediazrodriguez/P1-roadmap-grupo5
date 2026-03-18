@@ -1,56 +1,48 @@
-{% extends 'base.html' %}
+{% extends 'menu.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'base_content.css' %}">
+<link rel="stylesheet" href="{% static 'roadmap/specialization.css' %}">
+{% endblock %}
+
+{% block title %}Especializaciones{% endblock title %}
+
 {% block content %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Especializaciones</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'roadmap/style.css' %}">
-</head>
 
-<body>
-    <div class="container mt-4">
-        <h2 class="mb-4">Especializaciones</h2>
+<div class="content-container">
+    <h1 class="page-title">Especializaciones</h1>
+    <p class="page-subtitle">
+        Explora las diferentes áreas de profundización disponibles en Ingeniería de Sistemas.<br>
+        Descubre qué cursos tomar y qué oportunidades laborales te esperan.
+    </p>
 
-        <p class="mb-1">
-            Explora las diferentes áreas de profundización disponibles en Ingeniería de Sistemas.
-        </p>
-        <p class="mb-4">
-            Descubre qué cursos tomar y qué oportunidades laborales te esperan.
-        </p>
+    <input 
+        type="text"
+        id="spec-search"
+        name="q" 
+        value="{{ query }}"
+        placeholder="Buscar especialización..." 
+        class="form-control mb-4"
+    >
 
-        <input 
-            type="text"
-            id="spec-search"
-            name="q" 
-            value="{{ query }}"
-            placeholder="Buscar especialización..." 
-            class="form-control mb-4"
-        >
-
-        <div class="row row-cols-1 row-cols-md-2 g-4 pb-5" id="spec-container">
-            {% include "roadmap/partials/specialization_list.html" with specializations=specializations %}
-        </div>
+    <div class="grid-2" id="spec-container">
+        {% include "roadmap/partials/specialization_list.html" with specializations=specializations %}
     </div>
+</div>
 
-    <script>
-        const specInput = document.getElementById('spec-search');
-        const specContainer = document.getElementById('spec-container');
+<script>
+    const specInput = document.getElementById('spec-search');
+    const specContainer = document.getElementById('spec-container');
 
-        specInput.addEventListener('keyup', () => {
-            const query = specInput.value;
+    specInput.addEventListener('keyup', () => {
+        const query = specInput.value;
+        fetch(`{% url 'specialization_search' %}?q=${query}`)
+            .then(res => res.json())
+            .then(data => {
+                specContainer.innerHTML = data.html;
+            });
+    });
+</script>
 
-            fetch(`{% url 'specialization_search' %}?q=${query}`)
-                .then(res => res.json())
-                .then(data => {
-                    specContainer.innerHTML = data.html;
-                });
-        });
-    </script>
-
-</body>
-</html>
 {% endblock content %}
