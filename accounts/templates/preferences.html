@@ -1,0 +1,162 @@
+{% extends 'menu.html' %}
+{% load static %}
+
+{% block title %}Preferencias{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'accounts/preferences.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="preferences-container">
+
+    <!-- Mensajes del sistema -->
+    {% if messages %}
+    <div class="messages-container">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <i class="fas {% if message.tags == 'success' %}fa-check-circle{% else %}fa-exclamation-triangle{% endif %} me-2"></i>
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <h1 class="page-title">Preferencias de Carrera</h1>
+    <p class="page-subtitle">Cuéntanos sobre tus intereses y metas para personalizar tus recomendaciones académicas.</p>
+
+    <div class="preferences-grid">
+        <!-- Formulario de preferencias -->
+        <div class="preferences-form">
+            <form method="POST" action="{% url 'save_preferences' %}" id="preferencesForm">
+                {% csrf_token %}
+                
+                <!-- Áreas de Interés -->
+                <h3 class="section-title">1. Áreas de Interés</h3>
+                <div class="options-grid">
+                    {% for interest in interests %}
+                    <label class="option-card {% if interest.id|stringformat:'s' in selected_interests %}selected{% endif %}">
+                        <input type="checkbox" name="interests" value="{{ interest.id }}"
+                               {% if interest.id|stringformat:'s' in selected_interests %}checked{% endif %}>
+                        <span class="option-icon"><i class="fas {{ interest.icon }}"></i></span>
+                        <span class="option-name">{{ interest.name }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+
+                <!-- Tecnologías -->
+                <h3 class="section-title">2. Tecnologías Preferidas</h3>
+                <div class="options-grid">
+                    {% for tech in technologies %}
+                    <label class="option-card {% if tech.id|stringformat:'s' in selected_technologies %}selected{% endif %}">
+                        <input type="checkbox" name="technologies" value="{{ tech.id }}"
+                               {% if tech.id|stringformat:'s' in selected_technologies %}checked{% endif %}>
+                        <span class="option-icon"><i class="fas {{ tech.icon }}"></i></span>
+                        <span class="option-name">{{ tech.name }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+
+                <!-- Meta Profesional -->
+                <h3 class="section-title">3. Meta Profesional Principal</h3>
+                <div class="radio-group">
+                    {% for goal in goals %}
+                    <label class="radio-option {% if goal.id|stringformat:'s' == selected_goal %}selected{% endif %}">
+                        <input type="radio" name="career_goal" value="{{ goal.id }}"
+                               {% if goal.id|stringformat:'s' == selected_goal %}checked{% endif %}>
+                        <span class="option-icon"><i class="fas {{ goal.icon }}"></i></span>
+                        <span class="option-name">{{ goal.name }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+
+                <button type="submit" class="btn-save">
+                    <i class="fas fa-save me-2"></i>Guardar Preferencias
+                </button>
+            </form>
+        </div>
+
+        <!-- Panel derecho con dos secciones -->
+        <div class="right-panel">
+            <!-- Sección 1: Preferencias Activas -->
+            <div class="active-preferences-panel">
+                <h4 class="section-title">
+                    <i class="fas fa-check-circle me-2" style="color: #4a90e2;"></i>
+                    Preferencias Activas
+                </h4>
+                
+                {% if preference and preference.interests.exists or preference.technologies.exists or preference.career_goal %}
+                    <div class="preference-content">
+                        {% if preference.interests.exists %}
+                        <div class="preference-section">
+                            <h5>Áreas de Interés</h5>
+                            <div class="preference-tags">
+                                {% for interest in preference.interests.all %}
+                                <span class="preference-tag">
+                                    <i class="fas {{ interest.icon }} me-1"></i>
+                                    {{ interest.name }}
+                                </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if preference.technologies.exists %}
+                        <div class="preference-section">
+                            <h5>Tecnologías</h5>
+                            <div class="preference-tags">
+                                {% for tech in preference.technologies.all %}
+                                <span class="preference-tag">
+                                    <i class="fas {{ tech.icon }} me-1"></i>
+                                    {{ tech.name }}
+                                </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if preference.career_goal %}
+                        <div class="preference-section">
+                            <h5>Meta Profesional</h5>
+                            <div class="goal-card">
+                                <i class="fas {{ preference.career_goal.icon }} me-2"></i>
+                                <strong>{{ preference.career_goal.name }}</strong>
+                                {% if preference.career_goal.description %}
+                                <p class="mt-2 small text-secondary">{{ preference.career_goal.description }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="empty-state">
+                        <i class="fas fa-sliders-h"></i>
+                        <p>No hay preferencias guardadas</p>
+                        <small>Completa el formulario y guarda tus preferencias</small>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Sección 2: Recomendaciones (mantiene aspecto default) -->
+            <div class="recommendations-panel">
+                <h4 class="section-title">
+                    <i class="fas fa-magic me-2" style="color: #4a90e2;"></i>
+                    Recomendaciones
+                </h4>
+                
+                <div class="recommendation-placeholder">
+                    <i class="fas fa-robot"></i>
+                    <h5>Recomendaciones Personalizadas</h5>
+                    <p>Tus recomendaciones aparecerán aquí próximamente.</p>
+                    <small>Basadas en tus preferencias activas</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'accounts/preferences.js' %}"></script>
+{% endblock %}
