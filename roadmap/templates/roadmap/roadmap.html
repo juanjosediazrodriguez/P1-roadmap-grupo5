@@ -1,0 +1,183 @@
+{% extends 'menu.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'base_content.css' %}">
+<style>
+  .roadmap-wrapper {
+    overflow-x: auto;
+    padding-bottom: 2rem;
+  }
+
+  .roadmap-track {
+    display: flex;
+    gap: 2rem;
+    min-width: max-content;
+    padding: 1rem 0.5rem;
+    position: relative;
+  }
+
+  /* Línea horizontal que conecta los círculos */
+  .roadmap-track::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #3a3a3a;
+    z-index: 0;
+  }
+
+  .semester-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 220px;
+    max-width: 240px;
+  }
+
+  .semester-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #22c55e;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .semester-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 0.75rem;
+    color: #ffffff;
+  }
+
+  .semester-credits {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin-bottom: 1rem;
+  }
+
+  .course-card {
+    background-color: #e8fdf0;
+    border: 1.5px solid #86efac;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    margin-bottom: 0.75rem;
+    color: #1a1a1a;
+  }
+
+  .course-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+  }
+
+  .course-code {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  .course-credits {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+
+  .course-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #111827;
+    margin-bottom: 0.4rem;
+  }
+
+  .course-prereqs {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+
+  .prereq-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #f97316;
+    flex-shrink: 0;
+  }
+
+  .no-preferences-msg {
+    color: #9ca3af;
+    text-align: center;
+    margin-top: 3rem;
+  }
+</style>
+{% endblock %}
+
+{% block title %}Mi Roadmap{% endblock %}
+
+{% block content %}
+<div class="content-container">
+  <h1 class="page-title">Mi Roadmap</h1>
+
+  {% if preference %}
+    <p class="page-subtitle">
+      Basado en tus intereses:
+      {% for i in preference.interests.all %}
+        <span class="badge" style="background:#22c55e; color:#000; margin-right:4px;">{{ i.name }}</span>
+      {% endfor %}
+      {% if preference.career_goal %}
+        &mdash; Meta: <strong>{{ preference.career_goal.name }}</strong>
+      {% endif %}
+    </p>
+  {% endif %}
+
+  {% if semesters %}
+  <div class="roadmap-wrapper mt-4">
+    <div class="roadmap-track">
+      {% for sem in semesters %}
+      <div class="semester-col">
+        <div class="semester-circle">{{ sem.number }}</div>
+        <div class="semester-title">Semestre {{ sem.number }}</div>
+        <div class="semester-credits">{{ sem.total_credits }} créditos</div>
+
+        {% for course in sem.courses %}
+        <div class="course-card">
+          <div class="course-card-header">
+            <span class="course-code">{{ course.code }}</span>
+            <span class="course-credits">{{ course.credits }} cr</span>
+          </div>
+          <div class="course-name">{{ course.name }}</div>
+          {% with prereq_count=course.prerequisites.count %}
+          {% if prereq_count > 0 %}
+          <div class="course-prereqs">
+            <span class="prereq-dot"></span>
+            {{ prereq_count }} Pre
+          </div>
+          {% endif %}
+          {% endwith %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% else %}
+  <div class="no-preferences-msg">
+    <p>No hay cursos disponibles para tus preferencias actuales.</p>
+    <a href="{% url 'preferences' %}" class="btn btn-outline-light mt-3">Configurar preferencias</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
