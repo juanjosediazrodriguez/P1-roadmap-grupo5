@@ -19,20 +19,28 @@ document.querySelectorAll('.option-card').forEach(card => {
     });
 });
 
-// Manejar selección visual de radios
+
 document.querySelectorAll('.radio-option').forEach(option => {
     const radio = option.querySelector('input');
     
+    // Estado inicial
     if (radio.checked) {
         option.classList.add('selected');
     }
     
     option.addEventListener('click', function() {
-        document.querySelectorAll(`input[name="${radio.name}"]`).forEach(r => {
-            r.closest('.radio-option').classList.remove('selected');
-        });
-        
-        radio.checked = true;
-        this.classList.add('selected');
+        // Solo aplica si el radio no estaba ya seleccionado
+        if (!radio.checked) {
+
+            // Deseleccionar todos los radios del mismo grupo
+            document.querySelectorAll(`input[name="${radio.name}"]`).forEach(r => {
+                r.checked = false;
+                r.closest('.radio-option').classList.remove('selected');
+            });
+
+            // Seleccionar este
+            radio.checked = true;
+            this.classList.add('selected');
+        } 
     });
 });
