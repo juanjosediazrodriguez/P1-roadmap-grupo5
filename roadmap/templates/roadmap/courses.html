@@ -16,7 +16,12 @@
         </button>
     </a>
 
-    <h1 class="page-title">{{ specialization.name }}</h1>
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-2">
+        <h1 class="page-title mb-0">{{ specialization.name }}</h1>
+        <a href="{% url 'specialization_roadmap' specialization.pk %}" class="btn btn-success">
+            <i class="fa-regular fa-map me-2"></i>Ver Roadmap
+        </a>
+    </div>
     <p class="page-subtitle">{{ specialization.description }}</p>
 
     <h2 class="section-title">Cursos</h2>
