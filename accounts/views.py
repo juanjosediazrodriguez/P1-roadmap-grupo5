@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Interest, Technology, CareerGoal, Preference
+from roadmap.views import get_specialization_suggestions
 
 def get_or_create_global_preference():
     """Obtiene o crea la única preferencia global"""
@@ -23,6 +24,8 @@ def preferences_view(request):
     selected_technologies = [str(t.id) for t in preference.technologies.all()]
     selected_goal = str(preference.career_goal.id) if preference.career_goal else None
     
+    suggestions = get_specialization_suggestions(preference)
+    
     context = {
         'interests': interests,
         'technologies': technologies,
@@ -31,6 +34,7 @@ def preferences_view(request):
         'selected_interests': selected_interests,
         'selected_technologies': selected_technologies,
         'selected_goal': selected_goal,
+        'suggestions': suggestions,
     }
     
     return render(request, 'preferences.html', context)
