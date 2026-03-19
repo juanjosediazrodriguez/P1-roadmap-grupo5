@@ -1,0 +1,112 @@
+<div class="modal fade" id="courseModal{{ course.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                <!-- Encabezado con código y semestre -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="course-code-badge">{{ course.code }}</span>
+                        <span class="semester-badge">
+                            <i class="far fa-clock me-1 text-reset"></i>
+                            Semestre {{ course.semester_suggested }}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Título del curso -->
+                <h2 class="course-title mb-3">{{ course.name }}</h2>
+
+                <!-- Créditos e idioma -->
+                <div class="d-flex align-items-center gap-4 mb-4">
+                    <div class="d-flex align-items-center me-3">
+                        <span class="credits-circle me-1">Cr</span>
+                        <span class="ms-2 text-secondary">{{ course.credits }} Créditos · Ingeniería de Sistemas</span>
+                    </div>
+                    {% if course.language %}
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-globe text-info me-2"></i>
+                        <span class="text-secondary">
+                            {% if course.language == 'ES' %}
+                                Español
+                            {% elif course.language == 'EN' %}
+                                Inglés
+                            {% elif course.language == 'BOTH' %}
+                                Bilingüe
+                            {% endif %}
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Descripción -->
+                <div class="mb-4">
+                    <h5 class="section-subtitle">Descripción del curso</h5>
+                    <p class="course-description">{{ course.description }}</p>
+                </div>
+
+                <!-- Prerrequisitos y Correquisitos en dos columnas -->
+                <div class="row mb-4">
+                    <!-- Columna Prerrequisitos -->
+                    <div class="col-md-6">
+                        <h5 class="section-subtitle">Prerrequisitos</h5>
+                        {% if course.prerequisites.exists %}
+                            <div class="d-flex flex-column gap-2">
+                                {% for prereq in course.prerequisites.all %}
+                                <div class="requisite-mini-card prerequisite-card">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="requisite-icon prerequisite-icon">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                        </span>
+                                        <div>
+                                            <strong class="text-white">{{ prereq.name }}</strong>
+                                            <br>
+                                            <small class="text-secondary">{{ prereq.code }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p class="text-secondary fst-italic">*No tiene prerrequisitos.*</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Columna Correquisitos -->
+                    <div class="col-md-6">
+                        <h5 class="section-subtitle">Correquisitos</h5>
+                        {% if course.corequisites.exists %}
+                            <div class="d-flex flex-column gap-2">
+                                {% for coreq in course.corequisites.all %}
+                                <div class="requisite-mini-card corequisite-card">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="requisite-icon corequisite-icon">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                        </span>
+                                        <div>
+                                            <strong class="text-white">{{ coreq.name }}</strong>
+                                            <br>
+                                            <small class="text-secondary">{{ coreq.code }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p class="text-secondary fst-italic">*No tiene correquisitos.*</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Requisitos de Idioma -->
+                {% if course.language_requirement %}
+                <div>
+                    <h5 class="section-subtitle">REQUISITOS DE IDIOMA</h5>
+                    <p class="text-secondary">{{ course.language_requirement }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,21 +1,47 @@
-@import url(style.css);
+@import url(specialization.css);
 
-/* ESTILOS DEL MODAL */
+/* ========== ESTILOS BASE DEL MODAL ========== */
 .modal-content {
     background-color: #1a1d27 !important;
     border: 1px solid #2a2d3a !important;
+    border-radius: 12px;
+    border-left: 6px solid #27ae60 !important;
 }
 
 .modal-body {
     background-color: #1a1d27 !important;
     color: #ffffff !important;
+    padding: 2rem;
 }
 
 .modal-header, .modal-footer {
     border-color: #2a2d3a !important;
 }
 
-/* Badge Plan de estudios */
+/* ========== BADGES Y ETIQUETAS ========== */
+.course-code-badge {
+    background-color: #1a3b5c;
+    color: #b0d4ff;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 0.25rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #2d5a82;
+}
+
+.semester-badge {
+    background-color: #2d2d2d;
+    color: #8f9bb3;
+    font-size: 1rem;
+    padding: 0.25rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+}
+
+.semester-badge i {
+    color: #4a90e2;
+}
+
 .curriculum-badge {
     background-color: #2d2d2d !important;
     color: #ffffff !important;
@@ -23,18 +49,17 @@
     padding: 0.5rem 1rem !important;
     border-radius: 8px !important;
     font-weight: 500 !important;
-    display: inline-block !important;
     font-size: 0.9rem !important;
 }
 
-/* Título del curso */
+/* ========== TÍTULOS Y TEXTOS ========== */
 .course-title {
-    color: #ffffff !important;
-    font-size: 2.5rem !important;
-    font-weight: 700 !important;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.3;
 }
 
-/* Código del curso */
 .course-code {
     color: #adb5bd !important;
     font-size: 1rem !important;
@@ -45,14 +70,35 @@
     font-weight: 600 !important;
 }
 
-/* Descripción */
 .course-description {
-    color: #ced4da !important;
-    line-height: 1.6 !important;
-    font-size: 1rem !important;
+    color: #ced4da;
+    line-height: 1.6;
+    font-size: 1rem;
 }
 
-/* Metric boxes */
+.section-subtitle {
+    color: #8f9bb3;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+/* ========== CRÉDITOS Y MÉTRICAS ========== */
+.credits-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background-color: #27ae60;
+    color: #2d2d2d;
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 50%;
+}
+
 .course-metrics {
     display: flex !important;
     gap: 1.5rem !important;
@@ -71,7 +117,6 @@
     font-weight: 700 !important;
     padding: 0.5rem 1rem !important;
     border-radius: 8px !important;
-    text-align: center !important;
     line-height: 1 !important;
 }
 
@@ -84,7 +129,46 @@
     font-weight: 500 !important;
 }
 
-/* Requisite cards */
+/* ========== TARJETAS DE REQUISITOS ========== */
+.requisite-mini-card {
+    background-color: #0f1117;
+    border: 1px solid #2a2d3a;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.requisite-mini-card:hover {
+    transform: translateX(2px);
+}
+
+/* Prerrequisitos */
+.prerequisite-card {
+    border-left: 4px solid #ffc107;
+}
+
+.prerequisite-icon {
+    color: #ffc107;
+    font-size: 1.2rem;
+}
+
+/* Correquisitos */
+.corequisite-card {
+    border-left: 4px solid #9c27b0;
+}
+
+.corequisite-icon {
+    color: #9c27b0;
+    font-size: 1.2rem;
+}
+
+.requisite-icon {
+    min-width: 24px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+/* Tarjetas antiguas (para compatibilidad) */
 .requisite-card {
     background-color: #2d2d2d !important;
     border: 1px solid #444 !important;
@@ -110,8 +194,6 @@
     font-size: 0.8rem !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    display: inline-block !important;
 }
 
 .requisite-tag.coreq {
@@ -134,16 +216,24 @@
     font-size: 1.2rem !important;
     font-weight: 600 !important;
     margin-bottom: 0.5rem !important;
-    line-height: 1.4 !important;
 }
 
 .requisite-code {
     color: #adb5bd !important;
     font-size: 0.9rem !important;
-    margin-bottom: 0 !important;
 }
 
-/* Botón de cerrar */
+.requisite-credits-mini {
+    background-color: #2d2d2d;
+    color: #8f9bb3;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.75rem;
+    border-radius: 12px;
+    border: 1px solid #444;
+    white-space: nowrap;
+}
+
+/* ========== BOTÓN DE CERRAR ========== */
 .btn-close {
     background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat !important;
     background-color: #2d2d2d !important;
@@ -163,21 +253,25 @@
     background-color: #3d3d3d !important;
     border-color: #666 !important;
     transform: scale(1.1);
-    transition: transform 0.2s;
 }
 
-/* Ajustar el contenido para que se vea mejor en un modal más cuadrado */
+/* ========== UTILIDADES ========== */
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.text-info {
+    color: #17a2b8 !important;
+}
+
+/* ========== MEDIA QUERIES ========== */
 @media (min-width: 768px) {
+    .modal-dialog.modal-lg {
+        max-width: 800px;
+    }
+    
     .modal-dialog.modal-xl {
         max-width: 850px !important;
-    }
-    
-    .d-flex.justify-content-between.align-items-start {
-        flex-direction: row !important;
-    }
-    
-    .course-title {
-        font-size: 2.2rem !important;
     }
     
     .metric-number {
@@ -186,11 +280,25 @@
     }
 }
 
-/* Responsive para pantallas pequeñas */
 @media (max-width: 767px) {
-    .modal-dialog.modal-xl {
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .course-title {
+        font-size: 1.5rem;
+    }
+    
+    .modal-dialog.modal-xl,
+    .modal-dialog.modal-lg {
         max-width: 95% !important;
         margin: 10px auto !important;
+    }
+    
+    .d-flex.align-items-center.gap-4 {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.5rem !important;
     }
     
     .d-flex.justify-content-between.align-items-start {
@@ -200,5 +308,14 @@
     .course-metrics {
         margin-top: 1rem !important;
         justify-content: flex-start !important;
+    }
+    
+    .row {
+        flex-direction: column;
+    }
+    
+    .col-md-6 {
+        width: 100%;
+        margin-bottom: 1rem;
     }
 }

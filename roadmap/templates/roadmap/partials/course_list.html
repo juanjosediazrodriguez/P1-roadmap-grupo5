@@ -1,81 +1,20 @@
 {% for course in courses %}
 <!-- Modal -->
-<div class="modal fade" id="courseModal{{ course.id }}" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content text-white mb-3">
+{% include "roadmap/partials/course_modal.html" with course=course %}
 
-            <div class="modal-body">
-                <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
-
-                <div class="d-flex justify-content-between align-items-start flex-wrap gap-4 ms-3 me-5">
-                    <div>
-                        <span class="curriculum-badge">Plan de estudios</span>
-                        <h1 class="course-title mt-3">{{ course.name }}</h1>
-                        <p class="course-code mt-2">Código: <strong>{{ course.code }}</strong></p>
-                    </div>
-
-                    <div class="d-flex gap-4 course-metrics">
-                        <div class="metric-box">
-                            <div class="metric-number">{{ course.credits }}</div>
-                            <div class="metric-label">Créditos</div>
-                        </div>
-                        <div class="metric-box">
-                            <div class="metric-number">{{ course.semester_suggested }}</div>
-                            <div class="metric-label">Semestre</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-4 ms-3 me-5">
-                    <p class="course-description">{{ course.description }}</p>
-                </div>
-
-                <!-- Prerequisites and Corequisites -->
-                {% if course.prerequisites.exists or course.corequisites.exists %}
-                <div class="mt-5 ms-3 me-5 mb-2">
-                    <div class="d-flex flex-wrap gap-4">
-                        {% for prereq in course.prerequisites.all %}
-                        <div class="requisite-card">
-                            <div class="requisite-header">
-                                <span class="requisite-tag">Prerrequisito</span>
-                                <span class="requisite-credits">{{ prereq.credits }} créditos</span>
-                            </div>
-                            <h5>{{ prereq.name }}</h5>
-                            <p class="requisite-code">Código: {{ prereq.code }}</p>
-                        </div>
-                        {% endfor %}
-
-                        {% for coreq in course.corequisites.all %}
-                        <div class="requisite-card">
-                            <div class="requisite-header">
-                                <span class="requisite-tag coreq">Correquisito</span>
-                                <span class="requisite-credits">{{ coreq.credits }} créditos</span>
-                            </div>
-                            <h5>{{ coreq.name }}</h5>
-                            <p class="requisite-code">Código: {{ coreq.code }}</p>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal end -->
-
+<!-- Tarjeta del curso -->
 <div class="col">
-    <div class="card h-100 p-3"
-         data-bs-toggle="modal"
-         data-bs-target="#courseModal{{ course.id }}"
-         style="cursor:pointer;">
+    <div class="card h-100" data-bs-toggle="modal" data-bs-target="#courseModal{{ course.id }}" style="cursor:pointer;">
         <div class="card-body">
-            <h6 class="text-secondary">Semestre {{ course.semester_suggested }}</h6>
-            <h5>{{ course.code }} - {{ course.name }}</h5>
-            <p class="text-secondary">{{ course.credits }} créditos</p>
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="badge" style="background-color: #2d2d2d;">Semestre {{ course.semester_suggested }}</span>
+                <span class="text-secondary">{{ course.credits }} créditos</span>
+            </div>
+            <h5 class="card-title mt-3">{{ course.name }}</h5>
+            <p class="card-text">{{ course.code }}</p>
         </div>
     </div>
 </div>
 {% empty %}
-<p class="text-secondary">No se encontraron cursos.</p>
+<p class="text-secondary text-center py-5">No se encontraron cursos.</p>
 {% endfor %}

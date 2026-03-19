@@ -1,0 +1,75 @@
+{% extends 'menu.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'base_content.css' %}">
+<link rel="stylesheet" href="{% static 'roadmap/roadmap.css' %}">
+<link rel="stylesheet" href="{% static 'roadmap/course.css' %}"> <!-- Importante para los modales -->
+{% endblock %}
+
+{% block title %}Mi Roadmap{% endblock %}
+
+{% block content %}
+<div class="content-container">
+  <h1 class="page-title">Mi Roadmap</h1>
+
+  {% if preference %}
+    <p class="page-subtitle">
+      Basado en tus intereses:
+      {% for i in preference.interests.all %}
+        <span class="badge" style="background:#22c55e; color:#000; margin-right:4px;">{{ i.name }}</span>
+      {% endfor %}
+      {% if preference.career_goal %}
+        &mdash; Meta: <strong>{{ preference.career_goal.name }}</strong>
+      {% endif %}
+    </p>
+  {% endif %}
+
+  {% if semesters %}
+  <div class="roadmap-wrapper mt-4">
+    <div class="roadmap-track">
+      {% for sem in semesters %}
+      <div class="semester-col">
+        <div class="semester-circle">{{ sem.number }}</div>
+        <div class="semester-title">Semestre {{ sem.number }}</div>
+        <div class="semester-credits">{{ sem.total_credits }} créditos</div>
+
+        {% for course in sem.courses %}
+        <!-- Modal desde partial -->
+        {% include "roadmap/partials/course_modal.html" with course=course %}
+
+        <!-- Tarjeta del curso en el roadmap (clickeable) -->
+        <div class="course-card" data-bs-toggle="modal" data-bs-target="#courseModal{{ course.id }}" style="cursor:pointer;">
+          <div class="course-card-header">
+              <span class="course-code">{{ course.code }}</span>
+              <span class="course-credits">{{ course.credits }} cr</span>
+          </div>
+          <div class="course-name">
+            {{ course.name }}
+          </div>
+          {% with prereq_count=course.prerequisites.count %}
+          {% if prereq_count > 0 %}
+          <div class="course-prereqs">
+              <span class="prereq-dot"></span>
+              {{ prereq_count }} Pre
+          </div>
+          {% endif %}
+          {% endwith %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% else %}
+  <div class="no-preferences-msg">
+    <p>No hay cursos disponibles para tus preferencias actuales.</p>
+    <a href="{% url 'preferences' %}" class="btn btn-outline-light mt-3">Configurar preferencias</a>
+  </div>
+  {% endif %}
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
