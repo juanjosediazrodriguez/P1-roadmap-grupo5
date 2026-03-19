@@ -145,12 +145,41 @@
                     Recomendaciones
                 </h4>
                 
-                <div class="recommendation-placeholder">
-                    <i class="fas fa-robot"></i>
-                    <h5>Recomendaciones Personalizadas</h5>
-                    <p>Tus recomendaciones aparecerán aquí próximamente.</p>
-                    <small>Basadas en tus preferencias activas</small>
-                </div>
+                {% if suggestions %}
+    <div class="recommendations-list">
+        {% for item in suggestions %}
+        <div class="recommendation-card mb-3">
+            <h5 class="mb-2">{{ item.specialization.name }}</h5>
+            <p class="small text-secondary mb-2">
+                {{ item.specialization.description }}
+            </p>
+
+            <p class="mb-2">
+                <strong>Puntaje:</strong> {{ item.score }}
+            </p>
+
+            {% if item.reasons %}
+            <ul class="mb-3">
+                {% for reason in item.reasons %}
+                <li>{{ reason }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <a href="{% url 'specialization_detail' item.specialization.id %}" class="btn btn-sm btn-outline-primary">
+                Ver especialización
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="recommendation-placeholder">
+        <i class="fas fa-robot"></i>
+        <h5>Recomendaciones Personalizadas</h5>
+        <p>No hay recomendaciones todavía.</p>
+        <small>Guarda tus preferencias para generar sugerencias</small>
+    </div>
+{% endif %}
             </div>
         </div>
     </div>
