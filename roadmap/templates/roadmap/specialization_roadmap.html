@@ -1,0 +1,176 @@
+{% extends 'menu.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'base_content.css' %}">
+<style>
+  .roadmap-wrapper {
+    overflow-x: auto;
+    padding-bottom: 2rem;
+  }
+
+  .roadmap-track {
+    display: flex;
+    gap: 2rem;
+    min-width: max-content;
+    padding: 1rem 0.5rem;
+    position: relative;
+  }
+
+  .roadmap-track::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #3a3a3a;
+    z-index: 0;
+  }
+
+  .semester-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 220px;
+    max-width: 240px;
+  }
+
+  .semester-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #22c55e;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .semester-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 0.75rem;
+    color: #ffffff;
+  }
+
+  .semester-credits {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin-bottom: 1rem;
+  }
+
+  .semester-credits.over-limit {
+    color: #f87171;
+    font-weight: 600;
+  }
+
+  .course-card {
+    background-color: #e8fdf0;
+    border: 1.5px solid #86efac;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    margin-bottom: 0.75rem;
+    color: #1a1a1a;
+  }
+
+  .course-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+  }
+
+  .course-code {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  .course-credits {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+
+  .course-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #111827;
+    margin-bottom: 0.4rem;
+  }
+
+  .course-prereqs {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+
+  .prereq-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #f97316;
+    flex-shrink: 0;
+  }
+</style>
+{% endblock %}
+
+{% block title %}Roadmap — {{ specialization.name }}{% endblock %}
+
+{% block content %}
+<div class="content-container">
+  <a href="{% url 'specialization_detail' specialization.pk %}" class="text-decoration-none">
+    <button class="btn btn-outline-light mb-4">
+      <i class="fas fa-arrow-left me-2"></i>Volver
+    </button>
+  </a>
+
+  <h1 class="page-title">Roadmap — {{ specialization.name }}</h1>
+  <p class="page-subtitle">Plan de estudios generado respetando prerequisitos y máximo 21 créditos por semestre.</p>
+
+  {% if semesters %}
+  <div class="roadmap-wrapper mt-4">
+    <div class="roadmap-track">
+      {% for sem in semesters %}
+      <div class="semester-col">
+        <div class="semester-circle">{{ sem.number }}</div>
+        <div class="semester-title">Semestre {{ sem.number }}</div>
+        <div class="semester-credits {% if sem.total_credits > 21 %}over-limit{% endif %}">
+          {{ sem.total_credits }} créditos
+          {% if sem.total_credits > 21 %}⚠{% endif %}
+        </div>
+
+        {% for course in sem.courses %}
+        <div class="course-card">
+          <div class="course-card-header">
+            <span class="course-code">{{ course.code }}</span>
+            <span class="course-credits">{{ course.credits }} cr</span>
+          </div>
+          <div class="course-name">{{ course.name }}</div>
+          {% with prereq_count=course.prerequisites.count %}
+          {% if prereq_count > 0 %}
+          <div class="course-prereqs">
+            <span class="prereq-dot"></span>
+            {{ prereq_count }} Pre
+          </div>
+          {% endif %}
+          {% endwith %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% else %}
+  <p class="text-secondary mt-4">Esta especialización no tiene cursos asignados.</p>
+  {% endif %}
+</div>
+{% endblock %}
