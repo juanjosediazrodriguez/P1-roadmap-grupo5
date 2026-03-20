@@ -1,0 +1,242 @@
+[
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 1,
+    "fields": {
+      "track": 1,
+      "course": 35,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 2,
+    "fields": {
+      "track": 1,
+      "course": 36,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 3,
+    "fields": {
+      "track": 1,
+      "course": 37,
+      "semester_in_track": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 4,
+    "fields": {
+      "track": 1,
+      "course": 38,
+      "semester_in_track": 3,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 5,
+    "fields": {
+      "track": 2,
+      "course": 39,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 6,
+    "fields": {
+      "track": 2,
+      "course": 40,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 7,
+    "fields": {
+      "track": 2,
+      "course": 41,
+      "semester_in_track": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 8,
+    "fields": {
+      "track": 2,
+      "course": 42,
+      "semester_in_track": 3,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 9,
+    "fields": {
+      "track": 3,
+      "course": 43,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 10,
+    "fields": {
+      "track": 3,
+      "course": 44,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 11,
+    "fields": {
+      "track": 3,
+      "course": 45,
+      "semester_in_track": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 12,
+    "fields": {
+      "track": 3,
+      "course": 46,
+      "semester_in_track": 3,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 13,
+    "fields": {
+      "track": 4,
+      "course": 47,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 14,
+    "fields": {
+      "track": 4,
+      "course": 48,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 15,
+    "fields": {
+      "track": 4,
+      "course": 49,
+      "semester_in_track": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 16,
+    "fields": {
+      "track": 4,
+      "course": 50,
+      "semester_in_track": 3,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 17,
+    "fields": {
+      "track": 5,
+      "course": 51,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 18,
+    "fields": {
+      "track": 5,
+      "course": 52,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 19,
+    "fields": {
+      "track": 5,
+      "course": 53,
+      "semester_in_track": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 20,
+    "fields": {
+      "track": 5,
+      "course": 54,
+      "semester_in_track": 3,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 21,
+    "fields": {
+      "track": 6,
+      "course": 75,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 22,
+    "fields": {
+      "track": 6,
+      "course": 76,
+      "semester_in_track": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 23,
+    "fields": {
+      "track": 6,
+      "course": 77,
+      "semester_in_track": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.trackcourse",
+    "pk": 24,
+    "fields": {
+      "track": 6,
+      "course": 78,
+      "semester_in_track": 2,
+      "is_elective": false
+    }
+  }
+]

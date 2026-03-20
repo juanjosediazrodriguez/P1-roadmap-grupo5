@@ -1,0 +1,478 @@
+[
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 1,
+    "fields": {
+      "course": 119,
+      "specialization": 1,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 2,
+    "fields": {
+      "course": 120,
+      "specialization": 1,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 3,
+    "fields": {
+      "course": 121,
+      "specialization": 1,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 4,
+    "fields": {
+      "course": 122,
+      "specialization": 1,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 5,
+    "fields": {
+      "course": 123,
+      "specialization": 1,
+      "semester_in_specialization": 1,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 6,
+    "fields": {
+      "course": 124,
+      "specialization": 1,
+      "semester_in_specialization": 1,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 7,
+    "fields": {
+      "course": 125,
+      "specialization": 1,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 8,
+    "fields": {
+      "course": 126,
+      "specialization": 1,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 9,
+    "fields": {
+      "course": 127,
+      "specialization": 1,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 10,
+    "fields": {
+      "course": 128,
+      "specialization": 1,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 11,
+    "fields": {
+      "course": 129,
+      "specialization": 1,
+      "semester_in_specialization": 2,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 12,
+    "fields": {
+      "course": 130,
+      "specialization": 1,
+      "semester_in_specialization": 2,
+      "is_elective": true
+    }
+  },
+
+
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 13,
+    "fields": {
+      "course": 131,
+      "specialization": 2,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 14,
+    "fields": {
+      "course": 132,
+      "specialization": 2,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 15,
+    "fields": {
+      "course": 133,
+      "specialization": 2,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 16,
+    "fields": {
+      "course": 134,
+      "specialization": 2,
+      "semester_in_specialization": 1,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 17,
+    "fields": {
+      "course": 135,
+      "specialization": 2,
+      "semester_in_specialization": 1,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 18,
+    "fields": {
+      "course": 136,
+      "specialization": 2,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 19,
+    "fields": {
+      "course": 137,
+      "specialization": 2,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 20,
+    "fields": {
+      "course": 138,
+      "specialization": 2,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 21,
+    "fields": {
+      "course": 139,
+      "specialization": 2,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 22,
+    "fields": {
+      "course": 140,
+      "specialization": 2,
+      "semester_in_specialization": 2,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 23,
+    "fields": {
+      "course": 141,
+      "specialization": 2,
+      "semester_in_specialization": 2,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 24,
+    "fields": {
+      "course": 142,
+      "specialization": 3,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+
+
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 25,
+    "fields": {
+      "course": 143,
+      "specialization": 3,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 26,
+    "fields": {
+      "course": 144,
+      "specialization": 3,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 27,
+    "fields": {
+      "course": 145,
+      "specialization": 3,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 28,
+    "fields": {
+      "course": 146,
+      "specialization": 3,
+      "semester_in_specialization": 1,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 29,
+    "fields": {
+      "course": 147,
+      "specialization": 3,
+      "semester_in_specialization": 1,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 30,
+    "fields": {
+      "course": 148,
+      "specialization": 3,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 31,
+    "fields": {
+      "course": 149,
+      "specialization": 3,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 32,
+    "fields": {
+      "course": 150,
+      "specialization": 3,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 33,
+    "fields": {
+      "course": 151,
+      "specialization": 3,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 34,
+    "fields": {
+      "course": 152,
+      "specialization": 3,
+      "semester_in_specialization": 2,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 35,
+    "fields": {
+      "course": 153,
+      "specialization": 3,
+      "semester_in_specialization": 2,
+      "is_elective": true
+    }
+  },
+
+  
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 36,
+    "fields": {
+      "course": 154,
+      "specialization": 4,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 37,
+    "fields": {
+      "course": 155,
+      "specialization": 4,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 38,
+    "fields": {
+      "course": 156,
+      "specialization": 4,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 39,
+    "fields": {
+      "course": 157,
+      "specialization": 4,
+      "semester_in_specialization": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 40,
+    "fields": {
+      "course": 158,
+      "specialization": 4,
+      "semester_in_specialization": 1,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 41,
+    "fields": {
+      "course": 159,
+      "specialization": 4,
+      "semester_in_specialization": 1,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 42,
+    "fields": {
+      "course": 160,
+      "specialization": 4,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 43,
+    "fields": {
+      "course": 161,
+      "specialization": 4,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 44,
+    "fields": {
+      "course": 162,
+      "specialization": 4,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 45,
+    "fields": {
+      "course": 163,
+      "specialization": 4,
+      "semester_in_specialization": 2,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 46,
+    "fields": {
+      "course": 164,
+      "specialization": 4,
+      "semester_in_specialization": 2,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.coursespecialization",
+    "pk": 47,
+    "fields": {
+      "course": 165,
+      "specialization": 4,
+      "semester_in_specialization": 2,
+      "is_elective": true
+    }
+  }
+]
