@@ -16,28 +16,39 @@ git clone <url del proyecto>
 cd P1-roadmap-grupo5
 ```
 
-### 2. Aplicar las migraciones
+### 2. Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Aplicar las migraciones
 
 ```bash
 python manage.py migrate
 ```
 
-### 3. Cargar los datos iniciales
+### 4. Cargar los datos iniciales
 
 ```bash
 python manage.py loaddata specializations.json
-```
-```bash
+python manage.py loaddata tracks.json
+python manage.py loaddata emphasis.json
+python manage.py loaddata courses.json
+python manage.py loaddata umbrella_options.json
+python manage.py loaddata coursespecialization.json
+python manage.py loaddata trackcourse.json
+python manage.py loaddata emphasiscourse.json
 python manage.py loaddata preferences_data.json
 ```
 
-### 4. Crear superusuario (para el admin)
+### 5. Crear superusuario (para el admin)
 
 ```bash
 python manage.py createsuperuser
 ```
 
-### 5. Correr el servidor
+### 6. Correr el servidor
 
 ```bash
 python manage.py runserver
@@ -55,28 +66,42 @@ Cuando alguien agrega o modifica especializaciones o cursos desde el admin, debe
 
 ### Si agregas o modificas datos (tú)
 
-**1. Exportar especializaciones:**
+**Exportar datos para los modelos:**
 
 ```bash
+# Especializaciones
 python manage.py dumpdata roadmap.Specialization --indent 2 > roadmap/fixtures/specializations.json
-```
 
-**2. Exportar cursos:**
+# Trayectorias
+python manage.py dumpdata roadmap.Track --indent 2 > roadmap/fixtures/tracks.json
 
-```bash
+# Líneas de énfasis
+python manage.py dumpdata roadmap.EmphasisLine --indent 2 > roadmap/fixtures/emphasis.json
+
+# Cursos (incluye paraguas y opciones)
 python manage.py dumpdata roadmap.Course --indent 2 > roadmap/fixtures/courses.json
+
+# Relaciones paraguas
+python manage.py dumpdata roadmap.UmbrellaCourseOption --indent 2 > roadmap/fixtures/umbrella_options.json
+
+# Relaciones cursos-especializaciones
+python manage.py dumpdata roadmap.CourseSpecialization --indent 2 > roadmap/fixtures/coursespecialization.json
+
+# Relaciones cursos-trayectorias
+python manage.py dumpdata roadmap.TrackCourse --indent 2 > roadmap/fixtures/trackcourse.json
+
+# Relaciones cursos-énfasis
+python manage.py dumpdata roadmap.EmphasisLineCourse --indent 2 > roadmap/fixtures/emphasiscourse.json
+
+# Preferencias de usuario (accounts)
+python manage.py dumpdata accounts.Interest accounts.Technology accounts.CareerGoal accounts.Preference --indent 2 > accounts/fixtures/preferences_data.json
 ```
 
-**3. Exportar datos para preferencias:**
-```bash
-python manage.py dumpdata accounts --indent 2 > accounts/fixtures/preferences_data.json
-```
-
-**4. Subir al repositorio:**
+**Subir al repositorio:**
 
 ```bash
-git add roadmap/fixtures/
-git commit -m "Update fixtures with new data"
+git add roadmap/fixtures/ accounts/fixtures/
+git commit -m "Actualizar fixtures con nuevos datos"
 git push
 ```
 
@@ -92,13 +117,12 @@ git pull origin main
 
 ```bash
 python manage.py loaddata specializations.json
-```
-```bash
+python manage.py loaddata tracks.json
+python manage.py loaddata emphasis.json
+python manage.py loaddata courses.json
+python manage.py loaddata umbrella_options.json
+python manage.py loaddata coursespecialization.json
+python manage.py loaddata trackcourse.json
+python manage.py loaddata emphasiscourse.json
 python manage.py loaddata preferences_data.json
-```
-
-O si también hay cursos:
-
-```bash
-python manage.py loaddata specializations.json courses.json
 ```
