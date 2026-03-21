@@ -11,9 +11,20 @@
 {% block content %}
 <div class="content-container">
     <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
-        <a href="{% url 'track_list' %}" class="text-decoration-none">
+        <a href="
+            {% if track.track_type == 'PROFESSIONAL' %}
+                {% url 'track_professional_list' %}
+            {% else %}
+                {% url 'track_flexible_list' %}
+            {% endif %}
+        " class="text-decoration-none">
             <button class="btn btn-outline-light">
-                <i class="fas fa-arrow-left me-2"></i>Volver
+                <i class="fas fa-arrow-left me-2"></i>Volver a 
+                {% if track.track_type == 'PROFESSIONAL' %}
+                    Trayectorias Profesionalizantes
+                {% else %}
+                    Trayectorias Flexibles
+                {% endif %}
             </button>
         </a>
         
@@ -27,13 +38,13 @@
     <div class="mb-3">
         <span class="badge" style="background-color: #2d2d2d; font-size: 0.9rem;">
             {% if track.track_type == 'PROFESSIONAL' %}
-                Trayectoria Profesionalizante
+                <i class="fas fa-briefcase me-1"></i>Profesionalizante
             {% else %}
-                Trayectoria Flexible
+                <i class="fas fa-hand-peace me-1"></i>Flexible
             {% endif %}
         </span>
         <span class="badge ms-2" style="background-color: #2d2d2d; font-size: 0.9rem;">
-            {{ track.credits_required }} créditos requeridos
+            <i class="fas fa-star me-1"></i>{{ track.credits_required }} créditos requeridos
         </span>
     </div>
 

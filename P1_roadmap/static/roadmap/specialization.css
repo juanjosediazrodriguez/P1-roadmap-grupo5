@@ -9,3 +9,32 @@
 .card:hover {
     border-color: #4a90e2; 
 }
+
+.btn-group .btn {
+        transition: all 0.3s ease;
+    }
+    
+    .btn-group .btn.active {
+        background: linear-gradient(90deg, #4a90e2 0%, #3570b0 100%);
+        border-color: #4a90e2;
+        color: white;
+    }
+    
+    .btn-group .btn:hover:not(.active) {
+        background-color: #2d2d2d;
+        border-color: #4a90e2;
+        transform: translateY(-2px);
+    }
+    
+    /* Transición para el contenedor de tarjetas */
+    .grid-2 {
+        transition: opacity 0.3s ease;
+    }
+    
+    .grid-2.fade-out {
+        opacity: 0;
+    }
+    
+    .grid-2.fade-in {
+        opacity: 1;
+    }
