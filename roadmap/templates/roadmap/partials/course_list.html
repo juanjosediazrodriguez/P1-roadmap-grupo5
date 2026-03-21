@@ -1,6 +1,6 @@
 {% for course in courses %}
 <!-- Modal -->
-{% include "roadmap/partials/course_modal.html" with course=course %}
+{% include "roadmap/partials/course_modal.html" with course=course enable_nested_modals=enable_nested_modals|default:False %}
 
 <!-- Tarjeta del curso -->
 <div class="col">

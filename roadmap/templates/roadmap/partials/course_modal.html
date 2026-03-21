@@ -54,9 +54,14 @@
                         {% for option in course.available_options.all %}
                         <div class="col-md-6 mb-3">
                             <div class="option-mini-card option-card-{{ option.category|lower|cut:'_' }}" 
+                                 {% if enable_nested_modals %}
                                     data-bs-toggle="modal" 
                                     data-bs-target="#courseModal{{ option.id }}"
-                                    style="cursor:pointer;">
+                                 {% else %}
+                                    data-bs-target="#courseModal{{ option.id }}"
+                                    data-bs-toggle="modal"
+                                 {% endif %}
+                                 style="cursor:pointer;">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <span class="option-code-badge">{{ option.code }}</span>
                                     <span class="option-credits-badge">{{ option.credits }} cr</span>
@@ -99,11 +104,15 @@
                         {% if course.prerequisites.exists %}
                             <div class="d-flex flex-column gap-2">
                                 {% for prereq in course.prerequisites.all %}
-                                <!-- Para los prerrequisitos -->
                                 <div class="requisite-mini-card prerequisite-card" 
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#courseModal{{ prereq.id }}"
-                                    style="cursor:pointer;">
+                                     {% if enable_nested_modals %}
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#courseModal{{ prereq.id }}"
+                                     {% else %}
+                                        data-bs-target="#courseModal{{ prereq.id }}"
+                                        data-bs-toggle="modal"
+                                     {% endif %}
+                                     style="cursor:pointer;">
                                     <div class="d-flex align-items-center gap-2">
                                         <span class="requisite-icon prerequisite-icon">
                                             <i class="fas fa-exclamation-circle"></i>
@@ -129,8 +138,13 @@
                             <div class="d-flex flex-column gap-2">
                                 {% for coreq in course.corequisites.all %}
                                 <div class="requisite-mini-card corequisite-card" 
-                                     data-bs-toggle="modal" 
-                                     data-bs-target="#courseModal{{ coreq.id }}"
+                                     {% if enable_nested_modals %}
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#courseModal{{ coreq.id }}"
+                                     {% else %}
+                                        data-bs-target="#courseModal{{ coreq.id }}"
+                                        data-bs-toggle="modal"
+                                     {% endif %}
                                      style="cursor:pointer;">
                                     <div class="d-flex align-items-center gap-2">
                                         <span class="requisite-icon corequisite-icon">

@@ -101,7 +101,7 @@
 
         {% for course in sem.courses %}
         <!-- Modal desde partial -->
-        {% include "roadmap/partials/course_modal.html" with course=course %}
+        {% include "roadmap/partials/course_modal.html" with course=course enable_nested_modals=True %}
 
         <!-- Tarjeta del curso con clase de categoría dinámica -->
         <div class="course-card category-{{ course.category|lower|cut:'_' }}"
@@ -138,7 +138,7 @@
 
   <!-- Generar modales para todas las opciones (únicas) -->
   {% for option in all_options %}
-    {% include "roadmap/partials/course_modal.html" with course=option %}
+    {% include "roadmap/partials/course_modal.html" with course=option enable_nested_modals=True %}
   {% endfor %}
 
   {% else %}

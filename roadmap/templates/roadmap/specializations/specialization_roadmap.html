@@ -34,7 +34,7 @@
 
         {% for course in sem.courses %}
         <!-- Modal del curso desde partial -->
-        {% include "roadmap/partials/course_modal.html" with course=course %}
+        {% include "roadmap/partials/course_modal.html" with course=course enable_nested_modals=False %}
 
         <!-- Tarjeta del curso clickeable -->
         <div class="course-card category-{{ course.category|lower|cut:'_' }}" data-bs-toggle="modal" data-bs-target="#courseModal{{ course.id }}" style="cursor:pointer;">
