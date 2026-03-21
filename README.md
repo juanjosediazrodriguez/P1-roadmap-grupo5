@@ -35,7 +35,7 @@ python manage.py loaddata specializations.json
 python manage.py loaddata tracks.json
 python manage.py loaddata emphasis.json
 python manage.py loaddata courses.json
-python manage.py loaddata umbrella_options.json
+python manage.py loaddata umbrellaoptions.json
 python manage.py loaddata coursespecialization.json
 python manage.py loaddata trackcourse.json
 python manage.py loaddata emphasiscourse.json
@@ -82,7 +82,7 @@ python manage.py dumpdata roadmap.EmphasisLine --indent 2 > roadmap/fixtures/emp
 python manage.py dumpdata roadmap.Course --indent 2 > roadmap/fixtures/courses.json
 
 # Relaciones paraguas
-python manage.py dumpdata roadmap.UmbrellaCourseOption --indent 2 > roadmap/fixtures/umbrella_options.json
+python manage.py dumpdata roadmap.UmbrellaCourseOption --indent 2 > roadmap/fixtures/umbrellaoptions.json
 
 # Relaciones cursos-especializaciones
 python manage.py dumpdata roadmap.CourseSpecialization --indent 2 > roadmap/fixtures/coursespecialization.json
@@ -120,7 +120,7 @@ python manage.py loaddata specializations.json
 python manage.py loaddata tracks.json
 python manage.py loaddata emphasis.json
 python manage.py loaddata courses.json
-python manage.py loaddata umbrella_options.json
+python manage.py loaddata umbrellaoptions.json
 python manage.py loaddata coursespecialization.json
 python manage.py loaddata trackcourse.json
 python manage.py loaddata emphasiscourse.json

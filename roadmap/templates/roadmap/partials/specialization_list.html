@@ -5,7 +5,7 @@
             <h3 class="card-title">{{ spec.name }}</h3>
             <p class="card-text flex-grow-1">{{ spec.description|truncatechars:150 }}</p>
             <div class="mt-2">
-                <a href="{% url 'specialization_detail' spec.pk %}" class="btn btn-primary">
+                <a href="{% url 'specialization_detail' spec.pk %}" class="btn btn-primary w-100">
                     Explorar ruta <i class="fas fa-arrow-right ms-2"></i>
                 </a>
             </div>

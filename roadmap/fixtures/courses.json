@@ -3328,7 +3328,7 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": true,
-      "prerequisites": [207],
+      "prerequisites": [],
       "corequisites": []
     }
   },
@@ -3338,7 +3338,7 @@
     "fields": {
       "code": "TRACK-FLEX1",
       "name": "Trayectoria Flexible 1",
-      "credits": 6,
+      "credits": 3,
       "description": "Primera parte de la trayectoria flexible. Ve cursos de otras carreras",
       "semester_suggested": 6,
       "language": "ES",
@@ -3354,13 +3354,77 @@
     "fields": {
       "code": "TRACK-FLEX2",
       "name": "Trayectoria Flexible 2",
-      "credits": 6,
+      "credits": 3,
       "description": "Segunda parte de la trayectoria flexible. Continúa con la trayectoria seleccionada en el semestre anterior.",
       "semester_suggested": 7,
       "language": "ES",
       "category": "FLEXIBLE_TRACK",
       "is_umbrella": true,
-      "prerequisites": [209],
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 211,
+    "fields": {
+      "code": "EMPHASIS-LINE",
+      "name": "Línea de Énfasis",
+      "credits": 12,
+      "description": "Línea de énfasis.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "EMPHASIS",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 212,
+    "fields": {
+      "code": "TRACK-FLEX3",
+      "name": "Trayectoria Flexible 3",
+      "credits": 3,
+      "description": "Segunda parte de la trayectoria flexible.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 213,
+    "fields": {
+      "code": "TRACK-FLEX4",
+      "name": "Trayectoria Flexible 4",
+      "credits": 3,
+      "description": "Segunda parte de la trayectoria flexible.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 214,
+    "fields": {
+      "code": "DATA-SCI",
+      "name": "Ciencias de los Datos",
+      "credits": 12,
+      "description": "Línea de énfasis en fundamentos y aplicaciones de ciencia de datos.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "EMPHASIS",
+      "is_umbrella": true,
+      "prerequisites": [],
       "corequisites": []
     }
   }

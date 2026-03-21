@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Specialization, Course, Track, EmphasisLine
+from .models import Specialization, Course, Track, EmphasisLine, CourseSpecialization
 from accounts.models import Preference
 from collections import defaultdict
 from django.db.models import Sum
@@ -82,38 +82,64 @@ def generate_roadmap(preference):
     - Cursos base de la carrera (semestres 1-8)
     - Cursos de especialización según preferencias (semestres 9-10)
     """
+    
+    # Definir el orden de prioridad de categorías
+    category_order = {
+        'BASIC_SCIENCE': 1,
+        'BASIC_ENGINEERING': 2,
+        'DISCIPLINARY': 3,
+        'PROFESSIONAL_TRACK': 4,
+        'EMPHASIS': 5,
+        'FLEXIBLE_TRACK': 6,
+        'PRACTICE': 7,
+        'NFI': 8,
+        'SPECIALIZATION': 9,
+    }
+    
     # 1. Obtener cursos base (siempre se muestran)
     base_courses = list(get_base_courses())
     
     spec_courses = []
-    """
-    # 2. Obtener cursos de especialización (solo si hay preferencias)
-    if preference:
-        spec_courses = list(get_specialization_courses(preference))
-    else:
-        spec_courses = []
-    """
-        
-    # 3. Combinar todos los cursos en una lista
+    
+    # 2. Combinar todos los cursos
     all_courses = base_courses + spec_courses
     
-    # 4. Ordenar manualmente por semestre y código
-    all_courses.sort(key=lambda c: (c.semester_suggested, c.code))
+    # 3. Ordenar todos los cursos
+    all_courses.sort(key=lambda c: (c.semester_suggested, category_order.get(c.category, 99), c.code))
     
-    # 5. Agrupar por semestre
+    # 4. Agrupar por semestre
     roadmap = defaultdict(list)
     for course in all_courses:
         roadmap[course.semester_suggested].append(course)
-
-    # 6. Obtener todas las opciones de cursos paraguas
-    all_options = set()
-    for course in all_courses:
-        if course.is_umbrella:
-            for option in course.available_options.all():
-                all_options.add(option)
+    
+    # 5. Obtener TODOS los cursos que necesitan modal (recursivamente)
+    def collect_all_courses(course_ids):
+        """Recolecta recursivamente todos los cursos relacionados"""
+        result = set(course_ids)
+        # Obtener todas las opciones de los cursos actuales
+        options = UmbrellaCourseOption.objects.filter(
+            umbrella_course_id__in=course_ids
+        ).select_related('option_course')
+        
+        new_ids = set()
+        for opt in options:
+            if opt.option_course_id not in result:
+                new_ids.add(opt.option_course_id)
+        
+        if new_ids:
+            result.update(collect_all_courses(new_ids))
+        
+        return result
+    
+    # Obtener IDs de todos los cursos en el roadmap
+    current_ids = [c.id for c in all_courses]
+    all_needed_ids = collect_all_courses(current_ids)
+    
+    # Obtener los objetos Course
+    all_courses_for_modals = list(Course.objects.filter(id__in=all_needed_ids))
     
     # Devolver también las opciones
-    return dict(sorted(roadmap.items())), list(all_options)
+    return dict(sorted(roadmap.items())), all_courses_for_modals
 
 
 def roadmap_view(request):
@@ -150,23 +176,40 @@ def specialization_list(request):
 
 def specialization_detail(request, pk):
     specialization = get_object_or_404(Specialization, pk=pk)
-    courses = specialization.courses.all()
+    
+    # Obtener cursos con su metadata de especialización
+    course_specializations = CourseSpecialization.objects.filter(
+        specialization=specialization
+    ).select_related('course')
+    
+    # Agrupar por semestre dentro de la especialización
+    semester_courses = defaultdict(list)
+    for cs in course_specializations:
+        semester_courses[cs.semester_in_specialization].append(cs.course)
+    
+    # Calcular créditos por semestre de especialización
+    semester_credits = []
+    for sem_num in sorted(semester_courses.keys()):
+        courses = semester_courses[sem_num]
+        total_credits = sum(c.credits for c in courses)
+        semester_credits.append({
+            'semester_number': sem_num,
+            'courses': courses,
+            'total': total_credits
+        })
+    
+    # Para búsqueda
     courses_query = request.GET.get('q', '')
-    courses = courses.filter(name__icontains=courses_query)
-    # Agrupar y sumar créditos por semestre sugerido
-    semester_credits_qs = (
-        courses.values("semester_suggested")
-        .annotate(total=Coalesce(Sum("credits"), Value(0), output_field=IntegerField()))
-        .order_by("semester_suggested")
-    )
-
-    # Convertir a lista de dicts para el template
-    semester_credits = list(semester_credits_qs)
+    all_courses = [cs.course for cs in course_specializations]
+    
+    if courses_query:
+        all_courses = [c for c in all_courses if courses_query.lower() in c.name.lower() or courses_query.lower() in c.code.lower()]
+    
     return render(request, 'roadmap/specializations/specialization_detail.html', {
         'specialization': specialization,
-        'courses': courses,
+        'courses': all_courses,
         'query': courses_query,
-        'semester_credits': semester_credits,
+        'semester_credits': semester_credits,  # Ahora con semestre 1,2
     })
 
 
@@ -217,31 +260,20 @@ MAX_SEMESTERS = 9
 
 def generate_specialization_roadmap(specialization):
     """
-    Genera un roadmap para una especialización respetando:
-    - El semestre sugerido de cada curso como punto de partida
-    - Máximo 21 créditos por semestre
-    - Máximo 9 semestres
+    Genera un roadmap para una especialización usando semester_in_specialization (1-2)
     """
-    courses = (
-        specialization.courses
-        .prefetch_related('prerequisites')
-        .order_by('semester_suggested', 'code')
-    )
-
+    course_specializations = CourseSpecialization.objects.filter(
+        specialization=specialization
+    ).select_related('course')
+    
     semester_credits = defaultdict(int)
     semester_courses = defaultdict(list)
-
-    for course in courses:
-        target = course.semester_suggested
-        # Si el semestre está lleno, pasar al siguiente hasta que quepa
-        while (
-            semester_credits[target] + course.credits > MAX_CREDITS_PER_SEMESTER
-            and target <= MAX_SEMESTERS
-        ):
-            target += 1
-        semester_courses[target].append(course)
-        semester_credits[target] += course.credits
-
+    
+    for cs in course_specializations:
+        target = cs.semester_in_specialization  # Usamos el semestre de especialización
+        semester_courses[target].append(cs.course)
+        semester_credits[target] += cs.course.credits
+    
     return [
         {
             'number': sem,
@@ -405,7 +437,14 @@ def emphasis_line_detail(request, pk):
     """Vista detallada de una línea de énfasis"""
     emphasis_line = get_object_or_404(EmphasisLine, pk=pk)
     
-    # Obtener cursos de la línea
+    # Buscar el curso paraguas asociado a esta línea de énfasis
+    umbrella_course = Course.objects.filter(
+        name__icontains='Línea de Énfasis',
+        category='EMPHASIS',
+        is_umbrella=True
+    ).first()
+    
+    # Obtener los cursos específicos de la línea a través de EmphasisLineCourse
     line_courses = emphasis_line.line_courses.select_related('course').order_by('semester_in_line')
     courses = [lc.course for lc in line_courses]
     
@@ -423,6 +462,7 @@ def emphasis_line_detail(request, pk):
         'emphasis_line': emphasis_line,
         'courses': courses,
         'semester_credits': semester_credits,
+        'umbrella_course': umbrella_course,  # Pasar el curso paraguas para el modal
     })
 
 

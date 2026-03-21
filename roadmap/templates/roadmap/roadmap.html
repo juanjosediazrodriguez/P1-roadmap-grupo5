@@ -136,7 +136,7 @@
     </div>
   </div>
 
-  <!-- Generar modales para todas las opciones (únicas) -->
+  <!-- Generar modales para TODOS los cursos relacionados (recursivamente) -->
   {% for option in all_options %}
     {% include "roadmap/partials/course_modal.html" with course=option enable_nested_modals=True %}
   {% endfor %}
