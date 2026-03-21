@@ -201,6 +201,106 @@
   {"model": "roadmap.umbrellacourseoption", "pk": 178, "fields": {"umbrella_course": 164, "option_course": 181}},
   
   {"model": "roadmap.umbrellacourseoption", "pk": 179, "fields": {"umbrella_course": 165, "option_course": 180}},
-  {"model": "roadmap.umbrellacourseoption", "pk": 180, "fields": {"umbrella_course": 165, "option_course": 181}}
+  {"model": "roadmap.umbrellacourseoption", "pk": 180, "fields": {"umbrella_course": 165, "option_course": 181}},
+
+  {"model": "roadmap.umbrellacourseoption", "pk": 181, "fields": {"umbrella_course": 182, "option_course": 35}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 182, "fields": {"umbrella_course": 182, "option_course": 36}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 183, "fields": {"umbrella_course": 182, "option_course": 37}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 184, "fields": {"umbrella_course": 182, "option_course": 38}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 185, "fields": {"umbrella_course": 183, "option_course": 39}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 186, "fields": {"umbrella_course": 183, "option_course": 40}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 187, "fields": {"umbrella_course": 183, "option_course": 41}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 188, "fields": {"umbrella_course": 183, "option_course": 42}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 189, "fields": {"umbrella_course": 184, "option_course": 43}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 190, "fields": {"umbrella_course": 184, "option_course": 44}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 191, "fields": {"umbrella_course": 184, "option_course": 45}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 192, "fields": {"umbrella_course": 184, "option_course": 46}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 193, "fields": {"umbrella_course": 185, "option_course": 47}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 194, "fields": {"umbrella_course": 185, "option_course": 48}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 195, "fields": {"umbrella_course": 185, "option_course": 49}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 196, "fields": {"umbrella_course": 185, "option_course": 50}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 197, "fields": {"umbrella_course": 186, "option_course": 51}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 198, "fields": {"umbrella_course": 186, "option_course": 52}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 199, "fields": {"umbrella_course": 186, "option_course": 53}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 200, "fields": {"umbrella_course": 186, "option_course": 54}},
+
+  {"model": "roadmap.umbrellacourseoption", "pk": 202, "fields": {"umbrella_course": 207, "option_course": 182}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 203, "fields": {"umbrella_course": 208, "option_course": 182}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 204, "fields": {"umbrella_course": 207, "option_course": 183}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 205, "fields": {"umbrella_course": 208, "option_course": 183}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 206, "fields": {"umbrella_course": 207, "option_course": 184}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 207, "fields": {"umbrella_course": 208, "option_course": 184}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 208, "fields": {"umbrella_course": 207, "option_course": 185}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 209, "fields": {"umbrella_course": 208, "option_course": 185}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 210, "fields": {"umbrella_course": 207, "option_course": 186}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 211, "fields": {"umbrella_course": 208, "option_course": 186}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 212, "fields": {"umbrella_course": 209, "option_course": 187}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 213, "fields": {"umbrella_course": 210, "option_course": 187}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 214, "fields": {"umbrella_course": 209, "option_course": 188}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 215, "fields": {"umbrella_course": 210, "option_course": 188}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 216, "fields": {"umbrella_course": 209, "option_course": 189}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 217, "fields": {"umbrella_course": 210, "option_course": 189}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 218, "fields": {"umbrella_course": 209, "option_course": 190}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 219, "fields": {"umbrella_course": 210, "option_course": 190}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 220, "fields": {"umbrella_course": 209, "option_course": 191}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 221, "fields": {"umbrella_course": 210, "option_course": 191}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 222, "fields": {"umbrella_course": 209, "option_course": 192}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 223, "fields": {"umbrella_course": 210, "option_course": 192}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 224, "fields": {"umbrella_course": 209, "option_course": 193}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 225, "fields": {"umbrella_course": 210, "option_course": 193}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 226, "fields": {"umbrella_course": 209, "option_course": 194}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 227, "fields": {"umbrella_course": 210, "option_course": 194}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 228, "fields": {"umbrella_course": 209, "option_course": 195}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 229, "fields": {"umbrella_course": 210, "option_course": 195}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 230, "fields": {"umbrella_course": 209, "option_course": 196}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 231, "fields": {"umbrella_course": 210, "option_course": 196}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 232, "fields": {"umbrella_course": 209, "option_course": 197}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 233, "fields": {"umbrella_course": 210, "option_course": 197}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 234, "fields": {"umbrella_course": 209, "option_course": 198}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 235, "fields": {"umbrella_course": 210, "option_course": 198}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 236, "fields": {"umbrella_course": 209, "option_course": 199}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 237, "fields": {"umbrella_course": 210, "option_course": 199}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 238, "fields": {"umbrella_course": 209, "option_course": 200}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 239, "fields": {"umbrella_course": 210, "option_course": 200}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 240, "fields": {"umbrella_course": 209, "option_course": 201}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 241, "fields": {"umbrella_course": 210, "option_course": 201}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 242, "fields": {"umbrella_course": 209, "option_course": 202}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 243, "fields": {"umbrella_course": 210, "option_course": 202}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 244, "fields": {"umbrella_course": 209, "option_course": 203}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 245, "fields": {"umbrella_course": 210, "option_course": 203}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 246, "fields": {"umbrella_course": 209, "option_course": 204}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 247, "fields": {"umbrella_course": 210, "option_course": 204}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 248, "fields": {"umbrella_course": 209, "option_course": 205}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 249, "fields": {"umbrella_course": 210, "option_course": 205}},
+  
+  {"model": "roadmap.umbrellacourseoption", "pk": 250, "fields": {"umbrella_course": 209, "option_course": 206}},
+  {"model": "roadmap.umbrellacourseoption", "pk": 251, "fields": {"umbrella_course": 210, "option_course": 206}}
 
 ]

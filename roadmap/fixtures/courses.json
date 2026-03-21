@@ -123,8 +123,8 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": [3]
+      "prerequisites": [3],
+      "corequisites": []
     }
   },
   {
@@ -236,7 +236,7 @@
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
       "prerequisites": [10],
-      "corequisites": [8]
+      "corequisites": []
     }
   },
   {
@@ -599,7 +599,7 @@
       "name": "Proyecto en Desarrollo de Software",
       "credits": 3,
       "description": "Proyecto integrador de la trayectoria en Desarrollo de Software.",
-      "semester_suggested": 8,
+      "semester_suggested": 7,
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
@@ -663,7 +663,7 @@
       "name": "Proyecto en Infraestructura TI",
       "credits": 3,
       "description": "Proyecto integrador de la trayectoria en Infraestructura TI.",
-      "semester_suggested": 8,
+      "semester_suggested": 7,
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
@@ -727,7 +727,7 @@
       "name": "Proyecto Ingeniería de Datos",
       "credits": 3,
       "description": "Proyecto integrador de la trayectoria en Ingeniería de Datos.",
-      "semester_suggested": 8,
+      "semester_suggested": 7,
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
@@ -791,7 +791,7 @@
       "name": "Proyecto Trayectoria en Inteligencia Artificial",
       "credits": 3,
       "description": "Proyecto integrador de la trayectoria en Inteligencia Artificial.",
-      "semester_suggested": 8,
+      "semester_suggested": 7,
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
@@ -855,7 +855,7 @@
       "name": "Proyecto Blockchain",
       "credits": 3,
       "description": "Proyecto integrador de la trayectoria en Blockchain.",
-      "semester_suggested": 8,
+      "semester_suggested": 7,
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
@@ -869,7 +869,7 @@
     "fields": {
       "code": "PT0131",
       "name": "Período de Práctica (Ingeniería de Sistemas)",
-      "credits": 0,
+      "credits": 18,
       "description": "Práctica profesional en empresa.",
       "semester_suggested": 8,
       "language": "ES",
@@ -887,7 +887,7 @@
       "name": "Matemáticas Aplicada",
       "credits": 2,
       "description": "Matemáticas aplicadas al análisis de datos y modelado.",
-      "semester_suggested": 8,
+      "semester_suggested": 9,
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
@@ -903,7 +903,7 @@
       "name": "Estadística Aplicada",
       "credits": 2,
       "description": "Técnicas estadísticas para análisis de datos.",
-      "semester_suggested": 8,
+      "semester_suggested": 9,
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
@@ -919,7 +919,7 @@
       "name": "Fundamentos en Ciencias de Datos",
       "credits": 2,
       "description": "Introducción al ciclo de vida de proyectos de ciencia de datos.",
-      "semester_suggested": 8,
+      "semester_suggested": 9,
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
@@ -935,7 +935,7 @@
       "name": "Aprendizaje Automático",
       "credits": 2,
       "description": "Fundamentos de machine learning para ciencia de datos.",
-      "semester_suggested": 8,
+      "semester_suggested": 9,
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
@@ -2898,5 +2898,471 @@
       "prerequisites": [154, 155, 156, 157],
       "corequisites": []
     }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 182,
+    "fields": {
+      "code": "TRACK-DESA",
+      "name": "Trayectoria Desarrollo de Software",
+      "credits": 12,
+      "description": "Trayectoria profesional en Desarrollo de Software. Aprende a diseñar, construir y mantener aplicaciones web, implementar pruebas, diseñar interfaces y desarrollar proyectos integradores.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 183,
+    "fields": {
+      "code": "TRACK-INFRA",
+      "name": "Trayectoria Infraestructura TI",
+      "credits": 12,
+      "description": "Trayectoria profesional en Infraestructura TI. Profundiza en sistemas distribuidos, computación en nube, arquitecturas escalables y proyectos de infraestructura.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 184,
+    "fields": {
+      "code": "TRACK-DATA",
+      "name": "Trayectoria Ingeniería de Datos",
+      "credits": 12,
+      "description": "Trayectoria profesional en Ingeniería de Datos. Aprende sobre sistemas intensivos de datos, bases de datos avanzadas, gobernanza de datos y proyectos de ingeniería de datos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 185,
+    "fields": {
+      "code": "TRACK-IA",
+      "name": "Trayectoria Inteligencia Artificial",
+      "credits": 12,
+      "description": "Trayectoria profesional en Inteligencia Artificial. Profundiza en redes neuronales, aprendizaje automático, aplicaciones avanzadas de IA y proyectos de IA.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 186,
+    "fields": {
+      "code": "TRACK-BLOCK",
+      "name": "Trayectoria Blockchain",
+      "credits": 12,
+      "description": "Trayectoria profesional en Blockchain. Aprende fundamentos de blockchain, contratos inteligentes, criptoeconomía y desarrolla un proyecto integrador.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+
+  {
+    "model": "roadmap.course",
+    "pk": 187,
+    "fields": {
+      "code": "TRACK-ECON",
+      "name": "Trayectoria Economía",
+      "credits": 12,
+      "description": "Trayectoria flexible en Economía. Explora microeconomía, macroeconomía, teoría de juegos y economía colombiana.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 188,
+    "fields": {
+      "code": "TRACK-HISTECON",
+      "name": "Trayectoria Historia Económica",
+      "credits": 12,
+      "description": "Trayectoria flexible en Historia Económica. Estudia historia económica general, historia del pensamiento económico e historia económica de Colombia.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 189,
+    "fields": {
+      "code": "TRACK-ANAFIN",
+      "name": "Trayectoria Análisis Financiero",
+      "credits": 12,
+      "description": "Trayectoria flexible en Análisis Financiero. Aprende fundamentos de contabilidad, matemáticas financieras, análisis financiero y economía colombiana.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 190,
+    "fields": {
+      "code": "TRACK-EVALPROY",
+      "name": "Trayectoria Evaluación Financiera de Proyectos",
+      "credits": 12,
+      "description": "Trayectoria flexible en Evaluación Financiera de Proyectos. Aprende fundamentos de contabilidad, matemáticas financieras, economía colombiana y evaluación de proyectos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 191,
+    "fields": {
+      "code": "TRACK-ESTRAT",
+      "name": "Trayectoria Estrategia",
+      "credits": 12,
+      "description": "Trayectoria flexible en Estrategia. Estudia organizaciones, estrategia empresarial, fundamentos de administración y gestión humana.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 192,
+    "fields": {
+      "code": "TRACK-DIRLID",
+      "name": "Trayectoria Dirección y Liderazgo",
+      "credits": 12,
+      "description": "Trayectoria flexible en Dirección y Liderazgo. Desarrolla habilidades en organizaciones, fundamentos de administración, gestión humana y liderazgo.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 193,
+    "fields": {
+      "code": "TRACK-GERESTRAT",
+      "name": "Trayectoria Gerencia Estratégica",
+      "credits": 12,
+      "description": "Trayectoria flexible en Gerencia Estratégica. Aprende sobre organizaciones, estrategia, fundamentos de administración y gerencia estratégica.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 194,
+    "fields": {
+      "code": "TRACK-GERCONOC",
+      "name": "Trayectoria Gerencia del Conocimiento",
+      "credits": 12,
+      "description": "Trayectoria flexible en Gerencia del Conocimiento. Estudia organizaciones, estrategia, fundamentos de administración y gestión del conocimiento e innovación.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 195,
+    "fields": {
+      "code": "TRACK-GERPROY",
+      "name": "Trayectoria Gerencia de Proyectos",
+      "credits": 12,
+      "description": "Trayectoria flexible en Gerencia de Proyectos. Aprende matemáticas financieras, evaluación de proyectos, gestión de proyectos y formulación de proyectos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 196,
+    "fields": {
+      "code": "TRACK-DEREMP",
+      "name": "Trayectoria Derecho Empresarial",
+      "credits": 12,
+      "description": "Trayectoria flexible en Derecho Empresarial. Explora marco tributario, derecho empresarial, organizaciones y fundamentos de administración.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 197,
+    "fields": {
+      "code": "TRACK-FORMPROY",
+      "name": "Trayectoria Formulación y Evaluación de Proyectos",
+      "credits": 12,
+      "description": "Trayectoria flexible en Formulación y Evaluación de Proyectos. Aprende costos, información financiera, matemáticas financieras y formulación de proyectos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 198,
+    "fields": {
+      "code": "TRACK-NEGINT",
+      "name": "Trayectoria Negocios Internacionales",
+      "credits": 12,
+      "description": "Trayectoria flexible en Negocios Internacionales. Estudia mercadeo internacional, negocios internacionales, gestión intercultural y estrategia internacional.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 199,
+    "fields": {
+      "code": "TRACK-TALINT",
+      "name": "Trayectoria Talento Internacional",
+      "credits": 12,
+      "description": "Trayectoria flexible en Talento Internacional. Aprende negocios internacionales, turismo, gestión intercultural y desarrollo del talento internacional.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 200,
+    "fields": {
+      "code": "TRACK-FININT",
+      "name": "Trayectoria Finanzas Internacionales",
+      "credits": 12,
+      "description": "Trayectoria flexible en Finanzas Internacionales. Estudia economía, economía del comercio internacional, fundamentos de finanzas y finanzas internacionales.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 201,
+    "fields": {
+      "code": "TRACK-GENLIT",
+      "name": "Trayectoria Géneros Literarios",
+      "credits": 12,
+      "description": "Trayectoria flexible en Géneros Literarios. Explora introducción a géneros literarios, estudios del texto narrativo, dramático y ensayístico.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 202,
+    "fields": {
+      "code": "TRACK-LIT",
+      "name": "Trayectoria Literatura",
+      "credits": 12,
+      "description": "Trayectoria flexible en Literatura. Estudia introducción a géneros literarios, literatura hispánica, latinoamericana y colombiana.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 203,
+    "fields": {
+      "code": "TRACK-PERIO",
+      "name": "Trayectoria Periodismo",
+      "credits": 12,
+      "description": "Trayectoria flexible en Periodismo. Aprende reportaje, periodismo informativo, periodismo narrativo y periodismo de opinión.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 204,
+    "fields": {
+      "code": "TRACK-COM",
+      "name": "Trayectoria Comunicaciones",
+      "credits": 12,
+      "description": "Trayectoria flexible en Comunicaciones. Explora periodismo informativo, producción radiofónica, lenguaje audiovisual y visualización de información.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 205,
+    "fields": {
+      "code": "TRACK-DISINT",
+      "name": "Trayectoria Diseño Interactivo",
+      "credits": 12,
+      "description": "Trayectoria flexible en Diseño Interactivo. Aprende lenguaje audiovisual, creación de universos narrativos, diseño de sonido y narrativas en realidad virtual.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 206,
+    "fields": {
+      "code": "TRACK-PSICO",
+      "name": "Trayectoria Psicología",
+      "credits": 12,
+      "description": "Trayectoria flexible en Psicología. Estudia historia de la psicología, psicología humanista, psicología cognitiva y psicología dinámica.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 207,
+    "fields": {
+      "code": "TRACK-PROF1",
+      "name": "Trayectoria Profesionalizante 1",
+      "credits": 6,
+      "description": "Primera trayectoria profesionalizante.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 208,
+    "fields": {
+      "code": "TRACK-PROF2",
+      "name": "Trayectoria Profesionalizante 2",
+      "credits": 6,
+      "description": "Segunda parte de la trayectoria profesionalizante.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [207],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 209,
+    "fields": {
+      "code": "TRACK-FLEX1",
+      "name": "Trayectoria Flexible 1",
+      "credits": 6,
+      "description": "Primera parte de la trayectoria flexible. Ve cursos de otras carreras",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 210,
+    "fields": {
+      "code": "TRACK-FLEX2",
+      "name": "Trayectoria Flexible 2",
+      "credits": 6,
+      "description": "Segunda parte de la trayectoria flexible. Continúa con la trayectoria seleccionada en el semestre anterior.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [209],
+      "corequisites": []
+    }
   }
+
 ]

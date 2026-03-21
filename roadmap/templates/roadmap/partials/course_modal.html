@@ -1,6 +1,6 @@
 <div class="modal fade" id="courseModal{{ course.id }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content modal-category-{{ course.category|lower|cut:'_' }}">
             <div class="modal-body">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
@@ -46,15 +46,64 @@
                     <p class="course-description">{{ course.description }}</p>
                 </div>
 
+                <!-- Si es curso paraguas, mostrar opciones -->
+                {% if course.is_umbrella and course.available_options.exists %}
+                <div class="mb-4">
+                    <h5 class="section-subtitle">Opciones disponibles</h5>
+                    <div class="row">
+                        {% for option in course.available_options.all %}
+                        <div class="col-md-6 mb-3">
+                            <div class="option-mini-card option-card-{{ option.category|lower|cut:'_' }}" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#courseModal{{ option.id }}"
+                                    style="cursor:pointer;">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="option-code-badge">{{ option.code }}</span>
+                                    <span class="option-credits-badge">{{ option.credits }} cr</span>
+                                </div>
+                                <div class="option-name">{{ option.name }}</div>
+                                {% with prereq_count=option.prerequisites.count coreq_count=option.corequisites.count %}
+                                {% if prereq_count > 0 or coreq_count > 0 %}
+                                <div class="option-requirements mt-2">
+                                    {% if prereq_count > 0 %}
+                                    <span class="requirement-badge prerequisite-badge">
+                                        <span class="prereq-dot-small"></span> {{ prereq_count }} Pre
+                                    </span>
+                                    {% endif %}
+                                    {% if coreq_count > 0 %}
+                                    <span class="requirement-badge corequisite-badge">
+                                        <span class="coreq-dot-small"></span> {{ coreq_count }} Co
+                                    </span>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <p class="text-secondary mt-2 small">
+                        <i class="fas fa-info-circle me-1"></i>
+                        Selecciona una opción para ver sus detalles completos
+                    </p>
+                </div>
+
+                <!-- Si NO es paraguas, mostrar prerrequisitos y correquisitos -->
+                {% else %}
                 <!-- Prerrequisitos y Correquisitos en dos columnas -->
                 <div class="row mb-4">
+
                     <!-- Columna Prerrequisitos -->
                     <div class="col-md-6">
                         <h5 class="section-subtitle">Prerrequisitos</h5>
                         {% if course.prerequisites.exists %}
                             <div class="d-flex flex-column gap-2">
                                 {% for prereq in course.prerequisites.all %}
-                                <div class="requisite-mini-card prerequisite-card">
+                                <!-- Para los prerrequisitos -->
+                                <div class="requisite-mini-card prerequisite-card" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#courseModal{{ prereq.id }}"
+                                    style="cursor:pointer;">
                                     <div class="d-flex align-items-center gap-2">
                                         <span class="requisite-icon prerequisite-icon">
                                             <i class="fas fa-exclamation-circle"></i>
@@ -79,7 +128,10 @@
                         {% if course.corequisites.exists %}
                             <div class="d-flex flex-column gap-2">
                                 {% for coreq in course.corequisites.all %}
-                                <div class="requisite-mini-card corequisite-card">
+                                <div class="requisite-mini-card corequisite-card" 
+                                     data-bs-toggle="modal" 
+                                     data-bs-target="#courseModal{{ coreq.id }}"
+                                     style="cursor:pointer;">
                                     <div class="d-flex align-items-center gap-2">
                                         <span class="requisite-icon corequisite-icon">
                                             <i class="fas fa-exclamation-circle"></i>
@@ -98,11 +150,12 @@
                         {% endif %}
                     </div>
                 </div>
+                {% endif %}
 
                 <!-- Requisitos de Idioma -->
                 {% if course.language_requirement %}
                 <div>
-                    <h5 class="section-subtitle">REQUISITOS DE IDIOMA</h5>
+                    <h5 class="section-subtitle">Requisitos de idioma</h5>
                     <p class="text-secondary">{{ course.language_requirement }}</p>
                 </div>
                 {% endif %}
