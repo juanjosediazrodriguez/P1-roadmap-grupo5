@@ -561,55 +561,6 @@ def get_specialization_suggestions(preference):
         },
     }
 
-    # Reglas por tecnologías
-    tech_rules = {
-        "aws": {
-            "desarrollo de software": 3,
-            "sistemas de informacion": 3,
-            "ciberseguridad": 3,
-        },
-        "c++": {
-            "desarrollo de software": 3,
-            "inteligencia artificial": 2,
-        },
-        "docker": {
-            "desarrollo de software": 3,
-            "ciberseguridad": 2,
-            "sistemas de informacion": 2,
-        },
-        "java": {
-            "desarrollo de software": 4,
-            "sistemas de informacion": 3,
-        },
-        "javascript": {
-            "desarrollo de software": 5,
-            "sistemas de informacion": 2,
-        },
-        "kubernetes": {
-            "desarrollo de software": 3,
-            "ciberseguridad": 2,
-            "sistemas de informacion": 2,
-        },
-        "python": {
-            "inteligencia artificial": 5,
-            "desarrollo de software": 3,
-            "sistemas de informacion": 2,
-            "ciberseguridad": 2,
-        },
-        "react": {
-            "desarrollo de software": 5,
-        },
-        "sql": {
-            "sistemas de informacion": 5,
-            "desarrollo de software": 3,
-            "inteligencia artificial": 2,
-        },
-        "tensorflow": {
-            "inteligencia artificial": 5,
-            "desarrollo de software": 2,
-        },
-    }
-
     # Reglas por meta profesional
     goal_rules = {
         "freelance": {
@@ -646,17 +597,6 @@ def get_specialization_suggestions(preference):
                     scores[spec_name]["score"] += points
                     scores[spec_name]["reasons"].append(
                         f"Coincide con tu interés en {interest.name}"
-                    )
-
-    # Aplicar tecnologías
-    for tech in preference.technologies.all():
-        tech_name = normalize_text(tech.name)
-        if tech_name in tech_rules:
-            for spec_name, points in tech_rules[tech_name].items():
-                if spec_name in scores:
-                    scores[spec_name]["score"] += points
-                    scores[spec_name]["reasons"].append(
-                        f"Se relaciona con tu tecnología preferida: {tech.name}"
                     )
 
     # Aplicar meta profesional

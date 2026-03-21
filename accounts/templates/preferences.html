@@ -45,21 +45,8 @@
                     {% endfor %}
                 </div>
 
-                <!-- Tecnologías -->
-                <h3 class="section-title">2. Tecnologías Preferidas</h3>
-                <div class="options-grid">
-                    {% for tech in technologies %}
-                    <label class="option-card {% if tech.id|stringformat:'s' in selected_technologies %}selected{% endif %}">
-                        <input type="checkbox" name="technologies" value="{{ tech.id }}"
-                               {% if tech.id|stringformat:'s' in selected_technologies %}checked{% endif %}>
-                        <span class="option-icon"><i class="fas {{ tech.icon }}"></i></span>
-                        <span class="option-name">{{ tech.name }}</span>
-                    </label>
-                    {% endfor %}
-                </div>
-
                 <!-- Meta Profesional -->
-                <h3 class="section-title">3. Meta Profesional Principal</h3>
+                <h3 class="section-title">2. Meta Profesional Principal</h3>
                 <div class="radio-group">
                     {% for goal in goals %}
                     <label class="radio-option {% if goal.id|stringformat:'s' == selected_goal %}selected{% endif %}">
@@ -86,7 +73,7 @@
                     Preferencias Activas
                 </h4>
                 
-                {% if preference and preference.interests.exists or preference.technologies.exists or preference.career_goal %}
+                {% if preference and preference.interests.exists or preference.career_goal %}
                     <div class="preference-content">
                         {% if preference.interests.exists %}
                         <div class="preference-section">
@@ -96,20 +83,6 @@
                                 <span class="preference-tag">
                                     <i class="fas {{ interest.icon }} me-1"></i>
                                     {{ interest.name }}
-                                </span>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        {% endif %}
-
-                        {% if preference.technologies.exists %}
-                        <div class="preference-section">
-                            <h5>Tecnologías</h5>
-                            <div class="preference-tags">
-                                {% for tech in preference.technologies.all %}
-                                <span class="preference-tag">
-                                    <i class="fas {{ tech.icon }} me-1"></i>
-                                    {{ tech.name }}
                                 </span>
                                 {% endfor %}
                             </div>

@@ -12,19 +12,6 @@ class Interest(models.Model):
     def __str__(self):
         return self.name
 
-
-class Technology(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    category = models.CharField(max_length=50, blank=True, null=True)
-    icon = models.CharField(max_length=50, default='fa-code')
-
-    class Meta:
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
-
-
 class CareerGoal(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
@@ -40,7 +27,6 @@ class CareerGoal(models.Model):
 class Preference(models.Model):
     # Solo UNA preferencia global (por eso singleton)
     interests = models.ManyToManyField(Interest, blank=True, related_name='preferences')
-    technologies = models.ManyToManyField(Technology, blank=True, related_name='preferences')
     career_goal = models.ForeignKey(
         CareerGoal,
         on_delete=models.SET_NULL,
