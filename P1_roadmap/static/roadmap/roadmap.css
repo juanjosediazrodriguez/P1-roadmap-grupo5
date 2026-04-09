@@ -1,4 +1,207 @@
-/* Estilos para el roadmap - Versión oscura consistente */
+/* ===== COLORES POR CATEGORÍA ===== */
+
+/* Ciencias Básicas */
+.course-card.category-basicscience {
+    border-left-color: #4a90e2;
+}
+.course-card.category-basicscience:hover {
+    border-color: #4a90e2;
+    box-shadow: 0 6px 16px rgba(74, 144, 226, 0.2);
+}
+
+/* Básicas en Ingeniería */
+.course-card.category-basicengineering {
+    border-left-color: #20c997;
+}
+.course-card.category-basicengineering:hover {
+    border-color: #20c997;
+    box-shadow: 0 6px 16px rgba(32, 201, 151, 0.2);
+}
+
+/* Trayectoria Profesionalizante */
+.course-card.category-professionaltrack {
+    border-left-color: #28a745;
+}
+.course-card.category-professionaltrack:hover {
+    border-color: #28a745;
+    box-shadow: 0 6px 16px rgba(40, 167, 69, 0.2);
+}
+
+/* Trayectoria Flexible */
+.course-card.category-flexibletrack {
+    border-left-color: #198754;
+}
+.course-card.category-flexibletrack:hover {
+    border-color: #198754;
+    box-shadow: 0 6px 16px rgba(25, 135, 84, 0.2);
+}
+
+/* NFI */
+.course-card.category-nfi {
+    border-left-color: #fd7e14;
+}
+.course-card.category-nfi:hover {
+    border-color: #fd7e14;
+    box-shadow: 0 6px 16px rgba(253, 126, 20, 0.2);
+}
+
+/* Disciplinar */
+.course-card.category-disciplinary {
+    border-left-color: #dc3545;
+}
+.course-card.category-disciplinary:hover {
+    border-color: #dc3545;
+    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.2);
+}
+
+/* Práctica */
+.course-card.category-practice {
+    border-left-color: #b91c1c;
+}
+.course-card.category-practice:hover {
+    border-color: #b91c1c;
+    box-shadow: 0 6px 16px rgba(185, 28, 28, 0.2);
+}
+
+/* Énfasis */
+.course-card.category-emphasis {
+    border-left-color: #2ecc71;
+}
+.course-card.category-emphasis:hover {
+    border-color: #2ecc71;
+    box-shadow: 0 6px 16px rgba(46, 204, 113, 0.2);
+}
+
+/* Especialización */
+.course-card.category-specialization {
+    border-left-color: #27ae60;
+}
+.course-card.category-specialization:hover {
+    border-color: #27ae60;
+    box-shadow: 0 6px 16px rgba(39, 174, 96, 0.2);
+}
+
+/* ===== CONTENEDOR DE LEYENDAS ===== */
+.legend-wrapper {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: stretch;
+}
+
+/* Leyenda de categorías */
+.category-legend {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem 1.5rem;
+    padding: 1.25rem;
+    background-color: #1a1d27;
+    border-radius: 12px;
+    border: 1px solid #2a2d3a;
+    margin: 0;
+    height: 100%;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: #8f9bb3;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.legend-color.basic-science { background-color: #4a90e2; }
+.legend-color.basic-engineering { background-color: #20c997; }
+.legend-color.nfi { background-color: #fd7e14; }
+.legend-color.disciplinary { background-color: #dc3545; }
+.legend-color.professional-track { background-color: #28a745; }
+.legend-color.flexible-track { background-color: #198754; }
+.legend-color.practice { background-color: #b91c1c; }
+.legend-color.emphasis { background-color: #2ecc71; }
+.legend-color.specialization { background-color: #27ae60; }
+
+/* Leyenda de requisitos - misma altura que categorías */
+.requirements-legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background-color: #1a1d27;
+    border-radius: 12px;
+    border: 1px solid #2a2d3a;
+    margin: 0;
+    height: 100%;
+}
+
+.requirements-legend .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: #8f9bb3;
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-dot.prerequisite {
+    background-color: #f97316;
+    box-shadow: 0 0 4px #f97316;
+}
+
+.legend-dot.corequisite {
+    background-color: #9c27b0;
+    box-shadow: 0 0 4px #9c27b0;
+}
+
+/* Responsive: en tablets, mantiene altura pero cambia layout */
+@media (max-width: 768px) {
+    .legend-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .category-legend {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+    
+    .requirements-legend {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+}
+
+/* En móviles pequeños */
+@media (max-width: 480px) {
+    .category-legend {
+        grid-template-columns: 1fr;
+    }
+    
+    .requirements-legend {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+}
+
+/* ===== ESTILOS EXISTENTES ===== */
 .roadmap-wrapper {
     overflow-x: auto;
     padding-bottom: 2rem;
@@ -12,7 +215,6 @@
     position: relative;
 }
 
-/* Línea horizontal que conecta los círculos */
 .roadmap-track::before {
     content: '';
     position: absolute;
@@ -32,7 +234,6 @@
     max-width: 260px;
 }
 
-/* Círculo de semestre */
 .semester-circle {
     width: 48px;
     height: 48px;
@@ -69,11 +270,12 @@
     border: 1px solid #2a2d3a;
 }
 
-/* Tarjetas de curso - estilo similar a requisite-card pero verde */
+/* Tarjetas de curso - base */
 .course-card {
     background-color: #1a1d27;
     border: 1px solid #2a2d3a;
-    border-left: 4px solid #27ae60;
+    border-left-width: 4px;
+    border-left-style: solid;
     border-radius: 10px;
     padding: 1rem;
     width: 100%;
@@ -81,12 +283,6 @@
     color: #ffffff;
     transition: all 0.2s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.course-card:hover {
-    transform: translateY(-2px);
-    border-color: #27ae60;
-    box-shadow: 0 6px 16px rgba(39, 174, 96, 0.2);
 }
 
 .course-card-header {
@@ -123,7 +319,6 @@
     line-height: 1.4;
 }
 
-/* Indicador de prerequisitos - similar a prerequisite-icon */
 .course-prereqs {
     display: flex;
     align-items: center;
@@ -198,5 +393,15 @@
     
     .course-name {
         font-size: 0.9rem;
+    }
+    
+    .category-legend,
+    .requirements-legend {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    
+    .legend-item {
+        font-size: 0.75rem;
     }
 }

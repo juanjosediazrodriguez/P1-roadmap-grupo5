@@ -1,0 +1,12 @@
+[
+  {
+    "model": "roadmap.emphasisline",
+    "pk": 1,
+    "fields": {
+      "name": "Ciencias de los Datos",
+      "description": "Línea de énfasis en fundamentos y aplicaciones de ciencia de datos.",
+      "credits_required": 12,
+      "specialization": null
+    }
+  }
+]

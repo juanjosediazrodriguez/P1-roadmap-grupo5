@@ -1,0 +1,60 @@
+{% extends 'menu.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'base_content.css' %}">
+<link rel="stylesheet" href="{% static 'roadmap/specialization.css' %}">
+{% endblock %}
+
+{% block title %}Trayectorias{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="page-title mb-0">Trayectorias</h1>
+        <div class="btn-group">
+            <a href="{% url 'track_professional_list' %}" 
+               class="btn btn-outline-light {% if track_type == 'PROFESSIONAL' %}active{% endif %}">
+                Profesionalizantes
+            </a>
+            <a href="{% url 'track_flexible_list' %}" 
+               class="btn btn-outline-light {% if track_type == 'FLEXIBLE' %}active{% endif %}">
+                Flexibles
+            </a>
+        </div>
+    </div>
+    
+    <p class="page-subtitle">
+        Explora las diferentes trayectorias disponibles en Ingeniería de Sistemas.<br>
+        Las trayectorias profesionalizantes te preparan para áreas específicas de la industria, mientras que las trayectorias flexibles complementan tu formación con conocimientos de otras disciplinas.
+    </p>
+
+    <input 
+        type="text"
+        id="track-search"
+        name="q" 
+        value="{{ query }}"
+        placeholder="Buscar trayectoria..." 
+        class="form-control mb-4"
+    >
+
+    <div class="grid-2" id="track-container">
+        {% include "roadmap/partials/track_list.html" with tracks=tracks track_type=track_type %}
+    </div>
+</div>
+
+<script>
+    const trackInput = document.getElementById('track-search');
+    const trackContainer = document.getElementById('track-container');
+    const trackType = '{{ track_type }}';
+
+    trackInput.addEventListener('keyup', () => {
+        const query = trackInput.value;
+        fetch(`{% url 'track_search' %}?q=${query}&type=${trackType}`)
+            .then(res => res.json())
+            .then(data => {
+                trackContainer.innerHTML = data.html;
+            });
+    });
+</script>
+{% endblock %}

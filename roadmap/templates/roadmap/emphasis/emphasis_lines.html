@@ -1,0 +1,46 @@
+{% extends 'menu.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'base_content.css' %}">
+<link rel="stylesheet" href="{% static 'roadmap/specialization.css' %}">
+{% endblock %}
+
+{% block title %}Líneas de Énfasis{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1 class="page-title">Líneas de Énfasis</h1>
+    <p class="page-subtitle">
+        Explora las líneas de énfasis disponibles en Ingeniería de Sistemas.<br>
+        Estas líneas te permiten profundizar en áreas específicas y conectar con especializaciones.
+    </p>
+
+    <input 
+        type="text"
+        id="emphasis-search"
+        name="q" 
+        value="{{ query }}"
+        placeholder="Buscar línea de énfasis..." 
+        class="form-control mb-4"
+    >
+
+    <div class="grid-2" id="emphasis-container">
+        {% include "roadmap/partials/emphasis_line_list.html" with emphasis_lines=emphasis_lines %}
+    </div>
+</div>
+
+<script>
+    const emphasisInput = document.getElementById('emphasis-search');
+    const emphasisContainer = document.getElementById('emphasis-container');
+
+    emphasisInput.addEventListener('keyup', () => {
+        const query = emphasisInput.value;
+        fetch(`{% url 'emphasis_line_search' %}?q=${query}`)
+            .then(res => res.json())
+            .then(data => {
+                emphasisContainer.innerHTML = data.html;
+            });
+    });
+</script>
+{% endblock %}

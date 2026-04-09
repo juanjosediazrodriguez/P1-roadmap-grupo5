@@ -131,6 +131,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'track_list' or request.resolver_match.url_name == 'track_professional_list' or request.resolver_match.url_name == 'track_flexible_list' %}active{% endif %}" href="{% url 'track_list' %}">
+                                <i class="fa-solid fa-road me-3"></i>
+                                Trayectorias
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'emphasis_line_list' %}active{% endif %}" href="{% url 'emphasis_line_list' %}">
+                                <i class="fa-solid fa-compass me-3"></i>
+                                Líneas de Énfasis
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link me-2 {% if request.resolver_match.url_name == 'specialization_list' %}active{% endif %}" href="{% url 'specialization_list' %}">
                                 <i class="fa-solid fa-medal me-3"></i>
                                 Especializaciones
