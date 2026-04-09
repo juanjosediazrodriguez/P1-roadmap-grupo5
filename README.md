@@ -31,10 +31,10 @@ python manage.py migrate
 ### 4. Cargar los datos iniciales
 
 ```bash
+python manage.py loaddata courses.json
 python manage.py loaddata specializations.json
 python manage.py loaddata tracks.json
 python manage.py loaddata emphasis.json
-python manage.py loaddata courses.json
 python manage.py loaddata umbrellaoptions.json
 python manage.py loaddata coursespecialization.json
 python manage.py loaddata trackcourse.json
@@ -94,7 +94,7 @@ python manage.py dumpdata roadmap.TrackCourse --indent 2 > roadmap/fixtures/trac
 python manage.py dumpdata roadmap.EmphasisLineCourse --indent 2 > roadmap/fixtures/emphasiscourse.json
 
 # Preferencias de usuario (accounts)
-python manage.py dumpdata accounts.Interest accounts.Technology accounts.CareerGoal accounts.Preference --indent 2 > accounts/fixtures/preferences_data.json
+python manage.py dumpdata accounts.Interest accounts.CareerGoal accounts.Preference --indent 2 > accounts/fixtures/preferences_data.json
 ```
 
 **Subir al repositorio:**
