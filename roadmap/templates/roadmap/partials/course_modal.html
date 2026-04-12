@@ -42,14 +42,14 @@
 
                 <!-- Descripción -->
                 <div class="mb-4">
-                    <h5 class="section-subtitle">Descripción del curso</h5>
+                    <h5 class="section-subtitle">Descripción</h5>
                     <p class="course-description">{{ course.description }}</p>
                 </div>
 
                 <!-- Si es curso paraguas, mostrar opciones -->
                 {% if course.is_umbrella and course.available_options.exists %}
                 <div class="mb-4">
-                    <h5 class="section-subtitle">Opciones disponibles</h5>
+                    <h5 class="section-subtitle">Cursos</h5>
                     <div class="row">
                         {% for option in course.available_options.all %}
                         <div class="col-md-6 mb-3">
@@ -86,7 +86,7 @@
                     </div>
                     <p class="text-secondary mt-2 small">
                         <i class="fas fa-info-circle me-1"></i>
-                        Selecciona una opción para ver sus detalles completos
+                        Selecciona un curso para ver sus detalles completos
                     </p>
                 </div>
 

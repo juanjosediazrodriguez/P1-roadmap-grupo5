@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Specialization, Course, Track, EmphasisLine, CourseSpecialization
+from .models import Specialization, Course, Track, EmphasisLine, CourseSpecialization, TrackCourse, EmphasisLineCourse
 from accounts.models import Preference
 from collections import defaultdict
 from django.db.models import Sum
 from django.db.models.functions import Coalesce
 from django.db.models import IntegerField, Value, Q
 from .models import UmbrellaCourseOption
-
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+import json as _json
 
 # Mapeo de intereses a nombres de especializaciones en la BD
 INTEREST_SPECIALIZATION_MAP = {
@@ -21,6 +21,33 @@ INTEREST_SPECIALIZATION_MAP = {
     "Investigación":          ["Data Science", "Inteligencia Artificial"],
     "Emprendimiento":         ["Desarrollo de Software", "Sistemas de Información"],
 }
+
+def _course_to_dict(course):
+    return {
+        'id':                 course.id,
+        'code':               course.code or '',
+        'name':               course.name,
+        'credits':            course.credits,
+        'category':           course.category,
+        'semester_suggested': course.semester_suggested,
+        'language':           course.language or '',
+        'description':        course.description,
+        'is_umbrella':        course.is_umbrella,
+        'prerequisites': [
+            {'id': p.id, 'code': p.code or '', 'name': p.name}
+            for p in course.prerequisites.all()
+        ],
+        'corequisites': [
+            {'id': c.id, 'code': c.code or '', 'name': c.name}
+            for c in course.corequisites.all()
+        ],
+        'available_options': [
+            {'id': o.id, 'code': o.code or '', 'name': o.name,
+             'credits': o.credits, 'category': o.category,
+             'is_umbrella': o.is_umbrella}
+            for o in course.available_options.all()
+        ],
+    }
 
 def get_base_courses():
     """
@@ -146,7 +173,6 @@ def roadmap_view(request):
     preference = Preference.objects.first()
     roadmap_by_semester, all_options = generate_roadmap(preference)
 
-    # Construir lista de semestres
     semesters = [
         {
             'number': sem,
@@ -157,10 +183,148 @@ def roadmap_view(request):
         if courses
     ]
 
+    # ── course_map: id -> dict con prereqs/coreqs (para el JS) ──────────────
+    all_course_ids = set()
+    for sem_data in semesters:
+        for c in sem_data['courses']:
+            all_course_ids.add(c.id)
+    all_course_ids.update(c.id for c in all_options)
+
+    courses_qs = Course.objects.filter(id__in=all_course_ids).prefetch_related(
+        'prerequisites', 'corequisites', 'available_options'
+    )
+    course_map = {str(c.id): _course_to_dict(c) for c in courses_qs}
+
+    # ── semester_map: semNum -> [courseId, ...] ──────────────────────────────
+    semester_map = {}
+    for sem_data in semesters:
+        semester_map[str(sem_data['number'])] = [c.id for c in sem_data['courses']]
+
+    # ── Datos de trayectorias profesionalizantes ─────────────────────────────
+    # Mapa: umbrella_course_pk (182-186) -> Track model pk (1-5)
+    PROF_UMBRELLA_TO_TRACK_ID = {182: 1, 183: 2, 184: 3, 185: 4, 186: 5}
+    tracks_data = {}
+    for umbrella_pk, track_id in PROF_UMBRELLA_TO_TRACK_ID.items():
+        try:
+            track = Track.objects.get(pk=track_id)
+        except Track.DoesNotExist:
+            continue
+        track_course_qs = TrackCourse.objects.filter(track=track).select_related(
+            'course'
+        ).prefetch_related('course__prerequisites', 'course__corequisites')
+
+        courses_sem6, courses_sem7 = [], []
+        for tc in track_course_qs:
+            cd = _course_to_dict(tc.course)
+            course_map[str(tc.course.id)] = cd
+            if tc.semester_in_track == 1:
+                courses_sem6.append(cd)
+            else:
+                courses_sem7.append(cd)
+
+        tracks_data[str(umbrella_pk)] = {
+            'track_id':     track_id,
+            'name':         track.name,
+            'courses_sem6': courses_sem6,
+            'courses_sem7': courses_sem7,
+        }
+
+    # ── Datos de líneas de énfasis ───────────────────────────────────────────
+    emphasis_data = {}
+    for line in EmphasisLine.objects.prefetch_related(
+        'line_courses__course__prerequisites',
+        'line_courses__course__corequisites',
+    ):
+        line_courses = []
+        for lc in line.line_courses.select_related('course').order_by('semester_in_line'):
+            cd = _course_to_dict(lc.course)
+            course_map[str(lc.course.id)] = cd
+            line_courses.append({**cd, 'semester_in_line': lc.semester_in_line})
+        emphasis_data[str(line.pk)] = {'name': line.name, 'courses': line_courses}
+
+    # ── Opciones de NFI y Electivas de Matemáticas ───────────────────────────
+    nfi_electiva_pks = [23, 24, 25, 26, 32]
+    umbrella_options_data = {}
+    for umb_pk in nfi_electiva_pks:
+        opts = UmbrellaCourseOption.objects.filter(
+            umbrella_course_id=umb_pk
+        ).select_related('option_course').prefetch_related(
+            'option_course__prerequisites', 'option_course__corequisites'
+        )
+        opt_list = []
+        for o in opts:
+            cd = _course_to_dict(o.option_course)
+            course_map[str(o.option_course.id)] = cd
+            opt_list.append(cd)
+        umbrella_options_data[str(umb_pk)] = opt_list
+
+    # ── Opciones de TRACK-PROF1 (207) y TRACK-PROF2 (208) ───────────────────
+    prof_umbrella_options = {}
+    for prof_pk in [207, 208]:
+        opts = UmbrellaCourseOption.objects.filter(
+            umbrella_course_id=prof_pk
+        ).select_related('option_course')
+        prof_umbrella_options[str(prof_pk)] = [
+            {'id': o.option_course.id, 'code': o.option_course.code or '',
+             'name': o.option_course.name, 'credits': o.option_course.credits}
+            for o in opts
+        ]
+
+    # ── Opciones de EMPHASIS-LINE (211) ─────────────────────────────────────
+    emphasis_umbrella_options = {}
+    opts_211 = UmbrellaCourseOption.objects.filter(
+        umbrella_course_id=211
+    ).select_related('option_course')
+    emphasis_umbrella_options['211'] = [
+        {'id': o.option_course.id, 'code': o.option_course.code or '',
+         'name': o.option_course.name, 'credits': o.option_course.credits}
+        for o in opts_211
+    ]
+
+    # ── Mapa: umbrella_pk del énfasis-collector -> EmphasisLine pk ───────────
+    # DATA-SCI (214) tiene como opciones los cursos 56-61 que pertenecen
+    # a la EmphasisLine pk=1. Este mapa conecta ambos.
+    emphasis_umbrella_to_line = {}
+    for line in EmphasisLine.objects.all():
+        line_course_ids = set(
+            EmphasisLineCourse.objects.filter(
+                emphasis_line=line
+            ).values_list('course_id', flat=True)
+        )
+        for umb_pk_val in UmbrellaCourseOption.objects.values_list(
+            'umbrella_course_id', flat=True
+        ).distinct():
+            umb_option_ids = set(
+                UmbrellaCourseOption.objects.filter(
+                    umbrella_course_id=umb_pk_val
+                ).values_list('option_course_id', flat=True)
+            )
+            if line_course_ids and line_course_ids == umb_option_ids:
+                emphasis_umbrella_to_line[str(umb_pk_val)] = line.pk
+                break
+
+    # ── JSON para el motor JS ────────────────────────────────────────────────
+    roadmap_json = _json.dumps({
+        'semester_map':              semester_map,
+        'course_map':                course_map,
+        'tracks':                    tracks_data,
+        'emphasis_lines':            emphasis_data,
+        'umbrella_options':          umbrella_options_data,
+        'prof_umbrella_options':     prof_umbrella_options,
+        'emphasis_umbrella_options': emphasis_umbrella_options,
+        'emphasis_umbrella_to_line': emphasis_umbrella_to_line,
+        'prof_slots':                {'slot1': 207, 'slot2': 208},
+        'flex_umbrella_pks':         [209, 210, 212, 213],
+        'emphasis_line_umbrella_pk': 211,
+        'nfi_umbrella_pks':          [23, 24, 25],
+        'electiva_mat_umbrella_pks': [26, 32],
+    }, ensure_ascii=False)
+
     return render(request, 'roadmap/roadmap.html', {
-        'semesters': semesters,
-        'preference': preference,
-        'all_options': all_options,
+        'semesters':    semesters,
+        'preference':   preference,
+        'all_options':  all_options,
+        'roadmap_json': roadmap_json,
     })
 
 # ========== ESPECIALIZACIONES ==========

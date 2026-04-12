@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{% static 'base_content.css' %}">
 <link rel="stylesheet" href="{% static 'roadmap/roadmap.css' %}">
 <link rel="stylesheet" href="{% static 'roadmap/course.css' %}">
+<link rel="stylesheet" href="{% static 'roadmap/roadmap_interactive.css' %}">
 {% endblock %}
 
 {% block title %}Mi Roadmap{% endblock %}
@@ -29,47 +30,38 @@
   <div class="legend-wrapper">
 
     <div class="category-legend">
-      <!-- 1 -->
       <div class="legend-item">
         <div class="legend-color basic-science"></div>
         <span>Ciencias Básicas</span>
       </div>
-      <!-- 2 -->
       <div class="legend-item">
         <div class="legend-color nfi"></div>
         <span>Formación Institucional</span>
       </div>
-      <!-- 3 -->
       <div class="legend-item">
         <div class="legend-color practice"></div>
         <span>Práctica</span>
       </div>
-      <!-- 4 -->
       <div class="legend-item">
         <div class="legend-color basic-engineering"></div>
         <span>Básicas en Ingeniería</span>
       </div>
-      <!-- 5 -->
       <div class="legend-item">
         <div class="legend-color flexible-track"></div>
         <span>Trayectoria Flexible</span>
       </div>
-      <!-- 6 -->
       <div class="legend-item">
         <div class="legend-color emphasis"></div>
         <span>Énfasis</span>
       </div>
-      <!-- 7 -->
       <div class="legend-item">
         <div class="legend-color disciplinary"></div>
         <span>Disciplinar</span>
       </div>
-      <!-- 8 -->
       <div class="legend-item">
         <div class="legend-color professional-track"></div>
         <span>Trayectoria Profesionalizante</span>
       </div>
-      <!-- 9 -->
       <div class="legend-item">
         <div class="legend-color specialization"></div>
         <span>Especialización</span>
@@ -87,59 +79,34 @@
         <span>Correquisito</span>
       </div>
     </div>
-  
+
   </div>
 
   {% if semesters %}
   <div class="roadmap-wrapper mt-4">
     <div class="roadmap-track">
       {% for sem in semesters %}
-      <div class="semester-col">
+      <div class="semester-col" data-sem-num="{{ sem.number }}">
         <div class="semester-circle">{{ sem.number }}</div>
         <div class="semester-title">Semestre {{ sem.number }}</div>
         <div class="semester-credits">{{ sem.total_credits }} créditos</div>
-
-        {% for course in sem.courses %}
-        <!-- Modal desde partial -->
-        {% include "roadmap/partials/course_modal.html" with course=course enable_nested_modals=True %}
-
-        <!-- Tarjeta del curso con clase de categoría dinámica -->
-        <div class="course-card category-{{ course.category|lower|cut:'_' }}"
-             data-bs-toggle="modal"
-             data-bs-target="#courseModal{{ course.id }}"
-             style="cursor:pointer;">
-          <div class="course-card-header">
-            <span class="course-code">{{ course.code }}</span>
-            <span class="course-credits">{{ course.credits }} cr</span>
-          </div>
-          <div class="course-name">
-            {{ course.name }}
-          </div>
-          {% with prereq_count=course.prerequisites.count coreq_count=course.corequisites.count %}
-          {% if prereq_count > 0 or coreq_count > 0 %}
-          <div class="course-prereqs">
-            {% if prereq_count > 0 %}
-            <span class="prereq-dot"></span>
-            {{ prereq_count }} Pre
-            {% endif %}
-            {% if coreq_count > 0 %}
-            <span class="coreq-dot" style="width:8px;height:8px;border-radius:50%;background-color:#9c27b0;flex-shrink:0;box-shadow:0 0 8px #9c27b0;margin-left:0.5rem;"></span>
-            {{ coreq_count }} Co
-            {% endif %}
-          </div>
-          {% endif %}
-          {% endwith %}
-        </div>
-        {% endfor %}
+        <!-- Las tarjetas son renderizadas por roadmap_interactive.js -->
       </div>
       {% endfor %}
     </div>
   </div>
 
-  <!-- Generar modales para TODOS los cursos relacionados (recursivamente) -->
-  {% for option in all_options %}
-    {% include "roadmap/partials/course_modal.html" with course=option enable_nested_modals=True %}
-  {% endfor %}
+  <!-- Modales estáticos para todos los cursos (necesarios para Bootstrap) -->
+  <div id="rm-static-modals">
+    {% for sem in semesters %}
+      {% for course in sem.courses %}
+        {% include "roadmap/partials/course_modal.html" with course=course enable_nested_modals=True %}
+      {% endfor %}
+    {% endfor %}
+    {% for option in all_options %}
+      {% include "roadmap/partials/course_modal.html" with course=option enable_nested_modals=True %}
+    {% endfor %}
+  </div>
 
   {% else %}
   <div class="no-preferences-msg">
@@ -147,6 +114,19 @@
     <a href="{% url 'preferences' %}" class="btn btn-outline-light mt-3">Configurar preferencias</a>
   </div>
   {% endif %}
+
 </div>
+
+<!-- Inyección segura del JSON: se lee desde JS con JSON.parse() -->
+{% if roadmap_json %}
+<script id="roadmap-data-json" type="application/json">
+  {{ roadmap_json|safe }}
+</script>
+{% endif %}
+
+<!-- SortableJS -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<!-- Motor interactivo -->
+<script src="{% static 'roadmap/roadmap_interactive.js' %}"></script>
 
 {% endblock %}

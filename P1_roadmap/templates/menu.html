@@ -12,7 +12,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- CSS de la base -->
     <link rel="stylesheet" href="{% static 'menu.css' %}">
+    <!-- CSS para colores de categorías -->
+    <link rel="stylesheet" href="{% static 'category_colors.css' %}">
     
+    <!-- Scrollbar global para todas las páginas -->
+    <style>
+    ::-webkit-scrollbar       { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f1117; }
+    ::-webkit-scrollbar-thumb { background: #2a2d3a; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3a4a5a; }
+    * { scrollbar-width: thin; scrollbar-color: #2a2d3a #0f1117; }
+    </style>
+
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -20,7 +31,7 @@
     <div class="mobile-header">
         <div class="mobile-header-content">
             <div class="logo-area">
-                <a href="#" class="text-decoration-none text-reset">
+                <a href="{% url 'roadmap' %}" class="text-decoration-none text-reset">
                     <i class="fa-solid fa-graduation-cap"></i>
                     <span>CareerMap</span>
                 </a>
@@ -35,8 +46,10 @@
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
             <div class="logo-area">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <span>CareerMap</span>
+                <a href="{% url 'roadmap' %}" class="text-decoration-none text-reset">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>CareerMap</span>
+                </a>
             </div>
             <button class="close-btn" id="closeMenuBtn">
                 <i class="fas fa-times"></i>
@@ -59,6 +72,18 @@
                     <a class="mobile-nav-link {% if request.resolver_match.url_name == 'roadmap' %}active{% endif %}" href="{% url 'roadmap' %}">
                         <i class="fa-regular fa-map"></i>
                         Mapa Académico
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-link {% if request.resolver_match.url_name == 'track_list' or request.resolver_match.url_name == 'track_professional_list' or request.resolver_match.url_name == 'track_flexible_list' %}active{% endif %}" href="{% url 'track_list' %}">
+                        <i class="fa-solid fa-road"></i>
+                        Trayectorias
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-link {% if request.resolver_match.url_name == 'emphasis_line_list' %}active{% endif %}" href="{% url 'emphasis_line_list' %}">
+                        <i class="fa-solid fa-compass"></i>
+                        Líneas de Énfasis
                     </a>
                 </li>
                 <li class="mobile-nav-item">
@@ -106,7 +131,7 @@
                 <div class="position-fixed d-flex flex-column" style="height: 97vh;">
                     <div class="sidebar-header">
                         <h3 class="mb-5 mt-5">
-                            <a href="#" class="text-decoration-none text-reset">
+                            <a href="{% url 'roadmap' %}" class="text-decoration-none text-reset">
                                 <i class="fa-solid fa-graduation-cap ms-2 me-2"></i>
                                 CareerMap
                             </a>

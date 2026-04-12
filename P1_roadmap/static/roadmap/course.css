@@ -1,35 +1,5 @@
 @import url(specialization.css);
 
-/* ===== COLORES DE BORDE POR CATEGORÍA ===== */
-
-.modal-content.modal-category-basicscience {
-    border-left: 6px solid #4a90e2 !important;
-}
-.modal-content.modal-category-basicengineering {
-    border-left: 6px solid #20c997 !important;
-}
-.modal-content.modal-category-nfi {
-    border-left: 6px solid #fd7e14 !important;
-}
-.modal-content.modal-category-disciplinary {
-    border-left: 6px solid #dc3545 !important;
-}
-.modal-content.modal-category-professionaltrack {
-    border-left: 6px solid #28a745 !important;
-}
-.modal-content.modal-category-flexibletrack {
-    border-left: 6px solid #198754 !important;
-}
-.modal-content.modal-category-practice {
-    border-left: 6px solid #b91c1c !important;
-}
-.modal-content.modal-category-emphasis {
-    border-left: 6px solid #2ecc71 !important;
-}
-.modal-content.modal-category-specialization {
-    border-left: 6px solid #27ae60 !important;
-}
-
 /* Estilos para opciones de cursos paraguas */
 .option-mini-card {
     background-color: #0f1117;
@@ -112,17 +82,6 @@
     background-color: #9c27b0;
     display: inline-block;
 }
-
-/* Colores para las opciones según su categoría */
-.option-card-basic-science { --option-color: #4a90e2; }
-.option-card-basic-engineering { --option-color: #20c997; }
-.option-card-nfi { --option-color: #fd7e14; }
-.option-card-disciplinary { --option-color: #dc3545; }
-.option-card-professional-track { --option-color: #28a745; }
-.option-card-flexible-track { --option-color: #198754; }
-.option-card-practice { --option-color: #b91c1c; }
-.option-card-emphasis { --option-color: #2ecc71; }
-.option-card-specialization { --option-color: #27ae60; }
 
 /* ========== ESTILOS BASE DEL MODAL ========== */
 .modal-content {

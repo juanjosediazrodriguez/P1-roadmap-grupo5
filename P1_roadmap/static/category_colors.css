@@ -1,0 +1,158 @@
+/* ============================================================
+   category-colors.css
+   Fuente única de verdad para colores por categoría.
+   Se importa en menu.html para aplicar globalmente.
+   ============================================================ */
+
+/* ── Variables de color por categoría ────────────────────── */
+:root {
+    --color-basic-science:      #4a90e2;
+    --color-basic-engineering:  #20c997;
+    --color-nfi:                #fd7e14;
+    --color-disciplinary:       #dc3545;
+    --color-professional-track: #28a745;
+    --color-flexible-track:     #198754;
+    --color-practice:           #b91c1c;
+    --color-emphasis:           #2ecc71;
+    --color-specialization:     #27ae60;
+}
+
+/* ── Bordes izquierdos en tarjetas del roadmap ────────────── */
+.course-card.category-basicscience     { border-left-color: var(--color-basic-science); }
+.course-card.category-basicengineering { border-left-color: var(--color-basic-engineering); }
+.course-card.category-nfi              { border-left-color: var(--color-nfi); }
+.course-card.category-disciplinary     { border-left-color: var(--color-disciplinary); }
+.course-card.category-professionaltrack{ border-left-color: var(--color-professional-track); }
+.course-card.category-flexibletrack    { border-left-color: var(--color-flexible-track); }
+.course-card.category-practice         { border-left-color: var(--color-practice); }
+.course-card.category-emphasis         { border-left-color: var(--color-emphasis); }
+.course-card.category-specialization   { border-left-color: var(--color-specialization); }
+
+/* ── Hover en tarjetas del roadmap ────────────────────────── */
+.course-card.category-basicscience:hover {
+    border-color: var(--color-basic-science);
+    box-shadow: 0 6px 16px rgba(74, 144, 226, 0.2);
+}
+.course-card.category-basicengineering:hover {
+    border-color: var(--color-basic-engineering);
+    box-shadow: 0 6px 16px rgba(32, 201, 151, 0.2);
+}
+.course-card.category-nfi:hover {
+    border-color: var(--color-nfi);
+    box-shadow: 0 6px 16px rgba(253, 126, 20, 0.2);
+}
+.course-card.category-disciplinary:hover {
+    border-color: var(--color-disciplinary);
+    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.2);
+}
+.course-card.category-professionaltrack:hover {
+    border-color: var(--color-professional-track);
+    box-shadow: 0 6px 16px rgba(40, 167, 69, 0.2);
+}
+.course-card.category-flexibletrack:hover {
+    border-color: var(--color-flexible-track);
+    box-shadow: 0 6px 16px rgba(25, 135, 84, 0.2);
+}
+.course-card.category-practice:hover {
+    border-color: var(--color-practice);
+    box-shadow: 0 6px 16px rgba(185, 28, 28, 0.2);
+}
+.course-card.category-emphasis:hover {
+    border-color: var(--color-emphasis);
+    box-shadow: 0 6px 16px rgba(46, 204, 113, 0.2);
+}
+.course-card.category-specialization:hover {
+    border-color: var(--color-specialization);
+    box-shadow: 0 6px 16px rgba(39, 174, 96, 0.2);
+}
+
+/* ── Bordes izquierdos en modales de detalle ──────────────── */
+.modal-content.modal-category-basicscience     { border-left: 6px solid var(--color-basic-science) !important; }
+.modal-content.modal-category-basicengineering { border-left: 6px solid var(--color-basic-engineering) !important; }
+.modal-content.modal-category-nfi              { border-left: 6px solid var(--color-nfi) !important; }
+.modal-content.modal-category-disciplinary     { border-left: 6px solid var(--color-disciplinary) !important; }
+.modal-content.modal-category-professionaltrack{ border-left: 6px solid var(--color-professional-track) !important; }
+.modal-content.modal-category-flexibletrack    { border-left: 6px solid var(--color-flexible-track) !important; }
+.modal-content.modal-category-practice         { border-left: 6px solid var(--color-practice) !important; }
+.modal-content.modal-category-emphasis         { border-left: 6px solid var(--color-emphasis) !important; }
+.modal-content.modal-category-specialization   { border-left: 6px solid var(--color-specialization) !important; }
+
+/* ── Bordes en option cards del modal de selección ────────── */
+.rm-option-card.category-basicscience     { border-left-color: var(--color-basic-science); }
+.rm-option-card.category-basicengineering { border-left-color: var(--color-basic-engineering); }
+.rm-option-card.category-nfi              { border-left-color: var(--color-nfi); }
+.rm-option-card.category-disciplinary     { border-left-color: var(--color-disciplinary); }
+.rm-option-card.category-professionaltrack{ border-left-color: var(--color-professional-track); }
+.rm-option-card.category-flexibletrack    { border-left-color: var(--color-flexible-track); }
+.rm-option-card.category-practice         { border-left-color: var(--color-practice); }
+.rm-option-card.category-emphasis         { border-left-color: var(--color-emphasis); }
+.rm-option-card.category-specialization   { border-left-color: var(--color-specialization); }
+
+/* ── Hover en option cards ────────────────────────────────── */
+.rm-option-card.category-basicscience:not(.rm-option-disabled):hover {
+    border-color: var(--color-basic-science);
+    box-shadow: 0 4px 16px rgba(74, 144, 226, 0.2);
+}
+.rm-option-card.category-basicengineering:not(.rm-option-disabled):hover {
+    border-color: var(--color-basic-engineering);
+}
+.rm-option-card.category-nfi:not(.rm-option-disabled):hover {
+    border-color: var(--color-nfi);
+    box-shadow: 0 4px 16px rgba(253, 126, 20, 0.2);
+}
+.rm-option-card.category-disciplinary:not(.rm-option-disabled):hover {
+    border-color: var(--color-disciplinary);
+}
+.rm-option-card.category-professionaltrack:not(.rm-option-disabled):hover {
+    border-color: var(--color-professional-track);
+    box-shadow: 0 4px 16px rgba(40, 167, 69, 0.2);
+}
+.rm-option-card.category-emphasis:not(.rm-option-disabled):hover {
+    border-color: var(--color-emphasis);
+}
+
+/* ── Botón seleccionar según categoría ───────────────────── */
+.rm-option-card.category-nfi .rm-select-btn {
+    border-color: var(--color-nfi);
+    color: var(--color-nfi);
+}
+.rm-option-card.category-nfi .rm-select-btn:hover {
+    background: rgba(253, 126, 20, 0.15);
+}
+.rm-option-card.category-basicscience .rm-select-btn {
+    border-color: var(--color-basic-science);
+    color: var(--color-basic-science);
+}
+.rm-option-card.category-basicscience .rm-select-btn:hover {
+    background: rgba(74, 144, 226, 0.15);
+}
+.rm-option-card.category-professionaltrack .rm-select-btn {
+    border-color: var(--color-professional-track);
+    color: #4ade80;
+}
+.rm-option-card.category-emphasis .rm-select-btn {
+    border-color: var(--color-emphasis);
+    color: var(--color-emphasis);
+}
+
+/* ── Puntos en leyenda ────────────────────────────────────── */
+.legend-color.basic-science      { background-color: var(--color-basic-science); }
+.legend-color.basic-engineering  { background-color: var(--color-basic-engineering); }
+.legend-color.nfi                { background-color: var(--color-nfi); }
+.legend-color.disciplinary       { background-color: var(--color-disciplinary); }
+.legend-color.professional-track { background-color: var(--color-professional-track); }
+.legend-color.flexible-track     { background-color: var(--color-flexible-track); }
+.legend-color.practice           { background-color: var(--color-practice); }
+.legend-color.emphasis           { background-color: var(--color-emphasis); }
+.legend-color.specialization     { background-color: var(--color-specialization); }
+
+/* ── CSS variables para option-mini-card ─────────────────── */
+.option-card-basicscience      { --option-color: var(--color-basic-science); }
+.option-card-basicengineering  { --option-color: var(--color-basic-engineering); }
+.option-card-nfi               { --option-color: var(--color-nfi); }
+.option-card-disciplinary      { --option-color: var(--color-disciplinary); }
+.option-card-professionaltrack { --option-color: var(--color-professional-track); }
+.option-card-flexibletrack     { --option-color: var(--color-flexible-track); }
+.option-card-practice          { --option-color: var(--color-practice); }
+.option-card-emphasis          { --option-color: var(--color-emphasis); }
+.option-card-specialization    { --option-color: var(--color-specialization); }
