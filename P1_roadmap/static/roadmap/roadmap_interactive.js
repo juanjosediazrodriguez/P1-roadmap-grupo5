@@ -32,6 +32,7 @@ function buildInitialState() {
 function saveState() {
     try {
         sessionStorage.setItem(STATE_KEY, JSON.stringify(state));
+        updateAllRemoveBtns()
     } catch (e) {
         console.warn('No se pudo guardar el estado:', e);
     }
@@ -148,6 +149,23 @@ function removeCourseFromSemester(courseId, hintSem) {
     }
 }
 
+function updateAllRemoveBtns() {
+    Object.keys(state.semester_map).map(Number).filter(n => n > 9).forEach(semNum => {
+        const col = getSemesterColumn(semNum);
+        if (col) updateRemoveBtn(col, semNum);
+    });
+}
+
+function getScrollElement() {
+    // El que tiene overflow real es el que tiene scrollWidth > clientWidth
+    const outer = document.querySelector('.roadmap-wrapper-outer');
+    const inner = document.querySelector('.roadmap-wrapper');
+    if (outer && outer.scrollWidth > outer.clientWidth) return outer;
+    if (inner && inner.scrollWidth > inner.clientWidth) return inner;
+    // Fallback: el que tenga overflow-x auto/scroll
+    return outer || inner;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 4. RENDER DE TARJETAS
 // ─────────────────────────────────────────────────────────────────────────────
@@ -232,6 +250,9 @@ function rebuildSemesterColumn(semNum) {
         creditsEl.textContent = `${totalCredits} créditos`;
         creditsEl.classList.toggle('over-limit', totalCredits > 21);
     }
+
+    // Actualizar botón eliminar si es semestre extra
+    if (semNum > 9) updateRemoveBtn(col, semNum);
 }
 
 function buildParentLabelMap() {
@@ -276,11 +297,110 @@ function buildParentLabelMap() {
     return map;
 }
 
+function buildSemesterColumn(semNum) {
+    const col = document.createElement('div');
+    col.className = 'semester-col';
+    col.dataset.semNum = semNum;
+
+    col.innerHTML = `
+        <div class="semester-circle">${semNum}</div>
+        <div class="semester-title">Semestre ${semNum}</div>
+        <div class="semester-credits">0 créditos</div>
+        <button class="rm-remove-semester-btn" data-sem="${semNum}" title="Eliminar semestre" style="display:none;">
+            <i class="fas fa-trash-can"></i>
+        </button>
+    `;
+
+    col.querySelector('.rm-remove-semester-btn').addEventListener('click', () => removeSemester(semNum));
+    return col;
+}
+
+function updateRemoveBtn(col, semNum) {
+    const btn = col.querySelector('.rm-remove-semester-btn');
+    if (!btn) return;
+    const isEmpty = (state.semester_map[String(semNum)] || []).length === 0;
+    btn.style.display = isEmpty ? 'flex' : 'none';
+}
+
 function rebuildAllSemesters() {
-    for (const semNum of Object.keys(state.semester_map)) {
-        rebuildSemesterColumn(parseInt(semNum));
+    const track = document.querySelector('.roadmap-track');
+    // Limpiar botón + si quedó dentro del track por error
+    track.querySelector('.rm-add-semester-col')?.remove();
+    if (!track) return;
+
+    // Para semestres existentes (del template): solo limpiar tarjetas
+    for (const semNum of Object.keys(state.semester_map).map(Number).sort((a, b) => a - b)) {
+        let col = getSemesterColumn(semNum);
+        
+        if (!col) {
+            // Semestre nuevo (> 9): crear columna completa
+            col = buildSemesterColumn(semNum);
+            // Insertar antes del botón +, o al final si no existe
+            const addCol = track.querySelector('.rm-add-semester-col');
+            if (addCol) track.insertBefore(col, addCol);
+            else track.appendChild(col);
+        } else {
+            // Semestre existente: solo actualizar botón eliminar si aplica
+            if (semNum > 9) updateRemoveBtn(col, semNum);
+        }
+
+        // Rellenar tarjetas en todos los casos
+        rebuildSemesterColumn(semNum);
     }
+
+    // Eliminar columnas extra que ya no están en el estado
+    track.querySelectorAll('.semester-col').forEach(col => {
+        const semNum = parseInt(col.dataset.semNum);
+        if (!state.semester_map[String(semNum)]) {
+            col.remove();
+        }
+    });
+
+    // Botón + fuera del track — crearlo si no existe
+    if (!document.querySelector('.rm-add-semester-col')) {
+        let addCol = document.querySelector('.rm-add-semester-col');
+        if (!addCol) {
+            addCol = document.createElement('div');
+            addCol.className = 'rm-add-semester-col';
+            addCol.innerHTML = `
+                <button class="rm-add-semester-btn" title="Agregar semestre">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <span class="rm-add-semester-label">Agregar<br>semestre</span>
+            `;
+            addCol.querySelector('.rm-add-semester-btn').addEventListener('click', addSemester);
+        }
+        // Siempre asegurar que esté al final del track
+        track.appendChild(addCol);
+    }
+
     initSortable();
+}
+
+function getMaxSemester() {
+    return Math.max(...Object.keys(state.semester_map).map(Number));
+}
+
+function addSemester() {
+    const newSem = getMaxSemester() + 1;
+    state.semester_map[String(newSem)] = [];
+    saveState();
+    rebuildAllSemesters();
+    validateAll();
+    // Scrollear hasta el final para mostrar el nuevo semestre
+    const outer = document.querySelector('.roadmap-wrapper-outer') ||
+                  document.querySelector('.roadmap-wrapper');
+    if (outer) setTimeout(() => { outer.scrollLeft = outer.scrollWidth; }, 50);
+}
+
+function removeSemester(semNum) {
+    if (semNum <= 9) return; // Nunca eliminar los primeros 9
+    const list = state.semester_map[String(semNum)];
+    if (!list || list.length > 0) return; // Solo eliminar si está vacío
+    delete state.semester_map[String(semNum)];
+    saveState();
+    rebuildAllSemesters();
+    validateAll();
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -372,7 +492,12 @@ function initSortable() {
             chosenClass: 'course-card--chosen',
             dragClass:   'course-card--drag',
             draggable:   '.course-card',
+            filter:      '.rm-add-semester-col, .rm-add-semester-btn, .rm-add-semester-label',
+            onStart() {
+                document.querySelector('.roadmap-track')?.classList.add('rm-dragging');
+            },
             onEnd(evt) {
+                document.querySelector('.roadmap-track')?.classList.remove('rm-dragging');
                 const courseId = parseInt(evt.item.dataset.courseId);
                 const fromCol  = evt.from.closest('.semester-col');
                 const toCol    = evt.to.closest('.semester-col');
@@ -1036,7 +1161,7 @@ function buildContextBadge(label, name, icon, color, onClick) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 13. BARRA DE SCROLL HORIZONTAL SUPERIOR
+// 13. BARRA DE SCROLL HORIZONTAL SUPERIOR Y BOTONES DE DESPLAZAMIENTO
 // ─────────────────────────────────────────────────────────────────────────────
 
 function initTopScrollbar() {
@@ -1051,8 +1176,109 @@ function initTopScrollbar() {
     outer.appendChild(wrapper);
 }
 
+function initScrollButtons() {
+    if (document.querySelector('.rm-scroll-buttons')) return;
+    
+    const scrollEl = getScrollElement();
+    if (!scrollEl) return;
+
+    const container = document.createElement('div');
+    container.className = 'rm-scroll-buttons';
+    container.innerHTML = `
+        <button class="rm-scroll-btn rm-scroll-btn-left" title="Desplazar izquierda">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="rm-scroll-btn rm-scroll-btn-right" title="Desplazar derecha">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    `;
+
+    // Insertar después del outer (que contiene el wrapper)
+    const outer = document.querySelector('.roadmap-wrapper-outer') ||
+                  document.querySelector('.roadmap-wrapper');
+    outer.after(container);
+
+    const leftBtn  = container.querySelector('.rm-scroll-btn-left');
+    const rightBtn = container.querySelector('.rm-scroll-btn-right');
+    const STEP = 300;
+    let interval = null;
+
+    function doScroll(direction) {
+        const el = getScrollElement();
+        if (el) el.scrollLeft += direction * STEP;
+    }
+
+    function startScroll(direction) {
+        doScroll(direction);
+        interval = setInterval(() => doScroll(direction), 200);
+    }
+
+    function stopScroll() {
+        clearInterval(interval);
+        interval = null;
+    }
+
+    leftBtn.addEventListener('mousedown',  (e) => { e.preventDefault(); startScroll(-1); });
+    rightBtn.addEventListener('mousedown', (e) => { e.preventDefault(); startScroll(1); });
+    document.addEventListener('mouseup',   stopScroll);
+    leftBtn.addEventListener('touchstart',  (e) => { startScroll(-1); e.preventDefault(); }, { passive: false });
+    rightBtn.addEventListener('touchstart', (e) => { startScroll(1);  e.preventDefault(); }, { passive: false });
+    document.addEventListener('touchend',   stopScroll);
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
-// 13. ONBOARDING / AYUDA INICIAL
+// 14. SCROLL AUTOMÁTICO AL ARRASTRAR CURSOS (DRAG & DROP)
+// ─────────────────────────────────────────────────────────────────────────────
+
+function initDragAutoScroll() {
+    const ZONE    = 300;  
+    const MAX_SPD = 50;   
+    let scrollInterval = null;
+
+    function stopAutoScroll() {
+        if (scrollInterval) { clearInterval(scrollInterval); scrollInterval = null; }
+    }
+
+    function startAutoScroll(speed) {
+        stopAutoScroll();
+        scrollInterval = setInterval(() => {
+            const el = getScrollElement();
+            if (el) el.scrollLeft += speed;
+        }, 16);
+    }
+
+    function handleMove(clientX) {
+        const isDragging = !!document.querySelector('.course-card--chosen, .course-card--drag, .sortable-ghost');
+        if (!isDragging) { stopAutoScroll(); return; }
+
+        // Usar el ancho TOTAL de la ventana, no solo el contenedor
+        const screenWidth = window.innerWidth;
+        const distRight   = screenWidth - clientX;
+        const distLeft    = clientX;
+
+        if (distRight < ZONE) {
+            startAutoScroll(Math.round(MAX_SPD * (1 - distRight / ZONE)));
+        } else if (distLeft < ZONE) {
+            startAutoScroll(-Math.round(MAX_SPD * (1 - distLeft / ZONE)));
+        } else {
+            stopAutoScroll();
+        }
+    }
+
+    document.addEventListener('dragover',     (e) => handleMove(e.clientX));
+    document.addEventListener('pointermove',  (e) => handleMove(e.clientX));
+    document.addEventListener('touchmove',    (e) => {
+        if (e.touches[0]) handleMove(e.touches[0].clientX);
+    }, { passive: true });
+
+    document.addEventListener('dragend',       stopAutoScroll);
+    document.addEventListener('pointerup',     stopAutoScroll);
+    document.addEventListener('pointercancel', stopAutoScroll);
+    document.addEventListener('touchend',      stopAutoScroll);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 15. ONBOARDING / AYUDA INICIAL
 // ─────────────────────────────────────────────────────────────────────────────
 
 function initOnboarding() {
@@ -1170,7 +1396,7 @@ function initOnboarding() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 15. INICIALIZACIÓN
+// 16. INICIALIZACIÓN
 // ─────────────────────────────────────────────────────────────────────────────
 
 function init() {
@@ -1222,6 +1448,8 @@ function init() {
     updateContextBar();
     validateAll();
     initTopScrollbar();
+    initScrollButtons();
+    initDragAutoScroll();
     initOnboarding();
 }
 
