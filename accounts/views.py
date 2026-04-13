@@ -68,3 +68,12 @@ def save_preferences(request):
         return redirect('preferences')
     
     return redirect('preferences')
+
+def delete_preferences(request):
+    if request.method == 'POST':
+        preference = get_or_create_global_preference()
+        preference.interests.clear()
+        preference.career_goal = None
+        preference.save()
+        messages.success(request, 'Preferencias eliminadas exitosamente')
+    return redirect('preferences')
