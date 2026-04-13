@@ -364,8 +364,21 @@
 }
 
 @media (max-width: 767px) {
-    .modal-body {
-        padding: 1.5rem;
+    .modal-body > .d-flex {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .course-code-badge {
+        font-size: 0.95rem;
+        padding: 0.2rem 0.75rem;
+    }
+
+    .semester-badge {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.75rem;
+        white-space: nowrap;
     }
     
     .course-title {
