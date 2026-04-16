@@ -364,32 +364,59 @@
     display: block;
 }
 
-/* ========== MEDIA QUERIES ========== */
-@media (max-width: 767px) {
-    /* Mostrar header móvil y ocultar sidebar desktop */
+/* ========== RESPONSIVE ========== */
+
+/* Móvil pequeño (< 576px) */
+@media (max-width: 575px) {
     .mobile-header {
         display: block;
+        padding: 0.75rem 1rem;
     }
-    
+
+    .mobile-header .logo-area span {
+        font-size: 1.25rem;
+    }
+
     .sidebar {
         display: none !important;
     }
-    
-    /* Ajustar contenido principal */
+
+    .main-content {
+        padding: 0.75rem;
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .container-fluid { padding: 0; }
+    .row { margin: 0; }
+
+    .col-md-9, .col-lg-10 {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+}
+
+/* Móvil (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .mobile-header {
+        display: block;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
     .main-content {
         padding: 1rem;
         margin-left: 0 !important;
         width: 100% !important;
     }
-    
-    .container-fluid {
-        padding: 0;
-    }
-    
-    .row {
-        margin: 0;
-    }
-    
+
+    .container-fluid { padding: 0; }
+    .row { margin: 0; }
+
     .col-md-9, .col-lg-10 {
         width: 100% !important;
         flex: 0 0 100% !important;
@@ -397,15 +424,42 @@
     }
 }
 
-/* Ajuste para tablets (entre 768px y 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
+/* Tablet y Desktop (768px - 1460px) */
+@media (min-width: 768px) and (max-width: 1460px) {
     .sidebar {
-        flex: 0 0 25% !important;
-        max-width: 25% !important;
+        flex: 0 0 220px !important;
+        max-width: 220px !important;
+        min-width: 220px !important;
     }
-    
+
+    .sidebar .position-fixed {
+        width: 220px !important;
+    }
+
     .main-content {
-        flex: 0 0 75% !important;
-        max-width: 75% !important;
+        flex: 1 !important;
+        max-width: calc(100% - 220px) !important;
+        padding: 1.25rem;
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 0.65rem 0.75rem;
+    }
+
+    .nav-link i {
+        font-size: 1rem;
+        width: 20px;
+    }
+
+    .sidebar-header h3 a {
+        font-size: 1.4rem;
+    }
+}
+
+/* Desktop grande (> 1460px) — sidebar sin restricciones */
+@media (min-width: 1461px) {
+    .main-content {
+        padding: 2rem;
     }
 }

@@ -425,7 +425,7 @@
       "description": "Estilos arquitectónicos, patrones y diseño de alto nivel de sistemas.",
       "semester_suggested": 5,
       "language": "ES",
-      "category": "BASIC_SCIENCE",
+      "category": "DISCIPLINARY",
       "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
@@ -555,7 +555,7 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [20],
+      "prerequisites": [27],
       "corequisites": []
     }
   },
@@ -571,7 +571,7 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [20],
+      "prerequisites": [27],
       "corequisites": []
     }
   },
@@ -587,7 +587,7 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [20],
+      "prerequisites": [35, 36],
       "corequisites": []
     }
   },
@@ -603,8 +603,8 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [35, 36, 37],
-      "corequisites": []
+      "prerequisites": [],
+      "corequisites": [37]
     }
   },
   {
@@ -3324,7 +3324,7 @@
       "name": "Trayectoria Profesionalizante 2",
       "credits": 6,
       "description": "Segunda parte de la trayectoria profesionalizante.",
-      "semester_suggested": 7,
+      "semester_suggested": 6,
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": true,

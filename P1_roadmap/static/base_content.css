@@ -153,16 +153,44 @@ body {
     gap: 1.5rem;
 }
 
-@media (max-width: 768px) {
-    .grid-2 {
-        grid-template-columns: 1fr;
-    }
-    
+/* ── Responsive ───────────────────────────────────────────── */
+
+/* ── Tablet ───────────────────────────────────────────────── */
+@media (max-width: 991px) {
     .page-title {
         font-size: 2rem;
     }
-    
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* ── Móvil ────────────────────────────────────────────────── */
+@media (max-width: 575px) {
+    .page-title {
+        font-size: 1.6rem;
+    }
+
+    .page-subtitle {
+        font-size: 0.95rem;
+    }
+
     .content-container {
+        padding: 1rem 0.75rem;
+    }
+
+    .card-body {
         padding: 1rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
     }
 }

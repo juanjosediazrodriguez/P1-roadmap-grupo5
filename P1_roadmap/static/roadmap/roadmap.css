@@ -1,86 +1,3 @@
-/* ===== COLORES POR CATEGORÍA ===== */
-
-/* Ciencias Básicas */
-.course-card.category-basicscience {
-    border-left-color: #4a90e2;
-}
-.course-card.category-basicscience:hover {
-    border-color: #4a90e2;
-    box-shadow: 0 6px 16px rgba(74, 144, 226, 0.2);
-}
-
-/* Básicas en Ingeniería */
-.course-card.category-basicengineering {
-    border-left-color: #20c997;
-}
-.course-card.category-basicengineering:hover {
-    border-color: #20c997;
-    box-shadow: 0 6px 16px rgba(32, 201, 151, 0.2);
-}
-
-/* Trayectoria Profesionalizante */
-.course-card.category-professionaltrack {
-    border-left-color: #28a745;
-}
-.course-card.category-professionaltrack:hover {
-    border-color: #28a745;
-    box-shadow: 0 6px 16px rgba(40, 167, 69, 0.2);
-}
-
-/* Trayectoria Flexible */
-.course-card.category-flexibletrack {
-    border-left-color: #198754;
-}
-.course-card.category-flexibletrack:hover {
-    border-color: #198754;
-    box-shadow: 0 6px 16px rgba(25, 135, 84, 0.2);
-}
-
-/* NFI */
-.course-card.category-nfi {
-    border-left-color: #fd7e14;
-}
-.course-card.category-nfi:hover {
-    border-color: #fd7e14;
-    box-shadow: 0 6px 16px rgba(253, 126, 20, 0.2);
-}
-
-/* Disciplinar */
-.course-card.category-disciplinary {
-    border-left-color: #dc3545;
-}
-.course-card.category-disciplinary:hover {
-    border-color: #dc3545;
-    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.2);
-}
-
-/* Práctica */
-.course-card.category-practice {
-    border-left-color: #b91c1c;
-}
-.course-card.category-practice:hover {
-    border-color: #b91c1c;
-    box-shadow: 0 6px 16px rgba(185, 28, 28, 0.2);
-}
-
-/* Énfasis */
-.course-card.category-emphasis {
-    border-left-color: #2ecc71;
-}
-.course-card.category-emphasis:hover {
-    border-color: #2ecc71;
-    box-shadow: 0 6px 16px rgba(46, 204, 113, 0.2);
-}
-
-/* Especialización */
-.course-card.category-specialization {
-    border-left-color: #27ae60;
-}
-.course-card.category-specialization:hover {
-    border-color: #27ae60;
-    box-shadow: 0 6px 16px rgba(39, 174, 96, 0.2);
-}
-
 /* ===== CONTENEDOR DE LEYENDAS ===== */
 .legend-wrapper {
     display: grid;
@@ -117,16 +34,6 @@
     border-radius: 3px;
     flex-shrink: 0;
 }
-
-.legend-color.basic-science { background-color: #4a90e2; }
-.legend-color.basic-engineering { background-color: #20c997; }
-.legend-color.nfi { background-color: #fd7e14; }
-.legend-color.disciplinary { background-color: #dc3545; }
-.legend-color.professional-track { background-color: #28a745; }
-.legend-color.flexible-track { background-color: #198754; }
-.legend-color.practice { background-color: #b91c1c; }
-.legend-color.emphasis { background-color: #2ecc71; }
-.legend-color.specialization { background-color: #27ae60; }
 
 /* Leyenda de requisitos - misma altura que categorías */
 .requirements-legend {
@@ -167,44 +74,16 @@
     box-shadow: 0 0 4px #9c27b0;
 }
 
-/* Responsive: en tablets, mantiene altura pero cambia layout */
-@media (max-width: 768px) {
-    .legend-wrapper {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .category-legend {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
-        padding: 1rem;
-    }
-    
-    .requirements-legend {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1.5rem;
-        padding: 1rem;
-    }
-}
-
-/* En móviles pequeños */
-@media (max-width: 480px) {
-    .category-legend {
-        grid-template-columns: 1fr;
-    }
-    
-    .requirements-legend {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-    }
-}
-
 /* ===== ESTILOS EXISTENTES ===== */
 .roadmap-wrapper {
     overflow-x: auto;
     padding-bottom: 2rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+
+    /* Mostrar scrollbar siempre visible (no solo al hover) */
+    scrollbar-width: thin;
+    scrollbar-color: #2a2d3a #1a1d27;
 }
 
 .roadmap-track {
@@ -380,28 +259,149 @@
     margin-bottom: 1.5rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ── Responsive ───────────────────────────────────────────── */
+
+/* ── Tablet (768px - 991px) ───────────────────────────────── */
+@media (max-width: 991px) {
+    .legend-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .category-legend {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .requirements-legend {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .legend-item {
+        font-size: 0.8rem;
+    }
+
     .semester-col {
         min-width: 200px;
         max-width: 220px;
     }
-    
+
     .course-card {
-        padding: 0.75rem;
+        padding: 0.85rem;
     }
-    
+
     .course-name {
         font-size: 0.9rem;
     }
-    
-    .category-legend,
-    .requirements-legend {
-        flex-wrap: wrap;
+}
+
+/* ── Móvil (< 576px) ──────────────────────────────────────── */
+@media (max-width: 575px) {
+    .legend-wrapper {
+        grid-template-columns: 1fr;
         gap: 0.75rem;
+        margin-bottom: 1.25rem;
     }
-    
+
+    .category-legend {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem 0.75rem;
+        padding: 0.75rem;
+    }
+
+    .requirements-legend {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.25rem;
+        padding: 0.75rem;
+    }
+
     .legend-item {
         font-size: 0.75rem;
+    }
+
+    .course-card-header {
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+
+    .course-code {
+        max-width: 65%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* Roadmap horizontal: columnas más compactas */
+    .semester-col {
+        min-width: 170px;
+        max-width: 185px;
+    }
+
+    .semester-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .semester-title {
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+    }
+
+    .semester-credits {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .course-card {
+        padding: 0.65rem 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .course-code {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.4rem;
+    }
+
+    .course-credits {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.4rem;
+    }
+
+    .course-name {
+        font-size: 0.82rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .course-prereqs {
+        font-size: 0.72rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .roadmap-track {
+        gap: 1rem;
+        padding: 0.75rem 0.25rem;
+    }
+}
+
+/* ── Muy pequeño (< 400px) ────────────────────────────────── */
+@media (max-width: 399px) {
+    .semester-col {
+        min-width: 150px;
+        max-width: 165px;
+    }
+
+    .course-card {
+        padding: 0.55rem 0.65rem;
+    }
+
+    .course-name {
+        font-size: 0.78rem;
     }
 }

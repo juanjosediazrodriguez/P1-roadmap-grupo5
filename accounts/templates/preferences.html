@@ -62,6 +62,7 @@
                     <i class="fas fa-save me-2"></i>Guardar Preferencias
                 </button>
             </form>
+
         </div>
 
         <!-- Panel derecho con dos secciones -->
@@ -101,6 +102,13 @@
                             </div>
                         </div>
                         {% endif %}
+
+                        <form method="POST" action="{% url 'delete_preferences' %}" style="margin-top: 1rem;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-delete-preferences">
+                                <i class="fas fa-trash me-2"></i>Eliminar preferencias
+                            </button>
+                        </form>
                     </div>
                 {% else %}
                     <div class="empty-state">

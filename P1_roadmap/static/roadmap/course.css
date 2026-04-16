@@ -1,35 +1,5 @@
 @import url(specialization.css);
 
-/* ===== COLORES DE BORDE POR CATEGORÍA ===== */
-
-.modal-content.modal-category-basicscience {
-    border-left: 6px solid #4a90e2 !important;
-}
-.modal-content.modal-category-basicengineering {
-    border-left: 6px solid #20c997 !important;
-}
-.modal-content.modal-category-nfi {
-    border-left: 6px solid #fd7e14 !important;
-}
-.modal-content.modal-category-disciplinary {
-    border-left: 6px solid #dc3545 !important;
-}
-.modal-content.modal-category-professionaltrack {
-    border-left: 6px solid #28a745 !important;
-}
-.modal-content.modal-category-flexibletrack {
-    border-left: 6px solid #198754 !important;
-}
-.modal-content.modal-category-practice {
-    border-left: 6px solid #b91c1c !important;
-}
-.modal-content.modal-category-emphasis {
-    border-left: 6px solid #2ecc71 !important;
-}
-.modal-content.modal-category-specialization {
-    border-left: 6px solid #27ae60 !important;
-}
-
 /* Estilos para opciones de cursos paraguas */
 .option-mini-card {
     background-color: #0f1117;
@@ -113,17 +83,6 @@
     display: inline-block;
 }
 
-/* Colores para las opciones según su categoría */
-.option-card-basic-science { --option-color: #4a90e2; }
-.option-card-basic-engineering { --option-color: #20c997; }
-.option-card-nfi { --option-color: #fd7e14; }
-.option-card-disciplinary { --option-color: #dc3545; }
-.option-card-professional-track { --option-color: #28a745; }
-.option-card-flexible-track { --option-color: #198754; }
-.option-card-practice { --option-color: #b91c1c; }
-.option-card-emphasis { --option-color: #2ecc71; }
-.option-card-specialization { --option-color: #27ae60; }
-
 /* ========== ESTILOS BASE DEL MODAL ========== */
 .modal-content {
     background-color: #1a1d27 !important;
@@ -144,13 +103,13 @@
 
 /* ========== BADGES Y ETIQUETAS ========== */
 .course-code-badge {
-    background-color: #1a3b5c;
-    color: #b0d4ff;
+    background-color: #2a2d3a;
+    color: #8f9bb3;
     font-weight: 600;
     font-size: 1.2rem;
     padding: 0.25rem 1rem;
     border-radius: 10px;
-    border: 1px solid #2d5a82;
+    border: 1px solid #3a3d4a;
 }
 
 .semester-badge {
@@ -405,8 +364,21 @@
 }
 
 @media (max-width: 767px) {
-    .modal-body {
-        padding: 1.5rem;
+    .modal-body > .d-flex {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .course-code-badge {
+        font-size: 0.95rem;
+        padding: 0.2rem 0.75rem;
+    }
+
+    .semester-badge {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.75rem;
+        white-space: nowrap;
     }
     
     .course-title {
