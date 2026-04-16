@@ -3,48 +3,32 @@
     "model": "roadmap.specialization",
     "pk": 1,
     "fields": {
-      "name": "Desarrollo de software",
-      "description": "La especializaci¾n en Desarrollo de Software se enfoca en el dise±o, construcci¾n, prueba y mantenimiento de aplicaciones y sistemas inform¾ticos que resuelven problemas reales de usuarios y empresas. Esta ßrea combina l¾gica, programaci¾n y buenas prßcticas de ingenierÝa para crear soluciones eficientes, seguras y escalables."
+      "name": "Desarrollo de Software",
+      "description": "La especialización en Desarrollo de Software se enfoca en el diseño, construcción, prueba y mantenimiento de aplicaciones y sistemas informáticos que resuelven problemas reales de usuarios y empresas. Esta área combina lógica, programación y buenas prácticas de ingeniería para crear soluciones eficientes, seguras y escalables."
     }
   },
   {
     "model": "roadmap.specialization",
     "pk": 2,
     "fields": {
-      "name": "Ciberseguridad",
-      "description": "La especializaci¾n en Ciberseguridad se centra en la protecci¾n de sistemas informßticos, redes y datos frente a ataques, accesos no autorizados y fallos de seguridad. Su objetivo principal es garantizar la confidencialidad, integridad y disponibilidad de la informaci¾n en entornos digitales."
+      "name": "Sistemas de Información",
+      "description": "La especialización en Sistemas de Información se centra en la gestión estratégica de la tecnología en las organizaciones, integrando procesos de negocio con soluciones tecnológicas para optimizar la toma de decisiones. Combina conocimientos de gestión empresarial, arquitectura de TI y análisis de datos para transformar digitalmente las organizaciones."
     }
   },
   {
     "model": "roadmap.specialization",
     "pk": 3,
     "fields": {
-      "name": "Data Engineer",
-      "description": "La especializaci¾n en IngenierÝa de Datos se enfoca en el dise±o, construcci¾n y mantenimiento de infraestructuras que permiten recolectar, almacenar, procesar y transformar grandes vol·menes de datos de manera eficiente y segura."
+      "name": "Inteligencia Artificial",
+      "description": "La especialización en Inteligencia Artificial se enfoca en el desarrollo de sistemas capaces de realizar tareas que requieren inteligencia humana, como el aprendizaje, razonamiento, percepción y procesamiento del lenguaje natural. Los estudiantes adquieren habilidades en machine learning, deep learning, visión por computador y procesamiento de lenguaje natural para crear soluciones inteligentes e innovadoras."
     }
   },
   {
     "model": "roadmap.specialization",
     "pk": 4,
     "fields": {
-      "name": "Data Science",
-      "description": "La especializaci¾n en Ciencia de Datos se enfoca en el anßlisis y la interpretaci¾n de grandes vol·menes de datos para descubrir patrones, tendencias y generar conocimiento ·til para la toma de decisiones."
-    }
-  },
-  {
-    "model": "roadmap.specialization",
-    "pk": 5,
-    "fields": {
-      "name": "Data Analytics",
-      "description": "La especializaci¾n en Data Analytics se enfoca en el estudio y anßlisis de datos para obtener informaci¾n ·til que permita comprender lo que estß ocurriendo en una organizaci¾n y apoyar la toma de decisiones."
-    }
-  },
-  {
-    "model": "roadmap.specialization",
-    "pk": 6,
-    "fields": {
-      "name": "Machine Learning",
-      "description": "La especializaci¾n en Machine Learning se enfoca en el desarrollo de sistemas y modelos capaces de aprender a partir de datos y mejorar su desempe±o sin ser programados de forma explÝcita."
+      "name": "Ciberseguridad",
+      "description": "La especialización en Ciberseguridad se centra en la protección de sistemas informáticos, redes y datos frente a ataques, accesos no autorizados y fallos de seguridad. Los profesionales de esta área garantizan la confidencialidad, integridad y disponibilidad de la información, implementando estrategias de prevención, detección y respuesta ante incidentes de seguridad."
     }
   }
 ]

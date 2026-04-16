@@ -128,6 +128,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/roadmap/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'P1_roadmap', 'static'), 
 ]

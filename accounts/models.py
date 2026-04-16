@@ -1,6 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    bio = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Perfil de {self.user.username}"
+
+
 class Interest(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
@@ -11,19 +20,6 @@ class Interest(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class Technology(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    category = models.CharField(max_length=50, blank=True, null=True)
-    icon = models.CharField(max_length=50, default='fa-code')
-
-    class Meta:
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
-
 
 class CareerGoal(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -38,9 +34,14 @@ class CareerGoal(models.Model):
 
 
 class Preference(models.Model):
-    # Solo UNA preferencia global (por eso singleton)
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='preference'
+    )
     interests = models.ManyToManyField(Interest, blank=True, related_name='preferences')
-    technologies = models.ManyToManyField(Technology, blank=True, related_name='preferences')
     career_goal = models.ForeignKey(
         CareerGoal,
         on_delete=models.SET_NULL,

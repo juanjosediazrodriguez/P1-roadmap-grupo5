@@ -3,15 +3,14 @@
     "model": "roadmap.course",
     "pk": 1,
     "fields": {
-      "code": "ST1605",
-      "name": "Procesos Modernos de Desarrollo de Software",
-      "credits": 2,
-      "description": "Explora diversas metodologÝas que permiten desarrollar software de calidad, con plazos y costos predecibles. Aprenderßs a seleccionar procesos adecuados seg·n el tipo de soluci¾n. Esta asignatura proporciona una base s¾lida para liderar proyectos de desarrollo con enfoque estructurado, adaptable y eficiente.",
+      "code": "BU0011",
+      "name": "Bienestar Universitario",
+      "credits": 1,
+      "description": "Curso institucional que promueve el bienestar y la adaptación a la vida universitaria.",
       "semester_suggested": 1,
       "language": "ES",
-      "specializations": [
-        1
-      ],
+      "category": "NFI",
+      "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
     }
@@ -20,15 +19,14 @@
     "model": "roadmap.course",
     "pk": 2,
     "fields": {
-      "code": "ST1606",
-      "name": "Integraci¾n y Entrega Continua de Software",
-      "credits": 2,
-      "description": "Conoce c¾mo garantizar la integridad de los artefactos generados durante el desarrollo, a travÚs de buenas prßcticas de configuraci¾n, integraci¾n y despliegue. Esta asignatura te prepara para implementar procesos automatizados que permiten entregar software de forma ßgil, confiable y alineada con las necesidades del usuario final.",
+      "code": "CI1001",
+      "name": "Expresión Gráfica",
+      "credits": 3,
+      "description": "Fundamentos de representación gráfica y visualización para ingeniería.",
       "semester_suggested": 1,
       "language": "ES",
-      "specializations": [
-        1
-      ],
+      "category": "BASIC_ENGINEERING",
+      "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
     }
@@ -37,15 +35,14 @@
     "model": "roadmap.course",
     "pk": 3,
     "fields": {
-      "code": "ST1607",
-      "name": "Arquitecturas Avanzadas de Software",
-      "credits": 2,
-      "description": "Adquiere conocimientos clave sobre dise±o y evaluaci¾n de arquitecturas de software, tradicionales y modernas. Estudiarßs los principales patrones, procesos y criterios de calidad que permiten construir sistemas escalables, mantenibles y alineados con los objetivos del negocio.",
+      "code": "NM1001",
+      "name": "Cálculo 1",
+      "credits": 3,
+      "description": "Límites, derivadas y aplicaciones. Fundamentos del cálculo diferencial.",
       "semester_suggested": 1,
       "language": "ES",
-      "specializations": [
-        1
-      ],
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
     }
@@ -54,15 +51,14 @@
     "model": "roadmap.course",
     "pk": 4,
     "fields": {
-      "code": "ST1608",
-      "name": "Desarrollo de Sistemas Seguros",
-      "credits": 2,
-      "description": "Aprende a integrar principios y buenas prßcticas de seguridad desde las etapas tempranas del ciclo de vida del software. Esta asignatura te prepara para construir soluciones robustas que protejan los datos, garanticen la disponibilidad del sistema y reduzcan los riesgos frente a amenazas emergentes.",
+      "code": "NM1008",
+      "name": "Matemáticas para la Computación",
+      "credits": 3,
+      "description": "Lógica matemática, conjuntos y fundamentos discretos para ciencias de la computación.",
       "semester_suggested": 1,
       "language": "ES",
-      "specializations": [
-        1
-      ],
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
     }
@@ -71,15 +67,14 @@
     "model": "roadmap.course",
     "pk": 5,
     "fields": {
-      "code": "ST1609",
-      "name": "Electiva I ┴rea Computacional Bßsica",
-      "credits": 2,
-      "description": "Podrßs elegir entre las siguientes asignaturas:\r\n- Aprendizaje de Mßquina Aplicado \r\n- Estrategias de Innovaci¾n en Ecosistemas Digitales\r\n- Dise±o de la Experiencia de Usuario\r\n\r\nNota: La apertura de las asignaturas puede variar seg·n la disponibilidad acadÚmica.",
+      "code": "FH1001",
+      "name": "Ciudadanía y Democracia",
+      "credits": 3,
+      "description": "Reflexión sobre los fundamentos de la ciudadanía y la participación democrática.",
       "semester_suggested": 1,
       "language": "ES",
-      "specializations": [
-        1
-      ],
+      "category": "NFI",
+      "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
     }
@@ -88,15 +83,14 @@
     "model": "roadmap.course",
     "pk": 6,
     "fields": {
-      "code": "ST1610",
-      "name": "Electiva II ┴rea Computacional Bßsica",
-      "credits": 2,
-      "description": "Podrßs elegir entre las siguientes asignaturas:\r\n- Aprendizaje de Mßquina Aplicado \r\n- Estrategias de Innovaci¾n en Ecosistemas Digitales\r\n- Dise±o de la Experiencia de Usuario\r\n\r\nNota: La apertura de las asignaturas puede variar seg·n la disponibilidad acadÚmica.",
+      "code": "FH1037",
+      "name": "Pensamiento Computacional",
+      "credits": 3,
+      "description": "Introducción al pensamiento algorítmico y resolución de problemas con computación.",
       "semester_suggested": 1,
       "language": "ES",
-      "specializations": [
-        1
-      ],
+      "category": "NFI",
+      "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
     }
@@ -105,15 +99,14 @@
     "model": "roadmap.course",
     "pk": 7,
     "fields": {
-      "code": "ST1704",
-      "name": "Industrializaci¾n del Desarrollo de Software",
-      "credits": 2,
-      "description": "Descubre c¾mo pasar de un modelo artesanal de desarrollo a una producci¾n estructurada y escalable. Conocerßs enfoques como la ingenierÝa de lÝneas de productos de software, que permiten optimizar recursos y aumentar la calidad en entornos empresariales.",
-      "semester_suggested": 2,
+      "code": "CI1002",
+      "name": "Proyecto Escuela",
+      "credits": 3,
+      "description": "Proyecto integrador de primer año que introduce a la metodología de proyectos.",
+      "semester_suggested": 1,
       "language": "ES",
-      "specializations": [
-        1
-      ],
+      "category": "BASIC_ENGINEERING",
+      "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
     }
@@ -122,16 +115,15 @@
     "model": "roadmap.course",
     "pk": 8,
     "fields": {
-      "code": "ST1705",
-      "name": "IngenierÝa de Sistemas Auto-Adaptables",
-      "credits": 2,
-      "description": "Profundiza en el dise±o de sistemas que responden de manera aut¾noma a cambios del entorno. Aprenderßs a crear software capaz de auto-configurarse, garantizando estabilidad y continuidad operativa en contextos dinßmicos.",
+      "code": "NM1002",
+      "name": "Cálculo 2",
+      "credits": 3,
+      "description": "Integrales, técnicas de integración y aplicaciones.",
       "semester_suggested": 2,
       "language": "ES",
-      "specializations": [
-        1
-      ],
-      "prerequisites": [],
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [3],
       "corequisites": []
     }
   },
@@ -139,15 +131,14 @@
     "model": "roadmap.course",
     "pk": 9,
     "fields": {
-      "code": "ST1706",
-      "name": "Arquitecturas Evolutivas de Software",
-      "credits": 2,
-      "description": "Explora c¾mo dise±ar arquitecturas que se transforman con el tiempo, manteniendo su rendimiento y calidad. Analizarßs desafÝos como la deuda tÚcnica, la escalabilidad y la sostenibilidad de los sistemas, preparando soluciones flexibles y duraderas en contextos complejos y cambiantes.",
+      "code": "NM1003",
+      "name": "Álgebra Lineal",
+      "credits": 3,
+      "description": "Vectores, matrices, espacios vectoriales y transformaciones lineales.",
       "semester_suggested": 2,
       "language": "ES",
-      "specializations": [
-        1
-      ],
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
     }
@@ -156,16 +147,15 @@
     "model": "roadmap.course",
     "pk": 10,
     "fields": {
-      "code": "ST1707",
-      "name": "T¾picos Avanzados en IngenierÝa de Software",
-      "credits": 2,
-      "description": "Mantente al dÝa con las tendencias relevantes que estßn redefiniendo el desarrollo de software. Esta asignatura ofrece un espacio para explorar tecnologÝas emergentes, comprender su impacto en la industria y anticipar los cambios que marcarßn el futuro de la profesi¾n.",
+      "code": "NC1001",
+      "name": "Física 1",
+      "credits": 3,
+      "description": "Mecánica clásica: cinemática, dinámica, leyes de Newton y ondas mecánicas.",
       "semester_suggested": 2,
       "language": "ES",
-      "specializations": [
-        1
-      ],
-      "prerequisites": [],
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [3],
       "corequisites": []
     }
   },
@@ -173,16 +163,15 @@
     "model": "roadmap.course",
     "pk": 11,
     "fields": {
-      "code": "ST1708",
-      "name": "Electiva I ┴rea Computacional Avanzada",
-      "credits": 2,
-      "description": "Podrßs elegir entre las siguientes asignaturas:\r\n- Proceso de Dise±o y Desarrollo de Nuevos Productos\r\n- Computaci¾n en Nube\r\n- IngenierÝa de Sistemas Distribuidos\r\n\r\nNota: La apertura de las asignaturas puede variar seg·n la disponibilidad acadÚmica",
+      "code": "SI1001",
+      "name": "Teoría de la Computación",
+      "credits": 3,
+      "description": "Fundamentos teóricos de la computación y matemáticas discretas",
       "semester_suggested": 2,
       "language": "ES",
-      "specializations": [
-        1
-      ],
-      "prerequisites": [],
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [4],
       "corequisites": []
     }
   },
@@ -190,16 +179,15 @@
     "model": "roadmap.course",
     "pk": 12,
     "fields": {
-      "code": "ST1709",
-      "name": "Electiva II ┴rea Computacional Avanzada",
-      "credits": 2,
-      "description": "Podrßs elegir entre las siguientes asignaturas:\r\n- Proceso de Dise±o y Desarrollo de Nuevos Productos\r\n- Computaci¾n en Nube\r\n- IngenierÝa de Sistemas Distribuidos\r\n\r\nNota: La apertura de las asignaturas puede variar seg·n la disponibilidad acadÚmica.",
+      "code": "SI1002",
+      "name": "Lenguajes y Paradigmas de Computación",
+      "credits": 3,
+      "description": "Estudio de diferentes paradigmas de programación y lenguajes asociados.",
       "semester_suggested": 2,
       "language": "ES",
-      "specializations": [
-        1
-      ],
-      "prerequisites": [],
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [6],
       "corequisites": []
     }
   },
@@ -207,16 +195,15 @@
     "model": "roadmap.course",
     "pk": 13,
     "fields": {
-      "code": "ST1805",
-      "name": "Introducci¾n a la ciberseguridad",
-      "credits": 2,
-      "description": "Curso introductorio que aborda los fundamentos de la ciberseguridad, incluyendo principios de confidencialidad, integridad y disponibilidad, tipos de amenazas y vulnerabilidades, y buenas prßcticas para la protecci¾n bßsica de sistemas, redes y aplicaciones en entornos digitales.",
-      "semester_suggested": 1,
+      "code": "NM2001",
+      "name": "Cálculo 3",
+      "credits": 3,
+      "description": "Cálculo multivariable: derivadas parciales, integrales múltiples y aplicaciones.",
+      "semester_suggested": 3,
       "language": "ES",
-      "specializations": [
-        2
-      ],
-      "prerequisites": [],
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [8, 9],
       "corequisites": []
     }
   },
@@ -224,16 +211,15 @@
     "model": "roadmap.course",
     "pk": 14,
     "fields": {
-      "code": "ST1806",
-      "name": "Sistemas de Detecci¾n y Prevenci¾n de Intrusos",
-      "credits": 2,
-      "description": "Curso orientado al estudio de sistemas IDS e IPS, sus arquitecturas y mÚtodos de detecci¾n basados en firmas y anomalÝas, asÝ como el anßlisis de eventos de seguridad y la respuesta ante intrusiones en infraestructuras tecnol¾gicas.",
-      "semester_suggested": 2,
+      "code": "NM2002",
+      "name": "Probabilidad y Estadística",
+      "credits": 3,
+      "description": "Fundamentos de probabilidad, variables aleatorias y estadística descriptiva.",
+      "semester_suggested": 3,
       "language": "ES",
-      "specializations": [
-        2
-      ],
-      "prerequisites": [],
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [8],
       "corequisites": []
     }
   },
@@ -241,18 +227,15 @@
     "model": "roadmap.course",
     "pk": 15,
     "fields": {
-      "code": "SI7008",
-      "name": "Fundamentos en Ciencias de Datos",
-      "credits": 2,
-      "description": "Curso que introduce los conceptos bßsicos de la ciencia de datos, incluyendo recolecci¾n, limpieza y anßlisis de datos, estadÝstica descriptiva, visualizaci¾n y uso de herramientas para extraer informaci¾n relevante que apoye la toma de decisiones.",
-      "semester_suggested": 1,
+      "code": "NC2001",
+      "name": "Física 2",
+      "credits": 3,
+      "description": "Electricidad, magnetismo y fundamentos de circuitos.",
+      "semester_suggested": 4,
       "language": "ES",
-      "specializations": [
-        5,
-        3,
-        4
-      ],
-      "prerequisites": [],
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [10],
       "corequisites": []
     }
   },
@@ -260,16 +243,15 @@
     "model": "roadmap.course",
     "pk": 16,
     "fields": {
-      "code": "SI7012",
-      "name": "Sistemas de Aprendizaje Automßtico",
-      "credits": 2,
-      "description": "Curso enfocado en los principios y tÚcnicas del aprendizaje automßtico, abordando modelos supervisados y no supervisados, evaluaci¾n de modelos y aplicaciones prßcticas para la construcci¾n de sistemas capaces de aprender patrones a partir de datos.",
-      "semester_suggested": 2,
+      "code": "SI2001",
+      "name": "Estructura de Datos y Algoritmos",
+      "credits": 3,
+      "description": "Implementación y análisis de estructuras de datos y algoritmos fundamentales.",
+      "semester_suggested": 3,
       "language": "ES",
-      "specializations": [
-        5
-      ],
-      "prerequisites": [],
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [12],
       "corequisites": []
     }
   },
@@ -277,16 +259,15 @@
     "model": "roadmap.course",
     "pk": 17,
     "fields": {
-      "code": "SI1001",
-      "name": "Arquitecturas de Datos y Big Data",
-      "credits": 2,
-      "description": "Curso orientado al dise±o e implementaci¾n de arquitecturas de datos escalables. Aborda sistemas distribuidos, almacenamiento masivo, procesamiento de grandes vol·menes de datos y herramientas utilizadas en entornos de Big Data para soportar anßlisis y aplicaciones empresariales.",
-      "semester_suggested": 2,
+      "code": "SI2002",
+      "name": "Lenguajes Formales",
+      "credits": 3,
+      "description": "Gramáticas, autómatas y lenguajes formales.",
+      "semester_suggested": 3,
       "language": "ES",
-      "specializations": [
-        3
-      ],
-      "prerequisites": [],
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [11],
       "corequisites": []
     }
   },
@@ -294,16 +275,15 @@
     "model": "roadmap.course",
     "pk": 18,
     "fields": {
-      "code": "SI1005",
-      "name": "Aprendizaje Automßtico Avanzado",
-      "credits": 2,
-      "description": "Curso que profundiza en algoritmos avanzados de aprendizaje automßtico, incluyendo mÚtodos ensemble, redes neuronales y tÚcnicas de optimizaci¾n. Se enfatiza el dise±o, entrenamiento y evaluaci¾n de modelos para problemas complejos del mundo real.",
-      "semester_suggested": 2,
+      "code": "SI2003",
+      "name": "Sistemas de Gestión de Datos",
+      "credits": 3,
+      "description": "Fundamentos de bases de datos: modelo relacional, SQL y diseño.",
+      "semester_suggested": 3,
       "language": "ES",
-      "specializations": [
-        6
-      ],
-      "prerequisites": [],
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [12],
       "corequisites": []
     }
   },
@@ -311,16 +291,15 @@
     "model": "roadmap.course",
     "pk": 19,
     "fields": {
-      "code": "SI1004",
-      "name": "Sistemas Inteligentes y Aprendizaje Profundo",
-      "credits": 2,
-      "description": "Curso orientado al estudio de arquitecturas de aprendizaje profundo y sistemas inteligentes. Se abordan redes neuronales profundas, aplicaciones en visi¾n por computador y procesamiento de lenguaje natural, asÝ como consideraciones prßcticas para su implementaci¾n.",
-      "semester_suggested": 1,
+      "code": "SI2004",
+      "name": "Sistemas Operativos",
+      "credits": 3,
+      "description": "Principios de sistemas operativos: procesos, memoria, archivos y concurrencia.",
+      "semester_suggested": 4,
       "language": "ES",
-      "specializations": [
-        6
-      ],
-      "prerequisites": [],
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [16],
       "corequisites": []
     }
   },
@@ -328,17 +307,3126 @@
     "model": "roadmap.course",
     "pk": 20,
     "fields": {
-      "code": "SI1002",
-      "name": "Anßlisis Avanzado de Datos",
-      "credits": 2,
-      "description": "Curso enfocado en tÚcnicas avanzadas de anßlisis de datos, incluyendo exploraci¾n estadÝstica, visualizaci¾n avanzada y modelado analÝtico. El estudiante aprende a transformar datos complejos en conocimiento ·til para la toma de decisiones estratÚgicas.",
+      "code": "SI2005",
+      "name": "Ingeniería de Software",
+      "credits": 3,
+      "description": "Procesos, metodologías y mejores prácticas para el desarrollo de software.",
+      "semester_suggested": 4,
+      "language": "ES",
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [18],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 21,
+    "fields": {
+      "code": "SI2007",
+      "name": "Organización de Computadores",
+      "credits": 3,
+      "description": "Arquitectura de computadores: componentes, organización y funcionamiento.",
+      "semester_suggested": 4,
+      "language": "ES",
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [16],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 22,
+    "fields": {
+      "code": "SI2008",
+      "name": "Sistemas de Información",
+      "credits": 3,
+      "description": "Diseño e implementación de sistemas de información organizacionales.",
+      "semester_suggested": 4,
+      "language": "ES",
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [20]
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 23,
+    "fields": {
+      "code": "NFI3",
+      "name": "NFI 3",
+      "credits": 3,
+      "description": "Curso de Formación Humanística (tercer nivel). Opciones disponibles en el ciclo electivo.",
       "semester_suggested": 2,
       "language": "ES",
-      "specializations": [
-        4
-      ],
+      "category": "NFI",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 24,
+    "fields": {
+      "code": "NFI4",
+      "name": "NFI 4",
+      "credits": 3,
+      "description": "Curso de Formación Humanística (cuarto nivel). Opciones disponibles en el ciclo electivo.",
+      "semester_suggested": 3,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 25,
+    "fields": {
+      "code": "NFI5",
+      "name": "NFI 5",
+      "credits": 3,
+      "description": "Curso de Formación Humanística (quinto nivel). Opciones disponibles en el ciclo electivo.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 26,
+    "fields": {
+      "code": "ELECT-MAT1",
+      "name": "Electiva en Matemáticas 1",
+      "credits": 3,
+      "description": "Curso electivo en el área de matemáticas. Opciones disponibles.",
+      "semester_suggested": 4,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 27,
+    "fields": {
+      "code": "SI3001",
+      "name": "Arquitectura de Software",
+      "credits": 3,
+      "description": "Estilos arquitectónicos, patrones y diseño de alto nivel de sistemas.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 28,
+    "fields": {
+      "code": "SI3002",
+      "name": "Internet, Arquitectura y Protocolos",
+      "credits": 3,
+      "description": "Redes de computadores: protocolos, arquitectura TCP/IP y aplicaciones.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [19],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 29,
+    "fields": {
+      "code": "SI3003",
+      "name": "Inteligencia Artificial",
+      "credits": 3,
+      "description": "Fundamentos de IA: búsqueda, conocimiento, razonamiento y aprendizaje.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [16],
+      "corequisites": [27, 31]
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 30,
+    "fields": {
+      "code": "SI3004",
+      "name": "Proyecto 2",
+      "credits": 3,
+      "description": "Proyecto integrador de mitad de carrera.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "PRACTICE",
+      "is_umbrella": false,
+      "prerequisites": [7],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 31,
+    "fields": {
+      "code": "SI3005",
+      "name": "Análisis y Diseño de Algoritmos",
+      "credits": 3,
+      "description": "Técnicas avanzadas de diseño y análisis de algoritmos.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [16],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 32,
+    "fields": {
+      "code": "ELECT-MAT2",
+      "name": "Electiva en Matemáticas 2",
+      "credits": 3,
+      "description": "Segundo curso electivo en el área de matemáticas. Opciones disponibles.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 33,
+    "fields": {
+      "code": "SI3006",
+      "name": "Ciberseguridad",
+      "credits": 3,
+      "description": "Principios y prácticas de seguridad informática y protección de activos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "DISCIPLINARY",
+      "is_umbrella": false,
+      "prerequisites": [28],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 34,
+    "fields": {
+      "code": "TA4003",
+      "name": "Pre-práctica",
+      "credits": 3,
+      "description": "Preparación para la práctica profesional: normativa, ética y expectativas.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PRACTICE",
+      "is_umbrella": false,
+      "prerequisites": [15, 30],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 35,
+    "fields": {
+      "code": "SI3012",
+      "name": "Ingeniería de Software para Aplicaciones Web",
+      "credits": 3,
+      "description": "Diseño y desarrollo de aplicaciones web utilizando arquitecturas modernas y mejores prácticas.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [20],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 36,
+    "fields": {
+      "code": "SI3013",
+      "name": "Pruebas de Software",
+      "credits": 3,
+      "description": "Fundamentos y técnicas de aseguramiento de calidad y pruebas de software.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [20],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 37,
+    "fields": {
+      "code": "SI4004",
+      "name": "Interacción Humano Computador",
+      "credits": 3,
+      "description": "Principios de diseño de interfaces y experiencia de usuario.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [20],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 38,
+    "fields": {
+      "code": "SI4005",
+      "name": "Proyecto en Desarrollo de Software",
+      "credits": 3,
+      "description": "Proyecto integrador de la trayectoria en Desarrollo de Software.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [35, 36, 37],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 39,
+    "fields": {
+      "code": "SI3007",
+      "name": "Sistemas Distribuidos",
+      "credits": 3,
+      "description": "Principios y diseño de sistemas distribuidos y computación paralela.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [19],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 40,
+    "fields": {
+      "code": "SI3016",
+      "name": "Computación en Nube",
+      "credits": 3,
+      "description": "Fundamentos de cloud computing, virtualización y servicios en la nube.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [19],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 41,
+    "fields": {
+      "code": "SI4001",
+      "name": "Aplicaciones y Sistemas Escalables",
+      "credits": 3,
+      "description": "Diseño de arquitecturas escalables y de alto rendimiento.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [39, 40],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 42,
+    "fields": {
+      "code": "SI4003",
+      "name": "Proyecto en Infraestructura TI",
+      "credits": 3,
+      "description": "Proyecto integrador de la trayectoria en Infraestructura TI.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [41],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 43,
+    "fields": {
+      "code": "SI3008",
+      "name": "Sistemas Intensivos de Datos",
+      "credits": 3,
+      "description": "Arquitecturas para procesamiento y análisis de grandes volúmenes de datos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [18, 16],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 44,
+    "fields": {
+      "code": "SI3009",
+      "name": "Bases de Datos Avanzadas",
+      "credits": 3,
+      "description": "Temas avanzados en bases de datos: NoSQL, distribuidas y optimización.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [18],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 45,
+    "fields": {
+      "code": "SI3010",
+      "name": "Gestión y Gobernanza de Datos",
+      "credits": 3,
+      "description": "Políticas, calidad y gobierno de datos en organizaciones.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [44],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 46,
+    "fields": {
+      "code": "SI4002",
+      "name": "Proyecto Ingeniería de Datos",
+      "credits": 3,
+      "description": "Proyecto integrador de la trayectoria en Ingeniería de Datos.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [43, 45],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 47,
+    "fields": {
+      "code": "SI3014",
+      "name": "Redes Neuronales y Aprendizaje Profundo",
+      "credits": 3,
+      "description": "Fundamentos de deep learning y arquitecturas de redes neuronales.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [29],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 48,
+    "fields": {
+      "code": "SI3015",
+      "name": "Aprendizaje Automático",
+      "credits": 3,
+      "description": "Algoritmos y técnicas de machine learning supervisado y no supervisado.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [29],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 49,
+    "fields": {
+      "code": "SI4006",
+      "name": "Tópicos Especiales y Aplicaciones en Inteligencia Artificial",
+      "credits": 3,
+      "description": "Aplicaciones avanzadas y temas de vanguardia en IA.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [48],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 50,
+    "fields": {
+      "code": "SI5001",
+      "name": "Proyecto Trayectoria en Inteligencia Artificial",
+      "credits": 3,
+      "description": "Proyecto integrador de la trayectoria en Inteligencia Artificial.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [47, 49],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 51,
+    "fields": {
+      "code": "CI3003",
+      "name": "Fundamentos de Blockchain y Sistemas DLT",
+      "credits": 3,
+      "description": "Introducción a blockchain, criptomonedas y tecnologías de registro distribuido.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [19],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 52,
+    "fields": {
+      "code": "CI3004",
+      "name": "Blockchain 2.0: Contratos inteligentes",
+      "credits": 3,
+      "description": "Desarrollo de contratos inteligentes y aplicaciones descentralizadas.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [51],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 53,
+    "fields": {
+      "code": "CI4004",
+      "name": "Criptoeconomía y Gobierno de Sistemas DLT",
+      "credits": 3,
+      "description": "Aspectos económicos y de gobernanza en sistemas descentralizados.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [52],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 54,
+    "fields": {
+      "code": "CI5003",
+      "name": "Proyecto Blockchain",
+      "credits": 3,
+      "description": "Proyecto integrador de la trayectoria en Blockchain.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": false,
+      "prerequisites": [53],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 55,
+    "fields": {
+      "code": "PT0131",
+      "name": "Período de Práctica (Ingeniería de Sistemas)",
+      "credits": 18,
+      "description": "Práctica profesional en empresa.",
+      "semester_suggested": 8,
+      "language": "ES",
+      "category": "PRACTICE",
+      "is_umbrella": false,
+      "prerequisites": [34],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 56,
+    "fields": {
+      "code": "NM6001",
+      "name": "Matemáticas Aplicada",
+      "credits": 2,
+      "description": "Matemáticas aplicadas al análisis de datos y modelado.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "EMPHASIS",
+      "is_umbrella": false,
+      "prerequisites": [13, 14],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 57,
+    "fields": {
+      "code": "NM6002",
+      "name": "Estadística Aplicada",
+      "credits": 2,
+      "description": "Técnicas estadísticas para análisis de datos.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "EMPHASIS",
+      "is_umbrella": false,
+      "prerequisites": [14],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 58,
+    "fields": {
+      "code": "SI6001",
+      "name": "Fundamentos en Ciencias de Datos",
+      "credits": 2,
+      "description": "Introducción al ciclo de vida de proyectos de ciencia de datos.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "EMPHASIS",
+      "is_umbrella": false,
+      "prerequisites": [16, 18],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 59,
+    "fields": {
+      "code": "SI6002",
+      "name": "Aprendizaje Automático",
+      "credits": 2,
+      "description": "Fundamentos de machine learning para ciencia de datos.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "EMPHASIS",
+      "is_umbrella": false,
+      "prerequisites": [56, 57, 58],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 60,
+    "fields": {
+      "code": "SI6003",
+      "name": "Almacenamiento y Procesamiento de Grandes Datos",
+      "credits": 2,
+      "description": "Tecnologías para big data: Hadoop, Spark y bases de datos NoSQL.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "EMPHASIS",
+      "is_umbrella": false,
+      "prerequisites": [59],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 61,
+    "fields": {
+      "code": "SI6004",
+      "name": "Visualización de Datos",
+      "credits": 2,
+      "description": "Técnicas y herramientas para visualización efectiva de datos.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "EMPHASIS",
+      "is_umbrella": false,
+      "prerequisites": [59],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 62,
+    "fields": {
+      "code": "CM0050",
+      "name": "Optimización 2",
+      "credits": 3,
+      "description": "Técnicas avanzadas de optimización matemática.",
+      "semester_suggested": 4,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13, 69],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 63,
+    "fields": {
+      "code": "CM0085",
+      "name": "Modelación y Simulación V",
+      "credits": 3,
+      "description": "Técnicas de modelado y simulación de sistemas.",
+      "semester_suggested": 4,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13, 14],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 64,
+    "fields": {
+      "code": "CM0087",
+      "name": "Análisis I",
+      "credits": 3,
+      "description": "Fundamentos de análisis matemático.",
+      "semester_suggested": 4,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 65,
+    "fields": {
+      "code": "CM0235",
+      "name": "Ecuaciones Diferenciales",
+      "credits": 3,
+      "description": "Ecuaciones diferenciales ordinarias y parciales.",
+      "semester_suggested": 4,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 66,
+    "fields": {
+      "code": "CM0245",
+      "name": "Métodos Cuantitativos",
+      "credits": 3,
+      "description": "Métodos numéricos y cuantitativos para ingeniería.",
+      "semester_suggested": 4,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 67,
+    "fields": {
+      "code": "CM0422",
+      "name": "Ecuaciones en Derivadas Parciales",
+      "credits": 3,
+      "description": "Ecuaciones diferenciales parciales y sus aplicaciones.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [65],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 68,
+    "fields": {
+      "code": "CM0423",
+      "name": "Estadística 2 (Ing. Matemática)",
+      "credits": 3,
+      "description": "Estadística avanzada y métodos inferenciales.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [9, 13, 14],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 69,
+    "fields": {
+      "code": "CM0426",
+      "name": "Optimización 1",
+      "credits": 3,
+      "description": "Fundamentos de optimización matemática.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [9, 13],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 70,
+    "fields": {
+      "code": "CM0433",
+      "name": "Procesos Estocásticos 1",
+      "credits": 3,
+      "description": "Introducción a procesos estocásticos y aplicaciones.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13, 14],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 71,
+    "fields": {
+      "code": "CM0931",
+      "name": "Cálculo Avanzado",
+      "credits": 3,
+      "description": "Temas avanzados de cálculo y análisis.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 72,
+    "fields": {
+      "code": "MT3001",
+      "name": "Lógica",
+      "credits": 3,
+      "description": "Lógica matemática y fundamentos.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13, 17],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 73,
+    "fields": {
+      "code": "MT3002",
+      "name": "Teoría de Tipos",
+      "credits": 3,
+      "description": "Fundamentos de teoría de tipos y sus aplicaciones.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13, 17],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 74,
+    "fields": {
+      "code": "MT3003",
+      "name": "Métodos Formales para el Desarrollo de Software",
+      "credits": 3,
+      "description": "Aplicación de métodos formales en ingeniería de software.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13, 17],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 75,
+    "fields": {
+      "code": "MF2002",
+      "name": "Econometría 1",
+      "credits": 3,
+      "description": "Introducción a métodos econométricos y análisis de regresión.",
+      "semester_suggested": 4,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13, 14],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 76,
+    "fields": {
+      "code": "MF3002",
+      "name": "Econometría 2",
+      "credits": 3,
+      "description": "Modelos econométricos avanzados y series de tiempo.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [75],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 77,
+    "fields": {
+      "code": "MT5001",
+      "name": "Elementos de Teoría de Conjuntos",
+      "credits": 3,
+      "description": "Fundamentos de teoría axiomática de conjuntos.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 78,
+    "fields": {
+      "code": "MT5002",
+      "name": "Análisis Numérico",
+      "credits": 3,
+      "description": "Métodos numéricos para la solución de problemas matemáticos.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [71],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 79,
+    "fields": {
+      "code": "MT5003",
+      "name": "Modelos y Métodos de Optimización",
+      "credits": 3,
+      "description": "Técnicas de optimización lineal y no lineal.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13, 69],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 80,
+    "fields": {
+      "code": "MT5004",
+      "name": "Teoría de Probabilidad",
+      "credits": 3,
+      "description": "Fundamentos avanzados de probabilidad y procesos estocásticos.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13, 14],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 81,
+    "fields": {
+      "code": "MT5005",
+      "name": "Inferencia Estadística",
+      "credits": 3,
+      "description": "Métodos de estimación y pruebas de hipótesis.",
+      "semester_suggested": 4,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [13, 14],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 82,
+    "fields": {
+      "code": "MT5006",
+      "name": "Inferencia Bayesiana",
+      "credits": 3,
+      "description": "Métodos bayesianos y sus aplicaciones.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [81],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 83,
+    "fields": {
+      "code": "MT5007",
+      "name": "Álgebra Lineal (MMA)",
+      "credits": 3,
+      "description": "Álgebra lineal avanzada para matemáticas aplicadas.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [9, 13],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 84,
+    "fields": {
+      "code": "MT5012",
+      "name": "Lenguajes Declarativos",
+      "credits": 3,
+      "description": "Programación lógica y funcional.",
+      "semester_suggested": 5,
+      "language": "ES",
+      "category": "BASIC_SCIENCE",
+      "is_umbrella": false,
+      "prerequisites": [16, 17],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 85,
+    "fields": {
+      "code": "FH1006",
+      "name": "La pregunta por la vida buena",
+      "credits": 3,
+      "description": "Reflexión filosófica sobre la ética y el bienestar.",
+      "semester_suggested": 2,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 86,
+    "fields": {
+      "code": "FH1007",
+      "name": "Toma de decisiones",
+      "credits": 3,
+      "description": "Procesos y modelos para la toma de decisiones.",
+      "semester_suggested": 2,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 87,
+    "fields": {
+      "code": "FH1003",
+      "name": "Arte y Ciudadanía",
+      "credits": 3,
+      "description": "Relaciones entre expresión artística y participación ciudadana.",
+      "semester_suggested": 2,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 88,
+    "fields": {
+      "code": "FH1004",
+      "name": "Arte, Historia y Memoria",
+      "credits": 3,
+      "description": "El arte como registro histórico y construcción de memoria.",
+      "semester_suggested": 2,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 89,
+    "fields": {
+      "code": "FH1005",
+      "name": "Arte, Política y Participación",
+      "credits": 3,
+      "description": "El arte como herramienta de transformación social y política.",
+      "semester_suggested": 2,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 90,
+    "fields": {
+      "code": "FH1011",
+      "name": "Retórica y democracia",
+      "credits": 3,
+      "description": "El arte de la persuasión en contextos democráticos.",
+      "semester_suggested": 3,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 91,
+    "fields": {
+      "code": "FH1012",
+      "name": "Argumentación visual y multimodal",
+      "credits": 3,
+      "description": "Estrategias argumentativas en medios visuales.",
+      "semester_suggested": 3,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 92,
+    "fields": {
+      "code": "FH1013",
+      "name": "Crítica de la opinión pública",
+      "credits": 3,
+      "description": "Análisis crítico de la formación de opinión en la esfera pública.",
+      "semester_suggested": 3,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 93,
+    "fields": {
+      "code": "FH1020",
+      "name": "Identidades y literatura",
+      "credits": 3,
+      "description": "Construcción de identidades a través de la literatura.",
+      "semester_suggested": 3,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 94,
+    "fields": {
+      "code": "FH1021",
+      "name": "Territorios y literatura",
+      "credits": 3,
+      "description": "Representaciones del territorio en la literatura.",
+      "semester_suggested": 3,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 95,
+    "fields": {
+      "code": "FH1022",
+      "name": "Emociones y Literatura",
+      "credits": 3,
+      "description": "Exploración de emociones en textos literarios.",
+      "semester_suggested": 3,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 96,
+    "fields": {
+      "code": "FH1017",
+      "name": "Lenguaje, ficción y realidad",
+      "credits": 3,
+      "description": "Relaciones entre lenguaje, construcción de ficciones y realidad.",
+      "semester_suggested": 3,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 97,
+    "fields": {
+      "code": "FH1018",
+      "name": "Grandes textos de las Humanidades",
+      "credits": 3,
+      "description": "Lectura y análisis de obras fundamentales de la tradición humanística.",
+      "semester_suggested": 3,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 98,
+    "fields": {
+      "code": "FH1019",
+      "name": "Debates Humanísticos Contemporáneos",
+      "credits": 3,
+      "description": "Discusión de temas actuales desde perspectivas humanísticas.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 99,
+    "fields": {
+      "code": "FH1014",
+      "name": "Taller de escrituras líricas",
+      "credits": 3,
+      "description": "Práctica de escritura poética y exploración lírica.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 100,
+    "fields": {
+      "code": "FH1015",
+      "name": "Taller de Narrativas Urbanas",
+      "credits": 3,
+      "description": "Creación de relatos sobre experiencias urbanas.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 101,
+    "fields": {
+      "code": "FH1016",
+      "name": "Taller de Dramaturgia Experimental",
+      "credits": 3,
+      "description": "Escritura y exploración de formas dramáticas contemporáneas.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 102,
+    "fields": {
+      "code": "FH1023",
+      "name": "Estilos de vida sostenible",
+      "credits": 3,
+      "description": "Prácticas y filosofías de vida sostenible.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 103,
+    "fields": {
+      "code": "FH1024",
+      "name": "Diseño de soluciones imitando la naturaleza",
+      "credits": 3,
+      "description": "Principios de biomímesis para diseño sostenible.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 104,
+    "fields": {
+      "code": "FH1025",
+      "name": "Acción por el clima",
+      "credits": 3,
+      "description": "Estrategias para mitigación y adaptación al cambio climático.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 105,
+    "fields": {
+      "code": "FH1026",
+      "name": "Modelos de Democracia",
+      "credits": 3,
+      "description": "Estudio comparado de sistemas democráticos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 106,
+    "fields": {
+      "code": "FH1027",
+      "name": "Colombia: Territorio y Desarrollo",
+      "credits": 3,
+      "description": "Análisis de dinámicas territoriales y desarrollo en Colombia.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 107,
+    "fields": {
+      "code": "FH1028",
+      "name": "Coyunturas del Orden Global",
+      "credits": 3,
+      "description": "Análisis de eventos y tendencias en las relaciones internacionales.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 108,
+    "fields": {
+      "code": "FH1029",
+      "name": "Mundos de las Músicas Urbanas",
+      "credits": 3,
+      "description": "Exploración de géneros y culturas musicales urbanas.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 109,
+    "fields": {
+      "code": "FH1030",
+      "name": "Música y Política",
+      "credits": 3,
+      "description": "Relaciones entre expresión musical y movimientos políticos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 110,
+    "fields": {
+      "code": "FH1031",
+      "name": "Música, Lenguaje y Memoria",
+      "credits": 3,
+      "description": "La música como vehículo de memoria y expresión lingüística.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 111,
+    "fields": {
+      "code": "FH1008",
+      "name": "Historia y Filosofía del Conocimiento Científico",
+      "credits": 3,
+      "description": "Evolución histórica y fundamentos filosóficos de la ciencia.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 112,
+    "fields": {
+      "code": "FH1009",
+      "name": "Políticas del Conocimiento Científico",
+      "credits": 3,
+      "description": "Dimensión política y social de la producción científica.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 113,
+    "fields": {
+      "code": "FH1010",
+      "name": "Ciencia y técnica en acción",
+      "credits": 3,
+      "description": "Estudio de casos sobre aplicaciones tecnocientíficas.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 114,
+    "fields": {
+      "code": "FH1032",
+      "name": "Imaginación y Creatividad",
+      "credits": 3,
+      "description": "Procesos cognitivos y sociales de la creatividad.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 115,
+    "fields": {
+      "code": "FH1033",
+      "name": "Comunicación Crítica",
+      "credits": 3,
+      "description": "Análisis crítico de discursos y medios.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 116,
+    "fields": {
+      "code": "FH1034",
+      "name": "Economía, Política y Coyuntura Económica",
+      "credits": 3,
+      "description": "Análisis de la coyuntura económica y sus implicaciones políticas.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 117,
+    "fields": {
+      "code": "FH1035",
+      "name": "Retos de la Ciudadanía Digital",
+      "credits": 3,
+      "description": "Desafíos éticos y políticos de la era digital.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 118,
+    "fields": {
+      "code": "FH1036",
+      "name": "Colombia: Estrategias de Guerra y Paz",
+      "credits": 3,
+      "description": "Análisis del conflicto y procesos de paz en Colombia.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "NFI",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 119,
+    "fields": {
+      "code": "ST1605",
+      "name": "Procesos Modernos de Desarrollo de Software",
+      "credits": 2,
+      "description": "Estudio de metodologías ágiles, DevOps y prácticas modernas para el desarrollo eficiente de software.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 120,
+    "fields": {
+      "code": "ST1606",
+      "name": "Integración y Entrega Continua de Software",
+      "credits": 2,
+      "description": "Implementación de pipelines de CI/CD, automatización de builds, pruebas y despliegues.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 121,
+    "fields": {
+      "code": "ST1607",
+      "name": "Arquitecturas Avanzadas de Software",
+      "credits": 2,
+      "description": "Diseño de arquitecturas modernas: microservicios, event-driven, serverless y hexagonales.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 122,
+    "fields": {
+      "code": "ST1608",
+      "name": "Desarrollo de Sistemas Seguros",
+      "credits": 2,
+      "description": "Prácticas de desarrollo seguro, análisis de vulnerabilidades y protección de aplicaciones.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 123,
+    "fields": {
+      "code": "ELECT-DESA1",
+      "name": "Electiva I Desarrollo de Software",
+      "credits": 2,
+      "description": "Curso electivo en temáticas avanzadas de desarrollo de software.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 124,
+    "fields": {
+      "code": "ELECT-DESA2",
+      "name": "Electiva II Desarrollo de Software",
+      "credits": 2,
+      "description": "Curso electivo en temáticas avanzadas de desarrollo de software.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 125,
+    "fields": {
+      "code": "ST1704",
+      "name": "Industrialización del Desarrollo de Software",
+      "credits": 2,
+      "description": "Automatización, métricas y mejora continua en fábricas de software.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [119, 120, 121, 122],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 126,
+    "fields": {
+      "code": "ST1705",
+      "name": "Ingeniería de Sistemas Auto-Adaptables",
+      "credits": 2,
+      "description": "Desarrollo de sistemas que se adaptan automáticamente a cambios en el entorno.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [119, 120, 121, 122],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 127,
+    "fields": {
+      "code": "ST1706",
+      "name": "Arquitecturas Evolutivas de Software",
+      "credits": 2,
+      "description": "Diseño de arquitecturas que evolucionan con el tiempo sin reescrituras completas.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [119, 120, 121, 122],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 128,
+    "fields": {
+      "code": "ST1707",
+      "name": "Tópicos Avanzados en Ingeniería de Software",
+      "credits": 2,
+      "description": "Exploración de tendencias emergentes en ingeniería de software.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [119, 120, 121, 122],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 129,
+    "fields": {
+      "code": "ELECT-DESA3",
+      "name": "Electiva I Área Computacional Avanzada",
+      "credits": 2,
+      "description": "Electiva avanzada en desarrollo de software.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [119, 120, 121, 122],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 130,
+    "fields": {
+      "code": "ELECT-DESA4",
+      "name": "Electiva II Área Computacional Avanzada",
+      "credits": 2,
+      "description": "Electiva avanzada en desarrollo de software.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [119, 120, 121, 122],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 131,
+    "fields": {
+      "code": "ST1601",
+      "name": "Arquitectura Empresarial",
+      "credits": 2,
+      "description": "Diseño y gestión de la arquitectura empresarial alineada con la estrategia organizacional.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 132,
+    "fields": {
+      "code": "ST1602",
+      "name": "Gestión Estratégica de TI",
+      "credits": 2,
+      "description": "Gobierno de TI, alineamiento estratégico y gestión del portafolio de proyectos tecnológicos.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 133,
+    "fields": {
+      "code": "ST1603",
+      "name": "Inteligencia Analítica Empresarial",
+      "credits": 2,
+      "description": "Aplicación de business intelligence y analítica para la toma de decisiones.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 134,
+    "fields": {
+      "code": "ELECT-SI1",
+      "name": "Electiva 1 Sistemas de Información",
+      "credits": 2,
+      "description": "Curso electivo en sistemas de información.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 135,
+    "fields": {
+      "code": "ELECT-SI2",
+      "name": "Electiva 2 Sistemas de Información",
+      "credits": 2,
+      "description": "Curso electivo en sistemas de información.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 136,
+    "fields": {
+      "code": "ST1700",
+      "name": "Integración de Capacidades Digitales",
+      "credits": 2,
+      "description": "Estrategias para integrar capacidades digitales en procesos de negocio.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [131, 132, 133],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 137,
+    "fields": {
+      "code": "ST1701",
+      "name": "Liderazgo Transformacional de TI",
+      "credits": 2,
+      "description": "Habilidades de liderazgo para gestionar la transformación digital.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [131, 132, 133],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 138,
+    "fields": {
+      "code": "ST1702",
+      "name": "Tendencias Avanzadas en Analítica",
+      "credits": 2,
+      "description": "Exploración de tendencias emergentes en analítica de datos.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [131, 132, 133],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 139,
+    "fields": {
+      "code": "ST1703",
+      "name": "Plataformas Integradas de Procesos Digitales",
+      "credits": 2,
+      "description": "Diseño e implementación de plataformas que integran procesos digitales.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [131, 132, 133],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 140,
+    "fields": {
+      "code": "ELECT-SI3",
+      "name": "Electiva 3 Sistemas de Información",
+      "credits": 2,
+      "description": "Electiva avanzada en sistemas de información.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [131, 132, 133],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 141,
+    "fields": {
+      "code": "ELECT-SI4",
+      "name": "Electiva 4 Sistemas de Información",
+      "credits": 2,
+      "description": "Electiva avanzada en sistemas de información.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [131, 132, 133],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 142,
+    "fields": {
+      "code": "IA1601",
+      "name": "Fundamentos de Machine Learning",
+      "credits": 2,
+      "description": "Introducción a algoritmos de aprendizaje supervisado y no supervisado.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 143,
+    "fields": {
+      "code": "IA1602",
+      "name": "Deep Learning y Redes Neuronales",
+      "credits": 2,
+      "description": "Arquitecturas de redes neuronales profundas y sus aplicaciones.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 144,
+    "fields": {
+      "code": "IA1603",
+      "name": "Procesamiento de Lenguaje Natural",
+      "credits": 2,
+      "description": "Técnicas para el procesamiento y análisis de texto y lenguaje humano.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 145,
+    "fields": {
+      "code": "IA1604",
+      "name": "Visión por Computador",
+      "credits": 2,
+      "description": "Análisis y procesamiento de imágenes y video con técnicas de IA.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 146,
+    "fields": {
+      "code": "ELECT-IA1",
+      "name": "Electiva I Inteligencia Artificial",
+      "credits": 2,
+      "description": "Curso electivo en inteligencia artificial.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 147,
+    "fields": {
+      "code": "ELECT-IA2",
+      "name": "Electiva II Inteligencia Artificial",
+      "credits": 2,
+      "description": "Curso electivo en inteligencia artificial.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 148,
+    "fields": {
+      "code": "IA1701",
+      "name": "Modelos Generativos Avanzados",
+      "credits": 2,
+      "description": "Estudio de GANs, VAEs y modelos de difusión para generación de contenido.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [142, 143],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 149,
+    "fields": {
+      "code": "IA1702",
+      "name": "Aprendizaje por Refuerzo",
+      "credits": 2,
+      "description": "Algoritmos de reinforcement learning para toma de decisiones secuenciales.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [142, 143],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 150,
+    "fields": {
+      "code": "IA1703",
+      "name": "IA Responsable y Ética",
+      "credits": 2,
+      "description": "Principios de ética, fairness, explicabilidad y transparencia en IA.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [142, 143],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 151,
+    "fields": {
+      "code": "IA1704",
+      "name": "MLOps y Despliegue de Modelos",
+      "credits": 2,
+      "description": "Prácticas para operacionalizar y desplegar modelos de machine learning.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [142, 143],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 152,
+    "fields": {
+      "code": "ELECT-IA3",
+      "name": "Electiva III Inteligencia Artificial",
+      "credits": 2,
+      "description": "Electiva avanzada en inteligencia artificial.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [142, 143],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 153,
+    "fields": {
+      "code": "ELECT-IA4",
+      "name": "Electiva IV Inteligencia Artificial",
+      "credits": 2,
+      "description": "Electiva avanzada en inteligencia artificial.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [142, 143],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 154,
+    "fields": {
+      "code": "CS1601",
+      "name": "Fundamentos de Seguridad Informática",
+      "credits": 2,
+      "description": "Principios básicos de seguridad: confidencialidad, integridad y disponibilidad.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 155,
+    "fields": {
+      "code": "CS1602",
+      "name": "Seguridad en Redes",
+      "credits": 2,
+      "description": "Protocolos seguros, firewalls, IDS/IPS y seguridad perimetral.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 156,
+    "fields": {
+      "code": "CS1603",
+      "name": "Criptografía Aplicada",
+      "credits": 2,
+      "description": "Fundamentos criptográficos y su aplicación en sistemas reales.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 157,
+    "fields": {
+      "code": "CS1604",
+      "name": "Seguridad en Aplicaciones Web",
+      "credits": 2,
+      "description": "Vulnerabilidades comunes y prácticas de desarrollo seguro.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 158,
+    "fields": {
+      "code": "ELECT-CS1",
+      "name": "Electiva I Ciberseguridad",
+      "credits": 2,
+      "description": "Curso electivo en ciberseguridad.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 159,
+    "fields": {
+      "code": "ELECT-CS2",
+      "name": "Electiva II Ciberseguridad",
+      "credits": 2,
+      "description": "Curso electivo en ciberseguridad.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 160,
+    "fields": {
+      "code": "CS1701",
+      "name": "Ethical Hacking y Pentesting",
+      "credits": 2,
+      "description": "Técnicas de hacking ético y pruebas de penetración.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [154, 155, 156, 157],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 161,
+    "fields": {
+      "code": "CS1702",
+      "name": "Seguridad en Cloud y DevOps",
+      "credits": 2,
+      "description": "Prácticas de seguridad en entornos cloud y pipelines de CI/CD.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [154, 155, 156, 157],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 162,
+    "fields": {
+      "code": "CS1703",
+      "name": "Forensia Digital y Respuesta a Incidentes",
+      "credits": 2,
+      "description": "Técnicas de análisis forense y manejo de incidentes de seguridad.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [154, 155, 156, 157],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 163,
+    "fields": {
+      "code": "CS1704",
+      "name": "Gobierno y Gestión de Riesgos de Seguridad",
+      "credits": 2,
+      "description": "Marcos de gobierno, estándares y gestión de riesgos en ciberseguridad.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [154, 155, 156, 157],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 164,
+    "fields": {
+      "code": "ELECT-CS3",
+      "name": "Electiva III Ciberseguridad",
+      "credits": 2,
+      "description": "Electiva avanzada en ciberseguridad.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [154, 155, 156, 157],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 165,
+    "fields": {
+      "code": "ELECT-CS4",
+      "name": "Electiva IV Ciberseguridad",
+      "credits": 2,
+      "description": "Electiva avanzada en ciberseguridad.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": true,
+      "prerequisites": [154, 155, 156, 157],
+      "corequisites": []
+    }
+  },
+
+  {
+    "model": "roadmap.course",
+    "pk": 166,
+    "fields": {
+      "code": "DESA-OPT1",
+      "name": "Arquitecturas Hexagonales y DDD",
+      "credits": 2,
+      "description": "Implementación de arquitecturas hexagonales y diseño guiado por dominio para sistemas complejos.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 167,
+    "fields": {
+      "code": "DESA-OPT2",
+      "name": "Desarrollo de Microfrontends",
+      "credits": 2,
+      "description": "Arquitecturas de microfrontends para aplicaciones web escalables y mantenibles.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 168,
+    "fields": {
+      "code": "DESA-OPT3",
+      "name": "Observabilidad en Sistemas Distribuidos",
+      "credits": 2,
+      "description": "Trazabilidad, métricas y logs para monitoreo de aplicaciones distribuidas.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [119, 120, 121, 122],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 169,
+    "fields": {
+      "code": "DESA-OPT4",
+      "name": "Desarrollo con Tecnologías Serverless",
+      "credits": 2,
+      "description": "Diseño e implementación de aplicaciones serverless en la nube.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [119, 120, 121, 122],
+      "corequisites": []
+    }
+  },
+
+  {
+    "model": "roadmap.course",
+    "pk": 170,
+    "fields": {
+      "code": "SISINFO-OPT1",
+      "name": "Gestión de Proyectos con Metodologías Ágiles a Escala",
+      "credits": 2,
+      "description": "Aplicación de SAFe, LeSS y otras metodologías ágiles para proyectos empresariales.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 171,
+    "fields": {
+      "code": "SISINFO-OPT2",
+      "name": "Business Process Management",
+      "credits": 2,
+      "description": "Modelado, análisis y optimización de procesos de negocio con BPMN.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 172,
+    "fields": {
+      "code": "SISINFO-OPT3",
+      "name": "Gobierno de Datos y Cumplimiento Normativo",
+      "credits": 2,
+      "description": "Políticas de datos, GDPR, ISO 27001 y cumplimiento en organizaciones.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [131, 132, 133],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 173,
+    "fields": {
+      "code": "SISINFO-OPT4",
+      "name": "Transformación Digital en la Industria 4.0",
+      "credits": 2,
+      "description": "Estrategias de transformación digital aplicadas a sectores industriales.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [131, 132, 133],
+      "corequisites": []
+    }
+  },
+
+  {
+    "model": "roadmap.course",
+    "pk": 174,
+    "fields": {
+      "code": "IA-OPT1",
+      "name": "Sistemas de Recomendación",
+      "credits": 2,
+      "description": "Diseño e implementación de motores de recomendación colaborativos y basados en contenido.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 175,
+    "fields": {
+      "code": "IA-OPT2",
+      "name": "Procesamiento de Lenguaje Natural con Transformers",
+      "credits": 2,
+      "description": "Aplicaciones de NLP usando arquitecturas transformer como BERT y GPT.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 176,
+    "fields": {
+      "code": "IA-OPT3",
+      "name": "Visión por Computador Avanzada",
+      "credits": 2,
+      "description": "Técnicas avanzadas de detección, segmentación y generación de imágenes.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [142, 143],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 177,
+    "fields": {
+      "code": "IA-OPT4",
+      "name": "MLOps: Despliegue y Monitoreo de Modelos",
+      "credits": 2,
+      "description": "Prácticas de MLOps para ciclo de vida completo de modelos de ML.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [142, 143],
+      "corequisites": []
+    }
+  },
+
+  {
+    "model": "roadmap.course",
+    "pk": 178,
+    "fields": {
+      "code": "CS-OPT1",
+      "name": "Seguridad en IoT y Dispositivos Embebidos",
+      "credits": 2,
+      "description": "Análisis de vulnerabilidades y protección de dispositivos IoT.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 179,
+    "fields": {
+      "code": "CS-OPT2",
+      "name": "Análisis de Malware y Técnicas de Reverse Engineering",
+      "credits": 2,
+      "description": "Técnicas de análisis estático y dinámico de malware.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 180,
+    "fields": {
+      "code": "CS-OPT3",
+      "name": "Bug Bounty y Hacking Ético Avanzado",
+      "credits": 2,
+      "description": "Técnicas avanzadas de hacking ético y participación en programas bug bounty.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [154, 155, 156, 157],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 181,
+    "fields": {
+      "code": "CS-OPT4",
+      "name": "Criptografía Post-Cuántica",
+      "credits": 2,
+      "description": "Fundamentos y aplicaciones de algoritmos criptográficos resistentes a computación cuántica.",
+      "semester_suggested": 10,
+      "language": "ES",
+      "category": "SPECIALIZATION",
+      "is_umbrella": false,
+      "prerequisites": [154, 155, 156, 157],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 182,
+    "fields": {
+      "code": "TRACK-DESA",
+      "name": "Trayectoria Desarrollo de Software",
+      "credits": 12,
+      "description": "Trayectoria profesional en Desarrollo de Software. Aprende a diseñar, construir y mantener aplicaciones web, implementar pruebas, diseñar interfaces y desarrollar proyectos integradores.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 183,
+    "fields": {
+      "code": "TRACK-INFRA",
+      "name": "Trayectoria Infraestructura TI",
+      "credits": 12,
+      "description": "Trayectoria profesional en Infraestructura TI. Profundiza en sistemas distribuidos, computación en nube, arquitecturas escalables y proyectos de infraestructura.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 184,
+    "fields": {
+      "code": "TRACK-DATA",
+      "name": "Trayectoria Ingeniería de Datos",
+      "credits": 12,
+      "description": "Trayectoria profesional en Ingeniería de Datos. Aprende sobre sistemas intensivos de datos, bases de datos avanzadas, gobernanza de datos y proyectos de ingeniería de datos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 185,
+    "fields": {
+      "code": "TRACK-IA",
+      "name": "Trayectoria Inteligencia Artificial",
+      "credits": 12,
+      "description": "Trayectoria profesional en Inteligencia Artificial. Profundiza en redes neuronales, aprendizaje automático, aplicaciones avanzadas de IA y proyectos de IA.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 186,
+    "fields": {
+      "code": "TRACK-BLOCK",
+      "name": "Trayectoria Blockchain",
+      "credits": 12,
+      "description": "Trayectoria profesional en Blockchain. Aprende fundamentos de blockchain, contratos inteligentes, criptoeconomía y desarrolla un proyecto integrador.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+
+  {
+    "model": "roadmap.course",
+    "pk": 187,
+    "fields": {
+      "code": "TRACK-ECON",
+      "name": "Trayectoria Economía",
+      "credits": 12,
+      "description": "Trayectoria flexible en Economía. Explora microeconomía, macroeconomía, teoría de juegos y economía colombiana.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 188,
+    "fields": {
+      "code": "TRACK-HISTECON",
+      "name": "Trayectoria Historia Económica",
+      "credits": 12,
+      "description": "Trayectoria flexible en Historia Económica. Estudia historia económica general, historia del pensamiento económico e historia económica de Colombia.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 189,
+    "fields": {
+      "code": "TRACK-ANAFIN",
+      "name": "Trayectoria Análisis Financiero",
+      "credits": 12,
+      "description": "Trayectoria flexible en Análisis Financiero. Aprende fundamentos de contabilidad, matemáticas financieras, análisis financiero y economía colombiana.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 190,
+    "fields": {
+      "code": "TRACK-EVALPROY",
+      "name": "Trayectoria Evaluación Financiera de Proyectos",
+      "credits": 12,
+      "description": "Trayectoria flexible en Evaluación Financiera de Proyectos. Aprende fundamentos de contabilidad, matemáticas financieras, economía colombiana y evaluación de proyectos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 191,
+    "fields": {
+      "code": "TRACK-ESTRAT",
+      "name": "Trayectoria Estrategia",
+      "credits": 12,
+      "description": "Trayectoria flexible en Estrategia. Estudia organizaciones, estrategia empresarial, fundamentos de administración y gestión humana.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 192,
+    "fields": {
+      "code": "TRACK-DIRLID",
+      "name": "Trayectoria Dirección y Liderazgo",
+      "credits": 12,
+      "description": "Trayectoria flexible en Dirección y Liderazgo. Desarrolla habilidades en organizaciones, fundamentos de administración, gestión humana y liderazgo.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 193,
+    "fields": {
+      "code": "TRACK-GERESTRAT",
+      "name": "Trayectoria Gerencia Estratégica",
+      "credits": 12,
+      "description": "Trayectoria flexible en Gerencia Estratégica. Aprende sobre organizaciones, estrategia, fundamentos de administración y gerencia estratégica.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 194,
+    "fields": {
+      "code": "TRACK-GERCONOC",
+      "name": "Trayectoria Gerencia del Conocimiento",
+      "credits": 12,
+      "description": "Trayectoria flexible en Gerencia del Conocimiento. Estudia organizaciones, estrategia, fundamentos de administración y gestión del conocimiento e innovación.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 195,
+    "fields": {
+      "code": "TRACK-GERPROY",
+      "name": "Trayectoria Gerencia de Proyectos",
+      "credits": 12,
+      "description": "Trayectoria flexible en Gerencia de Proyectos. Aprende matemáticas financieras, evaluación de proyectos, gestión de proyectos y formulación de proyectos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 196,
+    "fields": {
+      "code": "TRACK-DEREMP",
+      "name": "Trayectoria Derecho Empresarial",
+      "credits": 12,
+      "description": "Trayectoria flexible en Derecho Empresarial. Explora marco tributario, derecho empresarial, organizaciones y fundamentos de administración.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 197,
+    "fields": {
+      "code": "TRACK-FORMPROY",
+      "name": "Trayectoria Formulación y Evaluación de Proyectos",
+      "credits": 12,
+      "description": "Trayectoria flexible en Formulación y Evaluación de Proyectos. Aprende costos, información financiera, matemáticas financieras y formulación de proyectos.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 198,
+    "fields": {
+      "code": "TRACK-NEGINT",
+      "name": "Trayectoria Negocios Internacionales",
+      "credits": 12,
+      "description": "Trayectoria flexible en Negocios Internacionales. Estudia mercadeo internacional, negocios internacionales, gestión intercultural y estrategia internacional.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 199,
+    "fields": {
+      "code": "TRACK-TALINT",
+      "name": "Trayectoria Talento Internacional",
+      "credits": 12,
+      "description": "Trayectoria flexible en Talento Internacional. Aprende negocios internacionales, turismo, gestión intercultural y desarrollo del talento internacional.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 200,
+    "fields": {
+      "code": "TRACK-FININT",
+      "name": "Trayectoria Finanzas Internacionales",
+      "credits": 12,
+      "description": "Trayectoria flexible en Finanzas Internacionales. Estudia economía, economía del comercio internacional, fundamentos de finanzas y finanzas internacionales.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 201,
+    "fields": {
+      "code": "TRACK-GENLIT",
+      "name": "Trayectoria Géneros Literarios",
+      "credits": 12,
+      "description": "Trayectoria flexible en Géneros Literarios. Explora introducción a géneros literarios, estudios del texto narrativo, dramático y ensayístico.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 202,
+    "fields": {
+      "code": "TRACK-LIT",
+      "name": "Trayectoria Literatura",
+      "credits": 12,
+      "description": "Trayectoria flexible en Literatura. Estudia introducción a géneros literarios, literatura hispánica, latinoamericana y colombiana.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 203,
+    "fields": {
+      "code": "TRACK-PERIO",
+      "name": "Trayectoria Periodismo",
+      "credits": 12,
+      "description": "Trayectoria flexible en Periodismo. Aprende reportaje, periodismo informativo, periodismo narrativo y periodismo de opinión.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 204,
+    "fields": {
+      "code": "TRACK-COM",
+      "name": "Trayectoria Comunicaciones",
+      "credits": 12,
+      "description": "Trayectoria flexible en Comunicaciones. Explora periodismo informativo, producción radiofónica, lenguaje audiovisual y visualización de información.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 205,
+    "fields": {
+      "code": "TRACK-DISINT",
+      "name": "Trayectoria Diseño Interactivo",
+      "credits": 12,
+      "description": "Trayectoria flexible en Diseño Interactivo. Aprende lenguaje audiovisual, creación de universos narrativos, diseño de sonido y narrativas en realidad virtual.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 206,
+    "fields": {
+      "code": "TRACK-PSICO",
+      "name": "Trayectoria Psicología",
+      "credits": 12,
+      "description": "Trayectoria flexible en Psicología. Estudia historia de la psicología, psicología humanista, psicología cognitiva y psicología dinámica.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 207,
+    "fields": {
+      "code": "TRACK-PROF1",
+      "name": "Trayectoria Profesionalizante 1",
+      "credits": 6,
+      "description": "Primera trayectoria profesionalizante.",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 208,
+    "fields": {
+      "code": "TRACK-PROF2",
+      "name": "Trayectoria Profesionalizante 2",
+      "credits": 6,
+      "description": "Segunda parte de la trayectoria profesionalizante.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "PROFESSIONAL_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 209,
+    "fields": {
+      "code": "TRACK-FLEX1",
+      "name": "Trayectoria Flexible 1",
+      "credits": 3,
+      "description": "Primera parte de la trayectoria flexible. Ve cursos de otras carreras",
+      "semester_suggested": 6,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 210,
+    "fields": {
+      "code": "TRACK-FLEX2",
+      "name": "Trayectoria Flexible 2",
+      "credits": 3,
+      "description": "Segunda parte de la trayectoria flexible. Continúa con la trayectoria seleccionada en el semestre anterior.",
+      "semester_suggested": 7,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 211,
+    "fields": {
+      "code": "EMPHASIS-LINE",
+      "name": "Línea de Énfasis",
+      "credits": 12,
+      "description": "Línea de énfasis.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "EMPHASIS",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 212,
+    "fields": {
+      "code": "TRACK-FLEX3",
+      "name": "Trayectoria Flexible 3",
+      "credits": 3,
+      "description": "Segunda parte de la trayectoria flexible.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 213,
+    "fields": {
+      "code": "TRACK-FLEX4",
+      "name": "Trayectoria Flexible 4",
+      "credits": 3,
+      "description": "Segunda parte de la trayectoria flexible.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "FLEXIBLE_TRACK",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 214,
+    "fields": {
+      "code": "DATA-SCI",
+      "name": "Ciencias de los Datos",
+      "credits": 12,
+      "description": "Línea de énfasis en fundamentos y aplicaciones de ciencia de datos.",
+      "semester_suggested": 9,
+      "language": "ES",
+      "category": "EMPHASIS",
+      "is_umbrella": true,
       "prerequisites": [],
       "corequisites": []
     }
   }
+
 ]

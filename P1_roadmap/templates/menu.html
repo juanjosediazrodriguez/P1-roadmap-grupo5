@@ -85,12 +85,22 @@
                 </li>
             </ul>
 
-            <!-- Logout al fondo del menú móvil -->
+            <!-- Usuario y Logout al fondo del menú móvil -->
             <div class="mt-auto pb-4">
-                <a class="mobile-nav-link text-danger" href="#">
+                {% if user.is_authenticated %}
+                <div class="px-3 py-2 mb-2 text-muted small">
+                    <i class="fas fa-user-circle me-2"></i>{{ user.username }}
+                </div>
+                <a class="mobile-nav-link text-danger" href="{% url 'logout' %}">
                     <i class="fas fa-sign-out-alt me-3"></i>
                     Cerrar Sesión
                 </a>
+                {% else %}
+                <a class="mobile-nav-link" href="{% url 'login' %}">
+                    <i class="fas fa-sign-in-alt me-3"></i>
+                    Iniciar Sesión
+                </a>
+                {% endif %}
             </div>
 
         </div>
@@ -131,6 +141,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'track_list' or request.resolver_match.url_name == 'track_professional_list' or request.resolver_match.url_name == 'track_flexible_list' %}active{% endif %}" href="{% url 'track_list' %}">
+                                <i class="fa-solid fa-road me-3"></i>
+                                Trayectorias
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'emphasis_line_list' %}active{% endif %}" href="{% url 'emphasis_line_list' %}">
+                                <i class="fa-solid fa-compass me-3"></i>
+                                Líneas de Énfasis
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link me-2 {% if request.resolver_match.url_name == 'specialization_list' %}active{% endif %}" href="{% url 'specialization_list' %}">
                                 <i class="fa-solid fa-medal me-3"></i>
                                 Especializaciones
@@ -155,10 +177,20 @@
                     </ul>
 
                     <div class="logout-section mt-auto pb-4">
-                        <a class="nav-link me-3 text-danger py-2 ps-3" href="#">
+                        {% if user.is_authenticated %}
+                        <div class="ps-3 py-2 small text-muted">
+                            <i class="fas fa-user-circle me-2"></i>{{ user.username }}
+                        </div>
+                        <a class="nav-link me-3 text-danger py-2 ps-3" href="{% url 'logout' %}">
                             <i class="fas fa-sign-out-alt me-3"></i>
                             Cerrar Sesión
                         </a>
+                        {% else %}
+                        <a class="nav-link me-3 py-2 ps-3" href="{% url 'login' %}">
+                            <i class="fas fa-sign-in-alt me-3"></i>
+                            Iniciar Sesión
+                        </a>
+                        {% endif %}
                     </div>
 
                 </div>

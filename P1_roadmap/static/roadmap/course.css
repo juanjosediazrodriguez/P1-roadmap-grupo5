@@ -1,5 +1,129 @@
 @import url(specialization.css);
 
+/* ===== COLORES DE BORDE POR CATEGORÍA ===== */
+
+.modal-content.modal-category-basicscience {
+    border-left: 6px solid #4a90e2 !important;
+}
+.modal-content.modal-category-basicengineering {
+    border-left: 6px solid #20c997 !important;
+}
+.modal-content.modal-category-nfi {
+    border-left: 6px solid #fd7e14 !important;
+}
+.modal-content.modal-category-disciplinary {
+    border-left: 6px solid #dc3545 !important;
+}
+.modal-content.modal-category-professionaltrack {
+    border-left: 6px solid #28a745 !important;
+}
+.modal-content.modal-category-flexibletrack {
+    border-left: 6px solid #198754 !important;
+}
+.modal-content.modal-category-practice {
+    border-left: 6px solid #b91c1c !important;
+}
+.modal-content.modal-category-emphasis {
+    border-left: 6px solid #2ecc71 !important;
+}
+.modal-content.modal-category-specialization {
+    border-left: 6px solid #27ae60 !important;
+}
+
+/* Estilos para opciones de cursos paraguas */
+.option-mini-card {
+    background-color: #0f1117;
+    border: 1px solid #2a2d3a;
+    border-left: 4px solid var(--option-color, #4a90e2);
+    border-radius: 8px;
+    padding: 0.75rem;
+    transition: all 0.2s ease;
+    height: 100%;
+}
+
+.option-mini-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--option-color, #4a90e2);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+}
+
+.option-code-badge {
+    font-size: 0.75rem;
+    color: #8f9bb3;
+    background-color: #2a2d3a;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.option-credits-badge {
+    font-size: 0.7rem;
+    color: #8f9bb3;
+    background-color: #2a2d3a;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.option-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ffffff;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+.option-requirements {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.requirement-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    background-color: #1a1d27;
+    border: 1px solid #2a2d3a;
+}
+
+.prerequisite-badge {
+    color: #f97316;
+}
+
+.corequisite-badge {
+    color: #9c27b0;
+}
+
+.prereq-dot-small {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #f97316;
+    display: inline-block;
+}
+
+.coreq-dot-small {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #9c27b0;
+    display: inline-block;
+}
+
+/* Colores para las opciones según su categoría */
+.option-card-basic-science { --option-color: #4a90e2; }
+.option-card-basic-engineering { --option-color: #20c997; }
+.option-card-nfi { --option-color: #fd7e14; }
+.option-card-disciplinary { --option-color: #dc3545; }
+.option-card-professional-track { --option-color: #28a745; }
+.option-card-flexible-track { --option-color: #198754; }
+.option-card-practice { --option-color: #b91c1c; }
+.option-card-emphasis { --option-color: #2ecc71; }
+.option-card-specialization { --option-color: #27ae60; }
+
 /* ========== ESTILOS BASE DEL MODAL ========== */
 .modal-content {
     background-color: #1a1d27 !important;
