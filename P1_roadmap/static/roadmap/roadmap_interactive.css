@@ -644,18 +644,10 @@
     transform: scale(0.95);
 }
 
-@media (max-width: 575px) {
-    .rm-scroll-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 0.9rem;
-    }
-}
-
 /* ── Responsive ───────────────────────────────────────────── */
 
-/* ── Tablet (768px - 991px) ───────────────────────────────── */
-@media (max-width: 991px) {
+/* ── Tablet (767px) ───────────────────────────────── */
+@media (max-width: 767px) {
     .rm-sel-body {
         grid-template-columns: repeat(2, 1fr);
         max-height: 50vh;
@@ -677,6 +669,17 @@
     .rm-onboarding-list {
         grid-template-columns: 1fr;
         gap: 0.4rem;
+    }
+
+    .rm-detail-select-btn {
+        position: static !important;
+        transform: none !important;
+        display: flex !important;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.75rem;
+        font-size: 0.78rem !important;
+        padding: 0.4rem 0.75rem !important;
     }
 }
 
@@ -772,16 +775,11 @@
         font-size: 0.6rem;
         padding: 0.08rem 0.3rem;
     }
-    
-    .rm-detail-select-btn {
-        position: static !important;
-        transform: none !important;
-        display: flex !important;
-        width: 100%;
-        justify-content: center;
-        margin-top: 0.75rem;
-        font-size: 0.78rem !important;
-        padding: 0.4rem 0.75rem !important;
+
+    .rm-scroll-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
     }
 }
 
