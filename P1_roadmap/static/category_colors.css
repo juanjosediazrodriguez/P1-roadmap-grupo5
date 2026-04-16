@@ -7,14 +7,14 @@
 /* ── Variables de color por categoría ────────────────────── */
 :root {
     --color-basic-science:      #4a90e2;
-    --color-basic-engineering:  #20c997;
+    --color-basic-engineering:  #1abc9c;
     --color-nfi:                #fd7e14;
     --color-disciplinary:       #dc3545;
-    --color-professional-track: #28a745;
-    --color-flexible-track:     #198754;
-    --color-practice:           #b91c1c;
-    --color-emphasis:           #2ecc71;
-    --color-specialization:     #27ae60;
+    --color-professional-track: #8e44ad;
+    --color-flexible-track:     #3f51b5;
+    --color-practice:           #eab308;
+    --color-emphasis:           #e91e63;
+    --color-specialization:     #00bcd4;
 }
 
 /* ── Bordes izquierdos en tarjetas del roadmap ────────────── */
@@ -35,7 +35,7 @@
 }
 .course-card.category-basicengineering:hover {
     border-color: var(--color-basic-engineering);
-    box-shadow: 0 6px 16px rgba(32, 201, 151, 0.2);
+    box-shadow: 0 6px 16px rgba(26, 188, 156, 0.2);
 }
 .course-card.category-nfi:hover {
     border-color: var(--color-nfi);
@@ -43,27 +43,27 @@
 }
 .course-card.category-disciplinary:hover {
     border-color: var(--color-disciplinary);
-    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.2);
+    box-shadow: 0 6px 16px rgba(185, 28, 28, 0.2);
 }
 .course-card.category-professionaltrack:hover {
     border-color: var(--color-professional-track);
-    box-shadow: 0 6px 16px rgba(40, 167, 69, 0.2);
+    box-shadow: 0 6px 16px rgba(142, 68, 173, 0.2);
 }
 .course-card.category-flexibletrack:hover {
     border-color: var(--color-flexible-track);
-    box-shadow: 0 6px 16px rgba(25, 135, 84, 0.2);
+    box-shadow: 0 6px 16px rgba(63, 81, 181, 0.2);
 }
 .course-card.category-practice:hover {
     border-color: var(--color-practice);
-    box-shadow: 0 6px 16px rgba(185, 28, 28, 0.2);
+    box-shadow: 0 6px 16px rgba(234, 179, 8, 0.2);
 }
 .course-card.category-emphasis:hover {
     border-color: var(--color-emphasis);
-    box-shadow: 0 6px 16px rgba(46, 204, 113, 0.2);
+    box-shadow: 0 6px 16px rgba(233, 30, 99, 0.2);
 }
 .course-card.category-specialization:hover {
     border-color: var(--color-specialization);
-    box-shadow: 0 6px 16px rgba(39, 174, 96, 0.2);
+    box-shadow: 0 6px 16px rgba(0, 188, 212, 0.2);
 }
 
 /* ── Bordes izquierdos en modales de detalle ──────────────── */
