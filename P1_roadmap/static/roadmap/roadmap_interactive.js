@@ -554,10 +554,10 @@ function initSortable() {
 
                 // Bloquear movimiento de paraguas de trayectoria, flexible y énfasis
                 if (fromSem !== toSem && BLOCKED_UMBRELLA_PKS.has(String(courseId))) {
-                    // Revertir DOM — devolver la tarjeta al semestre original
-                    const cards = [...fromCol.querySelectorAll('.course-card')];
-                    const oldIndex = evt.oldIndex;
-                    const refCard = cards[oldIndex] || null;
+                    // Calcular posición real entre course-cards únicamente
+                    const fromCards = [...fromCol.querySelectorAll('.course-card')];
+                    const originalIdx = state.semester_map[String(fromSem)].indexOf(courseId);
+                    const refCard = fromCards[originalIdx] || null;
                     if (refCard) {
                         fromCol.insertBefore(evt.item, refCard);
                     } else {
