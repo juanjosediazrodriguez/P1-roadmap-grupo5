@@ -103,13 +103,13 @@
 
 /* ========== BADGES Y ETIQUETAS ========== */
 .course-code-badge {
-    background-color: #1a3b5c;
-    color: #b0d4ff;
+    background-color: #2a2d3a;
+    color: #8f9bb3;
     font-weight: 600;
     font-size: 1.2rem;
     padding: 0.25rem 1rem;
     border-radius: 10px;
-    border: 1px solid #2d5a82;
+    border: 1px solid #3a3d4a;
 }
 
 .semester-badge {

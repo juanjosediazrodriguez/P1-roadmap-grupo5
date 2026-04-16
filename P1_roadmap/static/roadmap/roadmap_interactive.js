@@ -60,6 +60,7 @@ function resetState() {
     rebuildAllSemesters();
     updateContextBar();
     validateAll();
+    showToast('Roadmap reiniciado exitosamente', 'info');
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -189,8 +190,11 @@ function buildCourseCard(course, semNum, parentLabel) {
         card.setAttribute('data-bs-toggle', 'modal');
         card.setAttribute('data-bs-target', `#courseModal${course.id}`);
     } else if (isUmbrella) {
-        card.addEventListener('click', () => openSelectionModal(course, semNum));
-    } else {
+        card.addEventListener('click', () => {
+            const currentSemNum = parseInt(card.dataset.semNum);
+            openSelectionModal(course, currentSemNum);
+        });
+        } else {
         card.setAttribute('data-bs-toggle', 'modal');
         card.setAttribute('data-bs-target', `#courseModal${course.id}`);
     }
@@ -478,7 +482,47 @@ function validateAll() {
 // 7. DRAG & DROP
 // ─────────────────────────────────────────────────────────────────────────────
 
+function showToast(message, type = 'info') {
+    const existing = document.getElementById('rm-toast');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.id = 'rm-toast';
+    const colors = {
+        warning: { bg: '#7c3a10', border: '#f97316', color: '#fdba74' },
+        info:    { bg: '#1a3a5c', border: '#4a90e2', color: '#93c5fd' },
+        error:   { bg: '#5c1a1a', border: '#ef4444', color: '#fca5a5' },
+    };
+    const c = colors[type] || colors.info;
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: ${c.bg};
+        border: 1px solid ${c.border};
+        border-radius: 10px;
+        color: ${c.color};
+        padding: 0.75rem 1.5rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        z-index: 9999;
+        white-space: nowrap;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: opacity 0.3s ease;
+    `;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
 function initSortable() {
+    // PKs de paraguas que NO se pueden mover de semestre
+    const BLOCKED_UMBRELLA_PKS = new Set(['207', '208', '211']);
+
     document.querySelectorAll('.semester-col').forEach(col => {
         const semNum = parseInt(col.dataset.semNum);
         if (!semNum) return;
@@ -498,41 +542,51 @@ function initSortable() {
             },
             onEnd(evt) {
                 document.querySelector('.roadmap-track')?.classList.remove('rm-dragging');
-                const courseId = parseInt(evt.item.dataset.courseId);
-                const fromCol  = evt.from.closest('.semester-col');
-                const toCol    = evt.to.closest('.semester-col');
-                const fromSem  = parseInt(fromCol.dataset.semNum);
-                const toSem    = parseInt(toCol.dataset.semNum);
-                const newIndex = evt.newIndex;
+
+                const courseId  = parseInt(evt.item.dataset.courseId);
+                const fromCol   = evt.from.closest('.semester-col');
+                const toCol     = evt.to.closest('.semester-col');
+                const fromSem   = parseInt(fromCol.dataset.semNum);
+                const toSem     = parseInt(toCol.dataset.semNum);
+                // Calcular índice real contando solo course-cards
+                const allCards = [...toCol.querySelectorAll('.course-card')];
+                const newIndex = allCards.indexOf(evt.item);
+
+                // Bloquear movimiento de paraguas de trayectoria, flexible y énfasis
+                if (fromSem !== toSem && BLOCKED_UMBRELLA_PKS.has(String(courseId))) {
+                    // Revertir DOM — devolver la tarjeta al semestre original
+                    const cards = [...fromCol.querySelectorAll('.course-card')];
+                    const oldIndex = evt.oldIndex;
+                    const refCard = cards[oldIndex] || null;
+                    if (refCard) {
+                        fromCol.insertBefore(evt.item, refCard);
+                    } else {
+                        fromCol.appendChild(evt.item);
+                    }
+                    evt.item.dataset.semNum = fromSem;
+                    showToast('Primero selecciona la trayectoria o línea de énfasis antes de moverla', 'warning');
+                    return;
+                }
 
                 if (fromSem === toSem) {
-                    // Solo actualizar estado, SortableJS ya movió el DOM
                     const newOrder = [...toCol.querySelectorAll('.course-card')]
                         .map(c => parseInt(c.dataset.courseId));
                     state.semester_map[String(toSem)] = newOrder;
                     saveState();
                     validateAll();
                 } else {
-                    // Actualizar estado con la posición exacta
                     const fromList = state.semester_map[String(fromSem)];
                     const toList   = state.semester_map[String(toSem)];
 
                     const idx = fromList.indexOf(courseId);
                     if (idx !== -1) fromList.splice(idx, 1);
 
-                    // Insertar en la posición donde SortableJS lo dejó
                     toList.splice(newIndex, 0, courseId);
 
-                    // Actualizar dataset del card que SortableJS ya movió
                     evt.item.dataset.semNum = toSem;
 
                     saveState();
-
-                    // Solo reconstruir la columna origen (para actualizar créditos)
-                    // La columna destino ya tiene el card en la posición correcta
                     rebuildSemesterColumn(fromSem);
-
-                    // Actualizar créditos de destino sin mover tarjetas
                     updateSemesterCredits(toSem);
                     validateAll();
                     initSortable();
@@ -790,27 +844,42 @@ function openCourseDetailFromSelection(course, umbrellaPk, semNum, type, umbrell
 }
 
 function confirmNFIElectivaSelection(umbrellaPk, selectedCourse, semNum, type) {
+    
+    const umbrellaIntId = parseInt(umbrellaPk);
     const previousId = state.selections[type][umbrellaPk];
 
+    let realSemNum, targetId;
     if (previousId !== null) {
-        // Reemplazar el curso anterior por el nuevo
-        removeCourseFromSemester(previousId, semNum);
+        realSemNum = getSemesterOfCourse(previousId);
+        targetId   = previousId;
     } else {
-        // Primera vez: quitar la tarjeta paraguas
-        removeCourseFromSemester(parseInt(umbrellaPk), semNum);
+        realSemNum = getSemesterOfCourse(umbrellaIntId);
+        targetId   = umbrellaIntId;
     }
+    if (realSemNum === null) realSemNum = semNum;
 
-    // Agregar el curso seleccionado
+    const semList = state.semester_map[String(realSemNum)];
+    if (!semList) return;
+
+    const insertIdx = semList.indexOf(targetId);
+    
+    removeCourseFromSemester(targetId, realSemNum);
+
     if (!D.course_map[String(selectedCourse.id)]) {
         D.course_map[String(selectedCourse.id)] = selectedCourse;
     }
-    const semList = state.semester_map[String(semNum)];
-    if (semList) semList.push(selectedCourse.id);
+
+    if (insertIdx !== -1) {
+        semList.splice(insertIdx, 0, selectedCourse.id);
+    } else {
+        semList.push(selectedCourse.id);
+    }
 
     state.selections[type][umbrellaPk] = selectedCourse.id;
 
     saveState();
-    rebuildSemesterColumn(semNum);
+    rebuildSemesterColumn(realSemNum);
+    if (realSemNum !== semNum) rebuildSemesterColumn(semNum);
     validateAll();
     initSortable();
     updateContextBar();
