@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerMap - Registro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        .auth-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .brand-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .brand-header .brand-icon {
+            font-size: 2.5rem;
+            color: #0f3460;
+            margin-bottom: 0.5rem;
+        }
+        .brand-header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.25rem;
+        }
+        .brand-header .subtitle {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        .university-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #6c757d;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            padding: 2px 10px;
+            margin-top: 0.25rem;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #344767;
+            font-size: 0.875rem;
+        }
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #d2d6da;
+            padding: 0.65rem 1rem;
+            font-size: 0.9rem;
+        }
+        .form-control:focus {
+            border-color: #0f3460;
+            box-shadow: 0 0 0 0.2rem rgba(15, 52, 96, 0.15);
+        }
+        .input-group-text {
+            border-radius: 8px 0 0 8px;
+            background: #f8f9fa;
+            border-color: #d2d6da;
+            color: #6c757d;
+        }
+        .btn-register {
+            background: linear-gradient(135deg, #0f3460, #16213e);
+            border: none;
+            border-radius: 8px;
+            padding: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            width: 100%;
+            color: white;
+            transition: opacity 0.2s;
+        }
+        .btn-register:hover {
+            opacity: 0.9;
+            color: white;
+        }
+        .password-hint {
+            font-size: 0.75rem;
+            color: #adb5bd;
+            margin-top: 0.3rem;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #adb5bd;
+            font-size: 0.8rem;
+            margin: 1.25rem 0;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #dee2e6;
+        }
+        .login-link {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+        .login-link a {
+            color: #0f3460;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-card">
+        <div class="brand-header">
+            <div class="brand-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h1>CareerMap</h1>
+            <div class="university-badge">UNIVERSIDAD EAFIT</div>
+            <p class="subtitle mt-2">Crea tu cuenta para comenzar</p>
+        </div>
+
+        {% if messages %}
+        <div class="mb-3">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show py-2" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Usuario</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    <input type="text" name="username" class="form-control"
+                           placeholder="Elige un nombre de usuario" required autofocus
+                           value="{{ form.username.value|default:'' }}">
+                </div>
+                <div class="password-hint">Solo letras, números y @/./+/-/_</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    <input type="password" name="password1" class="form-control"
+                           placeholder="Mínimo 8 caracteres" required>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="form-label">Confirmar Contraseña</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    <input type="password" name="password2" class="form-control"
+                           placeholder="Repite tu contraseña" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-register">
+                <i class="fas fa-user-plus me-2"></i>Crear Cuenta
+            </button>
+        </form>
+
+        <div class="divider">o</div>
+
+        <div class="login-link">
+            ¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Specialization, Course, Track, EmphasisLine, CourseSpecialization, TrackCourse, EmphasisLineCourse
 from accounts.models import Preference
 from collections import defaultdict
@@ -169,8 +170,9 @@ def generate_roadmap(preference):
     return dict(sorted(roadmap.items())), all_courses_for_modals
 
 
+@login_required
 def roadmap_view(request):
-    preference = Preference.objects.first()
+    preference, _ = Preference.objects.get_or_create(user=request.user)
     roadmap_by_semester, all_options = generate_roadmap(preference)
 
     semesters = [
@@ -329,6 +331,7 @@ def roadmap_view(request):
 
 # ========== ESPECIALIZACIONES ==========
 
+@login_required
 def specialization_list(request):
     query = request.GET.get('q', '')
     specializations = Specialization.objects.filter(name__icontains=query)
@@ -338,6 +341,7 @@ def specialization_list(request):
     })
 
 
+@login_required
 def specialization_detail(request, pk):
     specialization = get_object_or_404(Specialization, pk=pk)
     
@@ -449,11 +453,13 @@ def generate_specialization_roadmap(specialization):
 
 # ========== TRAYECTORIAS ==========
 
+@login_required
 def track_list(request):
     """Vista principal de trayectorias (redirige a profesionalizantes por defecto)"""
     return redirect('track_professional_list')
 
 
+@login_required
 def track_professional_list(request):
     """Lista de trayectorias profesionalizantes"""
     query = request.GET.get('q', '')
@@ -468,6 +474,7 @@ def track_professional_list(request):
     })
 
 
+@login_required
 def track_flexible_list(request):
     """Lista de trayectorias flexibles"""
     query = request.GET.get('q', '')
@@ -482,6 +489,7 @@ def track_flexible_list(request):
     })
 
 
+@login_required
 def track_detail(request, pk):
     """Vista detallada de una trayectoria"""
     track = get_object_or_404(Track, pk=pk)
@@ -586,6 +594,7 @@ def track_course_search(request, pk):
 
 # ========== LÍNEAS DE ÉNFASIS ==========
 
+@login_required
 def emphasis_line_list(request):
     """Lista de todas las líneas de énfasis"""
     query = request.GET.get('q', '')
@@ -597,6 +606,7 @@ def emphasis_line_list(request):
     })
 
 
+@login_required
 def emphasis_line_detail(request, pk):
     """Vista detallada de una línea de énfasis"""
     emphasis_line = get_object_or_404(EmphasisLine, pk=pk)
