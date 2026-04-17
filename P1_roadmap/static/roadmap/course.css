@@ -227,11 +227,11 @@
 
 /* Prerrequisitos */
 .prerequisite-card {
-    border-left: 4px solid #ffc107;
+    border-left: 4px solid #f97316;
 }
 
 .prerequisite-icon {
-    color: #ffc107;
+    color: #f97316;
     font-size: 1.2rem;
 }
 

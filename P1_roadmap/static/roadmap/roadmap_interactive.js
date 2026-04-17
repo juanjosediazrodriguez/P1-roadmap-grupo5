@@ -101,6 +101,7 @@ function resetState() {
     rebuildAllSemesters();
     updateContextBar();
     validateAll();
+    saveState();
     showToast('Roadmap reiniciado exitosamente', 'info');
 }
 
@@ -120,14 +121,14 @@ function getCategoryClass(category) {
 function getCategoryColor(category) {
     const colors = {
         'BASIC_SCIENCE':      '#4a90e2',
-        'BASIC_ENGINEERING':  '#20c997',
+        'BASIC_ENGINEERING':  '#1abc9c',
         'NFI':                '#fd7e14',
         'DISCIPLINARY':       '#dc3545',
-        'PROFESSIONAL_TRACK': '#28a745',
-        'FLEXIBLE_TRACK':     '#198754',
-        'PRACTICE':           '#b91c1c',
-        'EMPHASIS':           '#2ecc71',
-        'SPECIALIZATION':     '#27ae60',
+        'PROFESSIONAL_TRACK': '#8e44ad',
+        'FLEXIBLE_TRACK':     '#3f51b5',
+        'PRACTICE':           '#eab308',
+        'EMPHASIS':           '#e91e63',
+        'SPECIALIZATION':     '#00bcd4',
     };
     return colors[category] || '#27ae60';
 }
