@@ -203,8 +203,8 @@ def roadmap_view(request):
         semester_map[str(sem_data['number'])] = [c.id for c in sem_data['courses']]
 
     # ── Datos de trayectorias profesionalizantes ─────────────────────────────
-    # Mapa: umbrella_course_pk (182-186) -> Track model pk (1-5)
-    PROF_UMBRELLA_TO_TRACK_ID = {182: 1, 183: 2, 184: 3, 185: 4, 186: 5}
+    # Mapa: umbrella_course_pk (182-186 & 219) -> Track model pk (1-5)
+    PROF_UMBRELLA_TO_TRACK_ID = {182: 1, 183: 2, 184: 3, 185: 4, 186: 5, 219: 6}
     tracks_data = {}
     for umbrella_pk, track_id in PROF_UMBRELLA_TO_TRACK_ID.items():
         try:

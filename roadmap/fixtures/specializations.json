@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "name": "Desarrollo de Software",
-      "description": "La especialización en Desarrollo de Software se enfoca en el diseño, construcción, prueba y mantenimiento de aplicaciones y sistemas informáticos que resuelven problemas reales de usuarios y empresas. Esta área combina lógica, programación y buenas prácticas de ingeniería para crear soluciones eficientes, seguras y escalables."
+      "description": "La especialización en Desarrollo de Software se enfoca en el diseño, construcción, prueba y mantenimiento de aplicaciones y sistemas informáticos que resuelven problemas reales de usuarios y empresas."
     }
   },
   {
@@ -12,23 +12,23 @@
     "pk": 2,
     "fields": {
       "name": "Sistemas de Información",
-      "description": "La especialización en Sistemas de Información se centra en la gestión estratégica de la tecnología en las organizaciones, integrando procesos de negocio con soluciones tecnológicas para optimizar la toma de decisiones. Combina conocimientos de gestión empresarial, arquitectura de TI y análisis de datos para transformar digitalmente las organizaciones."
+      "description": "La especialización en Sistemas de Información se centra en la gestión estratégica de la tecnología en las organizaciones, integrando procesos de negocio con soluciones tecnológicas para optimizar la toma de decisiones."
     }
   },
   {
     "model": "roadmap.specialization",
     "pk": 3,
     "fields": {
-      "name": "Inteligencia Artificial",
-      "description": "La especialización en Inteligencia Artificial se enfoca en el desarrollo de sistemas capaces de realizar tareas que requieren inteligencia humana, como el aprendizaje, razonamiento, percepción y procesamiento del lenguaje natural. Los estudiantes adquieren habilidades en machine learning, deep learning, visión por computador y procesamiento de lenguaje natural para crear soluciones inteligentes e innovadoras."
+      "name": "Gerencia de Proyectos",
+      "description": "La especialización en Gerencia de Proyectos forma profesionales capaces de formular, evaluar y dirigir proyectos complejos aplicando metodologías modernas de gestión en contextos organizacionales."
     }
   },
   {
     "model": "roadmap.specialization",
     "pk": 4,
     "fields": {
-      "name": "Ciberseguridad",
-      "description": "La especialización en Ciberseguridad se centra en la protección de sistemas informáticos, redes y datos frente a ataques, accesos no autorizados y fallos de seguridad. Los profesionales de esta área garantizan la confidencialidad, integridad y disponibilidad de la información, implementando estrategias de prevención, detección y respuesta ante incidentes de seguridad."
+      "name": "Diseño Integrado de Sistemas Técnicos",
+      "description": "La especialización en Diseño Integrado de Sistemas Técnicos forma profesionales en el diseño y desarrollo de sistemas mecatrónicos, combinando mecánica, electrónica e informática para crear soluciones técnicas innovadoras."
     }
   }
 ]

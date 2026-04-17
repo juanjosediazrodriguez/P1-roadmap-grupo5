@@ -123,7 +123,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [3],
+      "prerequisites": [
+        3
+      ],
       "corequisites": []
     }
   },
@@ -155,7 +157,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [3],
+      "prerequisites": [
+        3
+      ],
       "corequisites": []
     }
   },
@@ -171,7 +175,9 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [4],
+      "prerequisites": [
+        4
+      ],
       "corequisites": []
     }
   },
@@ -187,7 +193,9 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [6],
+      "prerequisites": [
+        6
+      ],
       "corequisites": []
     }
   },
@@ -203,7 +211,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [8, 9],
+      "prerequisites": [
+        8,
+        9
+      ],
       "corequisites": []
     }
   },
@@ -219,7 +230,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [8],
+      "prerequisites": [
+        8
+      ],
       "corequisites": []
     }
   },
@@ -235,7 +248,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [10],
+      "prerequisites": [
+        10
+      ],
       "corequisites": []
     }
   },
@@ -251,7 +266,9 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [12],
+      "prerequisites": [
+        12
+      ],
       "corequisites": []
     }
   },
@@ -267,7 +284,9 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [11],
+      "prerequisites": [
+        11
+      ],
       "corequisites": []
     }
   },
@@ -283,7 +302,9 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [12],
+      "prerequisites": [
+        12
+      ],
       "corequisites": []
     }
   },
@@ -299,7 +320,9 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [16],
+      "prerequisites": [
+        16
+      ],
       "corequisites": []
     }
   },
@@ -315,7 +338,9 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [18],
+      "prerequisites": [
+        18
+      ],
       "corequisites": []
     }
   },
@@ -331,7 +356,9 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [16],
+      "prerequisites": [
+        16
+      ],
       "corequisites": []
     }
   },
@@ -348,7 +375,9 @@
       "category": "DISCIPLINARY",
       "is_umbrella": false,
       "prerequisites": [],
-      "corequisites": [20]
+      "corequisites": [
+        20
+      ]
     }
   },
   {
@@ -443,7 +472,9 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [19],
+      "prerequisites": [
+        19
+      ],
       "corequisites": []
     }
   },
@@ -459,8 +490,13 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [16],
-      "corequisites": [27, 31]
+      "prerequisites": [
+        16
+      ],
+      "corequisites": [
+        27,
+        31
+      ]
     }
   },
   {
@@ -475,7 +511,9 @@
       "language": "ES",
       "category": "PRACTICE",
       "is_umbrella": false,
-      "prerequisites": [7],
+      "prerequisites": [
+        7
+      ],
       "corequisites": []
     }
   },
@@ -491,7 +529,9 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [16],
+      "prerequisites": [
+        16
+      ],
       "corequisites": []
     }
   },
@@ -523,7 +563,9 @@
       "language": "ES",
       "category": "DISCIPLINARY",
       "is_umbrella": false,
-      "prerequisites": [28],
+      "prerequisites": [
+        28
+      ],
       "corequisites": []
     }
   },
@@ -539,7 +581,10 @@
       "language": "ES",
       "category": "PRACTICE",
       "is_umbrella": false,
-      "prerequisites": [15, 30],
+      "prerequisites": [
+        15,
+        30
+      ],
       "corequisites": []
     }
   },
@@ -555,7 +600,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [27],
+      "prerequisites": [
+        27
+      ],
       "corequisites": []
     }
   },
@@ -571,7 +618,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [27],
+      "prerequisites": [
+        27
+      ],
       "corequisites": []
     }
   },
@@ -587,7 +636,10 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [35, 36],
+      "prerequisites": [
+        35,
+        36
+      ],
       "corequisites": []
     }
   },
@@ -604,7 +656,9 @@
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
       "prerequisites": [],
-      "corequisites": [37]
+      "corequisites": [
+        37
+      ]
     }
   },
   {
@@ -619,7 +673,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [19],
+      "prerequisites": [
+        19
+      ],
       "corequisites": []
     }
   },
@@ -635,7 +691,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [19],
+      "prerequisites": [
+        19
+      ],
       "corequisites": []
     }
   },
@@ -651,7 +709,10 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [39, 40],
+      "prerequisites": [
+        39,
+        40
+      ],
       "corequisites": []
     }
   },
@@ -667,7 +728,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [41],
+      "prerequisites": [
+        41
+      ],
       "corequisites": []
     }
   },
@@ -683,7 +746,10 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [18, 16],
+      "prerequisites": [
+        18,
+        16
+      ],
       "corequisites": []
     }
   },
@@ -699,7 +765,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [18],
+      "prerequisites": [
+        18
+      ],
       "corequisites": []
     }
   },
@@ -715,7 +783,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [44],
+      "prerequisites": [
+        44
+      ],
       "corequisites": []
     }
   },
@@ -731,7 +801,10 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [43, 45],
+      "prerequisites": [
+        43,
+        45
+      ],
       "corequisites": []
     }
   },
@@ -747,7 +820,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [29],
+      "prerequisites": [
+        29
+      ],
       "corequisites": []
     }
   },
@@ -756,14 +831,16 @@
     "pk": 48,
     "fields": {
       "code": "SI3015",
-      "name": "Aprendizaje Automático",
+      "name": "Fundamentos de Aprendizaje Automático",
       "credits": 3,
       "description": "Algoritmos y técnicas de machine learning supervisado y no supervisado.",
       "semester_suggested": 6,
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [29],
+      "prerequisites": [
+        29
+      ],
       "corequisites": []
     }
   },
@@ -779,7 +856,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [48],
+      "prerequisites": [
+        48
+      ],
       "corequisites": []
     }
   },
@@ -788,14 +867,17 @@
     "pk": 50,
     "fields": {
       "code": "SI5001",
-      "name": "Proyecto Trayectoria en Inteligencia Artificial",
+      "name": "Proyecto en Inteligencia Artificial",
       "credits": 3,
       "description": "Proyecto integrador de la trayectoria en Inteligencia Artificial.",
       "semester_suggested": 7,
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [47, 49],
+      "prerequisites": [
+        47,
+        49
+      ],
       "corequisites": []
     }
   },
@@ -811,7 +893,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [19],
+      "prerequisites": [
+        31
+      ],
       "corequisites": []
     }
   },
@@ -827,8 +911,12 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [51],
-      "corequisites": []
+      "prerequisites": [
+        31
+      ],
+      "corequisites": [
+        51
+      ]
     }
   },
   {
@@ -843,7 +931,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [52],
+      "prerequisites": [
+        52
+      ],
       "corequisites": []
     }
   },
@@ -859,7 +949,9 @@
       "language": "ES",
       "category": "PROFESSIONAL_TRACK",
       "is_umbrella": false,
-      "prerequisites": [53],
+      "prerequisites": [
+        53
+      ],
       "corequisites": []
     }
   },
@@ -875,7 +967,9 @@
       "language": "ES",
       "category": "PRACTICE",
       "is_umbrella": false,
-      "prerequisites": [34],
+      "prerequisites": [
+        34
+      ],
       "corequisites": []
     }
   },
@@ -891,7 +985,10 @@
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
-      "prerequisites": [13, 14],
+      "prerequisites": [
+        13,
+        14
+      ],
       "corequisites": []
     }
   },
@@ -907,7 +1004,9 @@
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
-      "prerequisites": [14],
+      "prerequisites": [
+        14
+      ],
       "corequisites": []
     }
   },
@@ -923,7 +1022,10 @@
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
-      "prerequisites": [16, 18],
+      "prerequisites": [
+        16,
+        18
+      ],
       "corequisites": []
     }
   },
@@ -939,7 +1041,11 @@
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
-      "prerequisites": [56, 57, 58],
+      "prerequisites": [
+        56,
+        57,
+        58
+      ],
       "corequisites": []
     }
   },
@@ -955,7 +1061,9 @@
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
-      "prerequisites": [59],
+      "prerequisites": [
+        59
+      ],
       "corequisites": []
     }
   },
@@ -971,7 +1079,9 @@
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
-      "prerequisites": [59],
+      "prerequisites": [
+        59
+      ],
       "corequisites": []
     }
   },
@@ -987,7 +1097,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13, 69],
+      "prerequisites": [
+        13,
+        69
+      ],
       "corequisites": []
     }
   },
@@ -1003,7 +1116,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13, 14],
+      "prerequisites": [
+        13,
+        14
+      ],
       "corequisites": []
     }
   },
@@ -1019,7 +1135,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13],
+      "prerequisites": [
+        13
+      ],
       "corequisites": []
     }
   },
@@ -1035,7 +1153,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13],
+      "prerequisites": [
+        13
+      ],
       "corequisites": []
     }
   },
@@ -1051,7 +1171,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13],
+      "prerequisites": [
+        13
+      ],
       "corequisites": []
     }
   },
@@ -1067,7 +1189,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [65],
+      "prerequisites": [
+        65
+      ],
       "corequisites": []
     }
   },
@@ -1083,7 +1207,11 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [9, 13, 14],
+      "prerequisites": [
+        9,
+        13,
+        14
+      ],
       "corequisites": []
     }
   },
@@ -1099,7 +1227,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [9, 13],
+      "prerequisites": [
+        9,
+        13
+      ],
       "corequisites": []
     }
   },
@@ -1115,7 +1246,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13, 14],
+      "prerequisites": [
+        13,
+        14
+      ],
       "corequisites": []
     }
   },
@@ -1131,7 +1265,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13],
+      "prerequisites": [
+        13
+      ],
       "corequisites": []
     }
   },
@@ -1147,7 +1283,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13, 17],
+      "prerequisites": [
+        13,
+        17
+      ],
       "corequisites": []
     }
   },
@@ -1163,7 +1302,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13, 17],
+      "prerequisites": [
+        13,
+        17
+      ],
       "corequisites": []
     }
   },
@@ -1179,7 +1321,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13, 17],
+      "prerequisites": [
+        13,
+        17
+      ],
       "corequisites": []
     }
   },
@@ -1195,7 +1340,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13, 14],
+      "prerequisites": [
+        13,
+        14
+      ],
       "corequisites": []
     }
   },
@@ -1211,7 +1359,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [75],
+      "prerequisites": [
+        75
+      ],
       "corequisites": []
     }
   },
@@ -1227,7 +1377,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13],
+      "prerequisites": [
+        13
+      ],
       "corequisites": []
     }
   },
@@ -1243,7 +1395,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [71],
+      "prerequisites": [
+        71
+      ],
       "corequisites": []
     }
   },
@@ -1259,7 +1413,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13, 69],
+      "prerequisites": [
+        13,
+        69
+      ],
       "corequisites": []
     }
   },
@@ -1275,7 +1432,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13, 14],
+      "prerequisites": [
+        13,
+        14
+      ],
       "corequisites": []
     }
   },
@@ -1291,7 +1451,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [13, 14],
+      "prerequisites": [
+        13,
+        14
+      ],
       "corequisites": []
     }
   },
@@ -1307,7 +1470,9 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [81],
+      "prerequisites": [
+        81
+      ],
       "corequisites": []
     }
   },
@@ -1323,7 +1488,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [9, 13],
+      "prerequisites": [
+        9,
+        13
+      ],
       "corequisites": []
     }
   },
@@ -1339,7 +1507,10 @@
       "language": "ES",
       "category": "BASIC_SCIENCE",
       "is_umbrella": false,
-      "prerequisites": [16, 17],
+      "prerequisites": [
+        16,
+        17
+      ],
       "corequisites": []
     }
   },
@@ -1897,7 +2068,7 @@
       "description": "Estudio de metodologías ágiles, DevOps y prácticas modernas para el desarrollo eficiente de software.",
       "semester_suggested": 9,
       "language": "ES",
-      "category": "SPECIALIZATION",
+      "category": "EMPHASIS",
       "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
@@ -1913,7 +2084,7 @@
       "description": "Implementación de pipelines de CI/CD, automatización de builds, pruebas y despliegues.",
       "semester_suggested": 9,
       "language": "ES",
-      "category": "SPECIALIZATION",
+      "category": "EMPHASIS",
       "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
@@ -1929,7 +2100,7 @@
       "description": "Diseño de arquitecturas modernas: microservicios, event-driven, serverless y hexagonales.",
       "semester_suggested": 9,
       "language": "ES",
-      "category": "SPECIALIZATION",
+      "category": "EMPHASIS",
       "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
@@ -1945,7 +2116,7 @@
       "description": "Prácticas de desarrollo seguro, análisis de vulnerabilidades y protección de aplicaciones.",
       "semester_suggested": 9,
       "language": "ES",
-      "category": "SPECIALIZATION",
+      "category": "EMPHASIS",
       "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
@@ -1961,7 +2132,7 @@
       "description": "Curso electivo en temáticas avanzadas de desarrollo de software.",
       "semester_suggested": 9,
       "language": "ES",
-      "category": "SPECIALIZATION",
+      "category": "EMPHASIS",
       "is_umbrella": true,
       "prerequisites": [],
       "corequisites": []
@@ -1977,7 +2148,7 @@
       "description": "Curso electivo en temáticas avanzadas de desarrollo de software.",
       "semester_suggested": 9,
       "language": "ES",
-      "category": "SPECIALIZATION",
+      "category": "EMPHASIS",
       "is_umbrella": true,
       "prerequisites": [],
       "corequisites": []
@@ -1995,7 +2166,12 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [119, 120, 121, 122],
+      "prerequisites": [
+        119,
+        120,
+        121,
+        122
+      ],
       "corequisites": []
     }
   },
@@ -2004,14 +2180,19 @@
     "pk": 126,
     "fields": {
       "code": "ST1705",
-      "name": "Ingeniería de Sistemas Auto-Adaptables",
+      "name": "Tendencias Emergentes en Desarrollo de Software",
       "credits": 2,
-      "description": "Desarrollo de sistemas que se adaptan automáticamente a cambios en el entorno.",
+      "description": "Exploración de tendencias y paradigmas emergentes en el desarrollo de software moderno, incluyendo arquitecturas cloud-native y DevOps avanzado.",
       "semester_suggested": 10,
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [119, 120, 121, 122],
+      "prerequisites": [
+        119,
+        120,
+        121,
+        122
+      ],
       "corequisites": []
     }
   },
@@ -2027,7 +2208,12 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [119, 120, 121, 122],
+      "prerequisites": [
+        119,
+        120,
+        121,
+        122
+      ],
       "corequisites": []
     }
   },
@@ -2036,14 +2222,19 @@
     "pk": 128,
     "fields": {
       "code": "ST1707",
-      "name": "Tópicos Avanzados en Ingeniería de Software",
+      "name": "Ingeniería para Sistemas Distribuidos",
       "credits": 2,
-      "description": "Exploración de tendencias emergentes en ingeniería de software.",
+      "description": "Principios y prácticas para el diseño, desarrollo y operación de sistemas distribuidos de alta disponibilidad y escalabilidad.",
       "semester_suggested": 10,
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [119, 120, 121, 122],
+      "prerequisites": [
+        119,
+        120,
+        121,
+        122
+      ],
       "corequisites": []
     }
   },
@@ -2059,7 +2250,12 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": true,
-      "prerequisites": [119, 120, 121, 122],
+      "prerequisites": [
+        119,
+        120,
+        121,
+        122
+      ],
       "corequisites": []
     }
   },
@@ -2075,7 +2271,12 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": true,
-      "prerequisites": [119, 120, 121, 122],
+      "prerequisites": [
+        119,
+        120,
+        121,
+        122
+      ],
       "corequisites": []
     }
   },
@@ -2089,7 +2290,7 @@
       "description": "Diseño y gestión de la arquitectura empresarial alineada con la estrategia organizacional.",
       "semester_suggested": 9,
       "language": "ES",
-      "category": "SPECIALIZATION",
+      "category": "EMPHASIS",
       "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
@@ -2105,7 +2306,7 @@
       "description": "Gobierno de TI, alineamiento estratégico y gestión del portafolio de proyectos tecnológicos.",
       "semester_suggested": 9,
       "language": "ES",
-      "category": "SPECIALIZATION",
+      "category": "EMPHASIS",
       "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
@@ -2121,7 +2322,7 @@
       "description": "Aplicación de business intelligence y analítica para la toma de decisiones.",
       "semester_suggested": 9,
       "language": "ES",
-      "category": "SPECIALIZATION",
+      "category": "EMPHASIS",
       "is_umbrella": false,
       "prerequisites": [],
       "corequisites": []
@@ -2137,7 +2338,7 @@
       "description": "Curso electivo en sistemas de información.",
       "semester_suggested": 9,
       "language": "ES",
-      "category": "SPECIALIZATION",
+      "category": "EMPHASIS",
       "is_umbrella": true,
       "prerequisites": [],
       "corequisites": []
@@ -2153,7 +2354,7 @@
       "description": "Curso electivo en sistemas de información.",
       "semester_suggested": 9,
       "language": "ES",
-      "category": "SPECIALIZATION",
+      "category": "EMPHASIS",
       "is_umbrella": true,
       "prerequisites": [],
       "corequisites": []
@@ -2171,7 +2372,11 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [131, 132, 133],
+      "prerequisites": [
+        131,
+        132,
+        133
+      ],
       "corequisites": []
     }
   },
@@ -2187,7 +2392,11 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [131, 132, 133],
+      "prerequisites": [
+        131,
+        132,
+        133
+      ],
       "corequisites": []
     }
   },
@@ -2203,7 +2412,11 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [131, 132, 133],
+      "prerequisites": [
+        131,
+        132,
+        133
+      ],
       "corequisites": []
     }
   },
@@ -2219,7 +2432,11 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [131, 132, 133],
+      "prerequisites": [
+        131,
+        132,
+        133
+      ],
       "corequisites": []
     }
   },
@@ -2235,7 +2452,11 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": true,
-      "prerequisites": [131, 132, 133],
+      "prerequisites": [
+        131,
+        132,
+        133
+      ],
       "corequisites": []
     }
   },
@@ -2251,395 +2472,14 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": true,
-      "prerequisites": [131, 132, 133],
+      "prerequisites": [
+        131,
+        132,
+        133
+      ],
       "corequisites": []
     }
   },
-  {
-    "model": "roadmap.course",
-    "pk": 142,
-    "fields": {
-      "code": "IA1601",
-      "name": "Fundamentos de Machine Learning",
-      "credits": 2,
-      "description": "Introducción a algoritmos de aprendizaje supervisado y no supervisado.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 143,
-    "fields": {
-      "code": "IA1602",
-      "name": "Deep Learning y Redes Neuronales",
-      "credits": 2,
-      "description": "Arquitecturas de redes neuronales profundas y sus aplicaciones.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 144,
-    "fields": {
-      "code": "IA1603",
-      "name": "Procesamiento de Lenguaje Natural",
-      "credits": 2,
-      "description": "Técnicas para el procesamiento y análisis de texto y lenguaje humano.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 145,
-    "fields": {
-      "code": "IA1604",
-      "name": "Visión por Computador",
-      "credits": 2,
-      "description": "Análisis y procesamiento de imágenes y video con técnicas de IA.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 146,
-    "fields": {
-      "code": "ELECT-IA1",
-      "name": "Electiva I Inteligencia Artificial",
-      "credits": 2,
-      "description": "Curso electivo en inteligencia artificial.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": true,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 147,
-    "fields": {
-      "code": "ELECT-IA2",
-      "name": "Electiva II Inteligencia Artificial",
-      "credits": 2,
-      "description": "Curso electivo en inteligencia artificial.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": true,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 148,
-    "fields": {
-      "code": "IA1701",
-      "name": "Modelos Generativos Avanzados",
-      "credits": 2,
-      "description": "Estudio de GANs, VAEs y modelos de difusión para generación de contenido.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [142, 143],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 149,
-    "fields": {
-      "code": "IA1702",
-      "name": "Aprendizaje por Refuerzo",
-      "credits": 2,
-      "description": "Algoritmos de reinforcement learning para toma de decisiones secuenciales.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [142, 143],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 150,
-    "fields": {
-      "code": "IA1703",
-      "name": "IA Responsable y Ética",
-      "credits": 2,
-      "description": "Principios de ética, fairness, explicabilidad y transparencia en IA.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [142, 143],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 151,
-    "fields": {
-      "code": "IA1704",
-      "name": "MLOps y Despliegue de Modelos",
-      "credits": 2,
-      "description": "Prácticas para operacionalizar y desplegar modelos de machine learning.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [142, 143],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 152,
-    "fields": {
-      "code": "ELECT-IA3",
-      "name": "Electiva III Inteligencia Artificial",
-      "credits": 2,
-      "description": "Electiva avanzada en inteligencia artificial.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": true,
-      "prerequisites": [142, 143],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 153,
-    "fields": {
-      "code": "ELECT-IA4",
-      "name": "Electiva IV Inteligencia Artificial",
-      "credits": 2,
-      "description": "Electiva avanzada en inteligencia artificial.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": true,
-      "prerequisites": [142, 143],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 154,
-    "fields": {
-      "code": "CS1601",
-      "name": "Fundamentos de Seguridad Informática",
-      "credits": 2,
-      "description": "Principios básicos de seguridad: confidencialidad, integridad y disponibilidad.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 155,
-    "fields": {
-      "code": "CS1602",
-      "name": "Seguridad en Redes",
-      "credits": 2,
-      "description": "Protocolos seguros, firewalls, IDS/IPS y seguridad perimetral.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 156,
-    "fields": {
-      "code": "CS1603",
-      "name": "Criptografía Aplicada",
-      "credits": 2,
-      "description": "Fundamentos criptográficos y su aplicación en sistemas reales.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 157,
-    "fields": {
-      "code": "CS1604",
-      "name": "Seguridad en Aplicaciones Web",
-      "credits": 2,
-      "description": "Vulnerabilidades comunes y prácticas de desarrollo seguro.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 158,
-    "fields": {
-      "code": "ELECT-CS1",
-      "name": "Electiva I Ciberseguridad",
-      "credits": 2,
-      "description": "Curso electivo en ciberseguridad.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": true,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 159,
-    "fields": {
-      "code": "ELECT-CS2",
-      "name": "Electiva II Ciberseguridad",
-      "credits": 2,
-      "description": "Curso electivo en ciberseguridad.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": true,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 160,
-    "fields": {
-      "code": "CS1701",
-      "name": "Ethical Hacking y Pentesting",
-      "credits": 2,
-      "description": "Técnicas de hacking ético y pruebas de penetración.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [154, 155, 156, 157],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 161,
-    "fields": {
-      "code": "CS1702",
-      "name": "Seguridad en Cloud y DevOps",
-      "credits": 2,
-      "description": "Prácticas de seguridad en entornos cloud y pipelines de CI/CD.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [154, 155, 156, 157],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 162,
-    "fields": {
-      "code": "CS1703",
-      "name": "Forensia Digital y Respuesta a Incidentes",
-      "credits": 2,
-      "description": "Técnicas de análisis forense y manejo de incidentes de seguridad.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [154, 155, 156, 157],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 163,
-    "fields": {
-      "code": "CS1704",
-      "name": "Gobierno y Gestión de Riesgos de Seguridad",
-      "credits": 2,
-      "description": "Marcos de gobierno, estándares y gestión de riesgos en ciberseguridad.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [154, 155, 156, 157],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 164,
-    "fields": {
-      "code": "ELECT-CS3",
-      "name": "Electiva III Ciberseguridad",
-      "credits": 2,
-      "description": "Electiva avanzada en ciberseguridad.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": true,
-      "prerequisites": [154, 155, 156, 157],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 165,
-    "fields": {
-      "code": "ELECT-CS4",
-      "name": "Electiva IV Ciberseguridad",
-      "credits": 2,
-      "description": "Electiva avanzada en ciberseguridad.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": true,
-      "prerequisites": [154, 155, 156, 157],
-      "corequisites": []
-    }
-  },
-
   {
     "model": "roadmap.course",
     "pk": 166,
@@ -2684,7 +2524,12 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [119, 120, 121, 122],
+      "prerequisites": [
+        119,
+        120,
+        121,
+        122
+      ],
       "corequisites": []
     }
   },
@@ -2700,11 +2545,15 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [119, 120, 121, 122],
+      "prerequisites": [
+        119,
+        120,
+        121,
+        122
+      ],
       "corequisites": []
     }
   },
-
   {
     "model": "roadmap.course",
     "pk": 170,
@@ -2749,7 +2598,11 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [131, 132, 133],
+      "prerequisites": [
+        131,
+        132,
+        133
+      ],
       "corequisites": []
     }
   },
@@ -2765,137 +2618,11 @@
       "language": "ES",
       "category": "SPECIALIZATION",
       "is_umbrella": false,
-      "prerequisites": [131, 132, 133],
-      "corequisites": []
-    }
-  },
-
-  {
-    "model": "roadmap.course",
-    "pk": 174,
-    "fields": {
-      "code": "IA-OPT1",
-      "name": "Sistemas de Recomendación",
-      "credits": 2,
-      "description": "Diseño e implementación de motores de recomendación colaborativos y basados en contenido.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 175,
-    "fields": {
-      "code": "IA-OPT2",
-      "name": "Procesamiento de Lenguaje Natural con Transformers",
-      "credits": 2,
-      "description": "Aplicaciones de NLP usando arquitecturas transformer como BERT y GPT.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 176,
-    "fields": {
-      "code": "IA-OPT3",
-      "name": "Visión por Computador Avanzada",
-      "credits": 2,
-      "description": "Técnicas avanzadas de detección, segmentación y generación de imágenes.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [142, 143],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 177,
-    "fields": {
-      "code": "IA-OPT4",
-      "name": "MLOps: Despliegue y Monitoreo de Modelos",
-      "credits": 2,
-      "description": "Prácticas de MLOps para ciclo de vida completo de modelos de ML.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [142, 143],
-      "corequisites": []
-    }
-  },
-
-  {
-    "model": "roadmap.course",
-    "pk": 178,
-    "fields": {
-      "code": "CS-OPT1",
-      "name": "Seguridad en IoT y Dispositivos Embebidos",
-      "credits": 2,
-      "description": "Análisis de vulnerabilidades y protección de dispositivos IoT.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 179,
-    "fields": {
-      "code": "CS-OPT2",
-      "name": "Análisis de Malware y Técnicas de Reverse Engineering",
-      "credits": 2,
-      "description": "Técnicas de análisis estático y dinámico de malware.",
-      "semester_suggested": 9,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 180,
-    "fields": {
-      "code": "CS-OPT3",
-      "name": "Bug Bounty y Hacking Ético Avanzado",
-      "credits": 2,
-      "description": "Técnicas avanzadas de hacking ético y participación en programas bug bounty.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [154, 155, 156, 157],
-      "corequisites": []
-    }
-  },
-  {
-    "model": "roadmap.course",
-    "pk": 181,
-    "fields": {
-      "code": "CS-OPT4",
-      "name": "Criptografía Post-Cuántica",
-      "credits": 2,
-      "description": "Fundamentos y aplicaciones de algoritmos criptográficos resistentes a computación cuántica.",
-      "semester_suggested": 10,
-      "language": "ES",
-      "category": "SPECIALIZATION",
-      "is_umbrella": false,
-      "prerequisites": [154, 155, 156, 157],
+      "prerequisites": [
+        131,
+        132,
+        133
+      ],
       "corequisites": []
     }
   },
@@ -2979,7 +2706,6 @@
       "corequisites": []
     }
   },
-
   {
     "model": "roadmap.course",
     "pk": 187,
@@ -3427,6 +3153,541 @@
       "prerequisites": [],
       "corequisites": []
     }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 215,
+    "fields": {
+      "code": "SI3017",
+      "name": "Automatización de Procesos de Negocio",
+      "credits": 3,
+      "category": "PROFESSIONAL_TRACK",
+      "semester_suggested": 6,
+      "language": "ES",
+      "description": "Fundamentos y técnicas para modelar, automatizar y optimizar procesos de negocio mediante tecnologías BPM.",
+      "is_umbrella": false,
+      "prerequisites": [
+        22
+      ],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 216,
+    "fields": {
+      "code": "SI3018",
+      "name": "Gestión de TI",
+      "credits": 3,
+      "category": "PROFESSIONAL_TRACK",
+      "semester_suggested": 6,
+      "language": "ES",
+      "description": "Frameworks y mejores prácticas para la gestión estratégica de tecnologías de información en las organizaciones.",
+      "is_umbrella": false,
+      "prerequisites": [
+        22
+      ],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 217,
+    "fields": {
+      "code": "SI4007",
+      "name": "Inteligencia de Negocios",
+      "credits": 3,
+      "category": "PROFESSIONAL_TRACK",
+      "semester_suggested": 7,
+      "language": "ES",
+      "description": "Análisis de datos y herramientas de business intelligence para apoyar la toma de decisiones organizacionales.",
+      "is_umbrella": false,
+      "prerequisites": [
+        215,
+        216
+      ],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 218,
+    "fields": {
+      "code": "SI4008",
+      "name": "Proyecto en Sistemas de Información",
+      "credits": 3,
+      "category": "PROFESSIONAL_TRACK",
+      "semester_suggested": 7,
+      "language": "ES",
+      "description": "Proyecto integrador que aplica los conceptos de sistemas de información para resolver problemas reales de las organizaciones.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [
+        217
+      ],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 219,
+    "fields": {
+      "code": "TRACK-SISINFO",
+      "name": "Trayectoria Sistemas de Información",
+      "credits": 12,
+      "category": "PROFESSIONAL_TRACK",
+      "semester_suggested": 6,
+      "language": "ES",
+      "description": "Trayectoria profesionalizante en sistemas de información empresariales.",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 220,
+    "fields": {
+      "code": "ID0615",
+      "name": "Diseño Conceptual Mecatrónico",
+      "credits": 3,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Metodologías y herramientas para el diseño conceptual de sistemas mecatrónicos integrando mecánica, electrónica e informática.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 221,
+    "fields": {
+      "code": "ID0616",
+      "name": "Lenguajes Técnicos de Programación",
+      "credits": 3,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Estudio de lenguajes de programación especializados para sistemas embebidos y control de dispositivos técnicos.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 222,
+    "fields": {
+      "code": "ID0617",
+      "name": "Actuadores y Sensores",
+      "credits": 3,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Principios de funcionamiento, selección e integración de actuadores y sensores en sistemas de control automatizados.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 223,
+    "fields": {
+      "code": "ID0618",
+      "name": "Equipos para Interfaces entre Procesos",
+      "credits": 3,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Diseño e implementación de interfaces hardware/software para la comunicación entre procesos industriales y sistemas de control.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 224,
+    "fields": {
+      "code": "ID0620",
+      "name": "Electrónica de Potencia",
+      "credits": 3,
+      "category": "SPECIALIZATION",
+      "semester_suggested": 10,
+      "language": "ES",
+      "description": "Conversión y control de energía eléctrica mediante dispositivos semiconductores de potencia en sistemas industriales.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 225,
+    "fields": {
+      "code": "ID0621",
+      "name": "Sistemas Digitales Avanzados",
+      "credits": 3,
+      "category": "SPECIALIZATION",
+      "semester_suggested": 10,
+      "language": "ES",
+      "description": "Diseño y verificación de sistemas digitales complejos utilizando HDL y FPGAs para aplicaciones de alto rendimiento.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 226,
+    "fields": {
+      "code": "ID0623",
+      "name": "Control de Productos Mecatrónicos",
+      "credits": 3,
+      "category": "SPECIALIZATION",
+      "semester_suggested": 10,
+      "language": "ES",
+      "description": "Teoría y aplicación de estrategias de control para productos mecatrónicos, incluyendo control clásico y moderno.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 227,
+    "fields": {
+      "code": "IM0607",
+      "name": "Diseño de Sistemas Técnicos",
+      "credits": 3,
+      "category": "SPECIALIZATION",
+      "semester_suggested": 10,
+      "language": "ES",
+      "description": "Metodología integral para el diseño, prototipado y validación de sistemas técnicos complejos con enfoque interdisciplinario.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 228,
+    "fields": {
+      "code": "GP1601",
+      "name": "Investigación de Mercados",
+      "credits": 2,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Metodologías cuantitativas y cualitativas para la investigación y análisis de mercados en contextos organizacionales.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 229,
+    "fields": {
+      "code": "GP1602",
+      "name": "Información Financiera para la Toma de Decisiones",
+      "credits": 2,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Interpretación y uso de estados financieros e indicadores para la toma de decisiones gerenciales.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 230,
+    "fields": {
+      "code": "GP1603",
+      "name": "Entorno Económico",
+      "credits": 2,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Análisis del entorno macroeconómico y su impacto en las decisiones de gestión de proyectos organizacionales.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 231,
+    "fields": {
+      "code": "GP1604",
+      "name": "Ingeniería Económica",
+      "credits": 2,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Análisis económico para la evaluación y selección de alternativas en proyectos de ingeniería.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 232,
+    "fields": {
+      "code": "GP1605",
+      "name": "Preparación de Proyectos",
+      "credits": 2,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Formulación, estructuración y planificación de proyectos de inversión desde una perspectiva integral.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 233,
+    "fields": {
+      "code": "GP1606",
+      "name": "Evaluación Financiera de Proyectos",
+      "credits": 2,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Técnicas de evaluación financiera para determinar la viabilidad y rentabilidad de proyectos de inversión.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 234,
+    "fields": {
+      "code": "GP1700",
+      "name": "Análisis de Riesgos",
+      "credits": 2,
+      "category": "SPECIALIZATION",
+      "semester_suggested": 10,
+      "language": "ES",
+      "description": "Identificación, evaluación y gestión de riesgos en proyectos mediante metodologías cuantitativas y cualitativas.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 235,
+    "fields": {
+      "code": "GP1701",
+      "name": "Regulación Legal y Ambiental",
+      "credits": 2,
+      "category": "SPECIALIZATION",
+      "semester_suggested": 10,
+      "language": "ES",
+      "description": "Marco normativo legal y ambiental aplicable a la gestión de proyectos en el contexto colombiano e internacional.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 236,
+    "fields": {
+      "code": "GP1702",
+      "name": "Principios de Dirección en Proyectos",
+      "credits": 2,
+      "category": "SPECIALIZATION",
+      "semester_suggested": 10,
+      "language": "ES",
+      "description": "Fundamentos del PMI y metodologías ágiles para la dirección efectiva de proyectos complejos.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 237,
+    "fields": {
+      "code": "GP1703",
+      "name": "Gestión Humana en Proyectos",
+      "credits": 2,
+      "category": "SPECIALIZATION",
+      "semester_suggested": 10,
+      "language": "ES",
+      "description": "Gestión del talento humano, liderazgo de equipos y desarrollo organizacional en el contexto de proyectos.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 238,
+    "fields": {
+      "code": "GP1704",
+      "name": "Gestión de Proyectos",
+      "credits": 2,
+      "category": "SPECIALIZATION",
+      "semester_suggested": 10,
+      "language": "ES",
+      "description": "Aplicación práctica de las mejores prácticas de gestión de proyectos integrando alcance, tiempo, costo y calidad.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 239,
+    "fields": {
+      "code": "GP1705",
+      "name": "Herramientas Informáticas para Gestión de Proyectos",
+      "credits": 2,
+      "category": "SPECIALIZATION",
+      "semester_suggested": 10,
+      "language": "ES",
+      "description": "Manejo de software especializado para la planificación, seguimiento y control de proyectos.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 240,
+    "fields": {
+      "code": "GP1706",
+      "name": "Seminario de Proyectos 1",
+      "credits": 1,
+      "category": "SPECIALIZATION",
+      "semester_suggested": 10,
+      "language": "ES",
+      "description": "Espacio de integración y reflexión sobre experiencias prácticas en gestión de proyectos reales.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 241,
+    "fields": {
+      "code": "EMPH-DESA",
+      "name": "Línea de Énfasis Desarrollo de Software",
+      "credits": 12,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Línea de énfasis en desarrollo de software moderno.",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 242,
+    "fields": {
+      "code": "EMPH-DIST",
+      "name": "Línea de Énfasis Diseño Integrado de Sistemas Técnicos",
+      "credits": 12,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Línea de énfasis en diseño integrado de sistemas técnicos y mecatrónicos.",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 243,
+    "fields": {
+      "code": "EMPH-GERPROY",
+      "name": "Línea de Énfasis Gerencia de Proyectos",
+      "credits": 12,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Línea de énfasis en gerencia y dirección de proyectos.",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 244,
+    "fields": {
+      "code": "EMPH-SISINFO",
+      "name": "Línea de Énfasis Sistemas de Información",
+      "credits": 12,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Línea de énfasis en sistemas de información empresariales.",
+      "is_umbrella": true,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
+  },
+  {
+    "model": "roadmap.course",
+    "pk": 245,
+    "fields": {
+      "code": "ST1604",
+      "name": "Innovación de Procesos Empresariales",
+      "credits": 2,
+      "category": "EMPHASIS",
+      "semester_suggested": 9,
+      "language": "ES",
+      "description": "Metodologías para identificar, diseñar e implementar innovaciones en procesos empresariales apoyadas en tecnología.",
+      "is_umbrella": false,
+      "prerequisites": [],
+      "corequisites": [],
+      "available_options": []
+    }
   }
-
 ]
