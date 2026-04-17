@@ -31,8 +31,18 @@ function buildInitialState() {
 
 function saveState() {
     try {
+        // Guardar en servidor
+        fetch('/roadmap/state/save/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken'),
+            },
+            body: JSON.stringify(state),
+        }).catch(err => console.warn('Error guardando estado:', err));
+        // Guardar también en sessionStorage como caché local
         sessionStorage.setItem(STATE_KEY, JSON.stringify(state));
-        updateAllRemoveBtns()
+        updateAllRemoveBtns();
     } catch (e) {
         console.warn('No se pudo guardar el estado:', e);
     }
@@ -43,15 +53,46 @@ function loadState() {
         const raw = sessionStorage.getItem(STATE_KEY);
         if (!raw) return false;
         const saved = JSON.parse(raw);
-        // Verificar que los semestres coincidan con el roadmap actual
+        // Solo verificar que los semestres BASE coincidan, no los extras
         const currentSems = Object.keys(D.semester_map).map(String).sort();
-        const savedSems   = Object.keys(saved.semester_map || {}).map(String).sort();
-        if (JSON.stringify(currentSems) !== JSON.stringify(savedSems)) return false;
+        const savedBaseSems = currentSems.filter(s => 
+            Object.keys(saved.semester_map || {}).includes(s)
+        );
+        if (savedBaseSems.length !== currentSems.length) return false;
         state = saved;
         return true;
     } catch (e) {
         return false;
     }
+}
+
+function initFromServer() {
+    return fetch('/roadmap/state/load/')
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (data.ok && data.state && Object.keys(data.state).length > 0) {
+                const currentSems = Object.keys(D.semester_map).map(String).sort();
+                const savedSems = Object.keys(data.state.semester_map || {});
+                // Verificar que todos los semestres BASE estén presentes
+                const allBasePresent = currentSems.every(s => savedSems.includes(s));
+                if (allBasePresent) {
+                    state = data.state;
+                    sessionStorage.setItem(STATE_KEY, JSON.stringify(state));
+                    return true;
+                }
+            }
+            return false;
+        })
+        .catch(function(e) {
+            console.warn('No se pudo cargar estado del servidor:', e);
+            return false;
+        });
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
 function resetState() {
@@ -1468,19 +1509,18 @@ function initOnboarding() {
 // 16. INICIALIZACIÓN
 // ─────────────────────────────────────────────────────────────────────────────
 
-function init() {
-    // Mover todos los modales estáticos al body para que Bootstrap los encuentre
+document.addEventListener('DOMContentLoaded', function() {
+    // Paso 1: mover modales estáticos al body
     const staticModals = document.getElementById('rm-static-modals');
     if (staticModals) {
-        const modals = staticModals.querySelectorAll('.modal');
-        modals.forEach(modal => document.body.appendChild(modal));
+        staticModals.querySelectorAll('.modal').forEach(m => document.body.appendChild(m));
         staticModals.remove();
     }
 
-    // Crear modal de selección compartido
+    // Paso 2: crear modal de selección compartido
     createSelectionModalDOM();
 
-    // Insertar wrapper con barra de contexto y botón reset
+    // Paso 3: crear wrapper de contexto
     const roadmapWrapper = document.querySelector('.roadmap-wrapper');
     if (roadmapWrapper && !document.getElementById('rm-context-bar-wrapper')) {
         const wrapper = document.createElement('div');
@@ -1498,7 +1538,6 @@ function init() {
             </div>
         `;
         roadmapWrapper.parentNode.insertBefore(wrapper, roadmapWrapper);
-
         document.getElementById('rm-reset-btn').addEventListener('click', () => {
             bootstrap.Modal.getOrCreateInstance(
                 document.getElementById('rm-confirm-modal')
@@ -1506,20 +1545,30 @@ function init() {
         });
     }
 
-    // Cargar estado guardado o construir el inicial
-    const loaded = loadState();
-    if (!loaded) {
+    // Paso 4: cargar estado y renderizar
+    initFromServer().then(function(loadedFromServer) {
+        if (!loadedFromServer) {
+            const loadedFromSession = loadState();
+            if (!loadedFromSession) {
+                state = buildInitialState();
+            }
+        }
+        rebuildAllSemesters();
+        updateContextBar();
+        validateAll();
+        initTopScrollbar();
+        initScrollButtons();
+        initDragAutoScroll();
+        initOnboarding();
+    }).catch(function(e) {
+        console.error('Error iniciando roadmap:', e);
         state = buildInitialState();
-    }
-
-    // Renderizar todo
-    rebuildAllSemesters();
-    updateContextBar();
-    validateAll();
-    initTopScrollbar();
-    initScrollButtons();
-    initDragAutoScroll();
-    initOnboarding();
-}
-
-document.addEventListener('DOMContentLoaded', init);
+        rebuildAllSemesters();
+        updateContextBar();
+        validateAll();
+        initTopScrollbar();
+        initScrollButtons();
+        initDragAutoScroll();
+        initOnboarding();
+    });
+});

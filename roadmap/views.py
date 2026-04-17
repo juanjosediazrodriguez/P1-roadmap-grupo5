@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Specialization, Course, Track, EmphasisLine, CourseSpecialization, TrackCourse, EmphasisLineCourse
+from .models import Specialization, Course, Track, EmphasisLine, CourseSpecialization, TrackCourse, EmphasisLineCourse, RoadmapState, UmbrellaCourseOption
 from accounts.models import Preference
 from collections import defaultdict
 from django.db.models import Sum
 from django.db.models.functions import Coalesce
 from django.db.models import IntegerField, Value, Q
-from .models import UmbrellaCourseOption
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.views.decorators.http import require_POST
 import json as _json
 
 # Mapeo de intereses a nombres de especializaciones en la BD
@@ -798,3 +798,23 @@ def get_specialization_suggestions(preference):
 
     suggestions.sort(key=lambda item: item["score"], reverse=True)
     return suggestions
+
+@login_required
+@require_POST
+def save_roadmap_state(request):
+    try:
+        data = _json.loads(request.body)
+        state_obj, _ = RoadmapState.objects.get_or_create(user=request.user)
+        state_obj.state = data
+        state_obj.save()
+        return JsonResponse({'ok': True})
+    except Exception as e:
+        return JsonResponse({'ok': False, 'error': str(e)}, status=400)
+
+@login_required
+def load_roadmap_state(request):
+    try:
+        state_obj = RoadmapState.objects.get(user=request.user)
+        return JsonResponse({'ok': True, 'state': state_obj.state})
+    except RoadmapState.DoesNotExist:
+        return JsonResponse({'ok': True, 'state': None})
