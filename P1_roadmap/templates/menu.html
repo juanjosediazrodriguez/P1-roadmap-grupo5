@@ -169,19 +169,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'track_list' or request.resolver_match.url_name == 'track_professional_list' or request.resolver_match.url_name == 'track_flexible_list' %}active{% endif %}" href="{% url 'track_list' %}">
+                            <a class="nav-link me-2 {% if '/tracks/' in request.path or request.path == '/track/' or 'track' in request.resolver_match.url_name %}active{% endif %}" href="{% url 'track_list' %}">
                                 <i class="fa-solid fa-road me-3"></i>
                                 Trayectorias
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'emphasis_line_list' %}active{% endif %}" href="{% url 'emphasis_line_list' %}">
+                            <a class="nav-link me-2 {% if '/emphasis/' in request.path %}active{% endif %}" href="{% url 'emphasis_line_list' %}">
                                 <i class="fa-solid fa-compass me-3"></i>
                                 Líneas de Énfasis
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'specialization_list' %}active{% endif %}" href="{% url 'specialization_list' %}">
+                            <a class="nav-link me-2 {% if '/specialization' in request.path %}active{% endif %}" href="{% url 'specialization_list' %}">
                                 <i class="fa-solid fa-medal me-3"></i>
                                 Especializaciones
                             </a>
@@ -190,8 +190,7 @@
                         <hr class="sidebar-divider me-2">
 
                         <li class="nav-item">
-                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'preferences' %}active{% endif %}" 
-                            href="{% url 'preferences' %}">
+                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'preferences' %}active{% endif %}" href="{% url 'preferences' %}">
                                 <i class="fas fa-sliders-h me-3"></i>
                                 Preferencias
                             </a>
