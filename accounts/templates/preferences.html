@@ -157,7 +157,7 @@
                         {% if track_suggestion %}
                         <div class="recommendation-section">
                             <h5>Trayectoria Profesionalizante</h5>
-                            <div class="recommendation-card">
+                            <div class="recommendation-card recommendation-card-professionaltrack">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <h5 class="card-title mb-0">{{ track_suggestion.track.name }}</h5>
                                     <span class="recommendation-score">
@@ -189,7 +189,7 @@
                         {% if emphasis_suggestion %}
                         <div class="recommendation-section">
                             <h5>Línea de Énfasis</h5>
-                            <div class="recommendation-card">
+                            <div class="recommendation-card recommendation-card-emphasis">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <h5 class="card-title mb-0">{{ emphasis_suggestion.emphasis.name }}</h5>
                                     <span class="recommendation-score">
@@ -221,7 +221,7 @@
                         {% if specialization_suggestion %}
                         <div class="recommendation-section">
                             <h5>Especialización</h5>
-                            <div class="recommendation-card">
+                            <div class="recommendation-card recommendation-card-specialization">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <h5 class="card-title mb-0">{{ specialization_suggestion.specialization.name }}</h5>
                                     <span class="recommendation-score">

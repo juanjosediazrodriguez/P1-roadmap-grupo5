@@ -362,13 +362,40 @@
     padding: 1.25rem;
     transition: all 0.2s ease;
     position: relative;
-    border-left: 4px solid #4a90e2;
+    border-left: 4px solid var(--color-basic-science);
 }
 
 .recommendation-card:hover {
     transform: translateY(-2px);
-    border-color: #4a90e2;
+    border-color: var(--color-basic-science);
     box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+}
+
+.recommendation-card-professionaltrack {
+    border-left-color: var(--color-professional-track);
+}
+
+.recommendation-card-professionaltrack:hover {
+    border-color: var(--color-professional-track);
+    box-shadow: 0 4px 12px rgba(142, 68, 173, 0.2);
+}
+
+.recommendation-card-emphasis {
+    border-left-color: var(--color-emphasis);
+}
+
+.recommendation-card-emphasis:hover {
+    border-color: var(--color-emphasis);
+    box-shadow: 0 4px 12px rgba(233, 30, 99, 0.2);
+}
+
+.recommendation-card-specialization {
+    border-left-color: var(--color-specialization);
+}
+
+.recommendation-card-specialization:hover {
+    border-color: var(--color-specialization);
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.2);
 }
 
 .recommendation-card .card-title {
