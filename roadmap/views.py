@@ -254,7 +254,7 @@ def roadmap_view(request):
             line_courses.append({**cd, 'semester_in_line': lc.semester_in_line})
         emphasis_data[str(line.pk)] = {'name': line.name, 'courses': line_courses}
 
-    # ── Opciones de NFI y Electivas de Matemáticas ───────────────────────────
+    # ── Opciones de NFI, Electivas de Matemáticas ───────────────────────────
     nfi_electiva_pks = [23, 24, 25, 26, 32]
     umbrella_options_data = {}
     for umb_pk in nfi_electiva_pks:
@@ -344,7 +344,7 @@ def roadmap_view(request):
         'emphasis_umbrella_options': emphasis_umbrella_options,
         'emphasis_umbrella_to_line': emphasis_umbrella_to_line,
         'prof_slots':                {'slot1': 207, 'slot2': 208},
-        'flex_umbrella_pks':         [209, 210, 212, 213],
+        'flex_umbrella_pks':         [209, 210, 212, 213, 123, 124, 129, 130, 134, 135, 140, 141],
         'emphasis_line_umbrella_pk': 211,
         'nfi_umbrella_pks':          [23, 24, 25],
         'electiva_mat_umbrella_pks': [26, 32],
@@ -370,44 +370,48 @@ def specialization_list(request):
         'query': query,
     })
 
-
 @login_required
 def specialization_detail(request, pk):
     specialization = get_object_or_404(Specialization, pk=pk)
     
-    # Obtener cursos con su metadata de especialización
     course_specializations = CourseSpecialization.objects.filter(
         specialization=specialization
     ).select_related('course')
     
-    # Agrupar por semestre dentro de la especialización
     semester_courses = defaultdict(list)
     for cs in course_specializations:
         semester_courses[cs.semester_in_specialization].append(cs.course)
     
-    # Calcular créditos por semestre de especialización
     semester_credits = []
     for sem_num in sorted(semester_courses.keys()):
         courses = semester_courses[sem_num]
         total_credits = sum(c.credits for c in courses)
         semester_credits.append({
-            'semester_number': sem_num,
+            'semester_in_specialization': sem_num,
             'courses': courses,
             'total': total_credits
         })
-    
-    # Para búsqueda
+
+    # Pasar cursos con su semestre dentro de la especialización
+    courses_with_sem = [
+        {'course': cs.course, 'semester_in_specialization': cs.semester_in_specialization}
+        for cs in course_specializations
+    ]
+
     courses_query = request.GET.get('q', '')
-    all_courses = [cs.course for cs in course_specializations]
-    
     if courses_query:
-        all_courses = [c for c in all_courses if courses_query.lower() in c.name.lower() or courses_query.lower() in c.code.lower()]
-    
+        courses_with_sem = [
+            c for c in courses_with_sem
+            if courses_query.lower() in c['course'].name.lower()
+            or courses_query.lower() in (c['course'].code or '').lower()
+        ]
+
     return render(request, 'roadmap/specializations/specialization_detail.html', {
         'specialization': specialization,
-        'courses': all_courses,
+        'courses_with_sem': courses_with_sem,
+        'courses': [c['course'] for c in courses_with_sem],
         'query': courses_query,
-        'semester_credits': semester_credits,  # Ahora con semestre 1,2
+        'semester_credits': semester_credits,
     })
 
 

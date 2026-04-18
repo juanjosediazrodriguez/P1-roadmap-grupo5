@@ -78,9 +78,24 @@ function loadState() {
         );
         if (savedBaseSems.length !== currentSems.length) return false;
         state = saved;
+        applySavedSpecializationCategories();
         return true;
     } catch (e) {
         return false;
+    }
+}
+
+function applySavedSpecializationCategories() {
+    const specSelection = state.selections?.specialization;
+    if (!specSelection || specSelection.selected_pk === null || specSelection.connected) return;
+
+    const specData = D.specialization_courses[String(specSelection.selected_pk)];
+    if (!specData) return;
+
+    for (const course of [...specData.sem1, ...specData.sem2]) {
+        if (D.course_map[String(course.id)]) {
+            D.course_map[String(course.id)].category = 'SPECIALIZATION';
+        }
     }
 }
 
@@ -96,6 +111,8 @@ function initFromServer() {
                 if (allBasePresent) {
                     state = data.state;
                     sessionStorage.setItem(STATE_KEY, JSON.stringify(state));
+                    // Forzar categorías de especialización no conectada
+                    applySavedSpecializationCategories();
                     return true;
                 }
             }
@@ -250,14 +267,53 @@ function buildCourseCard(course, semNum, parentLabel) {
     if (isFlexible) {
         card.setAttribute('data-bs-toggle', 'modal');
         card.setAttribute('data-bs-target', `#courseModal${course.id}`);
+        // Corregir color del modal para electivas de líneas de énfasis
+        // que están en flex_umbrella_pks pero son de categoría EMPHASIS
+        card.addEventListener('click', () => {
+            const modalEl = document.getElementById(`courseModal${course.id}`);
+            if (!modalEl) return;
+            const content = modalEl.querySelector('.modal-content');
+            if (!content) return;
+            const realCategory = D.course_map[String(course.id)]?.category || course.category;
+            const categoryClass = getCategoryClass(realCategory).replace('category-', '');
+            content.className = content.className
+                .replace(/modal-category-\S+/g, '').trim();
+            content.classList.add(`modal-category-${categoryClass}`);
+        });
     } else if (isUmbrella) {
         card.addEventListener('click', () => {
             const currentSemNum = parseInt(card.dataset.semNum);
             openSelectionModal(course, currentSemNum);
         });
-        } else {
+    } else {
         card.setAttribute('data-bs-toggle', 'modal');
         card.setAttribute('data-bs-target', `#courseModal${course.id}`);
+        card.addEventListener('click', () => {
+            const modalEl = document.getElementById(`courseModal${course.id}`);
+            if (!modalEl) return;
+            const content = modalEl.querySelector('.modal-content');
+            if (!content) return;
+
+            // Verificar en tiempo real si este curso pertenece a una especialización no conectada
+            const specSel = state.selections?.specialization;
+            let isSpecCourse = false;
+            if (specSel && specSel.selected_pk !== null && !specSel.connected) {
+                const specData = D.specialization_courses[String(specSel.selected_pk)];
+                if (specData) {
+                    const specIds = new Set([
+                        ...specData.sem1.map(c => String(c.id)),
+                        ...specData.sem2.map(c => String(c.id)),
+                    ]);
+                    isSpecCourse = specIds.has(String(course.id));
+                }
+            }
+
+            content.className = content.className
+                .replace(/modal-category-\S+/g, '').trim();
+            content.classList.add(
+                isSpecCourse ? 'modal-category-specialization' : `modal-category-${getCategoryClass(D.course_map[String(course.id)]?.category || course.category).replace('category-', '')}`
+            );
+        });
     }
 
     card.innerHTML = `

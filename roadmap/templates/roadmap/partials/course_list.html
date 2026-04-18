@@ -7,7 +7,9 @@
     <div class="card h-100" data-bs-toggle="modal" data-bs-target="#courseModal{{ course.id }}" style="cursor:pointer;">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-start mb-2">
-                <span class="badge" style="background-color: #2d2d2d;">Semestre {{ course.semester_suggested }}</span>
+                <span class="badge" style="background-color: #2d2d2d;">
+                    Semestre {% if semester_override %}{{ semester_override }}{% else %}{{ course.semester_suggested }}{% endif %}
+                </span>
                 <span class="text-secondary">{{ course.credits }} créditos</span>
             </div>
             <h5 class="card-title mt-3">{{ course.name }}</h5>

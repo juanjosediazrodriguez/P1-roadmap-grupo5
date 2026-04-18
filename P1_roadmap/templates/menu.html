@@ -196,18 +196,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="#">
-                                <i class="fas fa-user me-3"></i>
-                                Perfil
+                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" 
+                            href="#" style="display:flex;align-items:center;gap:0.75rem;">
+                                <i class="fas fa-user" style="flex-shrink:0;"></i>
+                                <span style="display:flex;flex-direction:column;line-height:1.3;">
+                                    <span>Perfil</span>
+                                    {% if user.is_authenticated %}
+                                    <span style="font-size:0.72rem;color:#8f9bb3;font-weight:400;">{{ user.username }}</span>
+                                    {% endif %}
+                                </span>
                             </a>
                         </li>
                     </ul>
 
                     <div class="logout-section mt-auto pb-4">
                         {% if user.is_authenticated %}
-                        <div class="ps-3 py-2 small text-muted">
-                            <i class="fas fa-user-circle me-2"></i>{{ user.username }}
-                        </div>
                         <a class="nav-link me-3 text-danger py-2 ps-3" href="{% url 'logout' %}">
                             <i class="fas fa-sign-out-alt me-3"></i>
                             Cerrar Sesión
