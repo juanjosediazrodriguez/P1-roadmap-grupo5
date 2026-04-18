@@ -1041,11 +1041,7 @@
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
-      "prerequisites": [
-        56,
-        57,
-        58
-      ],
+      "prerequisites": [],
       "corequisites": []
     }
   },
@@ -1061,9 +1057,7 @@
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
-      "prerequisites": [
-        59
-      ],
+      "prerequisites": [],
       "corequisites": []
     }
   },
@@ -1079,9 +1073,7 @@
       "language": "ES",
       "category": "EMPHASIS",
       "is_umbrella": false,
-      "prerequisites": [
-        59
-      ],
+      "prerequisites": [],
       "corequisites": []
     }
   },

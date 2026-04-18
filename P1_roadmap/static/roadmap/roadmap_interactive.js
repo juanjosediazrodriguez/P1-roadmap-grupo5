@@ -1343,17 +1343,22 @@ function confirmSpecializationSelection(spec, isConnected, s1Courses, s2Courses)
     if (prevSelection && prevSelection.selected_pk !== null) {
         const prevSpecData = D.specialization_courses[String(prevSelection.selected_pk)];
         if (prevSpecData) {
-            const prevCourseIds = new Set([
-                ...prevSpecData.sem1.map(c => c.id),
-                ...prevSpecData.sem2.map(c => c.id),
-            ]);
-            // Eliminar esos cursos de todos los semestres
+            // Si la especialización anterior estaba conectada a la línea,
+            // solo eliminar los cursos de S2, nunca los de S1 (son de la línea)
+            const coursesToRemove = prevSelection.connected
+                ? new Set(prevSpecData.sem2.map(c => c.id))
+                : new Set([
+                    ...prevSpecData.sem1.map(c => c.id),
+                    ...prevSpecData.sem2.map(c => c.id),
+                ]);
+
             for (const semStr of Object.keys(state.semester_map)) {
                 state.semester_map[semStr] = state.semester_map[semStr].filter(
-                    id => !prevCourseIds.has(id)
+                    id => !coursesToRemove.has(id)
                 );
             }
-            // Eliminar semestres extra que quedaron vacíos (>9)
+
+            // Eliminar semestres extra vacíos (>9)
             for (const semStr of Object.keys(state.semester_map)) {
                 if (parseInt(semStr) > 9 && state.semester_map[semStr].length === 0) {
                     delete state.semester_map[semStr];
@@ -1404,6 +1409,7 @@ function confirmSpecializationSelection(spec, isConnected, s1Courses, s2Courses)
     rebuildAllSemesters();
     validateAll();
     updateSpecBtnVisibility();
+    updateContextBar();
 
     const outer = document.querySelector('.roadmap-wrapper-outer') || document.querySelector('.roadmap-wrapper');
     if (outer) setTimeout(() => { outer.scrollLeft = outer.scrollWidth; }, 50);
