@@ -21,8 +21,26 @@ function buildInitialState() {
             electiva:  Object.fromEntries(D.electiva_mat_umbrella_pks.map(pk => [String(pk), null])),
             prof_track: { '207': null, '208': null },
             emphasis:   { '211': null },
+            specialization: { selected_pk: null, connected: false },
         },
     };
+}
+
+// Mapeo: pk del paraguas de énfasis → pk de especialización conectada
+const EMPHASIS_TO_SPECIALIZATION = {
+    // umbrella pk → spec pk
+    // línea 2 Desarrollo de Software → spec 1
+    // línea 3 Diseño Integrado → spec 4  
+    // línea 4 Gerencia de Proyectos → spec 3
+    // línea 5 Sistemas de Información → spec 2
+    // Necesitamos mapear por umbrella pk (241,242,243,244) → spec pk
+};
+
+// Se construye dinámicamente usando D.emphasis_umbrella_to_line
+function getSpecForEmphasisUmbrella(umbrellaPk) {
+    const lineSpecMap = { '2': 1, '3': 4, '4': 3, '5': 2 };
+    const linePk = D.emphasis_umbrella_to_line[String(umbrellaPk)];
+    return linePk ? (lineSpecMap[String(linePk)] || null) : null;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -102,6 +120,7 @@ function resetState() {
     updateContextBar();
     validateAll();
     saveState();
+    updateSpecBtnVisibility()
     showToast('Roadmap reiniciado exitosamente', 'info');
 }
 
@@ -340,6 +359,21 @@ function buildParentLabelMap() {
         }
     }
 
+    // Especialización
+    const specSelection = state.selections.specialization;
+    if (specSelection && specSelection.selected_pk !== null) {
+        const specData = D.specialization_courses[String(specSelection.selected_pk)];
+        if (specData) {
+            const label = `SPEC-${specSelection.selected_pk}`;
+            const courses = specSelection.connected
+                ? specData.sem2
+                : [...specData.sem1, ...specData.sem2];
+            for (const c of courses) {
+                map[String(c.id)] = label;
+            }
+        }
+    }
+
     return map;
 }
 
@@ -402,23 +436,25 @@ function rebuildAllSemesters() {
         }
     });
 
-    // Botón + fuera del track — crearlo si no existe
+    // Botones de acción al final del track
     if (!document.querySelector('.rm-add-semester-col')) {
-        let addCol = document.querySelector('.rm-add-semester-col');
-        if (!addCol) {
-            addCol = document.createElement('div');
-            addCol.className = 'rm-add-semester-col';
-            addCol.innerHTML = `
-                <button class="rm-add-semester-btn" title="Agregar semestre">
-                    <i class="fas fa-plus"></i>
-                </button>
-                <span class="rm-add-semester-label">Agregar<br>semestre</span>
-            `;
-            addCol.querySelector('.rm-add-semester-btn').addEventListener('click', addSemester);
-        }
-        // Siempre asegurar que esté al final del track
+        const addCol = document.createElement('div');
+        addCol.className = 'rm-add-semester-col';
+        addCol.innerHTML = `
+            <button class="rm-add-semester-btn" title="Agregar semestre">
+                <i class="fas fa-plus"></i>
+            </button>
+            <span class="rm-add-semester-label">Agregar<br>semestre</span>
+            <button class="rm-add-spec-btn" title="Agregar especialización" style="display:none;">
+                <i class="fas fa-graduation-cap"></i>
+            </button>
+            <span class="rm-add-spec-label" style="display:none;">Agregar<br>especialización</span>
+        `;
+        addCol.querySelector('.rm-add-semester-btn').addEventListener('click', addSemester);
+        addCol.querySelector('.rm-add-spec-btn').addEventListener('click', openSpecializationModal);
         track.appendChild(addCol);
     }
+    updateSpecBtnVisibility();
 
     initSortable();
 }
@@ -447,6 +483,23 @@ function removeSemester(semNum) {
     saveState();
     rebuildAllSemesters();
     validateAll();
+}
+
+function updateSpecBtnVisibility() {
+    const btn   = document.querySelector('.rm-add-spec-btn');
+    const label = document.querySelector('.rm-add-spec-label');
+    if (!btn || !label) return;
+
+    const emphasisSelected = state.selections.emphasis['211'] !== null;
+    const specAlreadyAdded = state.selections.specialization.selected_pk !== null;
+
+    if (emphasisSelected && !specAlreadyAdded) {
+        btn.style.display   = 'flex';
+        label.style.display = 'block';
+    } else {
+        btn.style.display   = 'none';
+        label.style.display = 'none';
+    }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1178,7 +1231,11 @@ function confirmEmphasisSelection(selectedUmbrella, linePk, lineData, semNum) {
     if (!state.semester_map['9']) state.semester_map['9'] = [];
 
     for (const course of lineData.courses) {
-        D.course_map[String(course.id)] = course;
+        D.course_map[String(course.id)] = {
+            ...(D.course_map[String(course.id)] || {}),
+            ...course,
+            category: 'EMPHASIS',  // ← fuerza EMPHASIS cuando se elige la línea
+        };
         if (!state.semester_map['9'].includes(course.id)) {
             state.semester_map['9'].push(course.id);
         }
@@ -1191,6 +1248,172 @@ function confirmEmphasisSelection(selectedUmbrella, linePk, lineData, semNum) {
     validateAll();
     initSortable();
     updateContextBar();
+    updateSpecBtnVisibility()
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 12b. SELECCIÓN DE ESPECIALIZACIÓN (POSGRADO)
+// ─────────────────────────────────────────────────────────────────────────────
+
+function openSpecializationModal() {
+    const emphUmbrellaPk = state.selections.emphasis['211'];
+    const connectedSpecPk = emphUmbrellaPk ? getSpecForEmphasisUmbrella(emphUmbrellaPk) : null;
+
+    document.getElementById('rm-sel-title').textContent = 'Agregar Especialización';
+    document.getElementById('rm-sel-note').textContent =
+        'Selecciona la especialización de posgrado que deseas agregar a tu plan.';
+
+    const body = document.getElementById('rm-sel-body');
+    body.innerHTML = '';
+
+    const specs = D.specializations || [];
+
+    // Ordenar: conectada primero
+    const sorted = [...specs].sort((a, b) => {
+        if (a.id === connectedSpecPk) return -1;
+        if (b.id === connectedSpecPk) return 1;
+        return 0;
+    });
+
+    for (const spec of sorted) {
+        const isConnected = spec.id === connectedSpecPk;
+        const s1Courses = (D.specialization_courses[String(spec.id)] || {}).sem1 || [];
+        const s2Courses = (D.specialization_courses[String(spec.id)] || {}).sem2 || [];
+
+        const card = document.createElement('div');
+        card.className = 'rm-option-card category-specialization';
+        card.style.cursor = 'pointer';
+
+        card.innerHTML = `
+            <div class="rm-option-header">
+                <span class="option-code-badge" style="background:#0d3a47;color:#00bcd4;border:1px solid #00bcd4;">
+                    SPEC-${spec.id}
+                </span>
+                ${isConnected ? `
+                <span style="font-size:0.65rem;color:#4ade80;background:rgba(74,222,128,0.1);
+                    border:1px solid rgba(74,222,128,0.3);border-radius:12px;padding:0.15rem 0.5rem;">
+                    <i class="fas fa-link me-1"></i>Conecta con tu énfasis
+                </span>` : ''}
+            </div>
+            <div class="option-name" style="font-size:1rem;font-weight:700;margin:0.4rem 0;">${spec.name}</div>
+            <p style="font-size:0.75rem;color:#8f9bb3;margin-bottom:0.5rem;">${spec.description ? spec.description.substring(0, 100) + '...' : ''}</p>
+            ${isConnected ? `
+            <div style="font-size:0.72rem;color:#fbbf24;background:rgba(251,191,36,0.08);
+                border:1px solid rgba(251,191,36,0.25);border-radius:8px;padding:0.5rem 0.75rem;margin-bottom:0.5rem;">
+                <i class="fas fa-info-circle me-1"></i>
+                Solo se agregarán los cursos del <strong>semestre 2</strong>, ya que el semestre 1 
+                corresponde a tu línea de énfasis. La homologación aplica si aprobaste cada asignatura 
+                de la línea con <strong>nota ≥ 3.5</strong>.
+            </div>` : ''}
+            <div class="rm-track-preview">
+                ${isConnected ? `
+                <div class="rm-track-sem">
+                    <span class="rm-track-sem-label">Sem 2</span>
+                    ${s2Courses.map(c => `<span class="rm-track-course-chip">${c.code || c.name.substring(0,15)}</span>`).join('')}
+                </div>` : `
+                <div class="rm-track-sem">
+                    <span class="rm-track-sem-label">Sem 1</span>
+                    ${s1Courses.map(c => `<span class="rm-track-course-chip">${c.code || c.name.substring(0,15)}</span>`).join('')}
+                </div>
+                <div class="rm-track-sem">
+                    <span class="rm-track-sem-label">Sem 2</span>
+                    ${s2Courses.map(c => `<span class="rm-track-course-chip">${c.code || c.name.substring(0,15)}</span>`).join('')}
+                </div>`}
+            </div>
+            <button class="rm-select-btn" style="margin-top:0.75rem;border-color:#00bcd4;color:#00bcd4;">
+                <i class="fas fa-plus me-1"></i>${isConnected ? 'Agregar semestre 2' : 'Agregar especialización'}
+            </button>
+        `;
+
+        card.querySelector('.rm-select-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            confirmSpecializationSelection(spec, isConnected, s1Courses, s2Courses);
+            closeSelectionModal();
+        });
+
+        body.appendChild(card);
+    }
+
+    showSelectionModal('specialization');
+}
+
+function confirmSpecializationSelection(spec, isConnected, s1Courses, s2Courses) {
+    // Eliminar semestres de especialización anterior si existe
+    const prevSelection = state.selections.specialization;
+    if (prevSelection && prevSelection.selected_pk !== null) {
+        const prevSpecData = D.specialization_courses[String(prevSelection.selected_pk)];
+        if (prevSpecData) {
+            const prevCourseIds = new Set([
+                ...prevSpecData.sem1.map(c => c.id),
+                ...prevSpecData.sem2.map(c => c.id),
+            ]);
+            // Eliminar esos cursos de todos los semestres
+            for (const semStr of Object.keys(state.semester_map)) {
+                state.semester_map[semStr] = state.semester_map[semStr].filter(
+                    id => !prevCourseIds.has(id)
+                );
+            }
+            // Eliminar semestres extra que quedaron vacíos (>9)
+            for (const semStr of Object.keys(state.semester_map)) {
+                if (parseInt(semStr) > 9 && state.semester_map[semStr].length === 0) {
+                    delete state.semester_map[semStr];
+                }
+            }
+        }
+    }
+
+    const maxSem = getMaxSemester();
+
+    const registerCourse = (c, forceCategory) => {
+        const existing = D.course_map[String(c.id)];
+        D.course_map[String(c.id)] = {
+            ...(existing || {}),
+            ...c,
+            category: forceCategory || c.category || 'SPECIALIZATION',
+            is_umbrella: false,
+            prerequisites: existing?.prerequisites || [],
+            corequisites: existing?.corequisites || [],
+        };
+    };
+
+    if (isConnected) {
+        const newSem = maxSem + 1;
+        state.semester_map[String(newSem)] = [];
+        for (const course of s2Courses) {
+            registerCourse(course, 'SPECIALIZATION');
+            state.semester_map[String(newSem)].push(course.id);
+        }
+    } else {
+        const sem1 = maxSem + 1;
+        const sem2 = maxSem + 2;
+        state.semester_map[String(sem1)] = [];
+        state.semester_map[String(sem2)] = [];
+        for (const course of s1Courses) {
+            registerCourse(course, 'SPECIALIZATION');
+            state.semester_map[String(sem1)].push(course.id);
+        }
+        for (const course of s2Courses) {
+            registerCourse(course, 'SPECIALIZATION');
+            state.semester_map[String(sem2)].push(course.id);
+        }
+    }
+
+    state.selections.specialization = { selected_pk: spec.id, connected: isConnected };
+
+    saveState();
+    rebuildAllSemesters();
+    validateAll();
+    updateSpecBtnVisibility();
+
+    const outer = document.querySelector('.roadmap-wrapper-outer') || document.querySelector('.roadmap-wrapper');
+    if (outer) setTimeout(() => { outer.scrollLeft = outer.scrollWidth; }, 50);
+
+    showToast(
+        isConnected
+            ? `Especialización en ${spec.name} agregada. Recuerda: homologación requiere nota ≥ 3.5 en cada asignatura de tu línea de énfasis.`
+            : `Especialización en ${spec.name} agregada.`,
+        'info'
+    );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1210,7 +1433,7 @@ function updateContextBar() {
         const hasSelection = trackUmbrellaPk !== null;
         const trackData    = hasSelection ? D.tracks[String(trackUmbrellaPk)] : null;
         const name         = trackData ? trackData.name : 'Sin seleccionar';
-        const color        = hasSelection ? '#28a745' : '#3a3d4a';
+        const color        = hasSelection ? '#8e44ad' : '#3a3d4a';
 
         bar.appendChild(buildContextBadge(label, name, 'fa-road', color, () => {
             openProfTrackModal({ id: parseInt(slotPk), name: label }, 6, slotPk);
@@ -1222,7 +1445,7 @@ function updateContextBar() {
     const empLinePk    = empSelection !== null ? D.emphasis_umbrella_to_line[String(empSelection)] : null;
     const empLineData  = empLinePk ? D.emphasis_lines[String(empLinePk)] : null;
     const empName      = empLineData ? empLineData.name : 'Sin seleccionar';
-    const empColor     = empSelection !== null ? '#2ecc71' : '#3a3d4a';
+    const empColor     = empSelection !== null ? '#e91e63' : '#3a3d4a';
 
     bar.appendChild(buildContextBadge('Línea de Énfasis', empName, 'fa-compass', empColor, () => {
         openEmphasisModal({ id: 211, name: 'Línea de Énfasis' }, 9);
@@ -1255,6 +1478,22 @@ function updateContextBar() {
             openNFIElectivaModal({ id: parseInt(pk), name: label }, semNum, 'electiva');
         }));
     }
+
+    // Especialización seleccionada
+    const specSelection = state.selections.specialization;
+    if (specSelection && specSelection.selected_pk !== null) {
+        const specData = (D.specializations || []).find(s => s.id === specSelection.selected_pk);
+        const specName = specData ? specData.name : `Especialización ${specSelection.selected_pk}`;
+        bar.appendChild(buildContextBadge(
+            'Especialización',
+            specName,
+            'fa-graduation-cap',
+            '#00bcd4',
+            () => openSpecializationModal()
+        ));
+    }
+
+    updateSpecBtnVisibility()
 }
 
 function buildContextBadge(label, name, icon, color, onClick) {

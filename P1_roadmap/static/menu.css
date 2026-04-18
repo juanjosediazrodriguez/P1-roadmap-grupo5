@@ -18,6 +18,19 @@
     letter-spacing: -0.5px;
 }
 
+.careermap-logo {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    filter: brightness(1);
+    transition: filter 0.2s;
+}
+
+.careermap-logo:hover {
+    filter: brightness(1.3);
+}
+
 .sidebar-header h3 i {
     color: #4a90e2; /* Icono siempre azul */
     font-size: 1.8rem;
@@ -454,6 +467,10 @@
 
     .sidebar-header h3 a {
         font-size: 1.4rem;
+    }
+
+    .careermap-logo {
+        max-width: 180px;
     }
 }
 

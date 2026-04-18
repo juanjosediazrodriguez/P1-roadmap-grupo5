@@ -607,6 +607,42 @@
     transform: scale(1.1);
 }
 
+/* ── Botón agregar especialización ───────────── */
+
+.rm-add-spec-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px dashed #00bcd4;
+    background: transparent;
+    color: #00bcd4;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+}
+
+.rm-add-spec-btn:hover {
+    border-color: #00bcd4;
+    color: #fff;
+    background: rgba(0, 188, 212, 0.15);
+    transform: scale(1.1);
+}
+
+.rm-add-spec-label {
+    font-size: 0.65rem;
+    color: #00bcd4;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0.25rem;
+}
+
 /* ── Botones de navegación del roadmap ───────────────────── */
 
 .rm-scroll-buttons {

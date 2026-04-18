@@ -162,9 +162,15 @@ def generate_roadmap(preference):
     # Obtener IDs de todos los cursos en el roadmap
     current_ids = [c.id for c in all_courses]
     all_needed_ids = collect_all_courses(current_ids)
+
+    # Incluir también cursos de especializaciones para que tengan modal
+    spec_course_ids = set(CourseSpecialization.objects.values_list('course_id', flat=True))
+    all_needed_ids.update(spec_course_ids)
     
     # Obtener los objetos Course
-    all_courses_for_modals = list(Course.objects.filter(id__in=all_needed_ids))
+    all_courses_for_modals = list(Course.objects.filter(id__in=all_needed_ids).prefetch_related(
+        'prerequisites', 'corequisites'
+    ))
     
     # Devolver también las opciones
     return dict(sorted(roadmap.items())), all_courses_for_modals
@@ -191,6 +197,10 @@ def roadmap_view(request):
         for c in sem_data['courses']:
             all_course_ids.add(c.id)
     all_course_ids.update(c.id for c in all_options)
+
+    # Después de construir all_course_ids, agregar cursos de especializaciones
+    spec_course_ids = set(CourseSpecialization.objects.values_list('course_id', flat=True))
+    all_course_ids.update(spec_course_ids)
 
     courses_qs = Course.objects.filter(id__in=all_course_ids).prefetch_related(
         'prerequisites', 'corequisites', 'available_options'
@@ -305,6 +315,24 @@ def roadmap_view(request):
                 emphasis_umbrella_to_line[str(umb_pk_val)] = line.pk
                 break
 
+    # ── Datos de especializaciones para el modal de posgrado ────────────────────
+    specializations_data = [
+        {'id': s.pk, 'name': s.name, 'description': s.description}
+        for s in Specialization.objects.all()
+    ]
+
+    specialization_courses_data = {}
+    for spec in Specialization.objects.prefetch_related('coursespecialization_set__course'):
+        sem1 = [
+            {'id': cs.course.id, 'code': cs.course.code or '', 'name': cs.course.name, 'credits': cs.course.credits}
+            for cs in spec.coursespecialization_set.filter(semester_in_specialization=1)
+        ]
+        sem2 = [
+            {'id': cs.course.id, 'code': cs.course.code or '', 'name': cs.course.name, 'credits': cs.course.credits}
+            for cs in spec.coursespecialization_set.filter(semester_in_specialization=2)
+        ]
+        specialization_courses_data[str(spec.pk)] = {'sem1': sem1, 'sem2': sem2}
+
     # ── JSON para el motor JS ────────────────────────────────────────────────
     roadmap_json = _json.dumps({
         'semester_map':              semester_map,
@@ -320,6 +348,8 @@ def roadmap_view(request):
         'emphasis_line_umbrella_pk': 211,
         'nfi_umbrella_pks':          [23, 24, 25],
         'electiva_mat_umbrella_pks': [26, 32],
+        'specializations':           specializations_data,
+        'specialization_courses':    specialization_courses_data,
     }, ensure_ascii=False)
 
     return render(request, 'roadmap/roadmap.html', {
