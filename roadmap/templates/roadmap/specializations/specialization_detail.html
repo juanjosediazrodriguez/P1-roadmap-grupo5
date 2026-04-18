@@ -63,7 +63,7 @@
 
     <div id="course-container">
         {% for item in semester_credits %}
-        <div class="grid-2">
+        <div class="grid-2 mt-4">
             {% include "roadmap/partials/course_list.html" with courses=item.courses semester_override=item.semester_in_specialization enable_nested_modals=False %}
         </div>
         {% endfor %}
