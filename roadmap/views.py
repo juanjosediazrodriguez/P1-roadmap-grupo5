@@ -833,6 +833,245 @@ def get_specialization_suggestions(preference):
     suggestions.sort(key=lambda item: item["score"], reverse=True)
     return suggestions
 
+
+def get_track_suggestions(preference):
+    """Retorna sugerencias de trayectorias profesionalizantes con puntaje y razones."""
+    scores = {
+        "desarrollo de software": {"score": 0, "reasons": []},
+        "infraestructura ti": {"score": 0, "reasons": []},
+        "ingenieria de datos": {"score": 0, "reasons": []},
+        "inteligencia artificial": {"score": 0, "reasons": []},
+        "blockchain": {"score": 0, "reasons": []},
+        "sistemas de informacion": {"score": 0, "reasons": []},
+    }
+
+    if not preference:
+        return []
+
+    interest_rules = {
+        "desarrollo de software": {
+            "desarrollo de software": 5,
+            "sistemas de informacion": 3,
+        },
+        "computacion en la nube": {
+            "infraestructura ti": 5,
+            "desarrollo de software": 2,
+        },
+        "ciencia de datos": {
+            "ingenieria de datos": 5,
+            "inteligencia artificial": 3,
+            "sistemas de informacion": 2,
+        },
+        "inteligencia artificial": {
+            "inteligencia artificial": 5,
+            "ingenieria de datos": 2,
+        },
+        "ciberseguridad": {
+            "infraestructura ti": 4,
+            "blockchain": 3,
+        },
+        "gestion de proyectos": {
+            "sistemas de informacion": 4,
+            "desarrollo de software": 2,
+        },
+        "emprendimiento": {
+            "desarrollo de software": 3,
+            "blockchain": 2,
+        },
+        "investigacion": {
+            "ingenieria de datos": 3,
+            "inteligencia artificial": 3,
+        },
+    }
+
+    goal_rules = {
+        "industria": {
+            "desarrollo de software": 4,
+            "infraestructura ti": 3,
+            "sistemas de informacion": 3,
+        },
+        "startup": {
+            "desarrollo de software": 4,
+            "blockchain": 3,
+        },
+        "freelance": {
+            "desarrollo de software": 4,
+            "sistemas de informacion": 2,
+        },
+        "investigacion": {
+            "inteligencia artificial": 4,
+            "ingenieria de datos": 4,
+        },
+        "posgrado": {
+            "inteligencia artificial": 4,
+            "ingenieria de datos": 3,
+        },
+    }
+
+    for interest in preference.interests.all():
+        interest_name = normalize_text(interest.name)
+        if interest_name in interest_rules:
+            for track_name, points in interest_rules[interest_name].items():
+                if track_name in scores:
+                    scores[track_name]["score"] += points
+                    scores[track_name]["reasons"].append(
+                        f"Coincide con tu interés en {interest.name}"
+                    )
+
+    if preference.career_goal:
+        goal_name = normalize_text(preference.career_goal.name)
+        if goal_name in goal_rules:
+            for track_name, points in goal_rules[goal_name].items():
+                if track_name in scores:
+                    scores[track_name]["score"] += points
+                    scores[track_name]["reasons"].append(
+                        f"Se alinea con tu meta profesional: {preference.career_goal.name}"
+                    )
+
+    suggestions = []
+    professional_tracks = Track.objects.filter(track_type='PROFESSIONAL')
+
+    for track in professional_tracks:
+        track_name = normalize_text(track.name)
+        if track_name in scores and scores[track_name]["score"] > 0:
+            reasons = list(dict.fromkeys(scores[track_name]["reasons"]))
+            suggestions.append({
+                "track": track,
+                "score": scores[track_name]["score"],
+                "reasons": reasons,
+            })
+
+    suggestions.sort(key=lambda item: item["score"], reverse=True)
+
+    if suggestions:
+        return suggestions
+
+    # Fallback para garantizar al menos una recomendación cuando no hay match.
+    fallback_track = professional_tracks.order_by('name').first()
+    if fallback_track:
+        return [{
+            "track": fallback_track,
+            "score": 1,
+            "reasons": ["Recomendación base por disponibilidad de trayectoria profesionalizante"],
+        }]
+    return []
+
+
+def get_emphasis_suggestions(preference):
+    """Retorna sugerencias de líneas de énfasis con puntaje y razones."""
+    scores = {
+        "ciencias de los datos": {"score": 0, "reasons": []},
+        "desarrollo de software": {"score": 0, "reasons": []},
+        "diseno integrado de sistemas tecnicos": {"score": 0, "reasons": []},
+        "gerencia de proyectos": {"score": 0, "reasons": []},
+        "sistemas de informacion": {"score": 0, "reasons": []},
+    }
+
+    if not preference:
+        return []
+
+    interest_rules = {
+        "ciencia de datos": {
+            "ciencias de los datos": 5,
+            "sistemas de informacion": 2,
+        },
+        "inteligencia artificial": {
+            "ciencias de los datos": 4,
+            "desarrollo de software": 2,
+        },
+        "desarrollo de software": {
+            "desarrollo de software": 5,
+            "sistemas de informacion": 2,
+        },
+        "gestion de proyectos": {
+            "gerencia de proyectos": 5,
+            "sistemas de informacion": 2,
+        },
+        "computacion en la nube": {
+            "sistemas de informacion": 4,
+            "desarrollo de software": 2,
+        },
+        "investigacion": {
+            "ciencias de los datos": 3,
+            "diseno integrado de sistemas tecnicos": 3,
+        },
+        "emprendimiento": {
+            "gerencia de proyectos": 3,
+            "desarrollo de software": 2,
+        },
+    }
+
+    goal_rules = {
+        "industria": {
+            "sistemas de informacion": 4,
+            "desarrollo de software": 3,
+            "gerencia de proyectos": 3,
+        },
+        "startup": {
+            "desarrollo de software": 4,
+            "gerencia de proyectos": 3,
+        },
+        "freelance": {
+            "desarrollo de software": 4,
+            "gerencia de proyectos": 2,
+        },
+        "investigacion": {
+            "ciencias de los datos": 4,
+            "diseno integrado de sistemas tecnicos": 3,
+        },
+        "posgrado": {
+            "ciencias de los datos": 4,
+            "diseno integrado de sistemas tecnicos": 3,
+        },
+    }
+
+    for interest in preference.interests.all():
+        interest_name = normalize_text(interest.name)
+        if interest_name in interest_rules:
+            for emphasis_name, points in interest_rules[interest_name].items():
+                if emphasis_name in scores:
+                    scores[emphasis_name]["score"] += points
+                    scores[emphasis_name]["reasons"].append(
+                        f"Coincide con tu interés en {interest.name}"
+                    )
+
+    if preference.career_goal:
+        goal_name = normalize_text(preference.career_goal.name)
+        if goal_name in goal_rules:
+            for emphasis_name, points in goal_rules[goal_name].items():
+                if emphasis_name in scores:
+                    scores[emphasis_name]["score"] += points
+                    scores[emphasis_name]["reasons"].append(
+                        f"Se alinea con tu meta profesional: {preference.career_goal.name}"
+                    )
+
+    suggestions = []
+
+    for emphasis in EmphasisLine.objects.all():
+        emphasis_name = normalize_text(emphasis.name)
+        if emphasis_name in scores and scores[emphasis_name]["score"] > 0:
+            reasons = list(dict.fromkeys(scores[emphasis_name]["reasons"]))
+            suggestions.append({
+                "emphasis": emphasis,
+                "score": scores[emphasis_name]["score"],
+                "reasons": reasons,
+            })
+
+    suggestions.sort(key=lambda item: item["score"], reverse=True)
+
+    if suggestions:
+        return suggestions
+
+    # Fallback para garantizar al menos una recomendación cuando no hay match.
+    fallback_emphasis = EmphasisLine.objects.order_by('name').first()
+    if fallback_emphasis:
+        return [{
+            "emphasis": fallback_emphasis,
+            "score": 1,
+            "reasons": ["Recomendación base por disponibilidad de línea de énfasis"],
+        }]
+    return []
+
 @login_required
 @require_POST
 def save_roadmap_state(request):

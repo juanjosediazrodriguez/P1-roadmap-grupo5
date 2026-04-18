@@ -152,42 +152,101 @@
                     Recomendaciones
                 </h4>
                 
-                {% if suggestions %}
+                {% if specialization_suggestion or emphasis_suggestion or track_suggestion %}
                     <div class="recommendations-list">
-                        {% for item in suggestions|slice:":2" %}  <!-- Solo las 2 mejores -->
-                        <div class="recommendation-card">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h5 class="card-title mb-0">{{ item.specialization.name }}</h5>
-                                <span class="recommendation-score">
-                                    <i class="fas fa-star me-1"></i>
-                                    {{ item.score }}
-                                </span>
+                        {% if track_suggestion %}
+                        <div class="recommendation-section">
+                            <h5>Trayectoria Profesionalizante</h5>
+                            <div class="recommendation-card">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ track_suggestion.track.name }}</h5>
+                                    <span class="recommendation-score">
+                                        <i class="fas fa-star me-1"></i>
+                                        {{ track_suggestion.score }}
+                                    </span>
+                                </div>
+
+                                <p class="card-text small">{{ track_suggestion.track.description|truncatechars:120 }}</p>
+
+                                {% if track_suggestion.reasons %}
+                                <div class="recommendation-reasons mt-2 mb-3">
+                                    <small class="text-secondary d-block mb-1">Por qué:</small>
+                                    <ul class="reasons-list">
+                                        {% for reason in track_suggestion.reasons|slice:":2" %}
+                                        <li>{{ reason }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+
+                                <a href="{% url 'track_detail' track_suggestion.track.id %}" class="btn btn-sm btn-outline-primary w-100 mt-2">
+                                    <i class="fas fa-arrow-right me-1"></i>Ver trayectoria
+                                </a>
                             </div>
-                            
-                            <p class="card-text small">{{ item.specialization.description|truncatechars:120 }}</p>
-                            
-                            {% if item.reasons %}
-                            <div class="recommendation-reasons mt-2 mb-3">
-                                <small class="text-secondary d-block mb-1">Por qué:</small>
-                                <ul class="reasons-list">
-                                    {% for reason in item.reasons|slice:":2" %}  <!-- Máximo 2 razones -->
-                                    <li>{{ reason }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            {% endif %}
-                            
-                            <a href="{% url 'specialization_detail' item.specialization.id %}" class="btn btn-sm btn-outline-primary w-100 mt-2">
-                                <i class="fas fa-arrow-right me-1"></i>Ver especialización
-                            </a>
                         </div>
-                        {% endfor %}
-                        
-                        {% if suggestions|length > 2 %}
-                        <div class="text-center mt-3">
-                            <small class="text-secondary">
-                                + {{ suggestions|length|add:"-2" }} recomendaciones más
-                            </small>
+                        {% endif %}
+
+                        {% if emphasis_suggestion %}
+                        <div class="recommendation-section">
+                            <h5>Línea de Énfasis</h5>
+                            <div class="recommendation-card">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ emphasis_suggestion.emphasis.name }}</h5>
+                                    <span class="recommendation-score">
+                                        <i class="fas fa-star me-1"></i>
+                                        {{ emphasis_suggestion.score }}
+                                    </span>
+                                </div>
+
+                                <p class="card-text small">{{ emphasis_suggestion.emphasis.description|truncatechars:120 }}</p>
+
+                                {% if emphasis_suggestion.reasons %}
+                                <div class="recommendation-reasons mt-2 mb-3">
+                                    <small class="text-secondary d-block mb-1">Por qué:</small>
+                                    <ul class="reasons-list">
+                                        {% for reason in emphasis_suggestion.reasons|slice:":2" %}
+                                        <li>{{ reason }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+
+                                <a href="{% url 'emphasis_line_detail' emphasis_suggestion.emphasis.id %}" class="btn btn-sm btn-outline-primary w-100 mt-2">
+                                    <i class="fas fa-arrow-right me-1"></i>Ver línea de énfasis
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if specialization_suggestion %}
+                        <div class="recommendation-section">
+                            <h5>Especialización</h5>
+                            <div class="recommendation-card">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ specialization_suggestion.specialization.name }}</h5>
+                                    <span class="recommendation-score">
+                                        <i class="fas fa-star me-1"></i>
+                                        {{ specialization_suggestion.score }}
+                                    </span>
+                                </div>
+
+                                <p class="card-text small">{{ specialization_suggestion.specialization.description|truncatechars:120 }}</p>
+
+                                {% if specialization_suggestion.reasons %}
+                                <div class="recommendation-reasons mt-2 mb-3">
+                                    <small class="text-secondary d-block mb-1">Por qué:</small>
+                                    <ul class="reasons-list">
+                                        {% for reason in specialization_suggestion.reasons|slice:":2" %}
+                                        <li>{{ reason }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+
+                                <a href="{% url 'specialization_detail' specialization_suggestion.specialization.id %}" class="btn btn-sm btn-outline-primary w-100 mt-2">
+                                    <i class="fas fa-arrow-right me-1"></i>Ver especialización
+                                </a>
+                            </div>
                         </div>
                         {% endif %}
                     </div>
