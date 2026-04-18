@@ -25,4 +25,8 @@ urlpatterns = [
     path('emphasis/<int:pk>/', views.emphasis_line_detail, name='emphasis_line_detail'),
     path('search/emphasis/', views.emphasis_line_search, name='emphasis_line_search'),
     path('emphasis/<int:pk>/search/', views.emphasis_course_search, name='emphasis_course_search'),
+
+    # Guardar y cargar estado del roadmap
+    path('roadmap/state/save/', views.save_roadmap_state, name='save_roadmap_state'),
+    path('roadmap/state/load/', views.load_roadmap_state, name='load_roadmap_state'),
 ]

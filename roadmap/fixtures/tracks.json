@@ -53,6 +53,16 @@
     "model": "roadmap.track",
     "pk": 6,
     "fields": {
+      "name": "Sistemas de Información",
+      "description": "Trayectoria profesional en automatización de procesos, gestión de TI e inteligencia de negocios.",
+      "track_type": "PROFESSIONAL",
+      "credits_required": 12
+    }
+  },
+  {
+    "model": "roadmap.track",
+    "pk": 7,
+    "fields": {
       "name": "Economía",
       "description": "Trayectoria flexible en economía y teoría de juegos.",
       "track_type": "FLEXIBLE",
@@ -61,7 +71,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 7,
+    "pk": 8,
     "fields": {
       "name": "Historia Económica",
       "description": "Trayectoria flexible en historia económica de Colombia y el mundo.",
@@ -71,7 +81,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 8,
+    "pk": 9,
     "fields": {
       "name": "Análisis Financiero",
       "description": "Trayectoria flexible en finanzas y análisis de inversiones.",
@@ -81,7 +91,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 9,
+    "pk": 10,
     "fields": {
       "name": "Evaluación Financiera de Proyectos",
       "description": "Trayectoria flexible en evaluación y gestión de proyectos de inversión.",
@@ -91,7 +101,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 10,
+    "pk": 11,
     "fields": {
       "name": "Estrategia",
       "description": "Trayectoria flexible en dirección estratégica de organizaciones.",
@@ -101,7 +111,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 11,
+    "pk": 12,
     "fields": {
       "name": "Dirección y Liderazgo",
       "description": "Trayectoria flexible en habilidades directivas y liderazgo.",
@@ -111,7 +121,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 12,
+    "pk": 13,
     "fields": {
       "name": "Gerencia Estratégica",
       "description": "Trayectoria flexible en gerencia y planeación estratégica.",
@@ -121,7 +131,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 13,
+    "pk": 14,
     "fields": {
       "name": "Gerencia del Conocimiento",
       "description": "Trayectoria flexible en gestión del conocimiento e innovación.",
@@ -131,7 +141,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 14,
+    "pk": 15,
     "fields": {
       "name": "Gerencia de Proyectos",
       "description": "Trayectoria flexible en dirección y gestión de proyectos.",
@@ -141,7 +151,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 15,
+    "pk": 16,
     "fields": {
       "name": "Derecho empresarial",
       "description": "Trayectoria flexible en aspectos legales de las organizaciones.",
@@ -151,7 +161,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 16,
+    "pk": 17,
     "fields": {
       "name": "Formulación y Evaluación de Proyectos",
       "description": "Trayectoria flexible en preparación y evaluación de proyectos.",
@@ -161,7 +171,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 17,
+    "pk": 18,
     "fields": {
       "name": "Negocios Internacionales",
       "description": "Trayectoria flexible en comercio y negocios globales.",
@@ -171,7 +181,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 18,
+    "pk": 19,
     "fields": {
       "name": "Talento Internacional",
       "description": "Trayectoria flexible en desarrollo de talento en contextos internacionales.",
@@ -181,7 +191,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 19,
+    "pk": 20,
     "fields": {
       "name": "Finanzas Internacionales",
       "description": "Trayectoria flexible en finanzas globales y mercados internacionales.",
@@ -191,7 +201,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 20,
+    "pk": 21,
     "fields": {
       "name": "Géneros Literarios",
       "description": "Trayectoria flexible en análisis de géneros literarios.",
@@ -201,7 +211,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 21,
+    "pk": 22,
     "fields": {
       "name": "Literatura",
       "description": "Trayectoria flexible en estudios literarios.",
@@ -211,7 +221,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 22,
+    "pk": 23,
     "fields": {
       "name": "Periodismo",
       "description": "Trayectoria flexible en comunicación y periodismo.",
@@ -221,7 +231,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 23,
+    "pk": 24,
     "fields": {
       "name": "Comunicaciones",
       "description": "Trayectoria flexible en medios y comunicación.",
@@ -231,7 +241,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 24,
+    "pk": 25,
     "fields": {
       "name": "Diseño Interactivo",
       "description": "Trayectoria flexible en diseño de experiencias interactivas.",
@@ -241,7 +251,7 @@
   },
   {
     "model": "roadmap.track",
-    "pk": 25,
+    "pk": 26,
     "fields": {
       "name": "Psicología",
       "description": "Trayectoria flexible en fundamentos de psicología.",

@@ -35,7 +35,7 @@
     "fields": {
       "emphasis_line": 1,
       "course": 59,
-      "semester_in_line": 2,
+      "semester_in_line": 1,
       "is_elective": false
     }
   },
@@ -45,7 +45,7 @@
     "fields": {
       "emphasis_line": 1,
       "course": 60,
-      "semester_in_line": 2,
+      "semester_in_line": 1,
       "is_elective": false
     }
   },
@@ -55,8 +55,228 @@
     "fields": {
       "emphasis_line": 1,
       "course": 61,
-      "semester_in_line": 2,
+      "semester_in_line": 1,
       "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 7,
+    "fields": {
+      "emphasis_line": 2,
+      "course": 119,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 8,
+    "fields": {
+      "emphasis_line": 2,
+      "course": 120,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 9,
+    "fields": {
+      "emphasis_line": 2,
+      "course": 121,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 10,
+    "fields": {
+      "emphasis_line": 2,
+      "course": 122,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 11,
+    "fields": {
+      "emphasis_line": 2,
+      "course": 123,
+      "semester_in_line": 1,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 12,
+    "fields": {
+      "emphasis_line": 2,
+      "course": 124,
+      "semester_in_line": 1,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 13,
+    "fields": {
+      "emphasis_line": 3,
+      "course": 220,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 14,
+    "fields": {
+      "emphasis_line": 3,
+      "course": 221,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 15,
+    "fields": {
+      "emphasis_line": 3,
+      "course": 222,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 16,
+    "fields": {
+      "emphasis_line": 3,
+      "course": 223,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 21,
+    "fields": {
+      "emphasis_line": 4,
+      "course": 228,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 22,
+    "fields": {
+      "emphasis_line": 4,
+      "course": 229,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 23,
+    "fields": {
+      "emphasis_line": 4,
+      "course": 230,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 24,
+    "fields": {
+      "emphasis_line": 4,
+      "course": 231,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 25,
+    "fields": {
+      "emphasis_line": 4,
+      "course": 232,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 26,
+    "fields": {
+      "emphasis_line": 4,
+      "course": 233,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 34,
+    "fields": {
+      "emphasis_line": 5,
+      "course": 131,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 35,
+    "fields": {
+      "emphasis_line": 5,
+      "course": 132,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 36,
+    "fields": {
+      "emphasis_line": 5,
+      "course": 133,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 37,
+    "fields": {
+      "emphasis_line": 5,
+      "course": 245,
+      "semester_in_line": 1,
+      "is_elective": false
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 38,
+    "fields": {
+      "emphasis_line": 5,
+      "course": 134,
+      "semester_in_line": 1,
+      "is_elective": true
+    }
+  },
+  {
+    "model": "roadmap.emphasislinecourse",
+    "pk": 39,
+    "fields": {
+      "emphasis_line": 5,
+      "course": 135,
+      "semester_in_line": 1,
+      "is_elective": true
     }
   }
 ]

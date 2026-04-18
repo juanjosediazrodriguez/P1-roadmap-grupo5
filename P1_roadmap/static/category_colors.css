@@ -110,6 +110,10 @@
 .rm-option-card.category-emphasis:not(.rm-option-disabled):hover {
     border-color: var(--color-emphasis);
 }
+.rm-option-card.category-specialization:not(.rm-option-disabled):hover {
+    border-color: var(--color-specialization);
+    box-shadow: 0 4px 16px rgba(0, 188, 212, 0.2);
+}
 
 /* ── Botón seleccionar según categoría ───────────────────── */
 .rm-option-card.category-nfi .rm-select-btn {
@@ -128,11 +132,24 @@
 }
 .rm-option-card.category-professionaltrack .rm-select-btn {
     border-color: var(--color-professional-track);
-    color: #4ade80;
+    color: var(--color-professional-track)
+}
+.rm-option-card.category-professionaltrack .rm-select-btn:hover {
+    background: rgba(142, 68, 173, 0.15);
 }
 .rm-option-card.category-emphasis .rm-select-btn {
     border-color: var(--color-emphasis);
     color: var(--color-emphasis);
+}
+.rm-option-card.category-emphasis .rm-select-btn:hover {
+    background: rgba(233, 30, 99, 0.15);
+}
+.rm-option-card.category-specialization .rm-select-btn {
+    border-color: var(--color-specialization);
+    color: var(--color-specialization);
+}
+.rm-option-card.category-specialization .rm-select-btn:hover {
+    background: rgba(0, 188, 212, 0.15);
 }
 
 /* ── Puntos en leyenda ────────────────────────────────────── */

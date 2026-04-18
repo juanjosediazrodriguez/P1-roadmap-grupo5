@@ -35,7 +35,7 @@
     "fields": {
       "track": 1,
       "course": 38,
-      "semester_in_track": 3,
+      "semester_in_track": 2,
       "is_elective": false
     }
   },
@@ -75,7 +75,7 @@
     "fields": {
       "track": 2,
       "course": 42,
-      "semester_in_track": 3,
+      "semester_in_track": 2,
       "is_elective": false
     }
   },
@@ -115,7 +115,7 @@
     "fields": {
       "track": 3,
       "course": 46,
-      "semester_in_track": 3,
+      "semester_in_track": 2,
       "is_elective": false
     }
   },
@@ -155,7 +155,7 @@
     "fields": {
       "track": 4,
       "course": 50,
-      "semester_in_track": 3,
+      "semester_in_track": 2,
       "is_elective": false
     }
   },
@@ -195,7 +195,7 @@
     "fields": {
       "track": 5,
       "course": 54,
-      "semester_in_track": 3,
+      "semester_in_track": 2,
       "is_elective": false
     }
   },
@@ -204,7 +204,7 @@
     "pk": 21,
     "fields": {
       "track": 6,
-      "course": 75,
+      "course": 215,
       "semester_in_track": 1,
       "is_elective": false
     }
@@ -214,7 +214,7 @@
     "pk": 22,
     "fields": {
       "track": 6,
-      "course": 76,
+      "course": 216,
       "semester_in_track": 1,
       "is_elective": false
     }
@@ -224,7 +224,7 @@
     "pk": 23,
     "fields": {
       "track": 6,
-      "course": 77,
+      "course": 217,
       "semester_in_track": 2,
       "is_elective": false
     }
@@ -234,7 +234,7 @@
     "pk": 24,
     "fields": {
       "track": 6,
-      "course": 78,
+      "course": 218,
       "semester_in_track": 2,
       "is_elective": false
     }

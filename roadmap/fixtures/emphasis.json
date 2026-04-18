@@ -8,5 +8,45 @@
       "credits_required": 12,
       "specialization": null
     }
+  },
+  {
+    "model": "roadmap.emphasisline",
+    "pk": 2,
+    "fields": {
+      "name": "Desarrollo de Software",
+      "description": "Línea de énfasis en procesos modernos, arquitecturas avanzadas y desarrollo seguro de software.",
+      "credits_required": 12,
+      "specialization": null
+    }
+  },
+  {
+    "model": "roadmap.emphasisline",
+    "pk": 3,
+    "fields": {
+      "name": "Diseño Integrado de Sistemas Técnicos",
+      "description": "Línea de énfasis en diseño mecatrónico, sistemas embebidos y control de sistemas técnicos.",
+      "credits_required": 12,
+      "specialization": null
+    }
+  },
+  {
+    "model": "roadmap.emphasisline",
+    "pk": 4,
+    "fields": {
+      "name": "Gerencia de Proyectos",
+      "description": "Línea de énfasis en formulación, evaluación y dirección de proyectos.",
+      "credits_required": 12,
+      "specialization": null
+    }
+  },
+  {
+    "model": "roadmap.emphasisline",
+    "pk": 5,
+    "fields": {
+      "name": "Sistemas de Información",
+      "description": "Línea de énfasis en arquitectura empresarial, gestión estratégica de TI y analítica.",
+      "credits_required": 12,
+      "specialization": null
+    }
   }
 ]

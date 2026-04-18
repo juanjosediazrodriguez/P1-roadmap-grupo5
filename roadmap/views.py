@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Specialization, Course, Track, EmphasisLine, CourseSpecialization, TrackCourse, EmphasisLineCourse
+from .models import Specialization, Course, Track, EmphasisLine, CourseSpecialization, TrackCourse, EmphasisLineCourse, RoadmapState, UmbrellaCourseOption
 from accounts.models import Preference
 from collections import defaultdict
 from django.db.models import Sum
 from django.db.models.functions import Coalesce
 from django.db.models import IntegerField, Value, Q
-from .models import UmbrellaCourseOption
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.views.decorators.http import require_POST
 import json as _json
 
 # Mapeo de intereses a nombres de especializaciones en la BD
@@ -162,9 +162,15 @@ def generate_roadmap(preference):
     # Obtener IDs de todos los cursos en el roadmap
     current_ids = [c.id for c in all_courses]
     all_needed_ids = collect_all_courses(current_ids)
+
+    # Incluir también cursos de especializaciones para que tengan modal
+    spec_course_ids = set(CourseSpecialization.objects.values_list('course_id', flat=True))
+    all_needed_ids.update(spec_course_ids)
     
     # Obtener los objetos Course
-    all_courses_for_modals = list(Course.objects.filter(id__in=all_needed_ids))
+    all_courses_for_modals = list(Course.objects.filter(id__in=all_needed_ids).prefetch_related(
+        'prerequisites', 'corequisites'
+    ))
     
     # Devolver también las opciones
     return dict(sorted(roadmap.items())), all_courses_for_modals
@@ -192,6 +198,10 @@ def roadmap_view(request):
             all_course_ids.add(c.id)
     all_course_ids.update(c.id for c in all_options)
 
+    # Después de construir all_course_ids, agregar cursos de especializaciones
+    spec_course_ids = set(CourseSpecialization.objects.values_list('course_id', flat=True))
+    all_course_ids.update(spec_course_ids)
+
     courses_qs = Course.objects.filter(id__in=all_course_ids).prefetch_related(
         'prerequisites', 'corequisites', 'available_options'
     )
@@ -203,8 +213,8 @@ def roadmap_view(request):
         semester_map[str(sem_data['number'])] = [c.id for c in sem_data['courses']]
 
     # ── Datos de trayectorias profesionalizantes ─────────────────────────────
-    # Mapa: umbrella_course_pk (182-186) -> Track model pk (1-5)
-    PROF_UMBRELLA_TO_TRACK_ID = {182: 1, 183: 2, 184: 3, 185: 4, 186: 5}
+    # Mapa: umbrella_course_pk (182-186 & 219) -> Track model pk (1-5)
+    PROF_UMBRELLA_TO_TRACK_ID = {182: 1, 183: 2, 184: 3, 185: 4, 186: 5, 219: 6}
     tracks_data = {}
     for umbrella_pk, track_id in PROF_UMBRELLA_TO_TRACK_ID.items():
         try:
@@ -305,6 +315,24 @@ def roadmap_view(request):
                 emphasis_umbrella_to_line[str(umb_pk_val)] = line.pk
                 break
 
+    # ── Datos de especializaciones para el modal de posgrado ────────────────────
+    specializations_data = [
+        {'id': s.pk, 'name': s.name, 'description': s.description}
+        for s in Specialization.objects.all()
+    ]
+
+    specialization_courses_data = {}
+    for spec in Specialization.objects.prefetch_related('coursespecialization_set__course'):
+        sem1 = [
+            {'id': cs.course.id, 'code': cs.course.code or '', 'name': cs.course.name, 'credits': cs.course.credits}
+            for cs in spec.coursespecialization_set.filter(semester_in_specialization=1)
+        ]
+        sem2 = [
+            {'id': cs.course.id, 'code': cs.course.code or '', 'name': cs.course.name, 'credits': cs.course.credits}
+            for cs in spec.coursespecialization_set.filter(semester_in_specialization=2)
+        ]
+        specialization_courses_data[str(spec.pk)] = {'sem1': sem1, 'sem2': sem2}
+
     # ── JSON para el motor JS ────────────────────────────────────────────────
     roadmap_json = _json.dumps({
         'semester_map':              semester_map,
@@ -320,6 +348,8 @@ def roadmap_view(request):
         'emphasis_line_umbrella_pk': 211,
         'nfi_umbrella_pks':          [23, 24, 25],
         'electiva_mat_umbrella_pks': [26, 32],
+        'specializations':           specializations_data,
+        'specialization_courses':    specialization_courses_data,
     }, ensure_ascii=False)
 
     return render(request, 'roadmap/roadmap.html', {
@@ -798,3 +828,23 @@ def get_specialization_suggestions(preference):
 
     suggestions.sort(key=lambda item: item["score"], reverse=True)
     return suggestions
+
+@login_required
+@require_POST
+def save_roadmap_state(request):
+    try:
+        data = _json.loads(request.body)
+        state_obj, _ = RoadmapState.objects.get_or_create(user=request.user)
+        state_obj.state = data
+        state_obj.save()
+        return JsonResponse({'ok': True})
+    except Exception as e:
+        return JsonResponse({'ok': False, 'error': str(e)}, status=400)
+
+@login_required
+def load_roadmap_state(request):
+    try:
+        state_obj = RoadmapState.objects.get(user=request.user)
+        return JsonResponse({'ok': True, 'state': state_obj.state})
+    except RoadmapState.DoesNotExist:
+        return JsonResponse({'ok': True, 'state': None})

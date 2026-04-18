@@ -1,4 +1,6 @@
 from django.db import models
+from accounts.models import UserProfile, Preference
+from django.contrib.auth.models import User
 
 
 class Specialization(models.Model):
@@ -251,3 +253,15 @@ class EmphasisLineCourse(models.Model):
     
     def __str__(self):
         return f"{self.emphasis_line.name} - {self.course.code} (Sem {self.semester_in_line})"
+    
+class RoadmapState(models.Model):
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='roadmap_state'
+    )
+    state = models.JSONField(default=dict)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Roadmap de {self.user.username}"

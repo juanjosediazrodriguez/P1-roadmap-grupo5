@@ -103,12 +103,38 @@
                         </div>
                         {% endif %}
 
-                        <form method="POST" action="{% url 'delete_preferences' %}" style="margin-top: 1rem;">
-                            {% csrf_token %}
-                            <button type="submit" class="btn-delete-preferences">
-                                <i class="fas fa-trash me-2"></i>Eliminar preferencias
-                            </button>
-                        </form>
+                        <button type="button" class="btn-delete-preferences" 
+                                data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                            <i class="fas fa-trash me-2"></i>Eliminar preferencias
+                        </button>
+
+                        <!-- Modal de confirmación -->
+                        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" style="max-width:420px;">
+                                <div class="modal-content" style="background:#1a1d27;border:1px solid #2a2d3a;border-radius:12px;border-left:6px solid #ef4444;">
+                                    <div class="modal-body" style="background:#1a1d27;color:#fff;padding:2rem;text-align:center;">
+                                        <i class="fas fa-trash" style="font-size:2.5rem;color:#ef4444;margin-bottom:1rem;display:block;"></i>
+                                        <h5 style="color:#fff;margin-bottom:0.5rem;">¿Eliminar preferencias?</h5>
+                                        <p style="color:#8f9bb3;font-size:0.9rem;margin-bottom:1.5rem;">
+                                            Se borrarán todos tus intereses y tu meta profesional. Las recomendaciones también desaparecerán.
+                                        </p>
+                                        <div style="display:flex;gap:0.75rem;justify-content:center;">
+                                            <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal" 
+                                                    style="border-radius:20px;padding:0.4rem 1.2rem;">
+                                                Cancelar
+                                            </button>
+                                            <form method="POST" action="{% url 'delete_preferences' %}" style="margin:0;">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger btn-sm" 
+                                                        style="border-radius:20px;padding:0.4rem 1.2rem;">
+                                                    Sí, eliminar
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 {% else %}
                     <div class="empty-state">
