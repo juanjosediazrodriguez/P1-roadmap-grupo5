@@ -1299,8 +1299,71 @@ function confirmEmphasisSelection(selectedUmbrella, linePk, lineData, semNum) {
 
     state.selections.emphasis['211'] = selectedUmbrella.id;
 
+    // Recalcular conexión con especialización si hay una seleccionada
+    const specSel = state.selections.specialization;
+    if (specSel && specSel.selected_pk !== null) {
+        const newConnectedSpecPk = getSpecForEmphasisUmbrella(selectedUmbrella.id);
+        const nowConnects = newConnectedSpecPk === specSel.selected_pk;
+        const specData = D.specialization_courses[String(specSel.selected_pk)];
+
+        if (nowConnects && !specSel.connected) {
+            // Antes no conectaba, ahora sí:
+            // Eliminar cursos de S1 de la especialización que están en semestres extra
+            // porque ahora son los mismos que la línea de énfasis en sem 9
+            if (specData) {
+                const s1Ids = new Set(specData.sem1.map(c => c.id));
+                for (const semStr of Object.keys(state.semester_map)) {
+                    if (parseInt(semStr) > 9) {
+                        state.semester_map[semStr] = state.semester_map[semStr]
+                            .filter(id => !s1Ids.has(id));
+                    }
+                }
+                // Eliminar semestres extra vacíos
+                for (const semStr of Object.keys(state.semester_map)) {
+                    if (parseInt(semStr) > 9 && state.semester_map[semStr].length === 0) {
+                        delete state.semester_map[semStr];
+                    }
+                }
+            }
+            state.selections.specialization.connected = true;
+
+        } else if (!nowConnects && specSel.connected) {
+            // Antes conectaba, ahora no:
+            // Agregar S1 de la especialización en un nuevo semestre
+            if (specData) {
+                const newSem = getMaxSemester() + 1;
+                state.semester_map[String(newSem)] = [];
+                for (const course of specData.sem1) {
+                    const existing = D.course_map[String(course.id)];
+                    D.course_map[String(course.id)] = {
+                        ...(existing || {}),
+                        ...course,
+                        category: 'SPECIALIZATION',
+                        is_umbrella: false,
+                        prerequisites: existing?.prerequisites || [],
+                        corequisites: existing?.corequisites || [],
+                    };
+                    state.semester_map[String(newSem)].push(course.id);
+                }
+            }
+            state.selections.specialization.connected = false;
+
+        } else if (!nowConnects && !specSel.connected) {
+            // Ni antes ni ahora conecta: no hay duplicados reales,
+            // pero hay que asegurarse de que los cursos de S1 tengan categoría SPECIALIZATION
+            if (specData) {
+                for (const course of specData.sem1) {
+                    if (D.course_map[String(course.id)]) {
+                        D.course_map[String(course.id)].category = 'SPECIALIZATION';
+                    }
+                }
+            }
+        }
+        // Si nowConnects && specSel.connected: ya estaba conectada y sigue conectada, no hacer nada
+    }
+
     saveState();
-    rebuildSemesterColumn(9);
+    rebuildAllSemesters();
     validateAll();
     initSortable();
     updateContextBar();
