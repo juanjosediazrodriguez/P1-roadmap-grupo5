@@ -106,16 +106,16 @@ function initFromServer() {
             if (data.ok && data.state && Object.keys(data.state).length > 0) {
                 const currentSems = Object.keys(D.semester_map).map(String).sort();
                 const savedSems = Object.keys(data.state.semester_map || {});
-                // Verificar que todos los semestres BASE estén presentes
                 const allBasePresent = currentSems.every(s => savedSems.includes(s));
                 if (allBasePresent) {
                     state = data.state;
                     sessionStorage.setItem(STATE_KEY, JSON.stringify(state));
-                    // Forzar categorías de especialización no conectada
                     applySavedSpecializationCategories();
                     return true;
                 }
             }
+            // El servidor no tiene estado para este usuario — limpiar caché local
+            sessionStorage.removeItem(STATE_KEY);
             return false;
         })
         .catch(function(e) {
