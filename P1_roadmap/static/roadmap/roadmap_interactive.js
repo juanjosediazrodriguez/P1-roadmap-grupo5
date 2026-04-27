@@ -532,10 +532,29 @@ function addSemester() {
 }
 
 function removeSemester(semNum) {
-    if (semNum <= 9) return; // Nunca eliminar los primeros 9
+    if (semNum <= 9) return; // Solo se pueden eliminar semestres extra
     const list = state.semester_map[String(semNum)];
-    if (!list || list.length > 0) return; // Solo eliminar si está vacío
+    if (!list || list.length > 0) return; // Solo eliminar si el semestre está vacío
     delete state.semester_map[String(semNum)];
+
+    // Renumerar semestres extra para eliminar huecos
+    const extraSems = Object.keys(state.semester_map)
+        .map(Number)
+        .filter(n => n > 9)
+        .sort((a, b) => a - b);
+
+    // Reasignar correlativamente desde 10
+    const newSemesterMap = {};
+    // Copiar semestres base (1-9)
+    for (const [k, v] of Object.entries(state.semester_map)) {
+        if (parseInt(k) <= 9) newSemesterMap[k] = v;
+    }
+    // Renumerar extras
+    extraSems.forEach((oldNum, idx) => {
+        newSemesterMap[String(10 + idx)] = state.semester_map[String(oldNum)];
+    });
+    state.semester_map = newSemesterMap;
+
     saveState();
     rebuildAllSemesters();
     validateAll();
@@ -1307,9 +1326,6 @@ function confirmEmphasisSelection(selectedUmbrella, linePk, lineData, semNum) {
         const specData = D.specialization_courses[String(specSel.selected_pk)];
 
         if (nowConnects && !specSel.connected) {
-            // Antes no conectaba, ahora sí:
-            // Eliminar cursos de S1 de la especialización que están en semestres extra
-            // porque ahora son los mismos que la línea de énfasis en sem 9
             if (specData) {
                 const s1Ids = new Set(specData.sem1.map(c => c.id));
                 for (const semStr of Object.keys(state.semester_map)) {
@@ -1318,7 +1334,6 @@ function confirmEmphasisSelection(selectedUmbrella, linePk, lineData, semNum) {
                             .filter(id => !s1Ids.has(id));
                     }
                 }
-                // Eliminar semestres extra vacíos
                 for (const semStr of Object.keys(state.semester_map)) {
                     if (parseInt(semStr) > 9 && state.semester_map[semStr].length === 0) {
                         delete state.semester_map[semStr];
@@ -1328,11 +1343,25 @@ function confirmEmphasisSelection(selectedUmbrella, linePk, lineData, semNum) {
             state.selections.specialization.connected = true;
 
         } else if (!nowConnects && specSel.connected) {
-            // Antes conectaba, ahora no:
-            // Agregar S1 de la especialización en un nuevo semestre
             if (specData) {
-                const newSem = getMaxSemester() + 1;
-                state.semester_map[String(newSem)] = [];
+                const s2Ids = new Set(specData.sem2.map(c => c.id));
+                let s2Sem = null;
+                for (const [semStr, ids] of Object.entries(state.semester_map)) {
+                    if (parseInt(semStr) > 9 && ids.some(id => s2Ids.has(id))) {
+                        s2Sem = parseInt(semStr);
+                        break;
+                    }
+                }
+
+                const s1Sem = s2Sem || (getMaxSemester() + 1);
+                const s2NewSem = s1Sem + 1;
+
+                if (s2Sem !== null) {
+                    state.semester_map[String(s2NewSem)] = state.semester_map[String(s2Sem)];
+                    delete state.semester_map[String(s2Sem)];
+                }
+
+                state.semester_map[String(s1Sem)] = [];
                 for (const course of specData.sem1) {
                     const existing = D.course_map[String(course.id)];
                     D.course_map[String(course.id)] = {
@@ -1343,14 +1372,12 @@ function confirmEmphasisSelection(selectedUmbrella, linePk, lineData, semNum) {
                         prerequisites: existing?.prerequisites || [],
                         corequisites: existing?.corequisites || [],
                     };
-                    state.semester_map[String(newSem)].push(course.id);
+                    state.semester_map[String(s1Sem)].push(course.id);
                 }
             }
             state.selections.specialization.connected = false;
 
         } else if (!nowConnects && !specSel.connected) {
-            // Ni antes ni ahora conecta: no hay duplicados reales,
-            // pero hay que asegurarse de que los cursos de S1 tengan categoría SPECIALIZATION
             if (specData) {
                 for (const course of specData.sem1) {
                     if (D.course_map[String(course.id)]) {
