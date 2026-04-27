@@ -168,3 +168,41 @@ def delete_preferences(request):
         preference.save()
         messages.success(request, 'Preferencias eliminadas exitosamente')
     return redirect('preferences')
+
+@login_required
+def profile_view(request):
+    """Vista para mostrar y actualizar datos basicos del perfil del estudiante."""
+    user_profile, _ = UserProfile.objects.get_or_create(user=request.user)
+    user_preference = get_or_create_user_preference(request.user)
+
+    if request.method == 'POST':
+        institutional_email = (request.POST.get('institutional_email') or '').strip()
+        current_semester_raw = (request.POST.get('current_semester') or '').strip()
+
+        if institutional_email and not institutional_email.lower().endswith('@eafit.edu.co'):
+            messages.error(request, 'El correo institucional debe terminar en @eafit.edu.co')
+            return redirect('profile')
+
+        try:
+            current_semester = int(current_semester_raw)
+        except ValueError:
+            messages.error(request, 'El semestre debe ser un numero entero.')
+            return redirect('profile')
+
+        if current_semester < 1:
+            messages.error(request, 'El semestre debe ser un numero entero mayor o igual a 1.')
+            return redirect('profile')
+
+        user_profile.institutional_email = institutional_email or None
+        user_profile.current_semester = current_semester
+        user_profile.save()
+
+        messages.success(request, 'Perfil actualizado correctamente.')
+        return redirect('profile')
+    
+    context = {
+        'user_profile': user_profile,
+        'user_preference': user_preference,
+    }
+    
+    return render(request, 'profile.html', context)

@@ -1,0 +1,327 @@
+{% extends 'menu.html' %}
+{% load static %}
+
+{% block title %}Mi Perfil{% endblock %}
+
+{% block extra_css %}
+<style>
+    .profile-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .profile-header {
+        background: linear-gradient(135deg, #4a90e2 0%, #3570b0 100%);
+        border-radius: 15px;
+        padding: 2rem;
+        color: white;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid white;
+        font-size: 2rem;
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .profile-header-info h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .profile-header-info p {
+        margin: 0.5rem 0 0 0;
+        opacity: 0.9;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .info-card {
+        background: #1a1d27;
+        border: 1px solid #2a2d3a;
+        border-radius: 15px;
+        padding: 1.5rem;
+    }
+
+    .info-card h3 {
+        color: #8f9bb3;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 0 1rem 0;
+    }
+
+    .info-value {
+        font-size: 1.3rem;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .empty-state {
+        color: #8f9bb3;
+        font-style: italic;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #fff;
+        margin: 2rem 0 1rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #2a2d3a;
+    }
+
+    .section-card {
+        background: #1a1d27;
+        border: 1px solid #2a2d3a;
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .tag {
+        background: #0f1117;
+        border: 1px solid #2a2d3a;
+        border-radius: 20px;
+        padding: 0.5rem 1rem;
+        color: #fff;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .tag i {
+        color: #4a90e2;
+    }
+
+    .btn-edit {
+        background: linear-gradient(90deg, #4a90e2 0%, #3570b0 100%);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: all 0.2s ease;
+    }
+
+    .btn-edit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+    }
+
+    .messages-container {
+        margin-bottom: 1.25rem;
+    }
+
+    .profile-form-card {
+        background: #1a1d27;
+        border: 1px solid #2a2d3a;
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-label {
+        color: #8f9bb3;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+    }
+
+    .form-control-dark {
+        width: 100%;
+        background: #0f1117;
+        border: 1px solid #2a2d3a;
+        border-radius: 10px;
+        color: #fff;
+        padding: 0.75rem 0.9rem;
+        outline: none;
+    }
+
+    .form-control-dark:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+    }
+
+    .form-help {
+        color: #8f9bb3;
+        font-size: 0.85rem;
+        margin-top: 0.4rem;
+    }
+
+    .btn-save-profile {
+        background: linear-gradient(90deg, #4a90e2 0%, #3570b0 100%);
+        color: white;
+        border: none;
+        padding: 0.9rem 1.3rem;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .btn-save-profile:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+    }
+
+    @media (max-width: 768px) {
+        .profile-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            font-size: 1.5rem;
+        }
+
+        .profile-header h1 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    {% if messages %}
+    <div class="messages-container">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Encabezado con avatar -->
+    <div class="profile-header">
+        <div class="profile-avatar">
+            {{ user.first_name|first|upper|default:user.username|first|upper }}
+        </div>
+        <div class="profile-header-info">
+            <h1>{{ user.first_name|default:user.username }}</h1>
+            <p>{{ user.email }}</p>
+        </div>
+    </div>
+
+    <div class="profile-form-card">
+        <h2 class="section-title">Editar Perfil</h2>
+        <form method="POST" action="{% url 'profile' %}">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label" for="institutional_email">Correo institucional EAFIT</label>
+                <input
+                    id="institutional_email"
+                    name="institutional_email"
+                    type="email"
+                    class="form-control-dark"
+                    placeholder="ejemplo@eafit.edu.co"
+                    value="{{ user_profile.institutional_email|default:'' }}"
+                >
+                <div class="form-help">Ejemplo: nombre.apellido@eafit.edu.co</div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="current_semester">Semestre actual</label>
+                <input
+                    id="current_semester"
+                    name="current_semester"
+                    type="number"
+                    min="1"
+                    class="form-control-dark"
+                    placeholder="Ejemplo: 6"
+                    value="{{ user_profile.current_semester }}"
+                    required
+                >
+                <div class="form-help">Ingresa un numero entero (ejemplo: 6).</div>
+            </div>
+
+            <button type="submit" class="btn-save-profile">Guardar cambios</button>
+        </form>
+    </div>
+
+    <!-- Grid de información académica -->
+    <h2 class="section-title">Información Académica</h2>
+    <div class="info-grid">
+        <!-- Semestre Actual -->
+        <div class="info-card">
+            <h3> Semestre Actual</h3>
+            <div class="info-value">{{ user_profile.current_semester }} / 9</div>
+        </div>
+
+        <!-- Correo Institucional -->
+        <div class="info-card">
+            <h3> Correo Institucional</h3>
+            {% if user_profile.institutional_email %}
+                <div class="info-value">{{ user_profile.institutional_email }}</div>
+            {% else %}
+                <div class="empty-state">No agregado</div>
+            {% endif %}
+        </div>
+
+        <!-- Objetivo de Carrera -->
+        <div class="info-card">
+            <h3> Objetivo de Carrera</h3>
+            {% if user_preference.career_goal %}
+                <div class="info-value">{{ user_preference.career_goal.name }}</div>
+            {% else %}
+                <div class="empty-state">No definido</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Áreas de Interés -->
+    {% if user_preference.interests.all %}
+    <div class="section-card">
+        <h3 class="section-title">Áreas de Interés</h3>
+        <div class="tags-container">
+            {% for interest in user_preference.interests.all %}
+            <span class="tag">
+                <i class="fas {{ interest.icon }}"></i>
+                {{ interest.name }}
+            </span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Botón para editar preferencias -->
+    <a href="{% url 'preferences' %}" class="btn-edit">
+        <i class="fas fa-sliders-h"></i>
+        Editar Preferencias
+    </a>
+</div>
+{% endblock %}
