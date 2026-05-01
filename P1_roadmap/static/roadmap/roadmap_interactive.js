@@ -106,16 +106,16 @@ function initFromServer() {
             if (data.ok && data.state && Object.keys(data.state).length > 0) {
                 const currentSems = Object.keys(D.semester_map).map(String).sort();
                 const savedSems = Object.keys(data.state.semester_map || {});
-                // Verificar que todos los semestres BASE estén presentes
                 const allBasePresent = currentSems.every(s => savedSems.includes(s));
                 if (allBasePresent) {
                     state = data.state;
                     sessionStorage.setItem(STATE_KEY, JSON.stringify(state));
-                    // Forzar categorías de especialización no conectada
                     applySavedSpecializationCategories();
                     return true;
                 }
             }
+            // El servidor no tiene estado para este usuario — limpiar caché local
+            sessionStorage.removeItem(STATE_KEY);
             return false;
         })
         .catch(function(e) {
@@ -532,10 +532,29 @@ function addSemester() {
 }
 
 function removeSemester(semNum) {
-    if (semNum <= 9) return; // Nunca eliminar los primeros 9
+    if (semNum <= 9) return; // Solo se pueden eliminar semestres extra
     const list = state.semester_map[String(semNum)];
-    if (!list || list.length > 0) return; // Solo eliminar si está vacío
+    if (!list || list.length > 0) return; // Solo eliminar si el semestre está vacío
     delete state.semester_map[String(semNum)];
+
+    // Renumerar semestres extra para eliminar huecos
+    const extraSems = Object.keys(state.semester_map)
+        .map(Number)
+        .filter(n => n > 9)
+        .sort((a, b) => a - b);
+
+    // Reasignar correlativamente desde 10
+    const newSemesterMap = {};
+    // Copiar semestres base (1-9)
+    for (const [k, v] of Object.entries(state.semester_map)) {
+        if (parseInt(k) <= 9) newSemesterMap[k] = v;
+    }
+    // Renumerar extras
+    extraSems.forEach((oldNum, idx) => {
+        newSemesterMap[String(10 + idx)] = state.semester_map[String(oldNum)];
+    });
+    state.semester_map = newSemesterMap;
+
     saveState();
     rebuildAllSemesters();
     validateAll();
@@ -1299,8 +1318,79 @@ function confirmEmphasisSelection(selectedUmbrella, linePk, lineData, semNum) {
 
     state.selections.emphasis['211'] = selectedUmbrella.id;
 
+    // Recalcular conexión con especialización si hay una seleccionada
+    const specSel = state.selections.specialization;
+    if (specSel && specSel.selected_pk !== null) {
+        const newConnectedSpecPk = getSpecForEmphasisUmbrella(selectedUmbrella.id);
+        const nowConnects = newConnectedSpecPk === specSel.selected_pk;
+        const specData = D.specialization_courses[String(specSel.selected_pk)];
+
+        if (nowConnects && !specSel.connected) {
+            if (specData) {
+                const s1Ids = new Set(specData.sem1.map(c => c.id));
+                for (const semStr of Object.keys(state.semester_map)) {
+                    if (parseInt(semStr) > 9) {
+                        state.semester_map[semStr] = state.semester_map[semStr]
+                            .filter(id => !s1Ids.has(id));
+                    }
+                }
+                for (const semStr of Object.keys(state.semester_map)) {
+                    if (parseInt(semStr) > 9 && state.semester_map[semStr].length === 0) {
+                        delete state.semester_map[semStr];
+                    }
+                }
+            }
+            state.selections.specialization.connected = true;
+
+        } else if (!nowConnects && specSel.connected) {
+            if (specData) {
+                const s2Ids = new Set(specData.sem2.map(c => c.id));
+                let s2Sem = null;
+                for (const [semStr, ids] of Object.entries(state.semester_map)) {
+                    if (parseInt(semStr) > 9 && ids.some(id => s2Ids.has(id))) {
+                        s2Sem = parseInt(semStr);
+                        break;
+                    }
+                }
+
+                const s1Sem = s2Sem || (getMaxSemester() + 1);
+                const s2NewSem = s1Sem + 1;
+
+                if (s2Sem !== null) {
+                    state.semester_map[String(s2NewSem)] = state.semester_map[String(s2Sem)];
+                    delete state.semester_map[String(s2Sem)];
+                }
+
+                state.semester_map[String(s1Sem)] = [];
+                for (const course of specData.sem1) {
+                    const existing = D.course_map[String(course.id)];
+                    D.course_map[String(course.id)] = {
+                        ...(existing || {}),
+                        ...course,
+                        category: 'SPECIALIZATION',
+                        is_umbrella: false,
+                        prerequisites: existing?.prerequisites || [],
+                        corequisites: existing?.corequisites || [],
+                    };
+                    state.semester_map[String(s1Sem)].push(course.id);
+                }
+            }
+            state.selections.specialization.connected = false;
+
+        } else if (!nowConnects && !specSel.connected) {
+            if (specData) {
+                for (const course of specData.sem1) {
+                    if (D.course_map[String(course.id)]) {
+                        D.course_map[String(course.id)].category = 'SPECIALIZATION';
+                    }
+                }
+            }
+        }
+        // Si nowConnects && specSel.connected: ya estaba conectada y sigue conectada, no hacer nada
+    }
+
     saveState();
-    rebuildSemesterColumn(9);
+    rebuildAllSemesters();
     validateAll();
     initSortable();
     updateContextBar();
