@@ -65,13 +65,6 @@
             
             <ul class="mobile-nav">
                 <li class="mobile-nav-item">
-                    <a class="mobile-nav-link me-2 {% if '/seedbeds/' in request.path %}active{% endif %}" 
-                    href="{% url 'seedbeds' %}">
-                        <i class="fa-solid fa-microscope"></i>
-                        Semilleros
-                    </a>
-                </li>
-                <li class="mobile-nav-item">
                     <a class="mobile-nav-link {% if request.resolver_match.url_name == 'roadmap' %}active{% endif %}" href="{% url 'roadmap' %}">
                         <i class="fa-regular fa-map"></i>
                         Mapa Académico
@@ -95,6 +88,13 @@
                         Especializaciones
                     </a>
                 </li>
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-link me-2 {% if '/seedbeds/' in request.path %}active{% endif %}" 
+                    href="{% url 'seedbeds' %}">
+                        <i class="fa-solid fa-microscope"></i>
+                        Semilleros
+                    </a>
+                </li>
                 
                 <li class="mobile-nav-divider"></li>
                 
@@ -106,19 +106,22 @@
                     </a>
                 </li>
                 <li class="mobile-nav-item">
-                    <a class="mobile-nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="{% url 'profile' %}" style="display:flex;align-items:center;gap:0.75rem;">
-                        <i class="fas fa-user"></i>
-                        Perfil
+                    <a class="mobile-nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" 
+                    href="{% url 'profile' %}" style="display:flex;align-items:center;gap:0.75rem;">
+                        <i class="fas fa-user" style="flex-shrink:0;"></i>
+                        <span style="display:flex;flex-direction:column;line-height:1.3;">
+                            <span>Perfil</span>
+                            {% if user.is_authenticated %}
+                            <span style="font-size:0.72rem;color:#8f9bb3;font-weight:400;">{{ user.username }}</span>
+                            {% endif %}
+                        </span>
                     </a>
                 </li>
             </ul>
 
-            <!-- Usuario y Logout al fondo del menú móvil -->
+            <!-- Logout al fondo del menú móvil -->
             <div class="mt-auto pb-4">
                 {% if user.is_authenticated %}
-                <div class="px-3 py-2 mb-2 text-muted small">
-                    <i class="fas fa-user-circle me-2"></i>{{ user.username }}
-                </div>
                 <a class="mobile-nav-link text-danger" href="{% url 'logout' %}">
                     <i class="fas fa-sign-out-alt me-3"></i>
                     Cerrar Sesión
@@ -158,13 +161,6 @@
                     
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link me-2 {% if '/seedbeds/' in request.path %}active{% endif %}" 
-                            href="{% url 'seedbeds' %}">
-                                <i class="fa-solid fa-microscope me-3"></i>
-                                Semilleros
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link me-2 {% if request.resolver_match.url_name == 'roadmap' %}active{% endif %}" href="{% url 'roadmap' %}">
                                 <i class="fa-regular fa-map me-3"></i>
                                 Mapa Académico
@@ -186,6 +182,13 @@
                             <a class="nav-link me-2 {% if '/specialization' in request.path %}active{% endif %}" href="{% url 'specialization_list' %}">
                                 <i class="fa-solid fa-medal me-3"></i>
                                 Especializaciones
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-2 {% if '/seedbeds/' in request.path %}active{% endif %}" 
+                            href="{% url 'seedbeds' %}">
+                                <i class="fa-solid fa-microscope me-3"></i>
+                                Semilleros
                             </a>
                         </li>
                         
