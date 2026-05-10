@@ -76,7 +76,8 @@ body {
     color: #6c757d;
 }
 
-.btn-register {
+/* Unifica btn-login y btn-register */
+.btn-auth {
     background: linear-gradient(135deg, #0f3460, #16213e);
     border: none;
     border-radius: 8px;
@@ -88,7 +89,7 @@ body {
     transition: opacity 0.2s;
 }
 
-.btn-register:hover {
+.btn-auth:hover {
     opacity: 0.9;
     color: white;
 }
@@ -115,18 +116,19 @@ body {
     background: #dee2e6;
 }
 
-.login-link {
+/* Unifica register-link y login-link */
+.auth-link {
     text-align: center;
     font-size: 0.875rem;
     color: #6c757d;
 }
 
-.login-link a {
+.auth-link a {
     color: #0f3460;
     font-weight: 600;
     text-decoration: none;
 }
 
-.login-link a:hover {
+.auth-link a:hover {
     text-decoration: underline;
 }

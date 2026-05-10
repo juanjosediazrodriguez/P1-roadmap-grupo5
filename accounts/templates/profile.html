@@ -57,12 +57,13 @@
                     name="current_semester"
                     type="number"
                     min="1"
+                    max="{{ max_roadmap_semester }}"
                     class="form-control-dark"
                     placeholder="Ejemplo: 6"
                     value="{{ user_profile.current_semester }}"
                     required
                 >
-                <div class="form-help">Ingresa un numero entero (ejemplo: 6).</div>
+                <div class="form-help">Ingresa un número entero entre 1 y {{ max_roadmap_semester }}.</div>
             </div>
 
             <div class="mb-5">
@@ -89,7 +90,7 @@
         <!-- Semestre Actual -->
         <div class="info-card">
             <h3> Semestre Actual</h3>
-            <div class="info-value">{{ user_profile.current_semester }} / 9</div>
+            <div class="info-value">{{ user_profile.current_semester }} / {{ max_roadmap_semester }}</div>
         </div>
 
         <!-- Correo Institucional -->
