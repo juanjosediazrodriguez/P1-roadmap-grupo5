@@ -54,24 +54,6 @@
     }
   },
   {
-    "model": "accounts.interest",
-    "pk": 7,
-    "fields": {
-      "name": "Investigación",
-      "description": "Investigación académica y aplicada",
-      "icon": "fa-flask"
-    }
-  },
-  {
-    "model": "accounts.interest",
-    "pk": 8,
-    "fields": {
-      "name": "Emprendimiento",
-      "description": "Creación de startups y negocios tech",
-      "icon": "fa-rocket"
-    }
-  },
-  {
     "model": "accounts.careergoal",
     "pk": 1,
     "fields": {
@@ -87,15 +69,6 @@
       "name": "Startup",
       "description": "Emprendimiento propio",
       "icon": "fa-lightbulb"
-    }
-  },
-  {
-    "model": "accounts.careergoal",
-    "pk": 3,
-    "fields": {
-      "name": "Investigación",
-      "description": "Academia e investigación",
-      "icon": "fa-university"
     }
   },
   {

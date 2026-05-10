@@ -1091,3 +1091,39 @@ def load_roadmap_state(request):
         return JsonResponse({'ok': True, 'state': state_obj.state})
     except RoadmapState.DoesNotExist:
         return JsonResponse({'ok': True, 'state': None})
+    
+@login_required
+def seedbeds_view(request):
+    schools = [
+        {
+            'name': 'Escuela de Administración',
+            'icon': 'fa-briefcase',
+            'description': 'Semilleros enfocados en gestión organizacional, estrategia empresarial, emprendimiento e innovación.',
+            'url': 'https://www.eafit.edu.co/sistema-ciencia-tecnologia-innovacion/investigacion/nuestros-semilleros#4257225834-1697230194',
+        },
+        {
+            'name': 'Escuelas de Artes y Humanidades',
+            'icon': 'fa-palette',
+            'description': 'Semilleros en comunicación, literatura, música, diseño y estudios culturales.',
+            'url': 'https://www.eafit.edu.co/sistema-ciencia-tecnologia-innovacion/investigacion/nuestros-semilleros#4257225834-2791774225',
+        },
+        {
+            'name': 'Escuela de Ciencias Aplicadas e Ingeniería',
+            'icon': 'fa-microchip',
+            'description': 'Semilleros en ingeniería de sistemas, computación, matemáticas, física y tecnologías emergentes.',
+            'url': 'https://www.eafit.edu.co/sistema-ciencia-tecnologia-innovacion/investigacion/nuestros-semilleros#4257225834-2739748906',
+        },
+        {
+            'name': 'Escuela de Derecho',
+            'icon': 'fa-scale-balanced',
+            'description': 'Semilleros en derecho empresarial, constitucional, internacional y regulación tecnológica.',
+            'url': 'https://www.eafit.edu.co/sistema-ciencia-tecnologia-innovacion/investigacion/nuestros-semilleros#4257225834-1034152794',
+        },
+        {
+            'name': 'Escuela de Finanzas, Economía y Gobierno',
+            'icon': 'fa-chart-line',
+            'description': 'Semilleros en economía aplicada, finanzas, políticas públicas y gobierno.',
+            'url': 'https://www.eafit.edu.co/sistema-ciencia-tecnologia-innovacion/investigacion/nuestros-semilleros#4257225834-3650883872',
+        },
+    ]
+    return render(request, 'roadmap/seedbeds.html', {'schools': schools})

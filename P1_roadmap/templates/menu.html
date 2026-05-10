@@ -65,9 +65,10 @@
             
             <ul class="mobile-nav">
                 <li class="mobile-nav-item">
-                    <a class="mobile-nav-link {% if request.resolver_match.url_name == 'analytics' %}active{% endif %}" href="#">
-                        <i class="fas fa-chart-line"></i>
-                        Dashboard
+                    <a class="mobile-nav-link me-2 {% if '/seedbeds/' in request.path %}active{% endif %}" 
+                    href="{% url 'seedbeds' %}">
+                        <i class="fa-solid fa-microscope"></i>
+                        Semilleros
                     </a>
                 </li>
                 <li class="mobile-nav-item">
@@ -157,9 +158,10 @@
                     
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link me-2 {% if request.resolver_match.url_name == 'analytics' %}active{% endif %}" href="#">
-                                <i class="fas fa-chart-line me-3"></i>
-                                Dashboard
+                            <a class="nav-link me-2 {% if '/seedbeds/' in request.path %}active{% endif %}" 
+                            href="{% url 'seedbeds' %}">
+                                <i class="fa-solid fa-microscope me-3"></i>
+                                Semilleros
                             </a>
                         </li>
                         <li class="nav-item">
