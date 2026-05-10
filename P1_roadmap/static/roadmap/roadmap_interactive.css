@@ -91,6 +91,21 @@
     background-color: rgba(220, 38, 38, 0.15) !important;
 }
 
+.english-warning {
+    display: flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    margin-top: 0.35rem;
+    line-height: 1.3;
+    gap: 0.3rem;
+    background: rgba(234, 179, 8, 0.12);
+    border-left: 3px solid #eab308;
+    color: #fde047;
+}
+
 /* ── Context bar ──────────────────────────────────────────── */
 
 .rm-context-bar {

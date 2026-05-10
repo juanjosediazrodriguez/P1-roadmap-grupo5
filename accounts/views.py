@@ -60,8 +60,10 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return redirect('logout_success')
 
+def logout_success_view(request):
+    return render(request, 'logout_success.html')
 
 @login_required
 def preferences_view(request):
@@ -174,6 +176,7 @@ def profile_view(request):
     """Vista para mostrar y actualizar datos basicos del perfil del estudiante."""
     user_profile, _ = UserProfile.objects.get_or_create(user=request.user)
     user_preference = get_or_create_user_preference(request.user)
+    english_level = request.POST.get('english_level', 'NONE')
 
     if request.method == 'POST':
         institutional_email = (request.POST.get('institutional_email') or '').strip()
@@ -195,6 +198,7 @@ def profile_view(request):
 
         user_profile.institutional_email = institutional_email or None
         user_profile.current_semester = current_semester
+        user_profile.english_level = english_level
         user_profile.save()
 
         messages.success(request, 'Perfil actualizado correctamente.')

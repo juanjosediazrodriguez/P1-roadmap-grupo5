@@ -333,6 +333,13 @@ def roadmap_view(request):
         ]
         specialization_courses_data[str(spec.pk)] = {'sem1': sem1, 'sem2': sem2}
 
+    # ── Nivel de inglés del usuario ──
+    english_level = 'NONE'
+    try:
+        english_level = request.user.profile.english_level
+    except Exception:
+        pass
+
     # ── JSON para el motor JS ────────────────────────────────────────────────
     roadmap_json = _json.dumps({
         'semester_map':              semester_map,
@@ -350,6 +357,7 @@ def roadmap_view(request):
         'electiva_mat_umbrella_pks': [26, 32],
         'specializations':           specializations_data,
         'specialization_courses':    specialization_courses_data,
+        'english_level': english_level,
     }, ensure_ascii=False)
 
     return render(request, 'roadmap/roadmap.html', {
