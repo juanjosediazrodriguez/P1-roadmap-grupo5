@@ -210,6 +210,22 @@
     margin-top: 0.4rem;
 }
 
+/* Icono de información */
+.info-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4a90e2 0%, #3570b0 100%);
+    color: #ffffff;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.25);
+    border: 2px solid #4a90e2;
+}
+.info-icon i { color: #ffffff; font-size: 0.95rem; }
+
 .btn-save-profile {
     background: linear-gradient(90deg, #4a90e2 0%, #3570b0 100%);
     color: white;

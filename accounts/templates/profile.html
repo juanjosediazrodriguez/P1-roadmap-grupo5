@@ -51,7 +51,13 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label" for="current_semester">Semestre actual</label>
+                <label class="form-label d-flex align-items-center gap-2" for="current_semester">
+                    <span>Semestre actual</span>
+                    <span class="info-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                          title="Si tienes materias pertenecientes a varios semestres: indica el semestre donde tengas la MAYORÍA de materias. Si hay empate, indica el semestre más avanzado o el que estés cursando actualmente. Si no sabes, selecciona el semestre en el que estás matriculado este ciclo.">
+                        <i class="fas fa-info"></i>
+                    </span>
+                </label>
                 <input
                     id="current_semester"
                     name="current_semester"
@@ -63,7 +69,6 @@
                     value="{{ user_profile.current_semester }}"
                     required
                 >
-                <div class="form-help">Ingresa un número entero entre 1 y {{ max_roadmap_semester }}.</div>
             </div>
 
             <div class="mb-5">
@@ -147,4 +152,13 @@
         Editar Preferencias
     </a>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        tooltipTriggerList.forEach(function (el) { new bootstrap.Tooltip(el) })
+    })
+</script>
 {% endblock %}
