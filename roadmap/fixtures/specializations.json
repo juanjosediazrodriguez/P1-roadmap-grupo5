@@ -5,6 +5,7 @@
     "fields": {
       "name": "Desarrollo de Software",
       "description": "La especialización en Desarrollo de Software se enfoca en el diseño, construcción, prueba y mantenimiento de aplicaciones y sistemas informáticos que resuelven problemas reales de usuarios y empresas."
+        ,"cost": 30026326
     }
   },
   {
@@ -13,6 +14,7 @@
     "fields": {
       "name": "Sistemas de Información",
       "description": "La especialización en Sistemas de Información se centra en la gestión estratégica de la tecnología en las organizaciones, integrando procesos de negocio con soluciones tecnológicas para optimizar la toma de decisiones."
+        ,"cost": 29083795
     }
   },
   {
@@ -21,6 +23,7 @@
     "fields": {
       "name": "Gerencia de Proyectos",
       "description": "La especialización en Gerencia de Proyectos forma profesionales capaces de formular, evaluar y dirigir proyectos complejos aplicando metodologías modernas de gestión en contextos organizacionales."
+        ,"cost": 30635041
     }
   },
   {
@@ -29,6 +32,7 @@
     "fields": {
       "name": "Diseño Integrado de Sistemas Técnicos",
       "description": "La especialización en Diseño Integrado de Sistemas Técnicos forma profesionales en el diseño y desarrollo de sistemas mecatrónicos, combinando mecánica, electrónica e informática para crear soluciones técnicas innovadoras."
+        ,"cost": 31696377
     }
   }
 ]

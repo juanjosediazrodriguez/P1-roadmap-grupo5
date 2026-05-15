@@ -6,6 +6,13 @@ from django.contrib.auth.models import User
 class Specialization(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField()
+    cost = models.DecimalField(
+        max_digits=12,
+        decimal_places=0,
+        default=0,
+        help_text="Costo en pesos colombianos",
+        verbose_name="Costo (COP)"
+    )
     
     class Meta:
         ordering = ['name']
