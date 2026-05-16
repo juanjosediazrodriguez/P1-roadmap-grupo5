@@ -1,0 +1,47 @@
+{% extends 'menu.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'base_content.css' %}">
+{% endblock %}
+
+{% block title %}Semilleros de Investigación{% endblock %}
+
+{% block content %}
+<div class="content-container">
+
+    <h1 class="page-title mb-4">Semilleros de Investigación</h1>
+    <p class="page-subtitle" style="max-width:940px;">
+        Los semilleros de investigación son espacios académicos donde estudiantes y docentes 
+        desarrollan proyectos de investigación formativa. Participar en uno te permite profundizar 
+        en áreas de tu interés, construir experiencia investigativa y conectar con la comunidad 
+        científica de EAFIT. Aquí encontrarás los semilleros organizados por escuela.
+    </p>
+
+    <div class="grid-2 mt-4">
+        {% for school in schools %}
+        <div class="card h-100" style="background:#1a1d27;border:1px solid #2a2d3a;border-radius:12px;padding:1.5rem;">
+            <div class="d-flex align-items-center gap-3 mb-3">
+                <div style="width:44px;height:44px;border-radius:10px;background:rgba(74,144,226,0.12);
+                    display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <i class="fas {{ school.icon }}" style="color:#4a90e2;font-size:1.1rem;"></i>
+                </div>
+                <h5 style="color:#fff;font-weight:700;margin:0;font-size:1rem;">{{ school.name }}</h5>
+            </div>
+            <p style="color:#8f9bb3;font-size:0.875rem;margin-bottom:1.25rem;line-height:1.6;">
+                {{ school.description }}
+            </p>
+            <a href="{{ school.url }}" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="btn btn-outline-primary btn-sm mt-auto"
+               style="border-radius:20px;display:inline-flex;align-items:center;gap:0.4rem;width:fit-content;">
+                Ver semilleros
+                <i class="fas fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

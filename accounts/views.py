@@ -4,7 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Interest, CareerGoal, Preference, UserProfile
-from roadmap.models import Specialization, EmphasisLine, Track
+from roadmap.models import Specialization, EmphasisLine, Track, RoadmapState
 from roadmap.views import (
     get_specialization_suggestions,
     get_track_suggestions,
@@ -60,8 +60,10 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return redirect('logout_success')
 
+def logout_success_view(request):
+    return render(request, 'logout_success.html')
 
 @login_required
 def preferences_view(request):
@@ -175,7 +177,18 @@ def profile_view(request):
     user_profile, _ = UserProfile.objects.get_or_create(user=request.user)
     user_preference = get_or_create_user_preference(request.user)
 
+    # Obtener máximo semestre del roadmap del usuario
+    max_roadmap_semester = 9  # fallback
+    try:
+        roadmap_state = RoadmapState.objects.get(user=request.user)
+        semester_keys = [int(k) for k in roadmap_state.state.get('semester_map', {}).keys()]
+        if semester_keys:
+            max_roadmap_semester = max(semester_keys)
+    except RoadmapState.DoesNotExist:
+        pass
+
     if request.method == 'POST':
+        english_level = request.POST.get('english_level', 'NONE')
         institutional_email = (request.POST.get('institutional_email') or '').strip()
         current_semester_raw = (request.POST.get('current_semester') or '').strip()
 
@@ -193,16 +206,22 @@ def profile_view(request):
             messages.error(request, 'El semestre debe ser un numero entero mayor o igual a 1.')
             return redirect('profile')
 
+        # Si supera el máximo del roadmap, se ajusta silenciosamente al máximo
+        if current_semester > max_roadmap_semester:
+            current_semester = max_roadmap_semester
+
         user_profile.institutional_email = institutional_email or None
         user_profile.current_semester = current_semester
+        user_profile.english_level = english_level
         user_profile.save()
 
         messages.success(request, 'Perfil actualizado correctamente.')
         return redirect('profile')
-    
+
     context = {
         'user_profile': user_profile,
         'user_preference': user_preference,
+        'max_roadmap_semester': max_roadmap_semester,
     }
-    
+
     return render(request, 'profile.html', context)
