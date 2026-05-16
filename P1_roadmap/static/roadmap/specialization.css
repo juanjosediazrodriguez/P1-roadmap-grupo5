@@ -38,3 +38,19 @@
     .grid-2.fade-in {
         opacity: 1;
     }
+
+    /* Tarjeta de costo más ancha para diferenciarla */
+    .cost-card {
+        background: linear-gradient(90deg, #1f2430 0%, #15171b 100%);
+        border: 1px solid #2a2d3a;
+    }
+
+    .cost-card .fs-2 {
+        letter-spacing: -0.5px;
+    }
+
+    /* Badge centrada dentro de la tarjeta de costo */
+    .cost-card .centered-badge {
+        font-size: 0.85rem;
+        padding: 0.35rem 0.7rem;
+    }

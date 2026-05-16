@@ -1,9 +1,10 @@
 {% extends 'menu.html' %}
-{% load static %}
+{% load static currency_filters %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'base_content.css' %}">
 <link rel="stylesheet" href="{% static 'roadmap/course.css' %}">
+<link rel="stylesheet" href="{% static 'roadmap/specialization.css' %}">
 {% endblock %}
 
 {% block title %}{{ specialization.name }}{% endblock title %}
@@ -59,6 +60,25 @@
         {% empty %}
         <div class="text-secondary">No hay cursos para sumar créditos.</div>
         {% endfor %}
+
+        <!-- Tarjeta de costo de la especialización -->
+        <div class="card cost-card flex-shrink-0" style="min-width: 320px;">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-start mb-2">
+                    <span class="badge" style="background-color: #2d2d2d; margin-right: 0.75rem;">Valor de la especialización</span>
+                </div>
+                {% if specialization.cost %}
+                <div class="fs-2 fw-bold text-white">
+                    ${{ specialization.cost|format_cop }}
+                    <span class="fs-6 fw-normal text-secondary">COP</span>
+                </div>
+                <div class="text-secondary small mt-2">Precio total en pesos colombianos</div>
+                {% else %}
+                <div class="fs-5 fw-bold text-secondary">Precio no definido</div>
+                <div class="text-secondary small mt-2">Administra este valor desde el admin o fixture</div>
+                {% endif %}
+            </div>
+        </div>
     </div>
 
     <div id="course-container">
