@@ -1,3 +1,5 @@
 django
 matplotlib
 pandas
+python-dotenv
+google-genai
