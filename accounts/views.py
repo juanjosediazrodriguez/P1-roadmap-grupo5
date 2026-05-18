@@ -10,7 +10,9 @@ from roadmap.views import (
     get_track_suggestions,
     get_emphasis_suggestions,
 )
-
+from django.conf import settings
+from google import genai
+import json  # Lo usaremos para procesar la respuesta estructurada de la IA
 
 def get_or_create_user_preference(user):
     preference, _ = Preference.objects.get_or_create(user=user)
@@ -82,41 +84,114 @@ def preferences_view(request):
     track_suggestion = None
 
     if has_active_preferences:
-        specialization_suggestions = get_specialization_suggestions(preference)
-        emphasis_suggestions = get_emphasis_suggestions(preference)
-        track_suggestions = get_track_suggestions(preference)
+        # --- INICIO DE LA LÓGICA CON IA ---
+        
+        # 1. Recuperamos los datos del usuario
+        intereses_usuario = ", ".join([i.name for i in preference.interests.all()])
+        meta_usuario = preference.career_goal.name if preference.career_goal else "No definida"
+        
+        # 2. OBTENEMOS LAS OPCIONES REALES QUE EXISTEN EN LA BASE DE DATOS
+        opciones_especializaciones = ", ".join([s.name for s in Specialization.objects.all()])
+        opciones_enfasis = ", ".join([e.name for e in EmphasisLine.objects.all()])
+        opciones_tracks = ", ".join([t.name for t in Track.objects.filter(track_type='PROFESSIONAL')])
+        
+        # 3. Diseñamos el Prompt dándole las opciones reales como opciones obligatorias
+        prompt = f"""
+        Eres un asesor académico experto de la universidad EAFIT para la carrera de Ingeniería de Sistemas.
+        
+        El estudiante tiene las siguientes preferencias:
+        - Intereses tecnológicos: {intereses_usuario}
+        - Meta profesional/Objetivo de carrera: {meta_usuario}
+        
+        Tu tarea es seleccionar la mejor opción para el estudiante basándote estrictamente en las listas de opciones reales que existen en la universidad. 
+        No puedes inventar nombres. Debes elegir uno de los nombres exactos que te proporciono a continuación:
 
-        specialization_suggestion = specialization_suggestions[0] if specialization_suggestions else None
-        emphasis_suggestion = emphasis_suggestions[0] if emphasis_suggestions else None
-        track_suggestion = track_suggestions[0] if track_suggestions else None
+        OPCIONES REALES DISPONIBLES:
+        - Especializaciones disponibles (Elige una de estas): [{opciones_especializaciones}]
+        - Líneas de Énfasis disponibles (Elige una de estas): [{opciones_enfasis}]
+        - Trayectorias (Tracks) disponibles (Elige una de estas): [{opciones_tracks}]
+        
+        Debes responder ÚNICAMENTE con un objeto JSON válido, con la siguiente estructura:
+        {{
+            "specialization": {{"name": "Nombre exacto elegido de la lista", "reasons": ["Razón 1", "Razón 2"]}},
+            "emphasis": {{"name": "Nombre exacto elegido de la lista", "reasons": ["Razón 1", "Razón 2"]}},
+            "track": {{"name": "Nombre exacto elegido de la lista", "reasons": ["Razón 1", "Razón 2"]}}
+        }}
+        """
+        
+        try:
+            client = genai.Client(api_key=settings.GEMINI_API_KEY)
+            
+            config = {
+                "response_mime_type": "application/json"
+            }
+            
+            response = client.models.generate_content(
+                model='gemini-2.5-flash',
+                contents=prompt,
+                config=config 
+            )
+            
+            data_ia = json.loads(response.text.strip())
+            
+            # 4. Buscamos en la base de datos usando el nombre EXACTO que eligió la IA
+            nombre_spec = data_ia['specialization']['name'].strip()
+            obj_spec = Specialization.objects.filter(name__iexact=nombre_spec).first() or Specialization.objects.first()
+            
+            nombre_emphasis = data_ia['emphasis']['name'].strip()
+            obj_emphasis = EmphasisLine.objects.filter(name__iexact=nombre_emphasis).first() or EmphasisLine.objects.first()
+            
+            nombre_track = data_ia['track']['name'].strip()
+            obj_track = Track.objects.filter(name__iexact=nombre_track).first() or Track.objects.filter(track_type='PROFESSIONAL').first()
 
-        # Fallbacks para garantizar una recomendación por tipo cuando sí hay preferencias activas.
-        if not specialization_suggestion:
-            fallback_spec = Specialization.objects.order_by('name').first()
-            if fallback_spec:
-                specialization_suggestion = {
-                    'specialization': fallback_spec,
-                    'score': 1,
-                    'reasons': ['Recomendación base por disponibilidad de especialización'],
-                }
+            # 5. Armamos el contexto para el HTML
+            specialization_suggestion = {
+                'specialization': obj_spec,
+                'score': 100,
+                'reasons': data_ia['specialization']['reasons']
+            }
+            emphasis_suggestion = {
+                'emphasis': obj_emphasis,
+                'score': 100,
+                'reasons': data_ia['emphasis']['reasons']
+            }
+            track_suggestion = {
+                'track': obj_track,
+                'score': 100,
+                'reasons': data_ia['track']['reasons']
+            }
+            
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            
+            if not specialization_suggestion:
+                fallback_spec = Specialization.objects.order_by('name').first()
+                if fallback_spec:
+                    specialization_suggestion = {
+                        'specialization': fallback_spec,
+                        'score': 1,
+                        'reasons': ['Recomendación base por disponibilidad (Fallback debido a error de IA)'],
+                    }
 
-        if not emphasis_suggestion:
-            fallback_emphasis = EmphasisLine.objects.order_by('name').first()
-            if fallback_emphasis:
-                emphasis_suggestion = {
-                    'emphasis': fallback_emphasis,
-                    'score': 1,
-                    'reasons': ['Recomendación base por disponibilidad de línea de énfasis'],
-                }
+            if not emphasis_suggestion:
+                fallback_emphasis = EmphasisLine.objects.order_by('name').first()
+                if fallback_emphasis:
+                    emphasis_suggestion = {
+                        'emphasis': fallback_emphasis,
+                        'score': 1,
+                        'reasons': ['Recomendación base por disponibilidad (Fallback debido a error de IA)'],
+                    }
 
-        if not track_suggestion:
-            fallback_track = Track.objects.filter(track_type='PROFESSIONAL').order_by('name').first()
-            if fallback_track:
-                track_suggestion = {
-                    'track': fallback_track,
-                    'score': 1,
-                    'reasons': ['Recomendación base por disponibilidad de trayectoria profesionalizante'],
-                }
+            if not track_suggestion:
+                fallback_track = Track.objects.filter(track_type='PROFESSIONAL').order_by('name').first()
+                if fallback_track:
+                    track_suggestion = {
+                        'track': fallback_track,
+                        'score': 1,
+                        'reasons': ['Recomendación base por disponibilidad (Fallback debido a error de IA)'],
+                    }
+        # --- FIN DE LA LÓGICA CON IA ---
 
     context = {
         'interests': interests,
