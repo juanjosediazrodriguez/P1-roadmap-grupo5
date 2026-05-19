@@ -86,6 +86,29 @@ class Preference(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    ai_specialization = models.ForeignKey(
+        'roadmap.Specialization', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True
+    )
+    ai_emphasis = models.ForeignKey(
+        'roadmap.EmphasisLine', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True
+    )
+    ai_track = models.ForeignKey(
+        'roadmap.Track', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True
+    )
+    # Guardaremos las razones como texto (puede ser un JSON en texto o texto largo)
+    ai_reasons = models.TextField(blank=True, null=True, help_text="Razones de la IA en formato JSON")
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Preference'

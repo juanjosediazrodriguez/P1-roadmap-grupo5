@@ -10,7 +10,9 @@ from roadmap.views import (
     get_track_suggestions,
     get_emphasis_suggestions,
 )
-
+from django.conf import settings
+from google import genai
+import json  # Lo usaremos para procesar la respuesta estructurada de la IA
 
 def get_or_create_user_preference(user):
     preference, _ = Preference.objects.get_or_create(user=user)
@@ -75,48 +77,56 @@ def preferences_view(request):
     selected_interests = [str(i.id) for i in preference.interests.all()]
     selected_goal = str(preference.career_goal.id) if preference.career_goal else None
 
-    has_active_preferences = bool(selected_interests or selected_goal)
-
+    # Inicializamos las variables por defecto
     specialization_suggestion = None
     emphasis_suggestion = None
     track_suggestion = None
 
-    if has_active_preferences:
-        specialization_suggestions = get_specialization_suggestions(preference)
-        emphasis_suggestions = get_emphasis_suggestions(preference)
-        track_suggestions = get_track_suggestions(preference)
+    # Si el usuario ya tiene recomendaciones calculadas en su BD, las preparamos para el HTML
+    if preference.ai_specialization or preference.ai_emphasis or preference.ai_track:
+        
+        # Reconstruimos el diccionario de razones desde el texto guardado
+        try:
+            razones = json.loads(preference.ai_reasons) if preference.ai_reasons else {}
+        except:
+            razones = {}
 
-        specialization_suggestion = specialization_suggestions[0] if specialization_suggestions else None
-        emphasis_suggestion = emphasis_suggestions[0] if emphasis_suggestions else None
-        track_suggestion = track_suggestions[0] if track_suggestions else None
+        if preference.ai_specialization:
+            specialization_suggestion = {
+                'specialization': preference.ai_specialization,
+                'score': 100,
+                'reasons': razones.get('specialization', ['Recomendado según tu perfil'])
+            }
 
-        # Fallbacks para garantizar una recomendación por tipo cuando sí hay preferencias activas.
-        if not specialization_suggestion:
+        if preference.ai_emphasis:
+            emphasis_suggestion = {
+                'emphasis': preference.ai_emphasis,
+                'score': 100,
+                'reasons': razones.get('emphasis', ['Recomendado según tu perfil'])
+            }
+
+        if preference.ai_track:
+            track_suggestion = {
+                'track': preference.ai_track,
+                'score': 100,
+                'reasons': razones.get('track', ['Recomendado según tu perfil'])
+            }
+    
+    # Fallback por si la persona entra por primera vez y no ha guardado nada aún
+    else:
+        if bool(selected_interests or selected_goal):
+            # Si tiene preferencias pero por alguna razón no tiene IA calculada (ej. error previo)
             fallback_spec = Specialization.objects.order_by('name').first()
             if fallback_spec:
-                specialization_suggestion = {
-                    'specialization': fallback_spec,
-                    'score': 1,
-                    'reasons': ['Recomendación base por disponibilidad de especialización'],
-                }
-
-        if not emphasis_suggestion:
+                specialization_suggestion = {'specialization': fallback_spec, 'score': 1, 'reasons': ['Recomendación base']}
+            
             fallback_emphasis = EmphasisLine.objects.order_by('name').first()
             if fallback_emphasis:
-                emphasis_suggestion = {
-                    'emphasis': fallback_emphasis,
-                    'score': 1,
-                    'reasons': ['Recomendación base por disponibilidad de línea de énfasis'],
-                }
-
-        if not track_suggestion:
+                emphasis_suggestion = {'emphasis': fallback_emphasis, 'score': 1, 'reasons': ['Recomendación base']}
+            
             fallback_track = Track.objects.filter(track_type='PROFESSIONAL').order_by('name').first()
             if fallback_track:
-                track_suggestion = {
-                    'track': fallback_track,
-                    'score': 1,
-                    'reasons': ['Recomendación base por disponibilidad de trayectoria profesionalizante'],
-                }
+                track_suggestion = {'track': fallback_track, 'score': 1, 'reasons': ['Recomendación base']}
 
     context = {
         'interests': interests,
@@ -157,7 +167,69 @@ def save_preferences(request):
 
         preference.save()
 
-        messages.success(request, 'Preferencias guardadas exitosamente')
+        # --- AQUÍ ENTRA LA LLAMADA A GEMINI (SOLO CUANDO SE GUARDA) ---
+        intereses_usuario = ", ".join([i.name for i in preference.interests.all()])
+        meta_usuario = preference.career_goal.name if preference.career_goal else "No definida"
+        
+        opciones_especializaciones = ", ".join([s.name for s in Specialization.objects.all()])
+        opciones_enfasis = ", ".join([e.name for e in EmphasisLine.objects.all()])
+        opciones_tracks = ", ".join([t.name for t in Track.objects.filter(track_type='PROFESSIONAL')])
+        
+        prompt = f"""
+        Eres un asesor académico experto de la universidad EAFIT para la carrera de Ingeniería de Sistemas.
+         El estudiante tiene las siguientes preferencias:
+        - Intereses tecnológicos: {intereses_usuario}
+        - Meta profesional/Objetivo de carrera: {meta_usuario}
+        
+        Tu tarea es seleccionar la mejor opción para el estudiante basándote estrictamente en las listas de opciones reales que existen en la universidad.
+        OPCIONES REALES DISPONIBLES:
+        - Especializaciones disponibles: [{opciones_especializaciones}]
+        - Líneas de Énfasis disponibles: [{opciones_enfasis}]
+        - Trayectorias (Tracks) disponibles: [{opciones_tracks}]
+        
+        Debes responder ÚNICAMENTE con un objeto JSON válido, con la siguiente estructura:
+        {{
+            "specialization": {{"name": "Nombre exacto elegido", "reasons": ["Razón 1", "Razón 2"]}},
+            "emphasis": {{"name": "Nombre exacto elegido", "reasons": ["Razón 1", "Razón 2"]}},
+            "track": {{"name": "Nombre exacto elegido", "reasons": ["Razón 1", "Razón 2"]}}
+        }}
+        """
+        
+        try:
+            client = genai.Client(api_key=settings.GEMINI_API_KEY)
+            response = client.models.generate_content(
+                model='gemini-2.5-flash',
+                contents=prompt,
+                config={"response_mime_type": "application/json"}
+            )
+            
+            data_ia = json.loads(response.text.strip())
+            
+            # Buscamos los objetos correspondientes
+            nombre_spec = data_ia['specialization']['name'].strip()
+            preference.ai_specialization = Specialization.objects.filter(name__iexact=nombre_spec).first() or Specialization.objects.first()
+            
+            nombre_emphasis = data_ia['emphasis']['name'].strip()
+            preference.ai_emphasis = EmphasisLine.objects.filter(name__iexact=nombre_emphasis).first() or EmphasisLine.objects.first()
+            
+            nombre_track = data_ia['track']['name'].strip()
+            preference.ai_track = Track.objects.filter(name__iexact=nombre_track).first() or Track.objects.filter(track_type='PROFESSIONAL').first()
+            
+            # Guardamos las razones estructuradas (agrupamos los motivos en un diccionario y lo volvemos texto plano)
+            razones_dict = {
+                'specialization': data_ia['specialization']['reasons'],
+                'emphasis': data_ia['emphasis']['reasons'],
+                'track': data_ia['track']['reasons']
+            }
+            preference.ai_reasons = json.dumps(razones_dict)
+            preference.save() # Guardamos los cambios de la IA en la BD
+            
+        except Exception as e:
+            print(f"Error procesando IA al guardar: {e}")
+            # Si la IA falla, dejamos los campos vacíos o con fallbacks para no bloquear al usuario
+            pass
+
+        messages.success(request, 'Preferencias y recomendaciones actualizadas exitosamente')
         return redirect('preferences')
 
     return redirect('preferences')

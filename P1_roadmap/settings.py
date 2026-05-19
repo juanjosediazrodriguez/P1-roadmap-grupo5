@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv # Importamos la herramienta para leer el .env
+
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()
 
 # Message tags personalizados para Bootstrap
 from django.contrib.messages import constants as messages
@@ -135,3 +139,6 @@ LOGOUT_REDIRECT_URL = '/accounts/login/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'P1_roadmap', 'static'), 
 ]
+
+# Configuración de APIs externas
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
