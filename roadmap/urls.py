@@ -32,4 +32,7 @@ urlpatterns = [
     # Guardar y cargar estado del roadmap
     path('roadmap/state/save/', views.save_roadmap_state, name='save_roadmap_state'),
     path('roadmap/state/load/', views.load_roadmap_state, name='load_roadmap_state'),
+
+    # Descargar roadmap como PDF
+    path('roadmap/download-pdf/', views.roadmap_pdf_view, name='roadmap_pdf'),
 ]

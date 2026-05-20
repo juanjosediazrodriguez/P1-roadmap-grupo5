@@ -1921,7 +1921,56 @@ function initOnboarding() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 16. INICIALIZACIÓN
+// 16. DESCARGA EN PDF (servidor)
+// ─────────────────────────────────────────────────────────────────────────────
+
+function downloadRoadmapPDF() {
+    const btn = document.getElementById('rm-pdf-btn');
+    if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Generando...';
+    }
+
+    // Envía el estado actual (semester_map + selections) al servidor via POST.
+    // El servidor resuelve los IDs de cursos contra la BD, renderiza el template
+    // HTML y lo convierte a PDF con xhtml2pdf, devolviendo un blob application/pdf.
+    fetch('/roadmap/download-pdf/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: JSON.stringify(state),
+    })
+    .then(function(res) {
+        if (!res.ok) throw new Error('Error del servidor: ' + res.status);
+        return res.blob();
+    })
+    .then(function(blob) {
+        // Crea una URL temporal en memoria para el blob y dispara la descarga
+        const url = URL.createObjectURL(blob);
+        const a   = document.createElement('a');
+        a.href     = url;
+        a.download = 'mi-roadmap.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);  // libera la memoria del blob URL
+    })
+    .catch(function(err) {
+        console.error('Error generando PDF:', err);
+        showToast('Error al generar el PDF. Intenta de nuevo.', 'error');
+    })
+    .finally(function() {
+        if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-file-pdf me-1"></i>Descargar PDF';
+        }
+    });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 17. INICIALIZACIÓN
 // ─────────────────────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -1947,6 +1996,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <button id="rm-info-btn" class="btn btn-sm rm-info-btn" title="Ver guía de uso">
                     <i class="fas fa-circle-info"></i>
                 </button>
+                <button id="rm-pdf-btn" class="btn btn-outline-light btn-sm" title="Descargar roadmap como PDF">
+                    <i class="fas fa-file-pdf me-1"></i>Descargar PDF
+                </button>
                 <button id="rm-reset-btn" class="btn btn-outline-danger btn-sm rm-reset-btn">
                     <i class="fas fa-undo me-1"></i>Reiniciar
                 </button>
@@ -1958,6 +2010,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('rm-confirm-modal')
             ).show();
         });
+        document.getElementById('rm-pdf-btn').addEventListener('click', downloadRoadmapPDF);
     }
 
     // Paso 4: cargar estado y renderizar

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mi Roadmap Académico</title>
+<style>
+/* ── Página ──────────────────────────────────────────────────── */
+@page {
+    size: A3 landscape;
+    margin: 1.2cm 1cm 1cm 1cm;
+}
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 7pt;
+    color: #1a1a2e;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Encabezado ──────────────────────────────────────────────── */
+.header {
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+}
+.header-title {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+.header-sub {
+    font-size: 7.5pt;
+    color: #555;
+    margin-top: 2px;
+}
+.header-date {
+    float: right;
+    font-size: 6.5pt;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* ── Leyenda ─────────────────────────────────────────────────── */
+.legend {
+    margin-bottom: 7px;
+    padding: 4px 6px;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+.legend-item {
+    display: inline;
+    margin-right: 10px;
+    font-size: 6pt;
+    color: #444;
+}
+.legend-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    margin-right: 3px;
+}
+
+/* ── Tabla principal de semestres ────────────────────────────── */
+table.roadmap-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 4px;
+    table-layout: fixed;
+}
+.sem-col {
+    vertical-align: top;
+    padding: 0;
+}
+
+/* ── Cabecera de semestre ────────────────────────────────────── */
+.sem-header {
+    text-align: center;
+    padding: 4px 2px;
+    background-color: #eaf7ef;
+    border: 1px solid #27ae60;
+    border-radius: 5px;
+    margin-bottom: 4px;
+}
+.sem-number {
+    font-size: 11pt;
+    font-weight: 800;
+    color: #1a7a40;
+    line-height: 1;
+}
+.sem-credits {
+    font-size: 5.5pt;
+    color: #555;
+    margin-top: 1px;
+}
+
+/* ── Tarjetas de curso ───────────────────────────────────────── */
+.course-card {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: #27ae60;
+    border-radius: 4px;
+    padding: 3px 4px 3px 5px;
+    margin-bottom: 3px;
+}
+.course-row {
+    overflow: hidden;
+    margin-bottom: 1px;
+}
+.course-code {
+    float: left;
+    font-size: 5.5pt;
+    color: #888;
+    background: #efefef;
+    padding: 1px 3px;
+    border-radius: 2px;
+}
+.course-cr {
+    float: right;
+    font-size: 5.5pt;
+    color: #888;
+    background: #efefef;
+    padding: 1px 3px;
+    border-radius: 2px;
+}
+.course-name {
+    font-size: 6.5pt;
+    font-weight: 600;
+    color: #1a1a2e;
+    line-height: 1.3;
+    clear: both;
+    padding-top: 2px;
+}
+
+/* ── Colores de categoría (borde izquierdo) ──────────────────── */
+.cat-BASIC_SCIENCE       { border-left-color: #4a90e2; }
+.cat-BASIC_ENGINEERING   { border-left-color: #1abc9c; }
+.cat-NFI                 { border-left-color: #fd7e14; }
+.cat-DISCIPLINARY        { border-left-color: #dc3545; }
+.cat-PROFESSIONAL_TRACK  { border-left-color: #8e44ad; }
+.cat-FLEXIBLE_TRACK      { border-left-color: #3f51b5; }
+.cat-PRACTICE            { border-left-color: #eab308; }
+.cat-EMPHASIS            { border-left-color: #e91e63; }
+.cat-SPECIALIZATION      { border-left-color: #00bcd4; }
+</style>
+</head>
+<body>
+
+<!-- Encabezado -->
+<div class="header">
+    <span class="header-date">Generado el {{ fecha }}</span>
+    <div class="header-title">Mi Roadmap Académico</div>
+    <div class="header-sub">
+        {{ user.get_full_name|default:user.username }}
+        {% if preference %}
+            {% with interests=preference.interests.all %}
+                {% if interests %}
+                    &nbsp;·&nbsp; Intereses:
+                    {% for i in interests %}{{ i.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% if preference.career_goal %}
+                &nbsp;·&nbsp; Meta: {{ preference.career_goal.name }}
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+<!-- Leyenda de categorías -->
+<div class="legend">
+    <span class="legend-item"><span class="legend-dot" style="background:#4a90e2;"></span>Ciencias Básicas</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span>Básicas Ingeniería</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#fd7e14;"></span>Form. Institucional</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#dc3545;"></span>Disciplinar</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#8e44ad;"></span>Tray. Profesionalizante</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#3f51b5;"></span>Tray. Flexible</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#eab308;"></span>Práctica</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#e91e63;"></span>Énfasis</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#00bcd4;"></span>Especialización</span>
+</div>
+
+<!-- Roadmap: cada semestre es una columna de la tabla -->
+<table class="roadmap-table">
+    <tr>
+        {% for sem in semesters %}
+        <td class="sem-col">
+            <div class="sem-header">
+                <div class="sem-number">{{ sem.number }}</div>
+                <div class="sem-credits">{{ sem.total_credits }} cr</div>
+            </div>
+            {% for course in sem.courses %}
+            <div class="course-card cat-{{ course.category }}">
+                <div class="course-row">
+                    <span class="course-code">{{ course.code|default:"—" }}</span>
+                    <span class="course-cr">{{ course.credits }}cr</span>
+                </div>
+                <div class="course-name">{{ course.name }}</div>
+            </div>
+            {% endfor %}
+        </td>
+        {% endfor %}
+    </tr>
+</table>
+
+</body>
+</html>

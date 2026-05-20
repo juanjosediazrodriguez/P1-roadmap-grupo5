@@ -6,10 +6,13 @@ from collections import defaultdict
 from django.db.models import Sum
 from django.db.models.functions import Coalesce
 from django.db.models import IntegerField, Value, Q
-from django.http import JsonResponse
-from django.template.loader import render_to_string
+from django.http import JsonResponse, HttpResponse
+from django.template.loader import render_to_string, get_template
 from django.views.decorators.http import require_POST
 import json as _json
+import io
+from datetime import datetime
+from xhtml2pdf import pisa
 
 # Mapeo de intereses a nombres de especializaciones en la BD
 INTEREST_SPECIALIZATION_MAP = {
@@ -1100,6 +1103,65 @@ def load_roadmap_state(request):
     except RoadmapState.DoesNotExist:
         return JsonResponse({'ok': True, 'state': None})
     
+@login_required
+@require_POST
+def roadmap_pdf_view(request):
+    # 1. Leer el estado JSON enviado desde el navegador
+    try:
+        state = _json.loads(request.body)
+    except _json.JSONDecodeError:
+        return JsonResponse({'error': 'Estado inválido'}, status=400)
+
+    semester_map = state.get('semester_map', {})
+
+    # 2. Recopilar todos los IDs de cursos que hay en el estado actual
+    all_ids = set()
+    for ids in semester_map.values():
+        all_ids.update(int(i) for i in ids)
+
+    # 3. Resolver IDs a objetos Course desde la BD
+    courses_qs = Course.objects.filter(id__in=all_ids)
+    course_map = {c.id: c for c in courses_qs}
+
+    # 4. Construir la lista de semestres con sus cursos (orden numérico)
+    MESES = ['enero','febrero','marzo','abril','mayo','junio','julio',
+             'agosto','septiembre','octubre','noviembre','diciembre']
+    now = datetime.now()
+
+    semesters = []
+    for sem_num in sorted(semester_map.keys(), key=int):
+        courses = [course_map[int(cid)] for cid in semester_map[sem_num]
+                   if int(cid) in course_map]
+        if courses:
+            semesters.append({
+                'number':        int(sem_num),
+                'courses':       courses,
+                'total_credits': sum(c.credits for c in courses),
+            })
+
+    preference = Preference.objects.filter(user=request.user).first()
+
+    # 5. Renderizar el template HTML dedicado para PDF
+    template = get_template('roadmap/roadmap_pdf.html')
+    html = template.render({
+        'semesters':  semesters,
+        'preference': preference,
+        'user':       request.user,
+        'fecha':      f"{now.day} de {MESES[now.month - 1]} de {now.year}",
+    })
+
+    # 6. Convertir HTML → PDF con xhtml2pdf
+    buffer = io.BytesIO()
+    pdf_status = pisa.pisaDocument(io.BytesIO(html.encode('UTF-8')), buffer)
+
+    if pdf_status.err:
+        return HttpResponse('Error al generar el PDF', status=500)
+
+    response = HttpResponse(buffer.getvalue(), content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="mi-roadmap.pdf"'
+    return response
+
+
 @login_required
 def seedbeds_view(request):
     schools = [
