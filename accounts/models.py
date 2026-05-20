@@ -23,6 +23,22 @@ class UserProfile(models.Model):
         null=True,
         help_text="Foto de perfil del estudiante"
     )
+    ENGLISH_LEVEL_CHOICES = [
+        ('NONE', 'Sin nivel'),
+        ('A1',   'A1'),
+        ('A2',   'A2'),
+        ('B1',   'B1'),
+        ('B2',   'B2'),
+        ('C1',   'C1'),
+        ('C2',   'C2'),
+    ]
+
+    english_level = models.CharField(
+        max_length=4,
+        choices=ENGLISH_LEVEL_CHOICES,
+        default='NONE',
+        help_text="Nivel de inglés certificado o completado"
+    )
 
     def __str__(self):
         return f"Perfil de {self.user.username}"
@@ -67,6 +83,29 @@ class Preference(models.Model):
         blank=True,
         related_name='preferences'
     )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    ai_specialization = models.ForeignKey(
+        'roadmap.Specialization', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True
+    )
+    ai_emphasis = models.ForeignKey(
+        'roadmap.EmphasisLine', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True
+    )
+    ai_track = models.ForeignKey(
+        'roadmap.Track', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True
+    )
+    # Guardaremos las razones como texto (puede ser un JSON en texto o texto largo)
+    ai_reasons = models.TextField(blank=True, null=True, help_text="Razones de la IA en formato JSON")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv # Importamos la herramienta para leer el .env
+
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()
 
 # Message tags personalizados para Bootstrap
 from django.contrib.messages import constants as messages
@@ -35,7 +39,7 @@ SECRET_KEY = 'django-insecure-mqe$y%f0ydyo3e3gj%qw#2ue!u7xh5-j19xv^_$)9zxpqbb@6^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['75.101.171.124', '3.89.48.74', '54.81.231.10', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['75.101.171.124', '3.89.48.74', '54.81.231.10']
 
 
 # Application definition
@@ -135,3 +139,6 @@ LOGOUT_REDIRECT_URL = '/accounts/login/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'P1_roadmap', 'static'), 
 ]
+
+# Configuración de APIs externas
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")

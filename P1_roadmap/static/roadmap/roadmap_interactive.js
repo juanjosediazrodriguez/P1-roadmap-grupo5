@@ -626,6 +626,27 @@ function validateAll() {
                     warningsContainer.appendChild(w);
                 }
             }
+
+            // Verificar requisito de inglés
+            const ENGLISH_ORDER = ['NONE', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+            const userLevel = D.english_level || 'NONE';
+            const userLevelIdx = ENGLISH_ORDER.indexOf(userLevel);
+
+            const ENGLISH_REQUIREMENTS = {
+                19: { level: 'A1', label: 'Sistemas Operativos requiere nivel de inglés A1' },
+                55: { level: 'A2', label: 'Período de Práctica requiere nivel de inglés A2' },
+            };
+
+            if (ENGLISH_REQUIREMENTS[courseId]) {
+                const req = ENGLISH_REQUIREMENTS[courseId];
+                const reqIdx = ENGLISH_ORDER.indexOf(req.level);
+                if (userLevelIdx < reqIdx) {
+                    const w = document.createElement('div');
+                    w.className = 'english-warning';
+                    w.innerHTML = `<i class="fas fa-language"></i> Idiomas: ${req.label}`;
+                    warningsContainer.appendChild(w);
+                }
+            }
         }
 
         // Verificar límite de créditos
@@ -1811,6 +1832,7 @@ function initOnboarding() {
                     <li><i class="fas fa-road"></i> Usa la barra superior para gestionar trayectorias y énfasis</li>
                     <li><i class="fas fa-triangle-exclamation" style="color:#f97316;"></i> Advertencias naranja/moradas indican prereqs o correqs pendientes</li>
                     <li><i class="fas fa-rotate-left" style="color:#ef4444;"></i> "Reiniciar" devuelve el roadmap a su estado original</li>
+                    <li style="color:#fbbf24;"><i class="fas fa-language" style="color:#f59e0b;"></i> Se requiere nivel <strong>B1 de inglés</strong> para obtener el título de Ingeniería de Sistemas</li>
                 </ul>
             </div>
             <button class="rm-onboarding-close" title="Cerrar ayuda">
@@ -1856,6 +1878,7 @@ function initOnboarding() {
                         <li><i class="fas fa-road"></i> Usa la barra superior para gestionar trayectorias y énfasis</li>
                         <li><i class="fas fa-triangle-exclamation" style="color:#f97316;"></i> Advertencias naranja/moradas indican prereqs o correqs pendientes</li>
                         <li><i class="fas fa-rotate-left" style="color:#ef4444;"></i> "Reiniciar" devuelve el roadmap a su estado original</li>
+                        <li style="color:#fbbf24;"><i class="fas fa-language" style="color:#f59e0b;"></i> Se requiere nivel <strong>B1 de inglés</strong> para obtener el título de Ingeniería de Sistemas</li>
                     </ul>
                 </div>
                 <button class="rm-onboarding-close" title="Cerrar ayuda">

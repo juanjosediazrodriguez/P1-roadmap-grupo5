@@ -126,3 +126,16 @@ python manage.py loaddata trackcourse.json
 python manage.py loaddata emphasiscourse.json
 python manage.py loaddata preferences_data.json
 ```
+## Configuración de Recomendaciones con IA (Gemini)
+
+Para el sistema de recomendaciones automáticas por IA, utilizamos la API gratuita de Gemini. Como las credenciales son secretas, cada desarrollador debe configurar su entorno local:
+
+1. Ve a [Google AI Studio](https://aistudio.google.com/) e inicia sesión con tu cuenta de Google.
+2. Haz clic en **Create API Key** y copia la clave generada.
+3. En la raíz del proyecto, crea un archivo llamado `.env` (este archivo está ignorado en Git).
+4. Agrega tu clave dentro del archivo con el siguiente formato:
+   ```text
+   GEMINI_API_KEY=tu_clave_secreta_aqui
+5. Asegúrate de instalar los nuevos requerimientos ejecutando:
+   ```bash 
+   pip install -r requirements.txt   
