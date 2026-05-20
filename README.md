@@ -1,11 +1,24 @@
 # P1-roadmap
 
-Aplicación Django para visualizar el roadmap de cursos por especialización.
+Aplicación Django para visualizar el roadmap académico de Ingeniería de Sistemas, con soporte para trayectorias profesionalizantes, líneas de énfasis, especializaciones y descarga del roadmap en PDF.
 
 ## Requisitos previos
 
-- Python 3.10 o superior
-- Django instalado (`pip install django`)
+- **Python 3.10 o superior** — [descargar](https://www.python.org/downloads/)
+- **pip** — incluido con Python 3.10+
+- **Git** — [descargar](https://git-scm.com/)
+- **Clave de API de Gemini** — necesaria para el sistema de recomendaciones con IA ([obtener gratis en Google AI Studio](https://aistudio.google.com/))
+
+### Dependencias Python (instaladas automáticamente con `pip install -r requirements.txt`)
+
+| Paquete | Uso |
+|---|---|
+| `django` | Framework web |
+| `python-dotenv` | Carga variables de entorno desde `.env` |
+| `google-genai` | Recomendaciones con IA (Gemini) |
+| `xhtml2pdf` | Generación de PDF del roadmap |
+| `matplotlib` | Gráficas |
+| `pandas` | Procesamiento de datos |
 
 ## Cómo correr el proyecto
 
@@ -16,19 +29,29 @@ git clone https://github.com/juanjosediazrodriguez/P1-roadmap-grupo5.git
 cd P1-roadmap-grupo5
 ```
 
-### 2. Instalar dependencias
+### 2. Crear el archivo `.env`
+
+Crea un archivo llamado `.env` en la raíz del proyecto con el siguiente contenido:
+
+```text
+GEMINI_API_KEY=tu_clave_secreta_aqui
+```
+
+> Este archivo está en `.gitignore` y nunca se sube al repositorio.
+
+### 3. Instalar dependencias
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Aplicar las migraciones
+### 4. Aplicar las migraciones
 
 ```bash
 python manage.py migrate
 ```
 
-### 4. Cargar los datos iniciales
+### 5. Cargar los datos iniciales
 
 ```bash
 python manage.py loaddata courses.json
@@ -42,13 +65,13 @@ python manage.py loaddata emphasiscourse.json
 python manage.py loaddata preferences_data.json
 ```
 
-### 5. Crear superusuario (para el admin)
+### 6. Crear superusuario (para el admin)
 
 ```bash
 python manage.py createsuperuser
 ```
 
-### 6. Correr el servidor
+### 7. Correr el servidor
 
 ```bash
 python manage.py runserver
