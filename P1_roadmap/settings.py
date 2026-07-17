@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 import os
 from pathlib import Path
+
+import dj_database_url
 from dotenv import load_dotenv # Importamos la herramienta para leer el .env
 
 # Cargar las variables de entorno desde el archivo .env
@@ -34,12 +36,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-mqe$y%f0ydyo3e3gj%qw#2ue!u7xh5-j19xv^_$)9zxpqbb@6^'
+# En produccion se inyecta por variable de entorno; el fallback es solo para desarrollo local.
+SECRET_KEY = os.getenv(
+    "SECRET_KEY",
+    'django-insecure-mqe$y%f0ydyo3e3gj%qw#2ue!u7xh5-j19xv^_$)9zxpqbb@6^',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = ['75.101.171.124', '3.89.48.74', '54.81.231.10', '127.0.0.1', 'localhost', '98.92.164.208', '34.207.136.182', '54.221.179.241', '54.162.221.108']
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+
+# Render expone el dominio del servicio en esta variable.
+RENDER_EXTERNAL_HOSTNAME = os.getenv("RENDER_EXTERNAL_HOSTNAME")
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+    # Sin esto los formularios POST fallan detras del proxy HTTPS de Render.
+    CSRF_TRUSTED_ORIGINS = [f"https://{RENDER_EXTERNAL_HOSTNAME}"]
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    # HSTS se deja fuera a proposito: es dificil de revertir si algo sale mal.
 
 
 # Application definition
@@ -57,6 +75,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -88,11 +107,12 @@ WSGI_APPLICATION = 'P1_roadmap.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# Si DATABASE_URL no esta definida (desarrollo local), se usa SQLite como siempre.
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        conn_max_age=600,
+    )
 }
 
 
@@ -137,8 +157,20 @@ LOGIN_REDIRECT_URL = '/roadmap/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'P1_roadmap', 'static'), 
+    os.path.join(BASE_DIR, 'P1_roadmap', 'static'),
 ]
+
+# Destino de collectstatic; WhiteNoise sirve los archivos desde aqui en produccion.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STORAGES = {
+    'default': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    },
+    'staticfiles': {
+        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    },
+}
 
 # Configuración de APIs externas
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")

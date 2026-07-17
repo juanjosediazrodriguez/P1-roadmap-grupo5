@@ -1,0 +1,34 @@
+# Blueprint de Render. La base de datos es Postgres en Supabase (externa),
+# por eso aqui no se declara ningun servicio de tipo `pserv`/`redis`.
+services:
+  - type: web
+    name: p1-roadmap
+    runtime: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn P1_roadmap.wsgi:application"
+    envVars:
+      # Generada por Render: la SECRET_KEY vieja quedo en el historial de Git.
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: PYTHON_VERSION
+        value: "3.13.2"
+      - key: WEB_CONCURRENCY
+        value: "2"
+      # sync: false => se cargan a mano en el panel de Render, nunca en el repo.
+      - key: DATABASE_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      # true solo para el primer deploy (ver build.sh).
+      - key: LOAD_FIXTURES
+        sync: false
+      # Opcionales: si se definen, el build crea el superusuario del admin.
+      - key: DJANGO_SUPERUSER_USERNAME
+        sync: false
+      - key: DJANGO_SUPERUSER_EMAIL
+        sync: false
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false
