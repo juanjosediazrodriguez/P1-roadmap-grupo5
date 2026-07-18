@@ -72,8 +72,10 @@ def get_base_courses():
     # Filtrar en Python para excluir opciones
     filtered_courses = [c for c in courses if c.id not in option_ids]
     
-    # Ordenar manualmente por semestre y código
-    filtered_courses.sort(key=lambda c: (c.semester_suggested, c.code))
+    # Ordenar manualmente por semestre y código.
+    # code puede ser None (cursos paraguas): sin el fallback, comparar None con
+    # un str revienta en Postgres segun el orden en que lleguen las filas.
+    filtered_courses.sort(key=lambda c: (c.semester_suggested or 0, c.code or ''))
     
     return filtered_courses
 
@@ -101,8 +103,8 @@ def get_specialization_courses(preference):
         category='SPECIALIZATION'
     ).distinct())
     
-    # Ordenar manualmente
-    courses.sort(key=lambda c: (c.semester_suggested, c.code))
+    # Ordenar manualmente (code puede ser None en cursos paraguas)
+    courses.sort(key=lambda c: (c.semester_suggested, c.code or ''))
     
     return courses
 
@@ -135,8 +137,8 @@ def generate_roadmap(preference):
     # 2. Combinar todos los cursos
     all_courses = base_courses + spec_courses
     
-    # 3. Ordenar todos los cursos
-    all_courses.sort(key=lambda c: (c.semester_suggested, category_order.get(c.category, 99), c.code))
+    # 3. Ordenar todos los cursos (code puede ser None en cursos paraguas)
+    all_courses.sort(key=lambda c: (c.semester_suggested or 0, category_order.get(c.category, 99), c.code or ''))
     
     # 4. Agrupar por semestre
     roadmap = defaultdict(list)
