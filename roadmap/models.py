@@ -42,7 +42,7 @@ class Course(models.Model):
         ('SPECIALIZATION', 'Especialización'),
     ]
     
-    code = models.CharField(max_length=10, unique=True, blank=True, null=True,
+    code = models.CharField(max_length=20, unique=True, blank=True, null=True,
                             help_text="Código del curso (puede ser nulo para cursos paraguas)")
     name = models.CharField(max_length=200)
     credits = models.IntegerField()
