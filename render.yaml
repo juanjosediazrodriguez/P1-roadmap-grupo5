@@ -6,7 +6,10 @@ services:
     runtime: python
     plan: free
     buildCommand: "./build.sh"
-    startCommand: "gunicorn P1_roadmap.wsgi:application"
+    # 1 solo worker: la capa gratuita tiene 512 MB y cada worker carga la app
+    # completa. --max-requests recicla el worker cada N requests para evitar que
+    # la memoria crezca sin control. --timeout 60 corta requests colgados.
+    startCommand: "gunicorn P1_roadmap.wsgi:application --workers 1 --max-requests 300 --max-requests-jitter 30 --timeout 60"
     envVars:
       # Generada por Render: la SECRET_KEY vieja quedo en el historial de Git.
       - key: SECRET_KEY
@@ -16,7 +19,7 @@ services:
       - key: PYTHON_VERSION
         value: "3.13.2"
       - key: WEB_CONCURRENCY
-        value: "2"
+        value: "1"
       # sync: false => se cargan a mano en el panel de Render, nunca en el repo.
       - key: DATABASE_URL
         sync: false
